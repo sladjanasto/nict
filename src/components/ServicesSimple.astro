@@ -209,17 +209,15 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 				
 				<div class="service-cta">
-					<a href={`/${lang}/#contact`} class="btn btn-primary">{ui.services.ctaButton}</a>
+					<button class="btn btn-secondary packages-toggle-btn" id="seoPackagesToggle">
+						<span class="toggle-text-show">{ui.services.explorePackages}</span>
+						<span class="toggle-text-hide" style="display: none;">{ui.services.hideExplorePackages}</span>
+					</button>
 				</div>
 			</div>
 		</div>
 		
-		<div class="packages-toggle">
-			<button class="btn btn-secondary" id="packagesToggle">
-				<span class="toggle-text-show">{ui.services.viewPackages}</span>
-				<span class="toggle-text-hide" style="display: none;">{ui.services.hidePackages}</span>
-			</button>
-		</div>
+
 	</div>
 </section>
 
@@ -480,15 +478,18 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		border-top: 1px solid var(--border-light);
 	}
 	
-	.packages-toggle .btn {
+	.packages-toggle .btn,
+	.packages-toggle-btn {
 		background: var(--bg-gradient);
 		color: white;
 		border: none;
 		font-weight: 600;
 		transition: all var(--transition-normal);
+		width: 100%;
 	}
 	
-	.packages-toggle .btn:hover {
+	.packages-toggle .btn:hover,
+	.packages-toggle-btn:hover {
 		transform: translateY(-2px);
 		box-shadow: var(--shadow-lg);
 	}
@@ -496,16 +497,16 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
-		const packagesToggle = document.getElementById('packagesToggle');
+		const seoPackagesToggle = document.getElementById('seoPackagesToggle');
 		const packagesSection = document.getElementById('packagesSection');
-		const toggleTextShow = packagesToggle?.querySelector('.toggle-text-show') as HTMLElement;
-		const toggleTextHide = packagesToggle?.querySelector('.toggle-text-hide') as HTMLElement;
+		const toggleTextShow = seoPackagesToggle?.querySelector('.toggle-text-show') as HTMLElement;
+		const toggleTextHide = seoPackagesToggle?.querySelector('.toggle-text-hide') as HTMLElement;
 		
-		if (!packagesToggle || !packagesSection || !toggleTextShow || !toggleTextHide) return;
+		if (!seoPackagesToggle || !packagesSection || !toggleTextShow || !toggleTextHide) return;
 		
 		let isVisible = false;
 		
-		packagesToggle.addEventListener('click', function() {
+		seoPackagesToggle.addEventListener('click', function() {
 			isVisible = !isVisible;
 			
 			if (isVisible) {

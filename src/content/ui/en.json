@@ -114,6 +114,8 @@
     "subtitle": "Complete IT expertise for your organization",
     "viewPackages": "View Service Packages",
     "hidePackages": "Hide Service Packages",
+    "explorePackages": "Explore Packages",
+    "hideExplorePackages": "Hide Packages",
     "keyFeatures": "Key Features",
     "benefits": "Benefits",
     "interimManagement": {

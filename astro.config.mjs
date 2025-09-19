@@ -7,8 +7,8 @@ export default defineConfig({
   site: "https://yourdomainhere.com", // Replace with your actual domain
   integrations: [sitemap()],
   i18n: {
-    defaultLocale: "sr",
-    locales: ["sr", "en", "de"],
+    defaultLocale: "en",
+    locales: ["en", "de"],
     routing: {
       prefixDefaultLocale: false,
     },

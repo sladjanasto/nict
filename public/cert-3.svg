@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <circle cx="40" cy="40" r="35" fill="#326ce5" stroke="#333" stroke-width="2"/>
+  <text x="40" y="30" font-family="Arial" font-size="8" fill="white" text-anchor="middle">K8s</text>
+  <text x="40" y="45" font-family="Arial" font-size="6" fill="white" text-anchor="middle">Certified</text>
+  <text x="40" y="55" font-family="Arial" font-size="6" fill="white" text-anchor="middle">Admin</text>
+</svg>

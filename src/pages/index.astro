@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HeroWithI18n from '../components/HeroWithI18n.astro';
+import ServicesSimple from '../components/ServicesSimple.astro';
+import AboutSimple from '../components/AboutSimple.astro';
+import ProjectsExpandable from '../components/ProjectsExpandable.astro';
+import PackagesTable from '../components/PackagesTable.astro';
+import TestimonialsSimple from '../components/TestimonialsSimple.astro';
+import Footer from '../components/Footer.astro';
+import { getLangFromUrl, getUITranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const ui = await getUITranslations(lang);
+
+// SEO data based on language
+const seoData = {
+	sr: {
+		title: "IT Expert - Strateško IT vođstvo i digitalna transformacija",
+		description: "Profesionalne IT usluge: Interim Management, Cloud Migracija, AI Konsalting, IT Operacije i SEO optimizacija. Transformišemo vaš biznis kroz tehnologiju."
+	},
+	en: {
+		title: "IT Expert - Strategic IT Leadership & Digital Transformation", 
+		description: "Professional IT services: Interim Management, Cloud Migration, AI Consulting, IT Operations and SEO optimization. Transforming your business through technology."
+	},
+	de: {
+		title: "IT Expert - Strategische IT-Führung & Digitale Transformation",
+		description: "Professionelle IT-Dienstleistungen: Interim Management, Cloud-Migration, KI-Beratung, IT-Betrieb und SEO-Optimierung. Transformation Ihres Unternehmens durch Technologie."
+	}
+};
+
+const currentSeo = seoData[lang as keyof typeof seoData] || seoData.sr;
+---
+
+<Layout 
+	title={currentSeo.title}
+	description={currentSeo.description}
+	lang={lang}
+	canonical={Astro.url.href}
+>
+	<Header />
+	<main>
+		<HeroWithI18n />
+		<ServicesSimple />
+		<PackagesTable />
+		<AboutSimple />
+		<ProjectsExpandable />
+		<TestimonialsSimple />
+	</main>
+	<Footer />
+</Layout>

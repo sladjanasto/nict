@@ -1,0 +1,276 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e4]:
+      - link "AllOps Solutions AllOps" [ref=e6]:
+        - /url: /
+        - img "AllOps Solutions" [ref=e7]
+        - generic [ref=e8]: AllOps
+      - generic [ref=e9]:
+        - list [ref=e10]:
+          - listitem [ref=e11]:
+            - link "Home" [ref=e12]:
+              - /url: "#home"
+          - listitem [ref=e13]:
+            - link "Services" [ref=e14]:
+              - /url: "#services"
+          - listitem [ref=e15]:
+            - link "About" [ref=e16]:
+              - /url: "#about"
+          - listitem [ref=e17]:
+            - link "Team" [ref=e18]:
+              - /url: "#team"
+          - listitem [ref=e19]:
+            - link "Contact" [ref=e20]:
+              - /url: "#contact"
+        - link "Schedule a Consult" [ref=e21]:
+          - /url: "#contact"
+  - main [ref=e22]:
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - heading "Wouldn't it be great if you had all the Ops you need in one place?" [level=1] [ref=e27]:
+          - text: Wouldn't it be great if you had
+          - generic [ref=e28]: all the Ops you need
+          - text: in one place?
+        - paragraph [ref=e29]: At AllOps Solutions, we provide comprehensive DevOps and AWS cloud services to support your business growth and increase agility, while eliminating unstable implementations and unnecessary costs.
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - generic [ref=e32]: ⚡
+            - generic [ref=e33]: Tailored DevOps for optimal performance
+          - generic [ref=e34]:
+            - generic [ref=e35]: ☁️
+            - generic [ref=e36]: Expert AWS management for enhanced scalability
+          - generic [ref=e37]:
+            - generic [ref=e38]: 🚀
+            - generic [ref=e39]: Cloud Native development for agility, scalability and cost efficiency
+        - generic [ref=e40]:
+          - link "Schedule a free consult" [ref=e41]:
+            - /url: "#contact"
+          - link "Learn More" [ref=e42]:
+            - /url: "#services"
+      - generic [ref=e44]:
+        - img "AWS Partner" [ref=e45]
+        - generic [ref=e46]:
+          - img "AWS Solutions Architect" [ref=e47]
+          - img "AWS DevOps Engineer" [ref=e48]
+          - img "Kubernetes Administrator" [ref=e49]
+          - img "Terraform Associate" [ref=e50]
+    - generic [ref=e52]:
+      - heading "Our Services" [level=2] [ref=e53]
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - generic [ref=e58]: ⚙️
+          - heading "Overwhelmed by AWS configuration options?" [level=3] [ref=e59]
+          - paragraph [ref=e60]: Using the cloud, especially AWS, can present various challenges in configuration because clouds usually offer so many services that it's hard to make the right choice.
+          - paragraph [ref=e61]: We're here to stop the guesswork.
+        - generic [ref=e62]:
+          - generic [ref=e64]: 🔄
+          - heading "Struggling with automating software delivery process?" [level=3] [ref=e65]
+          - paragraph [ref=e66]: Manual deployments and inconsistent environments can slow down your development cycle and introduce errors.
+          - paragraph [ref=e67]: Streamline your CI/CD pipelines
+        - generic [ref=e68]:
+          - generic [ref=e70]: 👥
+          - heading "Need a specialized DevOps team?" [level=3] [ref=e71]
+          - paragraph [ref=e72]: Building an in-house DevOps team can be expensive and time-consuming. You need expertise now.
+          - paragraph [ref=e73]: Let AllOps be your DevOps-as-a-Service
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - button "☁️ DevOps implementation and cloud infrastructure management" [ref=e76] [cursor=pointer]:
+            - generic [ref=e77] [cursor=pointer]: ☁️
+            - text: DevOps implementation and cloud infrastructure management
+          - button "🚨 Disaster Recovery" [ref=e78] [cursor=pointer]:
+            - generic [ref=e79] [cursor=pointer]: 🚨
+            - text: Disaster Recovery
+          - button "💻 Cloud-Native Development" [ref=e80] [cursor=pointer]:
+            - generic [ref=e81] [cursor=pointer]: 💻
+            - text: Cloud-Native Development
+          - button "🚀 Cloud Migration" [ref=e82] [cursor=pointer]:
+            - generic [ref=e83] [cursor=pointer]: 🚀
+            - text: Cloud Migration
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - generic [ref=e89]: ✓
+            - generic [ref=e90]: Automation of CI/CD Processes
+          - generic [ref=e91]:
+            - generic [ref=e92]: ✓
+            - generic [ref=e93]: Infrastructure as Code (IaC)
+          - generic [ref=e94]:
+            - generic [ref=e95]: ✓
+            - generic [ref=e96]: Monitoring and Logging
+          - generic [ref=e97]:
+            - generic [ref=e98]: ✓
+            - generic [ref=e99]: Security and Compliance
+          - generic [ref=e100]:
+            - generic [ref=e101]: ✓
+            - generic [ref=e102]: Cost Optimisation
+          - generic [ref=e103]:
+            - generic [ref=e104]: ✓
+            - generic [ref=e105]: Microservices Architecture (Docker, Kubernetes)
+          - generic [ref=e106]:
+            - generic [ref=e107]: ✓
+            - generic [ref=e108]: Serverless Architecture
+    - generic [ref=e111]:
+      - generic [ref=e112]:
+        - heading "DevOps is not about tools. It's a culture and a mindset." [level=2] [ref=e113]:
+          - text: DevOps is not about tools. It's a
+          - generic [ref=e114]: culture and a mindset.
+        - paragraph [ref=e115]: DevOps is not a set of tools. It's a way to make you more agile, efficient, and support your growth, while keeping everything as secure as possible.
+        - paragraph [ref=e116]: Our step-by-step approach to your success
+      - generic [ref=e117]:
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - heading "Assessment" [level=3] [ref=e120]
+            - paragraph [ref=e121]: Get a detailed analysis of your existing infrastructure and applications to understand your current setup and identify areas for improvement.
+          - generic [ref=e122]: "1"
+        - generic [ref=e123]:
+          - generic [ref=e124]: "2"
+          - generic [ref=e125]:
+            - heading "Goals" [level=3] [ref=e126]
+            - paragraph [ref=e127]: Tell us your business objectives and challenges. This helps us to enhance the assessment and narrow down to the exact solution.
+        - generic [ref=e128]:
+          - generic [ref=e129]:
+            - heading "Service recommendations" [level=3] [ref=e130]
+            - paragraph [ref=e131]: Based on our assessment and your goals, you'll get a recommendation for a customized package of services.
+          - generic [ref=e132]: "3"
+        - generic [ref=e133]:
+          - generic [ref=e134]: "4"
+          - generic [ref=e135]:
+            - heading "Flexibility" [level=3] [ref=e136]
+            - paragraph [ref=e137]: Our offerings are flexible and adaptable. We can adjust our services to ensure a perfect fit. There's always a solution.
+        - generic [ref=e138]:
+          - generic [ref=e139]:
+            - heading "Implementation and support" [level=3] [ref=e140]
+            - paragraph [ref=e141]: We implement the solution and provide ongoing support to ensure everything runs smoothly and efficiently.
+          - generic [ref=e142]: "5"
+    - generic [ref=e144]:
+      - generic [ref=e145]:
+        - img "The team behind AllOps" [ref=e147]
+        - generic [ref=e148]:
+          - heading "The team behind AllOps" [level=2] [ref=e149]:
+            - text: The team behind
+            - generic [ref=e150]: AllOps
+          - paragraph [ref=e151]: Our journey began in 2011 with a passion for engineering and a commitment to excellence in DevOps and AWS cloud services. In 2017 we decided to start a company.
+          - paragraph [ref=e152]: With a motto that "no one can outwork us", our team of engineers believes in fostering a work environment that encourages growth and excellence.
+      - generic [ref=e153]:
+        - generic [ref=e154]:
+          - img "CEO" [ref=e156]
+          - generic [ref=e157]:
+            - heading "John Doe" [level=3] [ref=e158]
+            - paragraph [ref=e159]: CEO and Co-Founder
+            - generic [ref=e161]: AWS Hero
+            - paragraph [ref=e162]: A walking knowledge base
+        - generic [ref=e163]:
+          - img "CTO" [ref=e165]
+          - generic [ref=e166]:
+            - heading "Jane Smith" [level=3] [ref=e167]
+            - paragraph [ref=e168]: Technical Manager and Co-Founder
+            - generic [ref=e170]: AWS Hero
+            - paragraph [ref=e171]: Passionate about getting things done
+      - generic [ref=e173]:
+        - generic [ref=e174]:
+          - button "‹" [ref=e175] [cursor=pointer]:
+            - generic [ref=e176] [cursor=pointer]: ‹
+          - button "›" [ref=e177] [cursor=pointer]:
+            - generic [ref=e178] [cursor=pointer]: ›
+        - generic [ref=e181]:
+          - generic [ref=e182]:
+            - img "Jeff Gahan" [ref=e183]
+            - generic [ref=e184]:
+              - heading "Jeff Gahan" [level=4] [ref=e185]
+              - paragraph [ref=e186]: Director of Engineering @ Yahoo
+          - blockquote [ref=e187]: "\"Our team at Yahoo had the pleasure of working with AllOps Solutions for over five years, and their AWS SRE/DevOps support was nothing short of exceptional. The teams expertise and dedication were critical in running and optimizing our infrastructure, improving deployment processes, and ensuring the reliability and security of our systems. They consistently went above and beyond to meet our needs, providing solutions that helped us scale and maintain efficiency. The professionalism and responsiveness of their team made them an invaluable partner. I highly recommend AllOps Solutions to organizations seeking top-tier AWS SRE/DevOps support.\""
+      - generic [ref=e188]:
+        - heading "Our Values" [level=3] [ref=e189]
+        - generic [ref=e190]:
+          - generic [ref=e191]:
+            - generic [ref=e192]: 🎯
+            - heading "Clarity" [level=4] [ref=e193]
+          - generic [ref=e194]:
+            - generic [ref=e195]: ❤️
+            - heading "Integrity" [level=4] [ref=e196]
+          - generic [ref=e197]:
+            - generic [ref=e198]: 🔍
+            - heading "Transparency" [level=4] [ref=e199]
+          - generic [ref=e200]:
+            - generic [ref=e201]: 💬
+            - heading "Communication" [level=4] [ref=e202]
+          - generic [ref=e203]:
+            - generic [ref=e204]: 👥
+            - heading "Professionalism" [level=4] [ref=e205]
+  - contentinfo [ref=e206]:
+    - generic [ref=e207]:
+      - generic [ref=e208]:
+        - generic [ref=e209]:
+          - heading "Ready to transform your cloud infrastructure and streamline your operations with AWS?" [level=2] [ref=e210]
+          - paragraph [ref=e211]: Contact AllOps Solutions today to discuss how we can help you achieve your goals. Our team is ready to provide the expertise and support you need for success in the cloud.
+          - link "Schedule a free consult" [ref=e212]:
+            - /url: "#contact"
+        - generic [ref=e214]:
+          - img "AWS Solutions Architect Professional" [ref=e215]
+          - img "AWS Security Specialty" [ref=e216]
+          - img "Kubernetes Administrator" [ref=e217]
+          - img "Kubernetes Application Developer" [ref=e218]
+          - img "Terraform Associate" [ref=e219]
+      - generic [ref=e221]:
+        - generic [ref=e222]:
+          - img "AllOps Solutions" [ref=e223]
+          - generic [ref=e224]:
+            - link "Home" [ref=e225]:
+              - /url: "#home"
+            - link "Blog" [ref=e226]:
+              - /url: /blog
+            - link "Terms of Service" [ref=e227]:
+              - /url: /terms
+            - link "Privacy Policy" [ref=e228]:
+              - /url: /privacy
+        - generic [ref=e229]:
+          - heading "AllOps Solutions" [level=3] [ref=e230]
+          - generic [ref=e231]:
+            - generic [ref=e232]:
+              - generic [ref=e233]: 📍
+              - generic [ref=e234]:
+                - paragraph [ref=e235]: Podgorani bb 88208 Potoci - Mostar
+                - paragraph [ref=e236]: Bosnia and Herzegovina
+            - generic [ref=e237]:
+              - generic [ref=e238]: ✉️
+              - link "info@allops.co" [ref=e240]:
+                - /url: mailto:info@allops.co
+            - generic [ref=e241]:
+              - generic [ref=e242]: 📞
+              - link "+387 61 792 636" [ref=e244]:
+                - /url: tel:+38761792636
+          - generic [ref=e245]:
+            - link "GitHub" [ref=e246]:
+              - /url: "#"
+              - generic [ref=e247]: 📄
+            - link "LinkedIn" [ref=e248]:
+              - /url: "#"
+              - generic [ref=e249]: 💼
+        - generic [ref=e250]:
+          - heading "Company Info" [level=3] [ref=e251]
+          - generic [ref=e252]:
+            - generic [ref=e253]:
+              - generic [ref=e254]: "ID:"
+              - generic [ref=e255]: "4227993630003"
+            - generic [ref=e256]:
+              - generic [ref=e257]: "VAT:"
+              - generic [ref=e258]: "227993630003"
+      - paragraph [ref=e261]: © 2024 AllOps. All rights reserved.
+  - generic [ref=e264]:
+    - button "Menu" [ref=e265]:
+      - img [ref=e267]
+      - generic: Menu
+    - button "Inspect" [ref=e271]:
+      - img [ref=e273]
+      - generic: Inspect
+    - button "Audit" [ref=e275]:
+      - generic [ref=e276]:
+        - img [ref=e277]
+        - img [ref=e280]
+      - generic: Audit
+    - button "Settings" [ref=e283]:
+      - img [ref=e285]
+      - generic: Settings
+```

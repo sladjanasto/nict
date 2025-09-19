@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import HeroWithI18n from '../../components/HeroWithI18n.astro';
+import ServicesSimple from '../../components/ServicesSimple.astro';
+import AboutSimple from '../../components/AboutSimple.astro';
+import ProjectsExpandable from '../../components/ProjectsExpandable.astro';
+import PackagesTable from '../../components/PackagesTable.astro';
+import TestimonialsSimple from '../../components/TestimonialsSimple.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout 
+	title="IT Expert - Strategic IT Leadership & Digital Transformation"
+	description="Professional IT services: Interim Management, Cloud Migration, AI Consulting, IT Operations and SEO optimization. Transforming your business through technology."
+	lang="en"
+	canonical={Astro.url.href}
+>
+	<Header />
+	<main>
+		<HeroWithI18n />
+		<ServicesSimple />
+		<PackagesTable />
+		<AboutSimple />
+		<ProjectsExpandable />
+		<TestimonialsSimple />
+	</main>
+	<Footer />
+</Layout>

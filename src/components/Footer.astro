@@ -1,0 +1,373 @@
+---
+import { getUITranslations, getLangFromUrl } from '../utils/i18n';
+
+const { url } = Astro;
+const lang = getLangFromUrl(url);
+const ui = await getUITranslations(lang);
+
+// Extract data to avoid complex expressions in template
+const footerData = ui.footer || {};
+const ctaData = footerData.cta || {};
+const contactData = footerData.contact || {};
+const servicesData = footerData.services || {};
+const certifications = footerData.certifications || [];
+const contactItems = contactData.items || [];
+const socialLinks = footerData.social || [];
+const serviceItems = servicesData.items || [];
+const promiseItems = ctaData.promise?.items || [];
+const navItems = ui.nav || {};
+---
+
+<footer id="contact" class="footer">
+	<div class="footer-content">
+		<a href={`/${lang}/#contact`} class="btn btn-cta">{ctaData.button || 'Contact'}</a>
+	</div>
+		
+	<div class="footer-main">
+			<div class="footer-grid">
+				<div class="footer-brand">
+					<div class="brand-logo">
+						<span class="logo-text">{ui.header?.brand || 'IT Expert'}</span>
+						<span class="logo-tagline">{ui.header?.tagline || ''}</span>
+					</div>
+					<div class="footer-links">
+						{Object.entries(navItems).map(([key, label]) => (
+							<a href={`/${lang}/#${key}`} class="footer-link">{label}</a>
+						))}
+					</div>
+				</div>
+				
+					   <div class="footer-contact">
+						   <h3 class="footer-heading">{contactData.title || 'Contact'}</h3>
+						   <div class="contact-info">
+							   {contactItems.map((item: any) => (
+								   <div class="contact-item">
+									   <span class="contact-icon">{item.icon}</span>
+									   <div class="contact-details">
+										   {item.type === 'email' ? (
+											   <a href={`mailto:${item.value}`} class="contact-link">{item.value}</a>
+										   ) : (
+											   <p>{item.value}</p>
+										   )}
+										   {item.description && <p>{item.description}</p>}
+									   </div>
+								   </div>
+							   ))}
+						   </div>
+						   <div class="social-links">
+							   {socialLinks.map((social: any) => (
+								   <a href={social.url} class="social-link" aria-label={social.label}>
+									   <span>{social.icon}</span>
+								   </a>
+							   ))}
+						   </div>
+					   </div>
+				
+				<div class="footer-services">
+					<h3 class="footer-heading">{servicesData.title || 'Services'}</h3>
+					<div class="service-areas">
+						{serviceItems.map((service: any) => (
+							<div class="service-item">
+								<span class="service-icon">{service.icon}</span>
+								<span>{service.title}</span>
+							</div>
+						))}
+					</div>
+					
+					<div class="industry-experience">
+						<h4>{servicesData.industryTitle || 'Industry Experience'}:</h4>
+						<p>{servicesData.industryText || 'Various industries'}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer-bottom">
+			<div class="footer-divider"></div>
+			<p class="copyright">
+				{footerData.copyright || '© 2024 IT Expert. All rights reserved.'}
+			</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background: linear-gradient(135deg, var(--text-dark) 0%, #34495e 100%);
+		color: var(--text-white);
+		position: relative;
+	}
+	
+	.footer-content {
+		padding: var(--spacing-xxl) 0 var(--spacing-xxl);
+		text-align: center;
+	}
+	
+	.cta-title {
+		font-size: var(--font-size-4xl);
+		font-weight: 700;
+		margin-bottom: var(--spacing-xl);
+		line-height: 1.3;
+		max-width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.cta-description {
+		font-size: 1.2rem;
+		margin-bottom: 40px;
+		opacity: 0.9;
+		line-height: 1.6;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.btn-cta {
+		background: var(--bg-gradient);
+		font-size: 1.1rem;
+		padding: 15px 35px;
+	}
+	
+	.btn-cta:hover {
+		background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+	}
+	
+	.footer-main {
+		padding: 60px 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	
+	.footer-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 60px;
+		align-items: start;
+	}
+	
+	.footer-brand {
+		text-align: center;
+	}
+	
+	.brand-logo {
+		margin-bottom: 30px;
+	}
+	
+	.logo-text {
+		font-family: var(--font-headings);
+		font-size: var(--font-size-2xl);
+		font-weight: 700;
+		color: white;
+		display: block;
+		margin-bottom: 5px;
+	}
+	
+	.logo-tagline {
+		font-size: var(--font-size-sm);
+		color: var(--primary-color);
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-weight: 500;
+	}
+	
+	.footer-links {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+	
+	.footer-link {
+		color: rgba(255, 255, 255, 0.8);
+		text-decoration: none;
+		transition: color 0.3s ease;
+		font-weight: 500;
+	}
+	
+	.footer-link:hover {
+		color: white;
+	}
+	
+	.footer-heading {
+		font-family: var(--font-headings);
+		font-size: 1.3rem;
+		font-weight: 600;
+		margin-bottom: 25px;
+		color: var(--primary-color);
+	}
+	
+	.contact-info {
+		margin-bottom: 30px;
+	}
+	
+	.contact-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 15px;
+		margin-bottom: 20px;
+	}
+	
+	.contact-icon {
+		font-size: 1.2rem;
+		margin-top: 2px;
+		flex-shrink: 0;
+	}
+	
+	.contact-details p {
+		margin: 0;
+		color: rgba(255, 255, 255, 0.8);
+		line-height: 1.5;
+	}
+	
+	.contact-link {
+		color: rgba(255, 255, 255, 0.8);
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+	
+	.contact-link:hover {
+		color: var(--primary-color);
+	}
+	
+	.social-links {
+		display: flex;
+		gap: 15px;
+	}
+	
+	.social-link {
+		width: 40px;
+		height: 40px;
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		color: white;
+		transition: all 0.3s ease;
+		font-size: 1.2rem;
+	}
+	
+	.social-link:hover {
+		background: var(--primary-color);
+		transform: translateY(-3px);
+	}
+	
+	.footer-services {
+		text-align: left;
+	}
+	
+	.service-areas {
+		margin-bottom: var(--spacing-xl);
+	}
+	
+	.service-item {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-sm);
+		margin-bottom: var(--spacing-sm);
+		color: rgba(255, 255, 255, 0.8);
+		font-weight: 500;
+	}
+	
+	.service-icon {
+		font-size: var(--font-size-lg);
+	}
+	
+	.industry-experience h4 {
+		font-family: var(--font-headings);
+		color: var(--primary-color);
+		margin-bottom: var(--spacing-sm);
+		font-size: var(--font-size-base);
+		font-weight: 600;
+	}
+	
+	.industry-experience p {
+		color: rgba(255, 255, 255, 0.7);
+		font-size: var(--font-size-sm);
+		line-height: 1.5;
+		margin: 0;
+	}
+	
+	.company-details {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+	
+	.company-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	.label {
+		color: rgba(255, 255, 255, 0.7);
+		font-weight: 500;
+	}
+	
+	.value {
+		color: white;
+		font-weight: 600;
+	}
+	
+	.footer-bottom {
+		padding: 30px 0;
+	}
+	
+	.footer-divider {
+		height: 1px;
+		background: rgba(255, 255, 255, 0.1);
+		margin-bottom: 20px;
+	}
+	
+	.copyright {
+		text-align: center;
+		color: rgba(255, 255, 255, 0.7);
+		font-size: 0.9rem;
+	}
+	
+	@media (max-width: 768px) {
+		.cta-title {
+			font-size: 2rem;
+		}
+		
+		.cta-description {
+			font-size: 1.1rem;
+		}
+		
+		.footer-grid {
+			grid-template-columns: 1fr;
+			gap: 40px;
+			text-align: center;
+		}
+		
+		.footer-brand,
+		.footer-contact,
+		.footer-company {
+			text-align: center;
+		}
+		
+		.contact-item {
+			justify-content: center;
+		}
+		
+		.company-item {
+			justify-content: center;
+			gap: 20px;
+		}
+		
+		.social-links {
+			justify-content: center;
+		}
+	}
+	
+	/* Smooth scroll for anchor links */
+	html {
+		scroll-behavior: smooth;
+	}
+	
+	/* Add padding to sections to account for fixed header */
+	section[id] {
+		scroll-margin-top: 80px;
+	}
+</style>

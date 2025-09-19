@@ -1,0 +1,87 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient definitions -->
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00bcd4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2196f3;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="lightBlueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4fc3f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#29b6f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer spiral segments -->
+  <g transform="translate(100,100)">
+    <!-- Top right curved segment -->
+    <path d="M 0,-60 A 60,60 0 0,1 42.4,-42.4 L 35.4,-35.4 A 50,50 0 0,0 0,-50 Z" 
+          fill="url(#blueGradient)" stroke="none"/>
+    
+    <!-- Right curved segment -->
+    <path d="M 42.4,-42.4 A 60,60 0 0,1 60,0 L 50,0 A 50,50 0 0,0 35.4,-35.4 Z" 
+          fill="url(#lightBlueGradient)" stroke="none"/>
+    
+    <!-- Bottom right curved segment -->
+    <path d="M 60,0 A 60,60 0 0,1 42.4,42.4 L 35.4,35.4 A 50,50 0 0,0 50,0 Z" 
+          fill="url(#blueGradient)" stroke="none"/>
+    
+    <!-- Bottom curved segment -->
+    <path d="M 42.4,42.4 A 60,60 0 0,1 0,60 L 0,50 A 50,50 0 0,0 35.4,35.4 Z" 
+          fill="url(#lightBlueGradient)" stroke="none"/>
+    
+    <!-- Bottom left curved segment -->
+    <path d="M 0,60 A 60,60 0 0,1 -42.4,42.4 L -35.4,35.4 A 50,50 0 0,0 0,50 Z" 
+          fill="url(#blueGradient)" stroke="none"/>
+    
+    <!-- Left curved segment -->
+    <path d="M -42.4,42.4 A 60,60 0 0,1 -60,0 L -50,0 A 50,50 0 0,0 -35.4,35.4 Z" 
+          fill="url(#lightBlueGradient)" stroke="none"/>
+    
+    <!-- Top left curved segment -->
+    <path d="M -60,0 A 60,60 0 0,1 -42.4,-42.4 L -35.4,-35.4 A 50,50 0 0,0 -50,0 Z" 
+          fill="url(#blueGradient)" stroke="none"/>
+    
+    <!-- Top curved segment -->
+    <path d="M -42.4,-42.4 A 60,60 0 0,1 0,-60 L 0,-50 A 50,50 0 0,0 -35.4,-35.4 Z" 
+          fill="url(#lightBlueGradient)" stroke="none"/>
+  </g>
+  
+  <!-- Inner spiral segments -->
+  <g transform="translate(100,100)">
+    <!-- Inner top right -->
+    <path d="M 0,-40 A 40,40 0 0,1 28.3,-28.3 L 21.2,-21.2 A 30,30 0 0,0 0,-30 Z" 
+          fill="url(#lightBlueGradient)" stroke="none"/>
+    
+    <!-- Inner right -->
+    <path d="M 28.3,-28.3 A 40,40 0 0,1 40,0 L 30,0 A 30,30 0 0,0 21.2,-21.2 Z" 
+          fill="url(#blueGradient)" stroke="none"/>
+    
+    <!-- Inner bottom right -->
+    <path d="M 40,0 A 40,40 0 0,1 28.3,28.3 L 21.2,21.2 A 30,30 0 0,0 30,0 Z" 
+          fill="url(#lightBlueGradient)" stroke="none"/>
+    
+    <!-- Inner bottom -->
+    <path d="M 28.3,28.3 A 40,40 0 0,1 0,40 L 0,30 A 30,30 0 0,0 21.2,21.2 Z" 
+          fill="url(#blueGradient)" stroke="none"/>
+  </g>
+  
+  <!-- Central circle -->
+  <circle cx="100" cy="100" r="15" fill="url(#blueGradient)"/>
+  
+  <!-- Small accent dots -->
+  <circle cx="100" cy="40" r="3" fill="#00bcd4"/>
+  <circle cx="160" cy="100" r="3" fill="#2196f3"/>
+  <circle cx="100" cy="160" r="3" fill="#00bcd4"/>
+  <circle cx="40" cy="100" r="3" fill="#2196f3"/>
+  
+  <!-- Additional spiral elements for dynamic effect -->
+  <g transform="translate(100,100)" opacity="0.7">
+    <path d="M 0,-70 A 70,70 0 0,1 21.2,-66.5" 
+          stroke="url(#lightBlueGradient)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M 66.5,-21.2 A 70,70 0 0,1 70,0" 
+          stroke="url(#blueGradient)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M 70,0 A 70,70 0 0,1 66.5,21.2" 
+          stroke="url(#lightBlueGradient)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

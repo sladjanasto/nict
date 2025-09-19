@@ -1,0 +1,215 @@
+---
+// Simple hero component for testing
+---
+
+<section id="home" class="hero">
+	<div class="container">
+		<div class="hero-content">
+			<div class="hero-text">
+				<div class="hero-greeting">20+ Years Hands-On Experience. Strategic Vision. Operational Excellence.</div>
+				<h1 class="hero-title">
+					Digital transformation leader with proven <span class="highlight">ROI up to 80%</span> and strategic excellence
+				</h1>
+				<p class="hero-description">
+					As an IT expert with over two decades of hands-on experience, I bring a unique combination of strategic foresight and operational depth. From system administrator to C-level leadership – delivering measurable results in interim management and digital transformation.
+				</p>
+				
+				<div class="hero-features">
+					<div class="feature-item">
+						<div class="feature-icon">🏆</div>
+						<span>Proven cost reductions of 30-80%</span>
+					</div>
+					<div class="feature-item">
+						<div class="feature-icon">🔧</div>
+						<span>Strategic partner network in Central & SE Europe</span>
+					</div>
+					<div class="feature-item">
+						<div class="feature-icon">📈</div>
+						<span>Battle-tested leadership with global teams</span>
+					</div>
+				</div>
+				
+				<div class="hero-cta">
+					<a href="#contact" class="btn btn-primary">
+						<i class="icon icon-chat"></i>
+						Free Consultation
+					</a>
+					<a href="#portfolio" class="btn btn-secondary">View Projects</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		background: #ffffff;
+		background-image: url('/hero-bg-pattern.svg');
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+		background-attachment: fixed;
+		padding: 120px 0 var(--spacing-xxl);
+		display: flex;
+		align-items: center;
+		position: relative;
+		overflow: hidden;
+		flex-direction: column;
+	}
+	
+	.hero::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(255, 255, 255, 0.2);
+		z-index: 1;
+	}
+	
+	
+	.hero-content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		z-index: 2;
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 0 var(--spacing-xl);
+	}
+	
+	.hero-text {
+		text-align: center;
+		width: 100%;
+	}
+	
+	.hero-greeting {
+		font-size: var(--font-size-lg);
+		color: var(--primary-color);
+		margin-bottom: var(--spacing-md);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+	
+	.hero-title {
+		font-family: var(--font-headings);
+		font-size: 3.5rem;
+		font-weight: 800;
+		line-height: 1.2;
+		color: var(--text-dark);
+		margin-bottom: var(--spacing-xl);
+	}
+	
+	.highlight {
+		background: linear-gradient(45deg, #1aeae2, #2566cf);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		position: relative;
+	}
+	
+	.hero-description {
+		font-size: var(--font-size-lg);
+		color: var(--text-light);
+		margin-bottom: var(--spacing-xl);
+		line-height: 1.8;
+	}
+	
+	.hero-features {
+		margin-bottom: var(--spacing-xl);
+	}
+	
+	.feature-item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: var(--spacing-md);
+		font-weight: 500;
+		color: var(--text-dark);
+	}
+	
+	.feature-icon {
+		font-size: var(--font-size-xl);
+		margin-right: var(--spacing-md);
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, rgba(26, 234, 226, 0.1), rgba(37, 102, 207, 0.1));
+		border-radius: var(--radius-round);
+		box-shadow: 0 4px 15px rgba(26, 234, 226, 0.15);
+		border: 1px solid rgba(26, 234, 226, 0.2);
+	}
+	
+	.hero-cta {
+		display: flex;
+		gap: var(--spacing-lg);
+		flex-wrap: wrap;
+		margin-top: var(--spacing-xl);
+		align-items: center;
+		justify-items: center;
+	}
+	
+	.btn-primary {
+		background: var(--bg-gradient);
+		padding: var(--spacing-md) var(--spacing-xl);
+		border-radius: var(--radius-md);
+		text-decoration: none;
+		color: var(--text-white);
+		font-weight: 600;
+		transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+	}
+	
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
+	}
+	
+	.btn-secondary {
+		background: transparent;
+		border: 2px solid var(--primary-color);
+		color: var(--primary-color);
+		padding: var(--spacing-md) var(--spacing-xl);
+		border-radius: var(--radius-md);
+		text-decoration: none;
+		font-weight: 600;
+		transition: all var(--transition-normal);
+	}
+	
+	.btn-secondary:hover {
+		background: var(--primary-color);
+		color: var(--text-white);
+		transform: translateY(-2px);
+	}
+	
+	
+	@media (max-width: 768px) {
+		.hero {
+			padding: 100px 0 var(--spacing-xxl);
+		}
+		
+		.hero-content {
+			padding: 0 var(--spacing-lg);
+		}
+		
+		.hero-title {
+			font-size: 2.5rem;
+		}
+		
+		.hero-greeting {
+			font-size: var(--font-size-base);
+		}
+		
+		.hero-cta {
+			justify-content: center;
+		}
+		
+		.feature-item {
+			justify-content: flex-start;
+		}
+	}
+</style>

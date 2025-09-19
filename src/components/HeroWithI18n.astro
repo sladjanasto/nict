@@ -1,0 +1,397 @@
+﻿---
+import { getUITranslations, getLangFromUrl } from '../utils/i18n.ts';
+
+const { url } = Astro;
+const lang = getLangFromUrl(url);
+const ui = await getUITranslations(lang);
+
+// Get localized hero questions from UI translations
+const heroQuestions = ui.hero?.questions || [
+	{
+		questionStart: 'Ready for your',
+		questionHighlight: 'digital transformation',
+		questionEnd: '?',
+		answerStart: 'We deliver innovative',
+		service1: 'web development',
+		service2: 'custom applications',
+		answerMiddle: 'and',
+		service3: 'digital solutions',
+		answerEnd: 'that drive your business forward.'
+	}
+];
+---
+
+<section id="home" class="hero" transition:name="hero-section">
+	<div class="container">
+		<div class="hero-content">
+			<div class="hero-text">
+				<h1 class="hero-question typewriter" id="heroQuestion" transition:name="hero-title">
+					<span id="questionStart">Ready for your</span> <br>
+					<span class="highlight" id="questionHighlight">digital transformation</span>
+					<span id="questionEnd">?</span>
+				</h1>
+				<p class="hero-answer typewriter-answer" id="heroAnswer" transition:name="hero-description">
+					<span id="answerStart">We deliver innovative</span> 
+					<span class="highlight" id="service1">web development</span>, 
+					<span class="highlight" id="service2">custom applications</span>, 
+					<span id="answerMiddle">and</span> 
+					<span class="highlight" id="service3">digital solutions</span> 
+					<span id="answerEnd">that drive your business forward.</span>
+				</p>
+				
+				<div class="hero-promise">
+					<h3 class="promise-title">{ui.hero?.promiseTitle || 'Our Promise'}</h3>
+					<div class="promise-items">
+						<div class="promise-item">
+							<span class="promise-icon">✓</span>
+							{ui.hero?.promises?.[0] || 'Quality guaranteed'}
+						</div>
+						<div class="promise-item">
+							<span class="promise-icon">✓</span>
+							{ui.hero?.promises?.[1] || 'On-time delivery'}
+						</div>
+						<div class="promise-item">
+							<span class="promise-icon">✓</span>
+							{ui.hero?.promises?.[2] || 'Ongoing support'}
+						</div>
+					</div>
+				</div>
+				
+				<p class="hero-closing">{ui.hero?.closing || 'Ready to transform your digital presence?'}</p>
+				
+				<div class="hero-cta">
+					<a href="#contact" class="btn-primary">
+						{ui.buttons?.getStarted || 'Get Started Today'}
+					</a>
+					<a href="#services" class="btn-secondary">
+						{ui.buttons?.learnMore || 'Learn More'}
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		background: #ffffff;
+		background-image: url('/hero-bg-pattern.svg');
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+		background-attachment: scroll;
+		padding: 120px 0 var(--spacing-xxl);
+		display: flex;
+		align-items: center;
+		position: relative;
+		overflow: hidden;
+		flex-direction: column;
+		will-change: transform;
+		transform: translateZ(0);
+	}
+	
+	.hero::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(255, 255, 255, 0.2);
+		z-index: 1;
+	}
+	
+	.hero-content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		z-index: 2;
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 0 500px 0 0;
+	}
+	
+	.hero-text {
+		text-align: center;
+		width: 100%;
+		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	/* Typewriter Animation */
+	.typewriter {
+		overflow: hidden;
+		border-right: 3px solid var(--primary-color);
+		white-space: nowrap;
+		margin: 0 auto;
+		animation: 
+			typewriter 2s steps(40, end),
+			blink-caret 0.75s step-end infinite;
+	}
+	
+	.typewriter-answer {
+		overflow: hidden;
+		border-right: 2px solid var(--primary-color);
+		white-space: nowrap;
+		margin: 0 auto;
+		animation: 
+			typewriter 3s steps(60, end) 0.5s both,
+			blink-caret 0.75s step-end infinite 0.5s;
+	}
+	
+	@keyframes typewriter {
+		from { width: 0 }
+		to { width: 100% }
+	}
+	
+	@keyframes blink-caret {
+		from, to { border-color: transparent }
+		50% { border-color: var(--primary-color) }
+	}
+	
+	.hero-question {
+		font-family: var(--font-headings);
+		font-size: 4rem;
+		font-weight: 800;
+		line-height: 1.2;
+		color: var(--text-dark);
+		margin-bottom: var(--spacing-lg);
+		text-align: left;
+		transition: opacity 0.5s ease-in-out, transform 0.4s ease-in-out;
+	}
+	
+	.highlight {
+		background: linear-gradient(45deg, #1aeae2, #2566cf);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		position: relative;
+	}
+	
+	#questionStart,
+	#questionHighlight,
+	#questionEnd,
+	#answerStart,
+	#service1,
+	#service2,
+	#answerMiddle,
+	#service3,
+	#answerEnd {
+		transition: opacity 0.4s ease-in-out;
+	}
+	
+	.hero-answer {
+		font-family: var(--font-primary);
+		font-size: 1.5rem;
+		color: var(--text-light);
+		margin-bottom: var(--spacing-xl);
+		line-height: 1.6;
+		font-weight: 300;
+		text-align: left;
+		transition: opacity 0.5s ease-in-out, transform 0.4s ease-in-out;
+	}
+	
+	.hero-promise {
+		margin-bottom: var(--spacing-xl);
+		transition: all 0.4s ease-in-out;
+	}
+	
+	.promise-title {
+		font-family: var(--font-headings);
+		font-size: 1.25rem;
+		font-weight: 100;
+		color: var(--text-dark);
+		margin-bottom: var(--spacing-md);
+		text-align: center;
+		transition: opacity 0.4s ease-in-out;
+	}
+	
+	.promise-items {
+		display: flex;
+		flex-direction: row;
+		gap: var(--spacing-sm);
+		margin-bottom: var(--spacing-lg);
+		transition: all 0.4s ease-in-out;
+	}
+	
+	.promise-item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: var(--font-primary);
+		font-weight: 300;
+		color: var(--text-dark);
+		text-align: left;
+		transition: opacity 0.4s ease-in-out, transform 0.3s ease-in-out;
+	}
+	
+	.promise-icon {
+		color: #1aeae2;
+		font-size: 1.25rem;
+		margin-right: var(--spacing-md);
+		font-weight: 600;
+		width: 20px;
+		height: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.hero-closing {
+		font-family: var(--font-headings);
+		font-size: 1.25rem;
+		font-weight: 100;
+		color: var(--text-dark);
+		text-align: center;
+		margin: 0;
+		font-style: italic;
+		transition: opacity 0.4s ease-in-out;
+	}
+	
+	.hero-cta {
+		display: flex;
+		gap: var(--spacing-lg);
+		flex-wrap: wrap;
+		margin-top: var(--spacing-xl);
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.btn-primary {
+		background: var(--bg-gradient);
+		padding: var(--spacing-md) var(--spacing-xl);
+		border-radius: var(--radius-md);
+		text-decoration: none;
+		color: var(--text-white);
+		font-weight: 600;
+		transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+	}
+	
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
+	}
+	
+	.btn-secondary {
+		background: transparent;
+		border: 2px solid var(--primary-color);
+		color: var(--primary-color);
+		padding: var(--spacing-md) var(--spacing-xl);
+		border-radius: var(--radius-md);
+		text-decoration: none;
+		font-weight: 600;
+		transition: all var(--transition-normal);
+	}
+	
+	.btn-secondary:hover {
+		background: var(--primary-color);
+		color: var(--text-white);
+		transform: translateY(-2px);
+	}
+	
+	@media (max-width: 768px) {
+		.hero {
+			padding: 80px 0 var(--spacing-xxl);
+			min-height: auto;
+		}
+		
+		.container {
+			padding: 0 var(--spacing-md);
+		}
+		
+		.hero-content {
+			padding: 0;
+			max-width: 100%;
+		}
+		
+		.hero-text {
+			text-align: center;
+		}
+		
+		.hero-question {
+			font-size: 2rem;
+			line-height: 1.2;
+			margin-bottom: var(--spacing-lg);
+		}
+		
+		.hero-answer {
+			font-size: 1.1rem;
+			line-height: 1.5;
+			margin-bottom: var(--spacing-lg);
+		}
+		
+		.promise-title {
+			font-size: var(--font-size-lg);
+			margin-bottom: var(--spacing-md);
+		}
+		
+		.promise-items {
+			gap: var(--spacing-sm);
+		}
+		
+		.promise-item {
+			justify-content: flex-start;
+			text-align: left;
+			font-size: var(--font-size-sm);
+		}
+		
+		.hero-closing {
+			font-size: var(--font-size-md);
+			margin-top: var(--spacing-md);
+		}
+		
+		.hero-cta {
+			flex-direction: column;
+			gap: var(--spacing-md);
+			margin-top: var(--spacing-lg);
+		}
+		
+		.btn-primary,
+		.btn-secondary {
+			width: 100%;
+			max-width: 280px;
+			padding: var(--spacing-sm) var(--spacing-lg);
+			font-size: var(--font-size-sm);
+		}
+	}
+</style>
+
+<script define:vars={{ heroQuestions }}>
+	document.addEventListener('DOMContentLoaded', () => {
+		const questions = heroQuestions;
+		let currentIndex = Math.floor(Math.random() * questions.length);
+		
+		function updateContent() {
+			const question = questions[currentIndex];
+			
+			document.getElementById('questionStart').textContent = question.questionStart;
+			document.getElementById('questionHighlight').textContent = question.questionHighlight;
+			document.getElementById('questionEnd').textContent = question.questionEnd;
+			
+			document.getElementById('answerStart').textContent = question.answerStart;
+			document.getElementById('service1').textContent = question.service1;
+			document.getElementById('service2').textContent = question.service2;
+			document.getElementById('answerMiddle').textContent = question.answerMiddle;
+			document.getElementById('service3').textContent = question.service3;
+			document.getElementById('answerEnd').textContent = question.answerEnd;
+		}
+		
+		function nextQuestion() {
+			currentIndex = (currentIndex + 1) % questions.length;
+			updateContent();
+		}
+		
+		// Initialize with first question
+		updateContent();
+		
+		// Auto-rotate every 2 minutes (120000ms)
+		setInterval(nextQuestion, 120000);
+		
+		// Change question when user returns to tab
+		document.addEventListener('visibilitychange', () => {
+			if (!document.hidden) {
+				nextQuestion();
+			}
+		});
+	});
+</script>

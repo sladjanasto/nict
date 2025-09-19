@@ -1,0 +1,638 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+
+export interface Props {
+	title: string;
+	description?: string;
+	canonical?: string;
+	ogImage?: string;
+	lang?: string;
+	noindex?: boolean;
+}
+
+const { 
+	title, 
+	description = "Professional IT Expert - DevOps, Cloud Migration, AI Consulting, and Digital Solutions",
+	canonical = Astro.url.href,
+	ogImage = "/og-image.jpg",
+	lang = "sr",
+	noindex = false
+} = Astro.props;
+
+// Get domain from environment or fallback
+const domain = import.meta.env.SITE || "https://yourdomainhere.com";
+const siteName = "IT Expert Portfolio";
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
+		
+		{/* SEO Meta Tags */}
+		<link rel="canonical" href={canonical} />
+		{noindex && <meta name="robots" content="noindex, nofollow" />}
+		{!noindex && <meta name="robots" content="index, follow" />}
+		
+		{/* Open Graph / Facebook */}
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(ogImage, domain).href} />
+		<meta property="og:site_name" content={siteName} />
+		<meta property="og:locale" content={lang === 'sr' ? 'sr_RS' : lang === 'en' ? 'en_US' : 'de_DE'} />
+		
+		{/* Twitter */}
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonical} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(ogImage, domain).href} />
+		
+		{/* Favicon */}
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		
+		{/* Preload critical resources */}
+		<link rel="preload" href="/hero-bg-pattern.svg" as="image" type="image/svg+xml" />
+		
+		{/* DNS Prefetch for external resources */}
+		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		
+		{/* Google Fonts */}
+		<link
+			href="https://fonts.googleapis.com/css2?family=Kavivanar&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+			crossorigin
+		/>
+		
+		{/* Icomoon Icons Font */}
+		<link rel="stylesheet" href="/icons/style.css" />
+		{/* Structured Data */}
+		<script type="application/ld+json">
+		{
+			JSON.stringify({
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": siteName,
+				"url": domain,
+				"logo": new URL("/logo.svg", domain).href,
+				"description": description,
+				"contactPoint": {
+					"@type": "ContactPoint",
+					"contactType": "customer service",
+					"availableLanguage": ["Serbian", "English", "German"]
+				},
+				"areaServed": "Worldwide",
+				"serviceType": ["DevOps", "Cloud Migration", "AI Consulting", "IT Operations", "SEO Services"]
+			})
+		}
+		</script>
+		
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body>
+		<slot />
+		<script>
+			// Dark theme toggle functionality
+			const body = document.body;
+			const savedTheme = localStorage.getItem('theme') || 'light';
+			body.setAttribute('data-theme', savedTheme);
+			
+			function toggleTheme() {
+				const currentTheme = body.getAttribute('data-theme');
+				const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+				body.setAttribute('data-theme', newTheme);
+				localStorage.setItem('theme', newTheme);
+			}
+			
+			// Add theme toggle button event if it exists
+			document.addEventListener('DOMContentLoaded', () => {
+				const themeToggle = document.querySelector('.theme-toggle');
+				if (themeToggle) {
+					themeToggle.addEventListener('click', toggleTheme);
+				}
+			});
+		</script>
+	</body>
+</html>
+
+<style>
+	/* Dark Theme Variables */
+	[data-theme="dark"] {
+		--text-dark: #e0e6ed;
+		--text-light: #a8b2bd;
+		--text-white: #ffffff;
+		
+		--bg-primary: #1a1a1a;
+		--bg-secondary: #2a2a2a;
+		--bg-card: rgba(42, 42, 42, 0.95);
+		--bg-gradient: linear-gradient(135deg, #1aeae2 0%, #2566cf 100%);
+		
+		--shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+		--shadow-md: 0 4px 6px rgba(0,0,0,0.3);
+		--shadow-lg: 0 10px 25px rgba(0,0,0,0.4);
+		--shadow-xl: 0 20px 40px rgba(0,0,0,0.5);
+	}
+	
+	:root {
+		/* Brand Colors */
+		--primary-color: #1aeae2;
+		--secondary-color: #2566cf;
+		--gradient-mid-blue: #1d96d5;
+		--accent-color: #ffd700;
+		--text-dark: #333;
+		--text-light: #5a6c7d;
+		--text-white: #ffffff;
+		
+		/* Background Colors - Light Theme */
+		--bg-primary: #ffffff;
+		--bg-secondary: #f8f9fa;
+		--bg-gradient: linear-gradient(135deg, #1aeae2 0%, #2566cf 100%);
+		--bg-card: rgba(255, 255, 255, 0.95);
+		
+		/* Spacing */
+		--spacing-xs: 0.5rem;
+		--spacing-sm: 1rem;
+		--spacing-md: 1.5rem;
+		--spacing-lg: 2rem;
+		--spacing-xl: 3rem;
+		--spacing-xxl: 4rem;
+		
+		/* Typography */
+		--font-primary: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		--font-headings: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		--font-accent: 'Kavivanar', cursive;
+		--font-size-xs: 0.75rem;
+		--font-size-sm: 0.875rem;
+		--font-size-base: 1rem;
+		--font-size-lg: 1.125rem;
+		--font-size-xl: 1.25rem;
+		--font-size-2xl: 1.5rem;
+		--font-size-3xl: 2rem;
+		--font-size-4xl: 2.5rem;
+		
+		/* Shadows */
+		--shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+		--shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+		--shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+		--shadow-xl: 0 20px 40px rgba(0,0,0,0.2);
+		
+		/* Border Radius */
+		--radius-sm: 4px;
+		--radius-md: 8px;
+		--radius-lg: 12px;
+		--radius-xl: 16px;
+		--radius-round: 50%;
+		
+		/* Transitions */
+		--transition-fast: 0.15s ease;
+		--transition-normal: 0.3s ease;
+		--transition-slow: 0.5s ease;
+		
+		/* Container Sizes */
+		--container-sm: 640px;
+		--container-md: 768px;
+		--container-lg: 1024px;
+		--container-xl: 1200px;
+		--container-2xl: 1400px;
+		
+		/* Responsive Breakpoints */
+		--breakpoint-mobile: 768px;
+		--breakpoint-tablet: 1024px;
+		--breakpoint-desktop: 1440px;
+		
+		/* Responsive Font Sizes */
+		--font-size-h1-mobile: 2rem;
+		--font-size-h2-mobile: 1.5rem;
+		--font-size-h3-mobile: 1.25rem;
+		--font-size-h1-desktop: 3rem;
+		--font-size-h2-desktop: 2.25rem;
+		--font-size-h3-desktop: 1.875rem;
+		
+		/* Responsive Spacing */
+		--spacing-mobile: 1rem;
+		--spacing-tablet: 1.5rem;
+		--spacing-desktop: 2rem;
+		--spacing-3xl: 5rem;
+		--spacing-4xl: 6rem;
+		
+		/* Additional Colors */
+		--text-primary: #333333;
+		--text-muted: #5a6c7d;
+		--bg-white: #ffffff;
+		--border-color: #e2e8f0;
+		--border-light: #f1f5f9;
+	}
+	
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	
+	/* Smooth language transition for all text content */
+	h1, h2, h3, h4, h5, h6, p, span, a, div, li {
+		transition: all 0.3s ease-in-out;
+	}
+	
+	/* View Transitions customization */
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 0.3s;
+	}
+	
+	/* Keep header visible during transitions */
+	::view-transition-old(site-header),
+	::view-transition-new(site-header) {
+		animation: none; /* Prevent header animation during transitions */
+	}
+	
+	/* Keep dropdown visible during transitions */
+	::view-transition-old(options-dropdown),
+	::view-transition-new(options-dropdown) {
+		animation: none;
+	}
+	
+	/* Optimize hero section transitions to prevent SVG flicker */
+	::view-transition-old(hero-section),
+	::view-transition-new(hero-section) {
+		animation-duration: 0.2s;
+		animation-timing-function: ease-out;
+	}
+	
+	/* Prevent background image reflow during transitions */
+	.hero {
+		contain: layout style paint;
+	}
+	
+	/* Smooth transitions for hero elements */
+	::view-transition-old(hero-title),
+	::view-transition-new(hero-title) {
+		animation-duration: 0.4s;
+		animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	::view-transition-old(hero-description),
+	::view-transition-new(hero-description) {
+		animation-duration: 0.5s;
+		animation-delay: 0.1s;
+		animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	::view-transition-old(hero-promise),
+	::view-transition-new(hero-promise) {
+		animation-duration: 0.6s;
+		animation-delay: 0.2s;
+		animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	/* Smooth transition for content changes */
+	.hero-question, .hero-answer, .promise-title, .hero-closing,
+	.section-title, .promise-item span {
+		transition: opacity 0.4s ease-in-out, transform 0.3s ease-in-out;
+	}
+	
+	/* Fade effect during content change */
+	.language-transition {
+		opacity: 0.7;
+		transform: translateY(-2px);
+	}
+	
+	html {
+		font-family: var(--font-primary);
+		scroll-behavior: smooth;
+	}
+
+	/* Scroll Reveal Animations */
+	.scroll-reveal,
+	.service-card,
+	.testimonial-card,
+	.project-card,
+	.about-content,
+	.hero-content {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+		transition-property: opacity, transform;
+	}
+
+	.scroll-revealed {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* Different animation variants */
+	.fade-in-left {
+		opacity: 0;
+		transform: translateX(-30px);
+		transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.fade-in-left.scroll-revealed {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.fade-in-right {
+		opacity: 0;
+		transform: translateX(30px);
+		transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.fade-in-right.scroll-revealed {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.fade-in-up {
+		opacity: 0;
+		transform: translateY(50px);
+		transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.fade-in-up.scroll-revealed {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.scale-in {
+		opacity: 0;
+		transform: scale(0.8);
+		transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.scale-in.scroll-revealed {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	/* Disable animations for users who prefer reduced motion */
+	@media (prefers-reduced-motion: reduce) {
+		.scroll-reveal,
+		.service-card,
+		.testimonial-card,
+		.project-card,
+		.about-content,
+		.hero-content,
+		.fade-in-left,
+		.fade-in-right,
+		.fade-in-up,
+		.scale-in {
+			opacity: 1;
+			transform: none;
+			transition: none;
+		}
+	}
+	
+	body {
+		background-color: var(--bg-primary);
+		color: var(--text-dark);
+		line-height: 1.6;
+	}
+	
+	/* Text Selection Styling */
+	::selection {
+		background: rgba(26, 234, 226, 0.3); /* Light teal with transparency */
+		color: var(--text-dark);
+	}
+	
+	::-moz-selection {
+		background: rgba(26, 234, 226, 0.3); /* Light teal with transparency for Firefox */
+		color: var(--text-dark);
+	}
+	
+	/* Dark theme text selection */
+	[data-theme="dark"] ::selection {
+		background: rgba(37, 102, 207, 0.4); /* Light blue with transparency */
+		color: var(--text-white);
+	}
+	
+	[data-theme="dark"] ::-moz-selection {
+		background: rgba(37, 102, 207, 0.4); /* Light blue with transparency for Firefox */
+		color: var(--text-white);
+	}
+	
+	/* Headings with Poppins font */
+	h1, h2, h3, h4, h5, h6 {
+		font-family: var(--font-headings);
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	
+	h1 {
+		font-size: var(--font-size-4xl);
+		font-weight: 700;
+	}
+	
+	h2 {
+		font-size: var(--font-size-3xl);
+		font-weight: 600;
+	}
+	
+	h3 {
+		font-size: var(--font-size-2xl);
+		font-weight: 600;
+	}
+	
+	.container {
+		max-width: var(--container-xl);
+		margin: 0 auto;
+		padding: 0 var(--spacing-lg);
+	}
+	
+	.section {
+		padding: var(--spacing-xxl) 0;
+	}
+	
+	:global(.section-title) {
+		font-family: 'Poppins', var(--font-primary);
+		font-size: var(--font-size-4xl);
+		font-weight: 300;
+		text-align: center;
+		margin-top: 0;
+		/* margin-bottom: var(--spacing-xxl); */
+		color: #2598cffc;
+		position: relative;
+		padding-bottom: var(--spacing-lg);
+	}
+	
+	:global(.section-title::after) {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 60px;
+		height: 2px;
+		background: linear-gradient(135deg, #2598cffc, #4f8fff);
+		border-radius: 1px;
+		opacity: 0.8;
+	}
+	
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-sm);
+		padding: var(--spacing-sm) var(--spacing-xl);
+		background: var(--bg-gradient);
+		color: var(--text-white);
+		text-decoration: none;
+		border-radius: 25px;
+		font-weight: 600;
+		transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+	}
+	
+	.btn .icon {
+		font-size: var(--font-size-md);
+		line-height: 1;
+	}
+	
+	.btn:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
+	}
+	
+	.grid {
+		display: grid;
+		gap: var(--spacing-xl);
+	}
+	
+	.grid-2 {
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	}
+	
+	.grid-3 {
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	}
+	
+	.grid-4 {
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	}
+	
+	/* Tablet Styles */
+	@media (min-width: 769px) and (max-width: 1024px) {
+		body {
+			font-size: 16px;
+			line-height: 1.6;
+		}
+		
+		.container {
+			max-width: var(--container-lg);
+			padding: 0 var(--spacing-tablet);
+		}
+	}
+	
+	@media (max-width: 768px) {
+		:global(.section-title) {
+			font-size: var(--font-size-3xl);
+			font-weight: 300;
+			margin-top: 0;
+		}
+		
+		.container {
+			padding: 0 var(--spacing-md);
+		}
+	}
+</style>
+
+<script>
+	// Scroll Reveal Animation
+	class ScrollReveal {
+		observer: IntersectionObserver | null;
+		
+		constructor() {
+			this.observer = null;
+			this.init();
+		}
+
+		init() {
+			// Create intersection observer
+			this.observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('scroll-revealed');
+							// Optional: Stop observing once revealed
+							if (this.observer) {
+								this.observer.unobserve(entry.target);
+							}
+						}
+					});
+				},
+				{
+					threshold: 0.1,
+					rootMargin: '0px 0px -50px 0px'
+				}
+			);
+
+			this.observeElements();
+		}
+
+		observeElements() {
+			// Select elements to animate
+			const elementsToReveal = document.querySelectorAll(
+				'.scroll-reveal, .service-card, .testimonial-card, .project-card, .about-content, .hero-content'
+			);
+
+			elementsToReveal.forEach((element, index) => {
+				if (element && (element as HTMLElement).style) {
+					// Add delay based on index for stagger effect
+					(element as HTMLElement).style.transitionDelay = `${index * 0.1}s`;
+					if (this.observer) {
+						this.observer.observe(element);
+					}
+				}
+			});
+		}
+	}
+
+	// Initialize when DOM is loaded
+	document.addEventListener('DOMContentLoaded', () => {
+		new ScrollReveal();
+		initPackagesToggle();
+	});
+
+	// Handle page navigation (for SPAs or view transitions)
+	document.addEventListener('astro:page-load', () => {
+		new ScrollReveal();
+		initPackagesToggle();
+	});
+
+	function initPackagesToggle() {
+		const toggleBtn = document.getElementById('packagesToggle');
+		const packagesSection = document.getElementById('packagesSection');
+		
+		if (!toggleBtn || !packagesSection) return;
+
+		let isExpanded = false;
+
+		toggleBtn.addEventListener('click', () => {
+			isExpanded = !isExpanded;
+			
+			if (isExpanded) {
+				packagesSection.classList.remove('packages-hidden');
+				packagesSection.classList.add('packages-visible');
+				toggleBtn.classList.add('expanded');
+				
+				// Smooth scroll to packages section after animation
+				setTimeout(() => {
+					packagesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}, 300);
+			} else {
+				packagesSection.classList.remove('packages-visible');
+				packagesSection.classList.add('packages-hidden');
+				toggleBtn.classList.remove('expanded');
+			}
+		});
+	}
+</script>

@@ -1,0 +1,339 @@
+---
+import { getUITranslations, getLangFromUrl } from '../utils/i18n';
+
+const { url } = Astro;
+const lang = getLangFromUrl(url);
+const t = await getUITranslations(lang);
+
+// Fallback features if none exist
+const defaultFeatures = [
+  { name: "Strategic Consulting", basic: true, standard: true, premium: true },
+  { name: "24/7 Support", basic: false, standard: true, premium: true },
+  { name: "Cloud Infrastructure", basic: true, standard: true, premium: true },
+  { name: "Advanced Security", basic: false, standard: true, premium: true },
+  { name: "Performance Monitoring", basic: false, standard: false, premium: true },
+  { name: "Custom Integrations", basic: false, standard: false, premium: true },
+  { name: "Dedicated Account Manager", basic: false, standard: false, premium: true },
+  { name: "Priority Response", basic: false, standard: true, premium: true },
+  { name: "Training & Documentation", basic: true, standard: true, premium: true },
+  { name: "Compliance Support", basic: false, standard: false, premium: true }
+];
+
+const features = t.packages?.features || defaultFeatures;
+---
+
+<section class="packages-section packages-hidden" id="packagesSection">
+	<div class="packages-connector"></div>
+	<div class="container">
+		<div class="packages-content">
+			<h2 class="section-title">{t.packages?.title || 'Service Packages'}</h2>
+			<p class="packages-subtitle">{t.packages?.subtitle || 'Choose the perfect package for your business needs'}</p>
+			
+			<div class="packages-grid">
+				<!-- Basic Package Card -->
+				<div class="package-card basic">
+					<div class="package-header">
+						<h3>{t.packages?.basic?.name || 'Transformacija u cloud'}</h3>
+					</div>
+					<div class="package-features">
+						{features.map((feature: any) => (
+							<div class="feature-item">
+								<span class="feature-name">{feature?.name || 'Feature'}</span>
+								{feature?.basic ? (
+									<span class="check-marker">✓</span>
+								) : (
+									<span class="cross-marker">✗</span>
+								)}
+							</div>
+						))}
+					</div>
+				</div>
+
+				<!-- Standard Package Card (Featured) -->
+				<div class="package-card standard featured">
+					<div class="package-header">
+						<div class="popular-badge">Most Popular</div>
+						<h3>{t.packages?.standard?.name || 'Digital Kickstart paket'}</h3>
+					</div>
+					<div class="package-features">
+						{features.map((feature: any) => (
+							<div class="feature-item">
+								<span class="feature-name">{feature?.name || 'Feature'}</span>
+								{feature?.standard ? (
+									<span class="check-marker">✓</span>
+								) : (
+									<span class="cross-marker">✗</span>
+								)}
+							</div>
+						))}
+					</div>
+				</div>
+
+				<!-- Premium Package Card -->
+				<div class="package-card premium">
+					<div class="package-header">
+						<h3>{t.packages?.premium?.name || 'ULTRA paket'}</h3>
+					</div>
+					<div class="package-features">
+						{features.map((feature: any) => (
+							<div class="feature-item">
+								<span class="feature-name">{feature?.name || 'Feature'}</span>
+								{feature?.premium ? (
+									<span class="check-marker">✓</span>
+								) : (
+									<span class="cross-marker">✗</span>
+								)}
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.packages-section {
+		padding: 0 0 var(--spacing-3xl) 0;
+		background: var(--bg-secondary);
+		transition: all 0.5s ease;
+		overflow: hidden;
+		margin-top: 0;
+	}
+
+	.packages-hidden {
+		max-height: 0;
+		padding: 0;
+		opacity: 0;
+		transform: translateY(-30px);
+	}
+
+	.packages-visible {
+		max-height: none;
+		opacity: 1;
+		transform: translateY(0);
+		padding: var(--spacing-3xl) 0;
+	}
+
+	.packages-connector {
+		height: 4px;
+		background: linear-gradient(90deg, transparent 0%, #1d96d5 50%, transparent 100%);
+		width: 100%;
+		position: relative;
+		top: 0;
+		opacity: 0;
+		transition: opacity 0.5s ease 0.3s;
+	}
+
+	.packages-visible .packages-connector {
+		opacity: 1;
+	}
+
+	.packages-content {
+		text-align: center;
+		margin-bottom: var(--spacing-xl);
+	}
+
+	.packages-subtitle {
+		font-size: var(--font-size-lg);
+		color: var(--text-muted);
+		margin-bottom: var(--spacing-3xl);
+		max-width: 600px;
+		margin: 0 auto var(--spacing-3xl) auto;
+		line-height: 1.6;
+	}
+
+	.packages-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--spacing-xl);
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.package-card {
+		background: var(--bg-white);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-md);
+		overflow: hidden;
+		transition: all 0.3s ease;
+		border: 2px solid transparent;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.package-card:hover {
+		transform: translateY(-8px);
+		box-shadow: var(--shadow-xl);
+	}
+
+	.package-card.basic {
+		border-color: rgba(107, 114, 128, 0.2);
+	}
+
+	.package-card.standard.featured {
+		border-color: #1d96d5;
+		transform: scale(1.05);
+		z-index: 2;
+	}
+
+	.package-card.standard.featured:hover {
+		transform: scale(1.05) translateY(-8px);
+	}
+
+	.package-card.premium {
+		border-color: rgba(147, 51, 234, 0.3);
+	}
+
+	.package-header {
+		padding: var(--spacing-xl);
+		text-align: center;
+		position: relative;
+		background: linear-gradient(135deg, rgba(29, 150, 213, 0.05) 0%, rgba(37, 102, 207, 0.05) 100%);
+	}
+
+	.package-card.standard .package-header {
+		background: linear-gradient(135deg, rgba(29, 150, 213, 0.1) 0%, rgba(37, 102, 207, 0.1) 100%);
+	}
+
+	.package-card.premium .package-header {
+		background: linear-gradient(135deg, rgba(147, 51, 234, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+	}
+
+	.popular-badge {
+		position: absolute;
+		top: -12px;
+		left: 50%;
+		transform: translateX(-50%);
+		background: linear-gradient(135deg, #1d96d5, #2566cf);
+		color: white;
+		padding: var(--spacing-xs) var(--spacing-md);
+		border-radius: var(--radius-full);
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		white-space: nowrap;
+		box-shadow: var(--shadow-md);
+	}
+
+	.package-header h3 {
+		font-family: var(--font-headings);
+		font-size: var(--font-size-2xl);
+		font-weight: 600;
+		color: var(--text-dark);
+		margin: 0 0 var(--spacing-sm) 0;
+		line-height: 1.2;
+	}
+
+	.package-price {
+		font-size: var(--font-size-3xl);
+		font-weight: 700;
+		color: #1d96d5;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.package-card.premium .package-price {
+		color: #9333ea;
+	}
+
+	.package-features {
+		padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-xl);
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.feature-item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: var(--spacing-xs) 0;
+		border-bottom: 1px solid rgba(107, 114, 128, 0.1);
+	}
+
+	.feature-item:last-child {
+		border-bottom: none;
+	}
+
+	.check-marker {
+		color: #10b981;
+		font-weight: bold;
+		font-size: var(--font-size-lg);
+		flex-shrink: 0;
+	}
+
+	.cross-marker {
+		color: #ef4444;
+		font-weight: bold;
+		font-size: var(--font-size-lg);
+		flex-shrink: 0;
+	}
+
+	.feature-name {
+		font-size: var(--font-size-sm);
+		color: var(--text-dark);
+		line-height: 1.4;
+		text-align: left;
+		flex: 1;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 1024px) {
+		.packages-grid {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-lg);
+			max-width: 500px;
+		}
+
+		.package-card.standard.featured {
+			transform: none;
+			order: -1;
+		}
+
+		.package-card.standard.featured:hover {
+			transform: translateY(-8px);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.packages-subtitle {
+			font-size: var(--font-size-md);
+			margin-bottom: var(--spacing-xl);
+		}
+
+		.packages-grid {
+			gap: var(--spacing-md);
+		}
+
+		.package-header {
+			padding: var(--spacing-lg);
+		}
+
+		.package-header h3 {
+			font-size: var(--font-size-xl);
+		}
+
+		.package-price {
+			font-size: var(--font-size-2xl);
+		}
+
+		.package-features {
+			padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+			gap: var(--spacing-xs);
+		}
+
+		.feature-item {
+			padding: 2px 0;
+		}
+
+		.feature-name {
+			font-size: 0.8rem;
+		}
+
+		.check-marker,
+		.cross-marker {
+			font-size: var(--font-size-md);
+		}
+	}
+</style>

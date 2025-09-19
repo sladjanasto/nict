@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- IT Operations icon - Outlined -->
+  
+  <!-- Main server/computer -->
+  <rect x="16" y="14" width="16" height="12" stroke="url(#opsGrad1)" stroke-width="1.5" fill="none" rx="1.5"/>
+  
+  <!-- Screen/interface -->
+  <rect x="18" y="16" width="12" height="2" stroke="url(#opsGrad1)" stroke-width="1" fill="none" rx="0.5"/>
+  <line x1="18" y1="19.5" x2="26" y2="19.5" stroke="url(#opsGrad1)" stroke-width="1"/>
+  <line x1="18" y1="21.5" x2="24" y2="21.5" stroke="url(#opsGrad1)" stroke-width="1"/>
+  <line x1="18" y1="23.5" x2="22" y2="23.5" stroke="url(#opsGrad1)" stroke-width="1"/>
+  
+  <!-- Status indicators -->
+  <circle cx="29" cy="17" r="0.8" stroke="#4caf50" stroke-width="1" fill="none"/>
+  <circle cx="29" cy="20" r="0.8" stroke="#ff9800" stroke-width="1" fill="none"/>
+  <circle cx="29" cy="23" r="0.8" stroke="url(#opsGrad1)" stroke-width="1" fill="none"/>
+  
+  <!-- Network connections -->
+  <rect x="10" y="30" width="8" height="4" stroke="url(#opsGrad1)" stroke-width="1.2" fill="none" rx="0.8"/>
+  <rect x="30" y="30" width="8" height="4" stroke="url(#opsGrad1)" stroke-width="1.2" fill="none" rx="0.8"/>
+  
+  <!-- Connection details -->
+  <line x1="11" y1="31.5" x2="17" y2="31.5" stroke="url(#opsGrad1)" stroke-width="0.8"/>
+  <line x1="11" y1="32.5" x2="15" y2="32.5" stroke="url(#opsGrad1)" stroke-width="0.8"/>
+  <line x1="31" y1="31.5" x2="37" y2="31.5" stroke="url(#opsGrad1)" stroke-width="0.8"/>
+  <line x1="31" y1="32.5" x2="35" y2="32.5" stroke="url(#opsGrad1)" stroke-width="0.8"/>
+  
+  <!-- Connection lines -->
+  <path d="M16 26 L14 30 M32 26 L34 30" 
+        stroke="url(#opsGrad1)" stroke-width="1.2"/>
+  
+  <!-- Monitoring waves -->
+  <path d="M6 18 Q8 16 10 18 Q12 20 14 18" 
+        stroke="url(#opsGrad1)" stroke-width="1.2" fill="none"/>
+  <path d="M34 18 Q36 16 38 18 Q40 20 42 18" 
+        stroke="url(#opsGrad1)" stroke-width="1.2" fill="none"/>
+  
+  <!-- Data flow indicators -->
+  <circle cx="8" cy="22" r="0.8" stroke="url(#opsGrad1)" stroke-width="1" fill="none"/>
+  <circle cx="10" cy="24" r="0.6" stroke="url(#opsGrad1)" stroke-width="1" fill="none"/>
+  <circle cx="12" cy="26" r="0.5" stroke="url(#opsGrad1)" stroke-width="1" fill="none"/>
+  
+  <circle cx="40" cy="22" r="0.8" stroke="url(#opsGrad1)" stroke-width="1" fill="none"/>
+  <circle cx="38" cy="24" r="0.6" stroke="url(#opsGrad1)" stroke-width="1" fill="none"/>
+  <circle cx="36" cy="26" r="0.5" stroke="url(#opsGrad1)" stroke-width="1" fill="none"/>
+  
+  <!-- Top signal -->
+  <path d="M20 10 L22 8 L24 10 L26 8 L28 10" 
+        stroke="url(#opsGrad1)" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <defs>
+    <linearGradient id="opsGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1aeae2"/>
+      <stop offset="100%" style="stop-color:#2566cf"/>
+    </linearGradient>
+  </defs>
+</svg>

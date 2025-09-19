@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="100" viewBox="0 0 200 100">
+  <rect width="200" height="100" fill="#ff9900"/>
+  <text x="100" y="35" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">AWS</text>
+  <text x="100" y="55" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Partner</text>
+  <text x="100" y="75" font-family="Arial" font-size="10" fill="white" text-anchor="middle">Network</text>
+</svg>

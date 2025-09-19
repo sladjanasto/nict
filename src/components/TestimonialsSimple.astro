@@ -1,0 +1,610 @@
+---
+import { getUITranslations } from '../utils/i18n';
+
+const lang = Astro.url.searchParams.get('lang') || 'en';
+const t = await getUITranslations(lang);
+const testimonialsData = t.footer?.testimonials;
+
+if (!testimonialsData) {
+  console.warn('Testimonials data not found');
+}
+
+// Dummy testimonials for testing
+const dummyTestimonials = [
+  {
+    content: "Working with this IT expert was transformative for our business. They implemented cloud solutions that reduced our costs by 40% while improving performance significantly.",
+    rating: 5,
+    name: "Sarah Johnson",
+    position: "CTO",
+    company: "TechFlow Solutions",
+    avatar: "SJ"
+  },
+  {
+    content: "The interim management support was exactly what we needed during our digital transformation. Professional, knowledgeable, and results-driven approach throughout the entire project.",
+    rating: 5,
+    name: "Michael Chen",
+    position: "CEO",
+    company: "InnovateNow Corp",
+    avatar: "MC"
+  },
+  {
+    content: "Outstanding AI consulting services! They helped us implement machine learning solutions that revolutionized our data analysis capabilities. Highly recommended for any AI initiatives.",
+    rating: 5,
+    name: "Elena Rodriguez",
+    position: "Head of Data Science",
+    company: "DataVision Analytics",
+    avatar: "ER"
+  },
+  {
+    content: "Excellent IT operations optimization. Our system uptime improved to 99.9% and our team productivity increased dramatically. Their expertise in DevOps is truly impressive.",
+    rating: 5,
+    name: "James Thompson",
+    position: "IT Director",
+    company: "GlobalTech Industries",
+    avatar: "JT"
+  }
+];
+
+const testimonials = testimonialsData?.items || dummyTestimonials;
+---
+
+<section class="testimonials-section">
+	<div class="container">
+		<div class="testimonials-header">
+			<h2 class="section-title">
+				{testimonialsData?.title || 'What Our Clients Say'}
+			</h2>
+			<p class="section-subtitle">
+				{testimonialsData?.subtitle || 'Real feedback from businesses we\'ve helped transform'}
+			</p>
+		</div>
+
+		<div class="testimonials-slider-container">
+			<div class="testimonials-slider" id="testimonialsSlider">
+				{testimonials.map((testimonial: any, index: number) => (
+					<div class="testimonial-slide" data-slide={index}>
+						<div class="testimonial-card">
+							<div class="testimonial-content">
+								<div class="quote-icon">"</div>
+								<p class="testimonial-text">{testimonial.content}</p>
+								
+								<div class="rating">
+									{Array.from({ length: testimonial.rating }, (_, i) => (
+										<span class="star">⭐</span>
+									))}
+								</div>
+							</div>
+							
+							<div class="testimonial-author">
+								<div class="author-avatar">
+									{testimonial.avatar}
+								</div>
+								<div class="author-info">
+									<h4 class="author-name">{testimonial.name}</h4>
+									<p class="author-position">{testimonial.position}</p>
+									<p class="author-company">{testimonial.company}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+			
+			<!-- Navigation buttons -->
+			<button class="slider-btn slider-btn-prev" id="prevBtn" aria-label="Previous testimonial">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</button>
+			<button class="slider-btn slider-btn-next" id="nextBtn" aria-label="Next testimonial">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</button>
+			
+			<!-- Dots indicator -->
+			<div class="slider-dots" id="sliderDots">
+				{testimonials.map((_: any, index: number) => (
+					<button class="slider-dot" data-slide={index} aria-label={`Go to testimonial ${index + 1}`}></button>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.testimonials-section {
+		padding: var(--spacing-xxl) 0;
+		background: var(--bg-secondary);
+	}
+
+	.container {
+		max-width: var(--container-xl);
+		margin: 0 auto;
+		padding: 0 var(--spacing-lg);
+	}
+
+	.testimonials-header {
+		text-align: center;
+		margin-bottom: var(--spacing-3xl);
+	}
+
+	.section-subtitle {
+		font-size: var(--font-size-lg);
+		color: var(--text-muted);
+		margin: 0;
+		max-width: 600px;
+		margin: 0 auto;
+		line-height: 1.5;
+	}
+
+	.testimonials-slider-container {
+		position: relative;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.testimonials-slider {
+		display: flex;
+		overflow: hidden;
+		scroll-behavior: smooth;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		transition: transform 0.5s ease-in-out;
+		width: 100%;
+	}
+
+	.testimonials-slider::-webkit-scrollbar {
+		display: none;
+	}
+
+	.testimonial-slide {
+		min-width: 100%;
+		width: 100%;
+		flex-shrink: 0;
+		padding: 0 var(--spacing-md);
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+	}
+
+	.testimonial-card {
+		background: var(--bg-white);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-xl);
+		box-shadow: var(--shadow-md);
+		border: 2px solid transparent;
+		transition: all var(--transition-normal);
+		position: relative;
+		overflow: hidden;
+		max-width: 400px;
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	/* Slider Navigation Buttons */
+	.slider-btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		background: rgba(255, 255, 255, 0.9);
+		border: none;
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		box-shadow: var(--shadow-md);
+		transition: all var(--transition-normal);
+		z-index: 10;
+		color: var(--text-dark);
+	}
+
+	.slider-btn:hover {
+		background: white;
+		box-shadow: var(--shadow-lg);
+		transform: translateY(-50%) scale(1.1);
+	}
+
+	.slider-btn-prev {
+		left: -25px;
+	}
+
+	.slider-btn-next {
+		right: -25px;
+	}
+
+	.slider-btn:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+		transform: translateY(-50%) scale(1);
+	}
+
+	.slider-btn:disabled:hover {
+		transform: translateY(-50%) scale(1);
+	}
+
+	/* Dots Indicator */
+	.slider-dots {
+		display: flex;
+		justify-content: center;
+		gap: var(--spacing-sm);
+		margin-top: var(--spacing-xl);
+	}
+
+	.slider-dot {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		border: none;
+		background: rgba(29, 150, 213, 0.3);
+		cursor: pointer;
+		transition: all var(--transition-normal);
+	}
+
+	.slider-dot.active {
+		background: #1d96d5;
+		transform: scale(1.2);
+	}
+
+	.slider-dot:hover {
+		background: rgba(29, 150, 213, 0.6);
+	}
+
+	.testimonial-card::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+	}
+
+	.testimonial-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+		border-color: rgba(37, 102, 207, 0.2);
+	}
+
+	.testimonial-content {
+		margin-bottom: var(--spacing-lg);
+	}
+
+	.quote-icon {
+		font-size: 3rem;
+		color: var(--primary-color);
+		opacity: 0.3;
+		line-height: 1;
+		margin-bottom: var(--spacing-sm);
+		font-family: serif;
+	}
+
+	.testimonial-text {
+		font-size: var(--font-size-md);
+		line-height: 1.6;
+		color: var(--text-dark);
+		margin: 0 0 var(--spacing-md) 0;
+		font-style: italic;
+	}
+
+	.rating {
+		display: flex;
+		gap: var(--spacing-xs);
+		margin-bottom: var(--spacing-md);
+	}
+
+	.star {
+		font-size: var(--font-size-sm);
+		filter: hue-rotate(15deg);
+	}
+
+	.testimonial-author {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-md);
+		padding-top: var(--spacing-md);
+		border-top: 1px solid var(--border-light);
+	}
+
+	.author-avatar {
+		width: 60px;
+		height: 60px;
+		border-radius: 50%;
+		background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		font-weight: 600;
+		font-size: var(--font-size-lg);
+		flex-shrink: 0;
+	}
+
+	.author-info {
+		flex: 1;
+	}
+
+	.author-name {
+		font-family: var(--font-headings);
+		font-size: var(--font-size-md);
+		font-weight: 600;
+		color: var(--text-dark);
+		margin: 0 0 var(--spacing-xs) 0;
+		line-height: 1.3;
+	}
+
+	.author-position {
+		font-size: var(--font-size-sm);
+		color: var(--primary-color);
+		font-weight: 500;
+		margin: 0 0 var(--spacing-xs) 0;
+		line-height: 1.2;
+	}
+
+	.author-company {
+		font-size: var(--font-size-sm);
+		color: var(--text-muted);
+		margin: 0;
+		line-height: 1.2;
+	}
+
+	/* Mobile Responsiveness */
+	@media (max-width: 768px) {
+		.testimonials-header {
+			margin-bottom: var(--spacing-2xl);
+		}
+
+		.section-subtitle {
+			font-size: var(--font-size-md);
+		}
+
+		.testimonial-slide {
+			padding: 0 var(--spacing-sm);
+		}
+
+		.testimonial-card {
+			padding: var(--spacing-lg);
+		}
+
+		.testimonial-author {
+			gap: var(--spacing-sm);
+		}
+
+		.author-avatar {
+			width: 50px;
+			height: 50px;
+			font-size: var(--font-size-md);
+		}
+
+		.slider-btn {
+			width: 40px;
+			height: 40px;
+		}
+
+		.slider-btn-prev {
+			left: -20px;
+		}
+
+		.slider-btn-next {
+			right: -20px;
+		}
+
+		.slider-dot {
+			width: 10px;
+			height: 10px;
+		}
+	}
+
+	/* Dark mode support */
+	@media (prefers-color-scheme: dark) {
+		.testimonials-section {
+			background: var(--bg-dark-secondary, #1a1a1a);
+		}
+
+		.testimonial-card {
+			background: var(--bg-dark, #2a2a2a);
+			color: var(--text-dark-primary, #ffffff);
+		}
+
+		.testimonial-text {
+			color: var(--text-dark-primary, #ffffff);
+		}
+
+		.author-name {
+			color: var(--text-dark-primary, #ffffff);
+		}
+	}
+</style>
+
+<script>
+	class TestimonialsSlider {
+		private slider: HTMLElement | null = null;
+		private slides: NodeListOf<HTMLElement> | null = null;
+		private dots: NodeListOf<HTMLElement> | null = null;
+		private prevBtn: HTMLElement | null = null;
+		private nextBtn: HTMLElement | null = null;
+		private currentSlide: number = 0;
+		private totalSlides: number = 0;
+		private slidesPerView: number = 1;
+		private startX: number = 0;
+		private isDragging: boolean = false;
+		private autoplayInterval: number | null = null;
+
+		constructor() {
+			this.init();
+		}
+
+		init() {
+			console.log('TestimonialsSlider init called');
+			this.slider = document.getElementById('testimonialsSlider');
+			this.slides = document.querySelectorAll('.testimonial-slide');
+			this.dots = document.querySelectorAll('.slider-dot');
+			this.prevBtn = document.getElementById('prevBtn');
+			this.nextBtn = document.getElementById('nextBtn');
+
+			console.log('Slider found:', !!this.slider);
+			console.log('Slides found:', this.slides.length);
+			console.log('Dots found:', this.dots.length);
+
+			if (!this.slider || !this.slides.length) return;
+
+			this.totalSlides = this.slides.length;
+			this.updateSlidesPerView();
+			this.setupEventListeners();
+			
+			// Ensure slider starts at first slide
+			this.currentSlide = 0;
+			this.updateSlider();
+			
+			// Start autoplay after a delay
+			setTimeout(() => this.startAutoplay(), 3000);
+
+			// Update on resize
+			window.addEventListener('resize', () => {
+				this.updateSlidesPerView();
+				this.updateSlider();
+			});
+		}
+
+		updateSlidesPerView() {
+			// Always show one testimonial at a time for cleaner navigation
+			this.slidesPerView = 1;
+		}
+
+		setupEventListeners() {
+			// Button navigation
+			this.prevBtn?.addEventListener('click', () => this.prevSlide());
+			this.nextBtn?.addEventListener('click', () => this.nextSlide());
+
+			// Dot navigation
+			this.dots?.forEach((dot, index) => {
+				dot.addEventListener('click', () => this.goToSlide(index));
+			});
+
+			// Touch/mouse drag navigation
+			this.slider?.addEventListener('mousedown', (e) => this.startDrag(e));
+			this.slider?.addEventListener('touchstart', (e) => this.startDrag(e), { passive: true });
+			
+			document.addEventListener('mousemove', (e) => this.drag(e));
+			document.addEventListener('touchmove', (e) => this.drag(e), { passive: true });
+			
+			document.addEventListener('mouseup', () => this.endDrag());
+			document.addEventListener('touchend', () => this.endDrag());
+
+			// Stop autoplay on interaction
+			this.slider?.addEventListener('mouseenter', () => this.stopAutoplay());
+			this.slider?.addEventListener('mouseleave', () => this.startAutoplay());
+
+			// Keyboard navigation
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'ArrowLeft') this.prevSlide();
+				if (e.key === 'ArrowRight') this.nextSlide();
+			});
+		}
+
+		startDrag(e: MouseEvent | TouchEvent) {
+			this.isDragging = true;
+			this.startX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
+			this.stopAutoplay();
+			
+			// Disable transition during drag
+			if (this.slider) {
+				this.slider.style.transition = 'none';
+			}
+		}
+
+		drag(e: MouseEvent | TouchEvent) {
+			if (!this.isDragging) return;
+			
+			const currentX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
+			const diffX = this.startX - currentX;
+
+			// Add some resistance/threshold
+			if (Math.abs(diffX) > 50) {
+				if (diffX > 0) {
+					this.nextSlide();
+				} else {
+					this.prevSlide();
+				}
+				this.isDragging = false;
+			}
+		}
+
+		endDrag() {
+			this.isDragging = false;
+			
+			// Re-enable transition
+			if (this.slider) {
+				this.slider.style.transition = 'transform 0.5s ease-in-out';
+			}
+			
+			this.startAutoplay();
+		}
+
+		prevSlide() {
+			this.currentSlide = this.currentSlide <= 0 ? this.totalSlides - 1 : this.currentSlide - 1;
+			this.updateSlider();
+		}
+
+		nextSlide() {
+			this.currentSlide = this.currentSlide >= this.totalSlides - 1 ? 0 : this.currentSlide + 1;
+			this.updateSlider();
+		}
+
+		goToSlide(index: number) {
+			this.currentSlide = index;
+			this.updateSlider();
+		}
+
+		updateSlider() {
+			if (!this.slider) return;
+
+			const slideWidth = 100;
+			const translateX = -this.currentSlide * slideWidth;
+			
+			this.slider.style.transform = `translateX(${translateX}%)`;
+			this.slider.style.transition = 'transform 0.5s ease-in-out';
+
+			// Update dots
+			this.dots?.forEach((dot, index) => {
+				dot.classList.toggle('active', index === this.currentSlide);
+			});
+
+			// Update button states for better UX
+			if (this.prevBtn) {
+				this.prevBtn.style.opacity = this.totalSlides > 1 ? '1' : '0.5';
+			}
+			if (this.nextBtn) {
+				this.nextBtn.style.opacity = this.totalSlides > 1 ? '1' : '0.5';
+			}
+		}
+
+		startAutoplay() {
+			this.stopAutoplay();
+			this.autoplayInterval = window.setInterval(() => {
+				this.nextSlide();
+			}, 5000);
+		}
+
+		stopAutoplay() {
+			if (this.autoplayInterval) {
+				clearInterval(this.autoplayInterval);
+				this.autoplayInterval = null;
+			}
+		}
+	}
+
+	// Initialize when DOM is loaded
+	document.addEventListener('DOMContentLoaded', () => {
+		new TestimonialsSlider();
+	});
+
+	// Handle page navigation (for SPAs or view transitions)
+	document.addEventListener('astro:page-load', () => {
+		new TestimonialsSlider();
+	});
+</script>

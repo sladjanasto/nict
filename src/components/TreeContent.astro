@@ -1,0 +1,458 @@
+---
+---
+
+<section class="tree-section section">
+	<div class="container">
+		<div class="tree-content-container">
+			<div class="tree-header">
+				<h2 class="tree-title">DevOps is not about tools. It's a <span class="highlight">culture and a mindset.</span></h2>
+				<p class="tree-description">
+					DevOps is not a set of tools. It's a way to make you more agile, efficient, and
+					support your growth, while keeping everything as secure as possible.
+				</p>
+				<p class="tree-subtitle">
+					Our step-by-step approach to your success
+				</p>
+			</div>
+			
+			<div class="process-flow">
+				<div class="process-step step-right">
+					<div class="step-content">
+						<h3>Assessment</h3>
+						<p>Get a detailed analysis of your existing infrastructure and applications to understand your current setup and identify areas for improvement.</p>
+					</div>
+					<div class="step-number">1</div>
+				</div>
+				
+				<div class="process-step step-left">
+					<div class="step-number">2</div>
+					<div class="step-content">
+						<h3>Goals</h3>
+						<p>Tell us your business objectives and challenges. This helps us to enhance the assessment and narrow down to the exact solution.</p>
+					</div>
+				</div>
+				
+				<div class="process-step step-right">
+					<div class="step-content">
+						<h3>Service recommendations</h3>
+						<p>Based on our assessment and your goals, you'll get a recommendation for a customized package of services.</p>
+					</div>
+					<div class="step-number">3</div>
+				</div>
+				
+				<div class="process-step step-left">
+					<div class="step-number">4</div>
+					<div class="step-content">
+						<h3>Flexibility</h3>
+						<p>Our offerings are flexible and adaptable. We can adjust our services to ensure a perfect fit. There's always a solution.</p>
+					</div>
+				</div>
+				
+				<div class="process-step step-right">
+					<div class="step-content">
+						<h3>Implementation and support</h3>
+						<p>We implement the solution and provide ongoing support to ensure everything runs smoothly and efficiently.</p>
+					</div>
+					<div class="step-number">5</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.tree-section {
+		background: var(--bg-gradient);
+		color: var(--text-white);
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.tree-content-container {
+		position: relative;
+		z-index: 2;
+	}
+	
+	.tree-header {
+		text-align: center;
+		margin-bottom: var(--spacing-xxl);
+		max-width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.tree-title {
+		font-size: var(--font-size-4xl);
+		font-weight: 700;
+		margin-bottom: var(--spacing-xl);
+		line-height: 1.2;
+	}
+	
+	.tree-title .highlight {
+		color: var(--accent-color);
+		position: relative;
+	}
+	
+	.tree-description {
+		font-size: var(--font-size-xl);
+		margin-bottom: var(--spacing-lg);
+		opacity: 0.9;
+		line-height: 1.6;
+	}
+	
+	.tree-subtitle {
+		font-size: var(--font-size-lg);
+		opacity: 0.8;
+		font-style: italic;
+	}
+	
+	.process-flow {
+		position: relative;
+		max-width: 900px;
+		margin: var(--spacing-xxl) auto;
+		padding: var(--spacing-xl) 0;
+	}
+	
+	.process-flow::before {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 0;
+		bottom: 0;
+		width: 4px;
+		background: linear-gradient(to bottom, var(--accent-color), var(--primary-color));
+		transform: translateX(-50%);
+		border-radius: var(--radius-sm);
+		box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+	}
+	
+	.process-step {
+		position: relative;
+		display: flex;
+		align-items: center;
+		margin-bottom: var(--spacing-xxl);
+		opacity: 0;
+		transform: translateY(50px);
+		transition: all var(--transition-slow);
+	}
+	
+	.step-right {
+		justify-content: flex-start;
+		padding-left: 60%;
+	}
+	
+	.step-left {
+		justify-content: flex-end;
+		padding-right: 60%;
+		flex-direction: row-reverse;
+	}
+	
+	.step-content {
+		background: var(--bg-card);
+		border-radius: var(--radius-lg);
+		padding: var(--spacing-xl);
+		box-shadow: var(--shadow-lg);
+		backdrop-filter: blur(10px);
+		color: var(--text-dark);
+		max-width: 350px;
+		position: relative;
+		transition: all var(--transition-normal);
+		border: 2px solid transparent;
+	}
+	
+	.step-content:hover {
+		transform: translateY(-10px) scale(1.02);
+		box-shadow: var(--shadow-xl);
+		border-color: var(--accent-color);
+	}
+	
+	.step-content::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		width: 20px;
+		height: 20px;
+		background: var(--bg-card);
+		border: 3px solid var(--accent-color);
+		border-radius: var(--radius-round);
+		transform: translateY(-50%);
+		box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+	}
+	
+	.step-right .step-content::before {
+		left: -40px;
+	}
+	
+	.step-left .step-content::before {
+		right: -40px;
+	}
+	
+	.step-content h3 {
+		font-size: var(--font-size-xl);
+		font-weight: 600;
+		margin-bottom: var(--spacing-md);
+		color: var(--text-dark);
+		position: relative;
+	}
+	
+	.step-content p {
+		font-size: var(--font-size-base);
+		line-height: 1.6;
+		color: var(--text-light);
+		margin: 0;
+	}
+	
+	.step-number {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 60px;
+		height: 60px;
+		background: linear-gradient(135deg, var(--accent-color), #ffed4e);
+		border-radius: var(--radius-round);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: var(--font-size-xl);
+		font-weight: 700;
+		color: var(--text-dark);
+		box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+		border: 4px solid var(--bg-card);
+		z-index: 10;
+		transition: all var(--transition-normal);
+	}
+	
+	.step-number:hover {
+		transform: translateX(-50%) scale(1.1);
+		box-shadow: 0 15px 35px rgba(255, 215, 0, 0.6);
+	}
+	
+	.process-step.animate-in {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	
+	@keyframes pulse {
+		0%, 100% {
+			box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+		}
+		50% {
+			box-shadow: 0 15px 35px rgba(255, 215, 0, 0.7);
+		}
+	}
+	
+	.step-number {
+		animation: pulse 2s ease-in-out infinite;
+	}
+	
+	/* Tablet Styles */
+	@media (min-width: 769px) and (max-width: 1024px) {
+		.tree-title {
+			font-size: 2.8rem;
+		}
+		
+		.tree-description {
+			font-size: 1.2rem;
+		}
+		
+		.process-flow {
+			margin: 50px auto;
+			padding: 30px 0;
+		}
+		
+		.step-right,
+		.step-left {
+			padding: 15px 40px;
+		}
+		
+		.step-number {
+			width: 55px;
+			height: 55px;
+			font-size: 1.3rem;
+		}
+		
+		.step-content {
+			max-width: 400px;
+		}
+		
+		.step-content h3 {
+			font-size: 1.3rem;
+		}
+		
+		.step-content p {
+			font-size: 1rem;
+		}
+	}
+	
+	@media (max-width: 768px) {
+		.tree-title {
+			font-size: var(--font-size-h1-mobile);
+			margin-bottom: var(--spacing-mobile);
+		}
+		
+		.tree-description {
+			font-size: var(--font-size-lg);
+			margin-bottom: var(--spacing-mobile);
+		}
+		
+		.process-flow {
+			margin: var(--spacing-mobile) auto;
+			padding: var(--spacing-mobile) 0;
+			overflow-x: hidden;
+		}
+		
+		.process-flow::before {
+			left: 30px;
+		}
+		
+		.step-right,
+		.step-left {
+			justify-content: flex-start;
+			padding-left: 80px;
+			padding-right: var(--spacing-mobile);
+			flex-direction: row;
+			margin-bottom: var(--spacing-mobile);
+		}
+		
+		.step-number {
+			left: 30px;
+			transform: translateX(-50%);
+			width: 45px;
+			height: 45px;
+			font-size: 1.1rem;
+			/* Ensure touch-friendly size */
+			min-width: 44px;
+			min-height: 44px;
+		}
+		
+		.step-content {
+			max-width: 100%;
+			/* Better mobile padding */
+			padding: var(--spacing-sm);
+		}
+		
+		.step-content::before {
+			display: none;
+		}
+		
+		.step-content h3 {
+			font-size: var(--font-size-h3-mobile);
+			margin-bottom: var(--spacing-xs);
+		}
+		
+		.step-content p {
+			font-size: var(--font-size-sm);
+			line-height: 1.5;
+		}
+		
+		/* Improve mobile animations */
+		.step-number {
+			animation: pulse 3s ease-in-out infinite;
+		}
+		
+		/* Better mobile spacing */
+		.step {
+			margin-bottom: var(--spacing-lg);
+		}
+		
+		.step:last-child {
+			margin-bottom: 0;
+		}
+	}
+		
+		.step-content h3 {
+			font-size: 1.2rem;
+		}
+		
+		.step-content p {
+			font-size: 0.9rem;
+		}
+	}
+</style>
+
+<script>
+	// Add interaction effects for process steps
+	const processSteps = document.querySelectorAll('.step-content');
+	const stepNumbers = document.querySelectorAll('.step-number');
+	const allProcessSteps = document.querySelectorAll('.process-step');
+	
+	processSteps.forEach((step, index) => {
+		step.addEventListener('mouseenter', () => {
+			(step as HTMLElement).style.transform = 'translateY(-10px) scale(1.02)';
+			(step as HTMLElement).style.borderColor = '#ffd700';
+			
+			// Highlight corresponding number
+			const number = stepNumbers[index];
+			if (number) {
+				(number as HTMLElement).style.transform = 'translateX(-50%) scale(1.15)';
+				(number as HTMLElement).style.background = 'linear-gradient(135deg, #ffed4e, #ffd700)';
+			}
+		});
+		
+		step.addEventListener('mouseleave', () => {
+			// Only reset transform if step is already animated in
+			const parentStep = step.closest('.process-step');
+			if (parentStep && parentStep.classList.contains('animate-in')) {
+				(step as HTMLElement).style.transform = 'translateY(0) scale(1)';
+			} else {
+				(step as HTMLElement).style.transform = 'translateY(-10px) scale(1.02)';
+			}
+			(step as HTMLElement).style.borderColor = 'transparent';
+			
+			// Reset number
+			const number = stepNumbers[index];
+			if (number) {
+				(number as HTMLElement).style.transform = 'translateX(-50%) scale(1)';
+				(number as HTMLElement).style.background = 'linear-gradient(135deg, #ffd700, #ffed4e)';
+			}
+		});
+	});
+	
+	// Sequential animation on scroll - only once per step
+	const observerOptions = {
+		threshold: 0.3,
+		rootMargin: '0px 0px -100px 0px'
+	};
+	
+	let animatedSteps = new Set(); // Track which steps have been animated
+	
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				const stepIndex = Array.from(allProcessSteps).indexOf(entry.target);
+				
+				// Only animate if this step hasn't been animated before
+				if (!animatedSteps.has(stepIndex)) {
+					animatedSteps.add(stepIndex);
+					
+					// Add delay based on step index for sequential effect
+					setTimeout(() => {
+						entry.target.classList.add('animate-in');
+					}, stepIndex * 300); // 300ms delay between each step
+				}
+			}
+		});
+	}, observerOptions);
+	
+	// Observe all process steps
+	allProcessSteps.forEach(step => {
+		observer.observe(step);
+	});
+	
+	// Add click effects to step numbers
+	stepNumbers.forEach((number, index) => {
+		number.addEventListener('click', () => {
+			// Remove active class from all steps
+			allProcessSteps.forEach(s => s.classList.remove('active'));
+			
+			// Add active class to clicked step
+			const parentStep = number.closest('.process-step') as HTMLElement;
+			if (parentStep) {
+				parentStep.classList.add('active');
+				
+				// Scroll to step
+				parentStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			}
+		});
+	});
+</script>

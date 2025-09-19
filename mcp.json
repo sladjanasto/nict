@@ -1,0 +1,34 @@
+{
+  "servers": {
+    "github-mcp": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp"
+    }
+  },
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-playwright"],
+      "env": {
+        "PLAYWRIGHT_BROWSERS_PATH": "0"
+      }
+    },
+    "browsermcp": {
+      "command": "npx",
+      "args": ["@browsermcp/mcp@latest"]
+    },
+    "chrome-devtools": {
+      "command": "python",
+      "args": ["C:\\myprojects\\portfolio\\chrome-devtools-mcp\\server.py"],
+      "env": {
+        "CHROME_DEBUG_PORT": "9222"
+      }
+    },
+    "lighthouse": {
+      "command": "npx",
+      "args": ["lighthouse-mcp"],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

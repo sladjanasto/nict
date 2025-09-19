@@ -1,0 +1,20 @@
+---
+// Simple test page to debug the InvalidComponentArgs error
+const testData = {
+  items: ['Item 1', 'Item 2', 'Item 3']
+};
+---
+
+<html>
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+    <h1>Test Page</h1>
+    <ul>
+        {testData.items.map((item: string) => (
+            <li>{item}</li>
+        ))}
+    </ul>
+</body>
+</html>

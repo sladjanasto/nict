@@ -31,102 +31,111 @@ const techCategories = technologyExpertise.categories || [];
 		</div>
 		
 		<div class="about-content fade-in-up">
-			<!-- Core Competencies Card -->
-			<div class="about-card competencies-card">
-				<div class="card-header">
-					<h3>{aboutData.coreCompetencies?.title || 'Core Competencies'}</h3>
-				</div>
-				<div class="card-content">
-					<div class="competencies-grid">
-						{coreCompetencies.map((competency: any) => (
-							<div class="competency-item">
-								<div class="competency-content">
-									<h4>{competency.title}</h4>
-									<ul class="skills-list">
-										{competency.skills?.map((skill: string) => (
-											<li>{skill}</li>
-										))}
-									</ul>
+			<!-- Core Competencies Section -->
+			<div class="competencies-section">
+				<h3 class="section-subtitle">{aboutData.coreCompetencies?.title || 'Core Competencies'}</h3>
+				<div class="competencies-list">
+					{coreCompetencies.map((competency: any) => (
+						<div class="competency-row">
+							<div class="competency-details">
+								<h4>{competency.title}</h4>
+								<div class="skills-icons">
+									{competency.skills?.map((skill: string) => {
+										let iconClass = '';
+										let skillName = skill;
+										
+										// Mapiranje skill-ova na Icomoon ikonice
+										switch(skill.toLowerCase()) {
+											case 'aws':
+												iconClass = 'icon-amazonaws';
+												break;
+											case 'azure':
+												iconClass = 'icon-microsoftazure';
+												break;
+											case 'google cloud':
+												iconClass = 'icon-googlecloud';
+												break;
+											case 'multi-cloud strategy':
+												iconClass = 'icon-cloud';
+												skillName = 'Multi-cloud';
+												break;
+											case 'docker':
+												iconClass = 'icon-docker';
+												break;
+											case 'kubernetes':
+												iconClass = 'icon-kubernetes';
+												break;
+											case 'terraform':
+												iconClass = 'icon-terraform';
+												break;
+											case 'ci/cd':
+												iconClass = 'icon-jenkins';
+												skillName = 'CI/CD';
+												break;
+											case 'team leadership':
+												iconClass = 'icon-atlassian';
+												break;
+											case 'project management':
+												iconClass = 'icon-atlassian';
+												break;
+											case 'itil':
+												iconClass = 'icon-microsoft';
+												break;
+											case 'agile':
+												iconClass = 'icon-atlassian';
+												break;
+											case 'scrum master':
+												iconClass = 'icon-atlassian';
+												break;
+											case 'itil v4':
+												iconClass = 'icon-microsoft';
+												break;
+											case 'ai manager':
+												iconClass = 'icon-microsoft';
+												break;
+											default:
+												iconClass = 'icon-cogs';
+										}
+										
+										return (
+											<div class="skill-icon-item">
+												<span class={iconClass}></span>
+											</div>
+										);
+									})}
 								</div>
 							</div>
-						))}
-					</div>
+						</div>
+					))}
 				</div>
 			</div>
 			
-			<!-- Key Advantages Card -->
-			<div class="about-card advantages-card">
-				<div class="card-header">
-					<h3>Key Advantages</h3>
-				</div>
-				<div class="card-content">
-					<div class="advantages-grid">
-						{advantages.map((advantage: any) => (
-							<div class="advantage-item">
-								<div class="advantage-content">
-									<h4>{advantage.title}</h4>
-									<p>{advantage.description}</p>
-								</div>
+			<!-- Key Advantages Section -->
+			<div class="advantages-section">
+				<h3 class="section-subtitle">Key Advantages</h3>
+				<div class="advantages-list">
+					{advantages.map((advantage: any) => (
+						<div class="advantage-row">
+							<div class="advantage-icon">
+								<span>{advantage.icon}</span>
 							</div>
-						))}
-					</div>
+							<div class="advantage-details">
+								<h4>{advantage.title}</h4>
+								<p>{advantage.description}</p>
+							</div>
+						</div>
+					))}
 				</div>
 			</div>
 			
-			<!-- Certifications Card -->
-			<div class="about-card certifications-card">
-				<div class="card-header">
-					<h3>{aboutData.certifications?.title || 'Certifications & Career Timeline'}</h3>
-				</div>
-				<div class="card-content">
-					<div class="certifications-grid">
-						<div class="certification-item">
-							<div class="certification-content">
-								<h4>MCSE 2003</h4>
-								<p>Microsoft Certification</p>
-								<span class="certification-year">2008</span>
-							</div>
-						</div>
-						
-						<div class="certification-item">
-							<div class="certification-content">
-								<h4>IT Manager</h4>
-								<p>Professional Certification</p>
-								<span class="certification-year">2016</span>
-							</div>
-						</div>
-						
-						<div class="certification-item">
-							<div class="certification-content">
-								<h4>Scrum Master</h4>
-								<p>Scrum Alliance</p>
-								<span class="certification-year">2023</span>
-							</div>
-						</div>
-						
-						<div class="certification-item">
-							<div class="certification-content">
-								<h4>ITIL V4</h4>
-								<p>AXELOS</p>
-								<span class="certification-year">2023</span>
-							</div>
-						</div>
-						
-						<div class="certification-item">
-							<div class="certification-content">
-								<h4>AI Manager</h4>
-								<p>AI Institute</p>
-								<span class="certification-year">2025</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </section>
 
 <style>
+	/* Import Icomoon font */
+	@import url('/icons/style.css');
+
 	.about {
 		background: var(--bg-white);
 		padding: var(--spacing-xxl) 0;
@@ -160,404 +169,158 @@ const techCategories = technologyExpertise.categories || [];
 	}
 	
 	.about-content {
-		max-width: 1400px;
+		max-width: 900px;
 		margin: 0 auto;
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: var(--spacing-xl);
-		align-items: start;
-	}
-	
-	/* About Cards Styles */
-	.about-card {
-		background: var(--bg-card);
-		border-radius: var(--radius-lg);
-		box-shadow: var(--shadow-lg);
-		overflow: hidden;
-		transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-		border: 1px solid rgba(26, 234, 226, 0.1);
-	}
-	
-	.about-card:hover {
-		transform: translateY(-8px);
-		box-shadow: var(--shadow-xl);
-	}
-	
-	.card-header {
-		background: var(--bg-gradient);
-		padding: var(--spacing-xl);
-		text-align: center;
-		color: white;
-		position: relative;
-	}
-	
-	.card-header h3 {
-		font-size: var(--font-size-2xl);
-		font-weight: 600;
-		margin: 0;
-		color: white;
-		text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-	}
-	
-	.card-content {
-		padding: var(--spacing-xl);
-	}
-	
-	/* Competencies Grid */
-	.competencies-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--spacing-md);
-	}
-	
-	/* Advantages Grid */
-	.advantages-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--spacing-md);
-	}
-	
-	/* Certifications Grid */
-	.certifications-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--spacing-md);
-	}
-	
-	/* Updated Item Styles for Cards */
-	
-	.competency-item,
-	.advantage-item,
-	.certification-item {
-		display: block;
-		padding: var(--spacing-lg);
-		border-radius: var(--radius-md);
-		background: var(--bg-secondary);
-		transition: all var(--transition-normal);
-		border-left: 4px solid transparent;
-	}
-	
-	.competency-item:hover {
-		transform: translateY(-2px);
-		box-shadow: var(--shadow-md);
-		border-left-color: var(--primary-color);
-	}
-	
-	.advantage-item:hover {
-		transform: translateY(-2px);
-		box-shadow: var(--shadow-md);
-		border-left-color: var(--secondary-color);
-	}
-	
-	.certification-item:hover {
-		transform: translateY(-2px);
-		box-shadow: var(--shadow-md);
-		border-left-color: var(--accent-color);
-	}
-	
-	.competency-content,
-	.advantage-content,
-	.certification-content {
-		flex: 1;
-	}
-	
-	.competency-content h4,
-	.advantage-content h4,
-	.certification-content h4 {
-		font-size: var(--font-size-lg);
-		font-weight: 600;
-		color: var(--text-dark);
-		margin-bottom: var(--spacing-xs);
-	}
-	
-	.advantage-content p,
-	.certification-content p {
-		color: var(--text-muted);
-		line-height: 1.5;
-		margin: 0 0 var(--spacing-sm) 0;
-	}
-	
-	.certification-year {
-		background: var(--accent-color);
-		color: var(--text-dark);
-		padding: var(--spacing-xs) var(--spacing-sm);
-		border-radius: var(--radius-sm);
-		font-weight: 600;
-		font-size: var(--font-size-xs);
-		display: inline-block;
-		margin-top: var(--spacing-xs);
-	}
-
-	/* Horizontal Timeline Styles */
-	.certifications-timeline {
-		grid-column: 1 / -1;
-		max-width: 1000px;
-		margin: 0 auto;
-		padding: var(--spacing-xl) 0;
-	}
-
-	.horizontal-timeline {
-		position: relative;
-		padding: 80px 0;
-		overflow-x: auto;
-		min-height: 300px;
-	}
-
-	.timeline-line-horizontal {
-		position: absolute;
-		top: 50%;
-		left: 0;
-		right: 0;
-		height: 4px;
-		background: linear-gradient(90deg, #1aeae2 0%, #1d96d5 50%, #2566cf 100%);
-		transform: translateY(-50%);
-		z-index: 1;
-	}
-
-	.timeline-events {
-		position: relative;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		height: 100%;
-		z-index: 2;
-		min-width: 800px;
-	}
-
-	.timeline-event {
-		position: relative;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		gap: var(--spacing-3xl);
+	}
+	
+	/* Section Subtitles */
+	.section-subtitle {
+		font-family: var(--font-headings);
+		font-size: var(--font-size-2xl);
+		font-weight: 700;
+		color: var(--primary-color);
+		margin-bottom: var(--spacing-xl);
+		text-align: center;
+		position: relative;
+	}
+	
+	.section-subtitle::after {
+		content: '';
+		position: absolute;
+		bottom: -8px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 60px;
+		height: 3px;
+		background: var(--bg-gradient);
+		border-radius: 2px;
+	}
+	
+	/* Core Competencies Linear Layout */
+	.competencies-list {
+		display: flex;
+		flex-direction: row;
+		gap: var(--spacing-lg);
+	}
+	
+	.competency-row {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-lg);
+		padding: 1rem;
+		background: var(--bg-secondary);
+		border-radius: 50%;
+		border: 1px solid var(--primary-color);
+		transition: all var(--transition-normal);
+	}
+	
+	.competency-row:hover {
+		transform: translateX(8px);
+		box-shadow: var(--shadow-lg);
+		background: var(--bg-white);
+	}
+	
+	
+	.competency-details {
 		flex: 1;
 	}
-
-	.timeline-event.top {
-		flex-direction: column-reverse;
+	
+	.competency-details h4 {
+		font-family: var(--font-headings);
+		font-size: var(--font-size-xl);
+		font-weight: 600;
+		color: var(--text-dark);
+		margin-bottom: var(--spacing-md);
 	}
-	.timeline-line{
-		width: 100%;
-		height:4px;
-		background:red;
+	
+	.skills-icons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--spacing-lg);
+		justify-content: flex-start;
 	}
-
-	.timeline-circle {
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
+	
+	.skill-icon-item {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-family: var(--font-headings);
-		font-weight: 600;
-		font-size: var(--font-size-sm);
-		background: white;
-		border: 4px solid;
-		box-shadow: var(--shadow-md);
-		z-index: 3;
-		position: relative;
-	}
-
-	/* Blue gradient progression for each year */
-	.timeline-circle.blue1 {
-		color: #0f4c75;
-		border-color: #0f4c75;
-	}
-
-	.timeline-circle.blue2 {
-		color: #1d96d5;
-		border-color: #1d96d5;
-	}
-
-	.timeline-circle.blue3 {
-		color: #2566cf;
-		border-color: #2566cf;
-	}
-
-	.timeline-circle.blue4 {
-		color: #3b82f6;
-		border-color: #3b82f6;
-	}
-
-	.timeline-circle.blue5 {
-		color: #60a5fa;
-		border-color: #60a5fa;
-	}
-
-	.timeline-card {
-		background: white;
-		padding: var(--spacing-lg);
 		border-radius: var(--radius-lg);
-		box-shadow: var(--shadow-md);
-		max-width: 180px;
-		text-align: center;
-		border: 2px solid transparent;
 		transition: all var(--transition-normal);
-		position: relative;
-	}
-
-	.timeline-card.blue1 {
-		border-color: rgba(15, 76, 117, 0.2);
-	}
-
-	.timeline-card.blue2 {
-		border-color: rgba(29, 150, 213, 0.2);
-	}
-
-	.timeline-card.blue3 {
-		border-color: rgba(37, 102, 207, 0.2);
-	}
-
-	.timeline-card.blue4 {
-		border-color: rgba(59, 130, 246, 0.2);
-	}
-
-	.timeline-card.blue5 {
-		border-color: rgba(96, 165, 250, 0.2);
-	}
-
-	.timeline-card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-lg);
-	}
-
-	.timeline-card.blue1:hover {
-		border-color: #0f4c75;
-	}
-
-	.timeline-card.blue2:hover {
-		border-color: #1d96d5;
-	}
-
-	.timeline-card.blue3:hover {
-		border-color: #2566cf;
-	}
-
-	.timeline-card.blue4:hover {
-		border-color: #3b82f6;
-	}
-
-	.timeline-card.blue5:hover {
-		border-color: #60a5fa;
-	}
-
-	.timeline-card h4 {
-		font-family: var(--font-headings);
-		font-size: var(--font-size-md);
-		font-weight: 600;
-		color: var(--text-dark);
-		margin: 0 0 var(--spacing-xs) 0;
-		line-height: 1.3;
-	}
-
-	.timeline-card p {
-		color: var(--text-light);
-		font-size: var(--font-size-sm);
-		margin: 0;
-		line-height: 1.4;
-	}
-
-	.timeline-arrow {
-		width: 0;
-		height: 0;
-		margin: var(--spacing-sm) 0;
-	}
-
-	.arrow-down {
-		border-left: 8px solid transparent;
-		border-right: 8px solid transparent;
-	}
-
-	.arrow-down.blue1 {
-		border-top: 12px solid #0f4c75;
-	}
-
-	.arrow-down.blue2 {
-		border-top: 12px solid #1d96d5;
-	}
-
-	.arrow-down.blue3 {
-		border-top: 12px solid #2566cf;
-	}
-
-	.arrow-down.blue4 {
-		border-top: 12px solid #3b82f6;
-	}
-
-	.arrow-down.blue5 {
-		border-top: 12px solid #60a5fa;
-	}
-
-	.arrow-up {
-		border-left: 8px solid transparent;
-		border-right: 8px solid transparent;
-	}
-
-	.arrow-up.blue1 {
-		border-bottom: 12px solid #0f4c75;
-	}
-
-	.arrow-up.blue2 {
-		border-bottom: 12px solid #1d96d5;
-	}
-
-	.arrow-up.blue3 {
-		border-bottom: 12px solid #2566cf;
-	}
-
-	.arrow-up.blue4 {
-		border-bottom: 12px solid #3b82f6;
-	}
-
-	.arrow-up.blue5 {
-		border-bottom: 12px solid #60a5fa;
+		width: 60px;
+		height: 60px;
+		cursor: pointer;
 	}
 	
-	.competency-content,
-	.advantage-content,
-	.certification-content {
+	.skill-icon-item:hover {
+		color: white;
+		transform: translateY(-4px) scale(1.1);
+		box-shadow: var(--shadow-lg);
+	}
+	
+	.skill-icon-item span[class^="icon-"] {
+		font-size: 2rem;
+		line-height: 1;
+		transition: all var(--transition-normal);
+		color: var(--primary-color);
+	}
+	
+	
+	/* Key Advantages Linear Layout */
+	.advantages-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-lg);
+	}
+	
+	.advantage-row {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-lg);
+		padding: var(--spacing-xl);
+		background: var(--bg-secondary);
+		border-radius: var(--radius-lg);
+		border-left: 4px solid var(--secondary-color);
+		transition: all var(--transition-normal);
+	}
+	
+	.advantage-row:hover {
+		transform: translateX(8px);
+		box-shadow: var(--shadow-lg);
+		background: var(--bg-white);
+	}
+	
+	.advantage-icon {
+		font-size: 3rem;
+		min-width: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.advantage-details {
 		flex: 1;
 	}
 	
-	.competency-content h4,
-	.advantage-content h4,
-	.certification-content h4 {
-		font-size: var(--font-size-lg);
+	.advantage-details h4 {
+		font-family: var(--font-headings);
+		font-size: var(--font-size-xl);
 		font-weight: 600;
 		color: var(--text-dark);
-		margin-bottom: var(--spacing-xs);
+		margin-bottom: var(--spacing-sm);
 	}
 	
-	.advantage-content p,
-	.certification-content p {
+	.advantage-details p {
 		color: var(--text-muted);
-		line-height: 1.5;
-		margin: 0;
-	}
-	
-	.skills-list {
-		list-style: none;
-		padding: 0;
-		margin: var(--spacing-xs) 0 0 0;
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--spacing-xs);
-	}
-	
-	.skills-list li {
-		background: var(--bg-white);
-		color: var(--primary-color);
-		padding: var(--spacing-xs) var(--spacing-sm);
-		border-radius: var(--radius-sm);
-		font-size: var(--font-size-sm);
-		font-weight: 500;
-		border: 1px solid rgba(26, 234, 226, 0.2);
+		line-height: 1.6;
+		font-size: var(--font-size-md);
 	}
 	
 	/* Projects Section Styles */
 	.projects-section {
-		grid-column: 1 / -1; /* Full width */
+		width: 100%;
 	}
 	
 	.projects-grid {
@@ -632,9 +395,18 @@ const techCategories = technologyExpertise.categories || [];
 	/* Tablet Styles */
 	@media (min-width: 769px) and (max-width: 1024px) {
 		.about-content {
-			max-width: 1200px;
-			grid-template-columns: repeat(3, 1fr);
+			max-width: 800px;
+		}
+		
+		.competency-row,
+		.advantage-row {
+			flex-direction: column;
+			text-align: center;
 			gap: var(--spacing-md);
+		}
+		
+		.advantage-icon {
+			align-self: center;
 		}
 	}
 	
@@ -644,50 +416,43 @@ const techCategories = technologyExpertise.categories || [];
 		}
 		
 		.about-content {
-			grid-template-columns: 1fr;
-			gap: var(--spacing-xl);
+			gap: var(--spacing-2xl);
 		}
 		
-		.card-header {
-			padding: var(--spacing-lg);
-		}
-		
-		.card-content {
-			padding: var(--spacing-lg);
-		}
-		
-		.card-header h3 {
+		.section-subtitle {
 			font-size: var(--font-size-xl);
 		}
-
-		/* Mobile Horizontal Timeline */
-		.horizontal-timeline {
-			padding: 60px 0;
-			overflow-x: auto;
+		
+		.competency-row,
+		.advantage-row {
+			flex-direction: column;
+			text-align: center;
+			gap: var(--spacing-md);
+			padding: var(--spacing-lg);
 		}
-
-		.timeline-events {
-			min-width: 600px;
-			padding: 0 var(--spacing-lg);
+		
+		.advantage-icon {
+			align-self: center;
 		}
-
-		.timeline-card {
-			max-width: 140px;
-			padding: var(--spacing-md);
+		
+		.competency-details h4,
+		.advantage-details h4 {
+			font-size: var(--font-size-lg);
 		}
-
-		.timeline-card h4 {
-			font-size: var(--font-size-sm);
+		
+		.skills-icons {
+			justify-content: center;
+			gap: var(--spacing-md);
 		}
-
-		.timeline-card p {
-			font-size: 0.75rem;
+		
+		.skill-icon-item {
+			width: 50px;
+			height: 50px;
+			padding: var(--spacing-sm);
 		}
-
-		.timeline-circle {
-			width: 40px;
-			height: 40px;
-			font-size: 0.75rem;
+		
+		.skill-icon-item span[class^="icon-"] {
+			font-size: 1.5rem;
 		}
 	}
 </style>

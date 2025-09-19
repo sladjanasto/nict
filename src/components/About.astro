@@ -59,7 +59,6 @@ const advantages = aboutData.advantages || [];
 			<div class="competencies-grid">
 				{coreCompetencies.map((competency: any) => (
 					<div class="competency-card">
-						<div class="competency-icon">{competency.icon}</div>
 						<h4>{competency.title}</h4>
 						<ul class="competency-list">
 							{competency.skills.map((skill: string) => (
@@ -239,10 +238,6 @@ const advantages = aboutData.advantages || [];
 		box-shadow: var(--shadow-lg);
 	}
 	
-	.competency-icon {
-		font-size: 3rem;
-		margin-bottom: var(--spacing-lg);
-	}
 	
 	.competency-card h4 {
 		font-family: var(--font-headings);

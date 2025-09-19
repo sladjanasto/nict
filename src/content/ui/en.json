@@ -239,7 +239,13 @@
         {
           "icon": "📊",
           "title": "IT Management",
-          "skills": ["Team Leadership", "Project Management", "ITIL", "Agile"]
+          "skills": [
+            "Team Leadership",
+            "Project Management",
+            "ITIL V4",
+            "Scrum Master",
+            "AI Manager"
+          ]
         }
       ]
     },

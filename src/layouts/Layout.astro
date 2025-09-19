@@ -15,7 +15,7 @@ const {
 	description = "Professional IT Expert - DevOps, Cloud Migration, AI Consulting, and Digital Solutions",
 	canonical = Astro.url.href,
 	ogImage = "/og-image.jpg",
-	lang = "sr",
+	lang = "en",
 	noindex = false
 } = Astro.props;
 
@@ -43,7 +43,7 @@ const siteName = "IT Expert Portfolio";
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={new URL(ogImage, domain).href} />
 		<meta property="og:site_name" content={siteName} />
-		<meta property="og:locale" content={lang === 'sr' ? 'sr_RS' : lang === 'en' ? 'en_US' : 'de_DE'} />
+		<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'de_DE'} />
 		
 		{/* Twitter */}
 		<meta property="twitter:card" content="summary_large_image" />

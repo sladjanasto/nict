@@ -15,10 +15,6 @@ const ui = await getUITranslations(lang);
 
 // SEO data based on language
 const seoData = {
-	sr: {
-		title: "IT Expert - Strateško IT vođstvo i digitalna transformacija",
-		description: "Profesionalne IT usluge: Interim Management, Cloud Migracija, AI Konsalting, IT Operacije i SEO optimizacija. Transformišemo vaš biznis kroz tehnologiju."
-	},
 	en: {
 		title: "IT Expert - Strategic IT Leadership & Digital Transformation", 
 		description: "Professional IT services: Interim Management, Cloud Migration, AI Consulting, IT Operations and SEO optimization. Transforming your business through technology."
@@ -29,7 +25,7 @@ const seoData = {
 	}
 };
 
-const currentSeo = seoData[lang as keyof typeof seoData] || seoData.sr;
+const currentSeo = seoData[lang as keyof typeof seoData] || seoData.en;
 ---
 
 <Layout 

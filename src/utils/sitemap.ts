@@ -1,5 +1,5 @@
 // Sitemap utilities for multi-language support
-export const languages = ["sr", "en", "de"];
+export const languages = ["en", "de"];
 
 export const routes = [
   {
@@ -21,8 +21,8 @@ export const generateSitemapUrls = (baseUrl: string) => {
   for (const lang of languages) {
     for (const route of routes) {
       const url = route.path
-        ? `${baseUrl}/${lang === "sr" ? "" : lang + "/"}${route.path}`
-        : `${baseUrl}/${lang === "sr" ? "" : lang + "/"}`;
+        ? `${baseUrl}/${lang === "en" ? "" : lang + "/"}${route.path}`
+        : `${baseUrl}/${lang === "en" ? "" : lang + "/"}`;
 
       urls.push({
         url: url.replace(/\/+/g, "/").replace(/\/$/, "") || baseUrl,

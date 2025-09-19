@@ -24,7 +24,7 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
-    lang: z.enum(["sr", "en", "de"]),
+    lang: z.enum(["en", "de"]),
     section: z.enum(["hero", "about", "services", "portfolio", "contact"]),
     order: z.number().optional(),
   }),

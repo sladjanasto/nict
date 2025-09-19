@@ -4,7 +4,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://yourdomainhere.com", // Replace with your actual domain
+  site: "https://nict-sladjanasto.vercel.app",
   integrations: [sitemap()],
   i18n: {
     defaultLocale: "en",

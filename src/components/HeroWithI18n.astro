@@ -44,23 +44,6 @@ const heroQuestions = ui.hero?.questions || [
 					</span>
 				</p>
 				
-				<div class="hero-promise">
-					<h3 class="promise-title">{ui.hero?.promiseTitle || 'Our Promise'}</h3>
-					<div class="promise-items">
-						<div class="promise-item">
-							<span class="promise-icon">✓</span>
-							{ui.hero?.promises?.[0] || 'Quality guaranteed'}
-						</div>
-						<div class="promise-item">
-							<span class="promise-icon">✓</span>
-							{ui.hero?.promises?.[1] || 'On-time delivery'}
-						</div>
-						<div class="promise-item">
-							<span class="promise-icon">✓</span>
-							{ui.hero?.promises?.[2] || 'Ongoing support'}
-						</div>
-					</div>
-				</div>
 				
 				<p class="hero-closing">{ui.hero?.closing || 'Ready to transform your digital presence?'}</p>
 				
@@ -70,7 +53,7 @@ const heroQuestions = ui.hero?.questions || [
 					</a>
 					<a href="#services" class="btn-link btn-link-gradient">
 						{ui.buttons?.learnMore || 'Learn More'}
-						<i class="icon icon-arrow-right"></i>
+						<i class="icon-arrow-right"></i>
 					</a>
 				</div>
 			</div>
@@ -235,10 +218,6 @@ const heroQuestions = ui.hero?.questions || [
 		width: 100%;
 	}
 	
-	.hero-promise {
-		margin-bottom: var(--spacing-xl);
-		transition: all 0.4s ease-in-out;
-	}
 	
 	.promise-title {
 		font-family: var(--font-headings);
@@ -283,10 +262,10 @@ const heroQuestions = ui.hero?.questions || [
 	
 	.hero-closing {
 		font-family: var(--font-headings);
-		font-size: 1.25rem;
-		font-weight: 100;
+		font-size: 1.5rem;
+		font-weight: 200;
 		color: var(--text-dark);
-		text-align: center;
+		text-align: left;
 		margin: 0;
 		font-style: italic;
 		transition: opacity 0.4s ease-in-out;
@@ -298,7 +277,7 @@ const heroQuestions = ui.hero?.questions || [
 		flex-wrap: wrap;
 		margin-top: var(--spacing-xl);
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
 	}
 	
 	.btn-primary {

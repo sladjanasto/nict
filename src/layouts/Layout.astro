@@ -554,22 +554,32 @@ const siteName = "IT Expert Portfolio";
 		height: 3px;
 	}
 	
-	:global(.btn-link .icon) {
+	:global(.btn-link .icon),
+	:global(.btn-link [class^="icon-"]) {
 		font-size: var(--font-size-sm);
 		transition: transform var(--transition-normal);
 	}
 	
-	:global(.btn-link:hover .icon) {
+	:global(.btn-link:hover .icon),
+	:global(.btn-link:hover [class^="icon-"]) {
 		transform: translateX(3px);
 	}
 	
 	/* Variant with gradient text */
 	:global(.btn-link-gradient) {
+		color: var(--primary-color); /* Fallback color */
 		background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
 		background-clip: text;
 		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		color: transparent !important;
+		/* -webkit-text-fill-color: transparent; */
+	}
+	
+	/* Fallback for browsers that don't support background-clip */
+	@supports not (background-clip: text) {
+		:global(.btn-link-gradient) {
+			color: var(--primary-color) !important;
+			-webkit-text-fill-color: initial;
+		}
 	}
 	
 	:global(.btn-link-gradient:hover) {
@@ -581,6 +591,13 @@ const siteName = "IT Expert Portfolio";
 	
 	:global(.btn-link-gradient::after) {
 		background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+	}
+	
+	/* Ensure icons in gradient buttons are visible */
+	:global(.btn-link-gradient .icon),
+	:global(.btn-link-gradient [class^="icon-"]) {
+		color: var(--primary-color) !important;
+		-webkit-text-fill-color: var(--primary-color) !important;
 	}
 	
 	/* Toggle Button Icon Animation */

@@ -278,82 +278,119 @@
     "viewProject": "View Project",
     "projects": [
       {
-        "title": "Interim Management: Transformation Leadership",
+        "title": "INTERIM MANAGEMENT: Transformation Leadership",
         "industry": "HR Services",
         "icon": "🎖️",
-        "period": "2023-2024",
-        "description": "Strategic IT leadership during reorganization and digital transformation for 2,000-employee organization as Interim CTO.",
+        "position": "Interim CTO",
+        "duration": "12 Months",
+        "challenge": "Company needed strategic IT leadership during reorganization and digital transformation for 2,000-employee organization.",
+        "leadershipTasks": [
+          "Strategic planning and IT roadmap development for 2,000-employee organization",
+          "Business development: Alignment of IT strategy with business objectives",
+          "Leadership & team management: Leading global IT team through transformation phase",
+          "Coaching & mentoring: Development of IT leadership level",
+          "Concept development: Implementation of ISO 27001 compliance framework"
+        ],
         "results": [
-          "Successful ISO 27001 certification preparation",
-          "24/7 Security Operations Center integration",
+          "Successful preparation for ISO 27001 certification",
+          "Security Operations Center integration with 24/7 monitoring",
           "Mobile device management for 2,000 endpoints",
-          "ITIL V4 service delivery implementation",
-          "Team stabilization and strategic realignment"
-        ]
+          "Improved service delivery following ITIL V4 principles",
+          "Strengthened IT organization for sustainable growth"
+        ],
+        "leadershipImpact": "Team stabilization, process optimization, strategic realignment"
       },
       {
-        "title": "Digital Transformation: Cloud-First Migration",
+        "title": "DIGITAL TRANSFORMATION: Cloud-First Migration",
         "industry": "HR Services",
         "icon": "🚀",
-        "period": "2022-2024",
-        "description": "Complete migration from legacy on-premise infrastructure to Microsoft 365 and Azure Cloud for 2,000 employees.",
+        "size": "2,000 Employees",
+        "duration": "18 Months",
+        "challenge": "Legacy on-premise infrastructure, decentralized systems, high operational costs",
+        "solution": [
+          "Complete migration to Microsoft 365 and Azure Cloud",
+          "Implementation of Azure Virtual Desktop with Infrastructure-as-Code",
+          "Integration of Microsoft Teams as central collaboration platform",
+          "Hybrid Active Directory setup for seamless user experience"
+        ],
         "results": [
           "60% cost reduction in IT operations",
           "99.98% availability through geo-redundant datacenters",
           "Scalable infrastructure for global growth",
-          "Modern 'Work from Anywhere' capability"
+          "Modern workplaces with 'Work from Anywhere' capability"
         ]
       },
       {
-        "title": "Infrastructure Consolidation: Datacenter Migration",
+        "title": "INFRASTRUCTURE CONSOLIDATION: 5-to-2 Datacenter Migration",
         "industry": "HR Services",
         "icon": "💰",
-        "period": "2022-2024",
-        "description": "Strategic consolidation from 5 European server locations to 2 geo-redundant high-security datacenters.",
+        "size": "2,000 Employees",
+        "duration": "18 Months",
+        "challenge": "5 European server housing locations with performance and security issues",
+        "solution": [
+          "Strategic consolidation to 2 geo-redundant high-security datacenters",
+          "Migration of critical systems without downtime",
+          "Implementation of 99.98% SLA standards"
+        ],
         "results": [
           "40% cost savings with improved performance",
-          "Zero downtime migration of critical systems",
-          "99.98% SLA standards implementation",
+          "Simplified management and monitoring",
           "Enhanced security and compliance"
         ]
       },
       {
-        "title": "Communication Modernization: VoIP Transformation",
+        "title": "COMMUNICATION MODERNIZATION: VoIP Transformation",
         "industry": "HR Services",
         "icon": "📞",
-        "period": "2008",
-        "description": "Modernization of 50 decentralized telephone systems into central VoIP solution with unified numbering.",
-        "results": [
-          "82% cost reduction (€259,740 to €46,800 annually)",
+        "locations": "50 Locations",
+        "costSavings": "82%",
+        "challenge": "50 decentralized telephone systems, annual costs €259,740",
+        "solution": [
+          "Central VoIP solution with redundant connectivity",
           "Austria-wide unified phone number",
+          "Integration into modern IT landscape"
+        ],
+        "results": [
+          "Reduction of annual costs to €46,800 (82% savings)",
           "Modern features and central management",
-          "Crisis resilience during 2008 financial crisis"
+          "Crisis resilience through strategic timing (2008 financial crisis)"
         ]
       },
       {
-        "title": "Security Enhancement: SOC Implementation",
+        "title": "SECURITY ENHANCEMENT: SOC Implementation",
         "industry": "HR Services",
         "icon": "🛡️",
-        "period": "2023",
-        "description": "Implementation of 24/7 Security Operations Center with incident response processes and monitoring integration.",
+        "monitoring": "24/7 Monitoring",
+        "duration": "12 Months",
+        "challenge": "Increased cyber threats, limited internal security resources",
+        "solution": [
+          "Tender and selection of 24/7 Security Operations Center",
+          "Incident response processes",
+          "Integration into existing IT landscape"
+        ],
         "results": [
-          "24/7/365 security monitoring coverage",
+          "24/7/365 security monitoring",
           "Significant reduction of false positives",
-          "Enhanced compliance readiness",
-          "Relief of internal IT teams"
+          "Relief of internal IT teams",
+          "Enhanced compliance readiness"
         ]
       },
       {
-        "title": "IT Service Management: ITSM Transformation",
+        "title": "IT SERVICE MANAGEMENT: ITSM Transformation",
         "industry": "HR Services",
         "icon": "🔧",
-        "period": "2022-2024",
-        "description": "Complete ITSM transformation with Atlassian-based suite, ITIL V4 processes, and CMDB implementation.",
+        "framework": "ITIL V4",
+        "duration": "18 Months",
+        "challenge": "Classic ticketing without CMDB or structured processes",
+        "solution": [
+          "Implementation of Atlassian-based ITSM suite",
+          "ITIL V4 training and process introduction",
+          "Configuration Management Database (CMDB) setup"
+        ],
         "results": [
           "Structured problem and change management",
-          "Complete asset transparency through CMDB",
-          "Improved service quality and speed",
-          "ITIL V4 compliance and training"
+          "Complete asset transparency",
+          "Improved service quality and speed"
         ]
       }
     ],

@@ -31,14 +31,20 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 		
 		<div class="projects-grid" id="projectsGrid">
 			{projects.map((project: any, index: number) => (
-				<div class={`project-card ${index === 0 ? 'featured' : ''} ${index > 2 ? 'hidden' : ''}`} data-project-index={index}>
+				<div class={`project-card ${index > 2 ? 'hidden' : ''}`} data-project-index={index}>
 					<div class="project-header">
+						<div class="project-icon">{project.icon}</div>
 						<div class="project-meta">
 							<h3>{project.title}</h3>
 							<div class="project-details">
 								<span class="industry">{project.industry}</span>
-								<span class="position">{project.position}</span>
-								<span class="duration">{project.duration}</span>
+								{project.position && <span class="position">{project.position}</span>}
+								{project.size && <span class="size">{project.size}</span>}
+								{project.locations && <span class="locations">{project.locations}</span>}
+								{project.monitoring && <span class="monitoring">{project.monitoring}</span>}
+								{project.framework && <span class="framework">{project.framework}</span>}
+								{project.duration && <span class="duration">{project.duration}</span>}
+								{project.costSavings && <span class="cost-savings">{project.costSavings} Cost Savings</span>}
 							</div>
 						</div>
 					</div>
@@ -47,6 +53,29 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 							<h4>{portfolioData.challenge || 'Challenge'}:</h4>
 							<p>{project.challenge}</p>
 						</div>
+						
+						{project.leadershipTasks && (
+							<div class="leadership-tasks">
+								<h4>Leadership Tasks:</h4>
+								<ul class="tasks-list">
+									{project.leadershipTasks.map((task: string) => (
+										<li>{task}</li>
+									))}
+								</ul>
+							</div>
+						)}
+						
+						{project.solution && (
+							<div class="solution">
+								<h4>Solution:</h4>
+								<ul class="solution-list">
+									{project.solution.map((item: string) => (
+										<li>{item}</li>
+									))}
+								</ul>
+							</div>
+						)}
+						
 						<div class="results">
 							<h4>{portfolioData.results || 'Results'}:</h4>
 							<ul class="results-list">
@@ -55,6 +84,13 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 								))}
 							</ul>
 						</div>
+						
+						{project.leadershipImpact && (
+							<div class="leadership-impact">
+								<h4>Leadership Impact:</h4>
+								<p class="impact-text">{project.leadershipImpact}</p>
+							</div>
+						)}
 					</div>
 				</div>
 			))}
@@ -136,9 +172,18 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 	}
 	
 	.project-header {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-lg);
 		margin-bottom: var(--spacing-lg);
 		padding-bottom: var(--spacing-lg);
 		border-bottom: 1px solid var(--border-light);
+	}
+	
+	.project-icon {
+		font-size: 2.5rem;
+		flex-shrink: 0;
+		margin-top: 0.2rem;
 	}
 	
 	.project-meta h3 {
@@ -165,13 +210,34 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 		font-weight: 500;
 	}
 	
+	.project-details .cost-savings {
+		background: #22c55e;
+		color: white;
+	}
+	
+	.project-details .monitoring {
+		background: #f59e0b;
+		color: white;
+	}
+	
+	.project-details .framework {
+		background: #8b5cf6;
+		color: white;
+	}
+	
 	.project-content .challenge,
-	.project-content .results {
+	.project-content .leadership-tasks,
+	.project-content .solution,
+	.project-content .results,
+	.project-content .leadership-impact {
 		margin-bottom: var(--spacing-lg);
 	}
 	
 	.project-content .challenge:last-child,
-	.project-content .results:last-child {
+	.project-content .leadership-tasks:last-child,
+	.project-content .solution:last-child,
+	.project-content .results:last-child,
+	.project-content .leadership-impact:last-child {
 		margin-bottom: 0;
 	}
 	
@@ -196,7 +262,9 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 		margin: 0;
 	}
 	
-	.results-list li {
+	.results-list li,
+	.tasks-list li,
+	.solution-list li {
 		font-size: var(--font-size-md);
 		line-height: 1.6;
 		color: var(--text-muted);
@@ -215,8 +283,49 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 		font-size: var(--font-size-md);
 	}
 	
-	.results-list li:last-child {
+	.tasks-list,
+	.solution-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	
+	.tasks-list li::before {
+		content: '▸';
+		position: absolute;
+		left: 0;
+		top: 0;
+		color: #2566cf;
+		font-weight: bold;
+		font-size: var(--font-size-md);
+	}
+	
+	.solution-list li::before {
+		content: '⚡';
+		position: absolute;
+		left: 0;
+		top: 0;
+		color: #1aeae2;
+		font-weight: bold;
+		font-size: var(--font-size-md);
+	}
+	
+	.results-list li:last-child,
+	.tasks-list li:last-child,
+	.solution-list li:last-child {
 		margin-bottom: 0;
+	}
+	
+	.impact-text {
+		font-size: var(--font-size-md);
+		line-height: 1.6;
+		color: var(--text-muted);
+		font-style: italic;
+		background: var(--bg-secondary);
+		padding: var(--spacing-sm) var(--spacing-md);
+		border-radius: var(--radius-sm);
+		border-left: 3px solid #1aeae2;
+		margin: 0;
 	}
 	
 	.projects-controls {
@@ -250,6 +359,10 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 			align-items: center;
 			text-align: center;
 			gap: var(--spacing-sm);
+		}
+		
+		.project-icon {
+			font-size: 2rem;
 		}
 		
 		.project-meta h3 {

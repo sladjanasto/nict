@@ -73,7 +73,7 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 
 <style>
 	.projects {
-		background: var(--bg-white);
+		background: var(--bg-secondary);
 		padding: var(--spacing-xxl) 0;
 	}
 	
@@ -108,9 +108,10 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 	}
 	
 	.projects-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-		gap: var(--spacing-xl);
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.5rem;
 		margin-bottom: var(--spacing-3xl);
 	}
 	
@@ -120,28 +121,13 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 		box-shadow: var(--shadow-md);
 		padding: var(--spacing-xl);
 		transition: all var(--transition-normal);
-		border: 1px solid var(--border-light);
 		position: relative;
 		overflow: hidden;
+		width:25%;
 	}
 	
 	.project-card.hidden {
 		display: none;
-	}
-	
-	.project-card.featured {
-		border: 2px solid #1d96d5;
-		box-shadow: var(--shadow-lg);
-	}
-	
-	.project-card.featured::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 4px;
-		background: var(--bg-gradient);
 	}
 	
 	.project-card:hover {

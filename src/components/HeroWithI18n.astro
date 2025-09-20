@@ -96,14 +96,15 @@ const heroQuestions = ui.hero?.questions || [
 		align-items: center;
 		position: relative;
 		z-index: 2;
-		max-width: 900px;
+		width:1400px
+		/* max-width: 900px;
 		margin: 0 auto;
-		padding: 0 500px 0 0;
+		padding: 0 500px 0 0; */
 	}
 	
 	.hero-text {
 		text-align: center;
-		width: 100%;
+		/* width: 100%; */
 		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
@@ -311,6 +312,12 @@ const heroQuestions = ui.hero?.questions || [
 		color: var(--text-white);
 		transform: translateY(-2px);
 	}
+	@media (min-width: 769px) and (max-width: 1024px) {
+			.hero-content {
+			padding: 0;
+			width: auto;
+		}
+	}
 	
 	@media (max-width: 768px) {
 		.hero {
@@ -320,12 +327,14 @@ const heroQuestions = ui.hero?.questions || [
 		
 		.container {
 			padding: 0 var(--spacing-md);
+			width:1400px
 		}
 		
 		.hero-content {
 			padding: 0;
-			max-width: 100%;
+			width: auto;
 		}
+
 		
 		.hero-text {
 			text-align: center;

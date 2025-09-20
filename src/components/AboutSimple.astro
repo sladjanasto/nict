@@ -116,12 +116,16 @@ const techCategories = technologyExpertise.categories || [];
 				<div class="advantages-list">
 					{advantages.map((advantage: any) => (
 						<div class="advantage-row">
-							<div class="advantage-icon">
-								<span>{advantage.icon}</span>
-							</div>
 							<div class="advantage-details">
 								<h4>{advantage.title}</h4>
-								<p>{advantage.description}</p>
+								<div class="advantage-icons">
+									<div class="advantage-icon-item">
+										{advantage.icon === '🎯' && <span class="icon-user-tie"></span>}
+										{advantage.icon === '⚡' && <span class="icon-cogs"></span>}
+										{advantage.icon === '🔧' && <span class="icon-home"></span>}
+									</div>
+									<p class="advantage-description">{advantage.description}</p>
+								</div>
 							</div>
 						</div>
 					))}
@@ -204,6 +208,9 @@ const techCategories = technologyExpertise.categories || [];
 		display: flex;
 		flex-direction: row;
 		gap: var(--spacing-lg);
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
 	}
 	
 	.competency-row {
@@ -211,10 +218,11 @@ const techCategories = technologyExpertise.categories || [];
 		align-items: flex-start;
 		gap: var(--spacing-lg);
 		padding: 1rem;
-		background: var(--bg-secondary);
 		border-radius: 50%;
 		border: 1px solid var(--primary-color);
 		transition: all var(--transition-normal);
+		width:25%;
+		aspect-ratio: 1 / 1;
 	}
 	
 	.competency-row:hover {
@@ -231,16 +239,20 @@ const techCategories = technologyExpertise.categories || [];
 	.competency-details h4 {
 		font-family: var(--font-headings);
 		font-size: var(--font-size-xl);
-		font-weight: 600;
+		font-weight: 300;
 		color: var(--text-dark);
 		margin-bottom: var(--spacing-md);
+		text-align: center;
+		white-space: nowrap;
+		transform: translate(0px, -5rem);
 	}
 	
 	.skills-icons {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--spacing-lg);
-		justify-content: flex-start;
+		justify-content: center;
+		align-items: center;
+		transform: translate(0px, -2rem);
 	}
 	
 	.skill-icon-item {
@@ -251,14 +263,8 @@ const techCategories = technologyExpertise.categories || [];
 		transition: all var(--transition-normal);
 		width: 60px;
 		height: 60px;
-		cursor: pointer;
 	}
 	
-	.skill-icon-item:hover {
-		color: white;
-		transform: translateY(-4px) scale(1.1);
-		box-shadow: var(--shadow-lg);
-	}
 	
 	.skill-icon-item span[class^="icon-"] {
 		font-size: 2rem;
@@ -271,19 +277,23 @@ const techCategories = technologyExpertise.categories || [];
 	/* Key Advantages Linear Layout */
 	.advantages-list {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		gap: var(--spacing-lg);
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
 	}
 	
 	.advantage-row {
 		display: flex;
 		align-items: flex-start;
 		gap: var(--spacing-lg);
-		padding: var(--spacing-xl);
-		background: var(--bg-secondary);
-		border-radius: var(--radius-lg);
-		border-left: 4px solid var(--secondary-color);
+		padding: 10px;
+		border-radius:50%;
+		border: 1px solid var(--primary-color);
 		transition: all var(--transition-normal);
+		width: 25%;
+		aspect-ratio: 1 / 1;
 	}
 	
 	.advantage-row:hover {
@@ -292,30 +302,56 @@ const techCategories = technologyExpertise.categories || [];
 		background: var(--bg-white);
 	}
 	
-	.advantage-icon {
-		font-size: 3rem;
-		min-width: 60px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	
 	.advantage-details {
 		flex: 1;
+		text-align: center;
+		transform: translate(0px, -2rem);
 	}
 	
 	.advantage-details h4 {
 		font-family: var(--font-headings);
 		font-size: var(--font-size-xl);
-		font-weight: 600;
+		font-weight: 300;
 		color: var(--text-dark);
+		margin-bottom: var(--spacing-md);
+		    text-align: center;
+    white-space: nowrap;
+    transform: translate(0px, -3rem);
+	}
+	
+	.advantage-icons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--spacing-md);
+	}
+	
+	.advantage-icon-item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 60px;
+		height: 60px;
 		margin-bottom: var(--spacing-sm);
 	}
 	
-	.advantage-details p {
+	
+	.advantage-icon-item span[class^="icon-"] {
+		font-size: 2rem;
+		line-height: 1;
+		transition: all var(--transition-normal);
+		color: var(--secondary-color);
+	}
+	
+	.:hover span[class^="icon-"] {
+		color: white !important;
+	}
+	
+	.advantage-description {
 		color: var(--text-muted);
 		line-height: 1.6;
 		font-size: var(--font-size-md);
+		margin: 0;
 	}
 	
 	/* Projects Section Styles */
@@ -403,10 +439,7 @@ const techCategories = technologyExpertise.categories || [];
 			flex-direction: column;
 			text-align: center;
 			gap: var(--spacing-md);
-		}
-		
-		.advantage-icon {
-			align-self: center;
+			width:33%;
 		}
 	}
 	
@@ -429,9 +462,10 @@ const techCategories = technologyExpertise.categories || [];
 			text-align: center;
 			gap: var(--spacing-md);
 			padding: var(--spacing-lg);
+			width:50%;
 		}
 		
-		.advantage-icon {
+		.advantage-icons {
 			align-self: center;
 		}
 		
@@ -442,7 +476,6 @@ const techCategories = technologyExpertise.categories || [];
 		
 		.skills-icons {
 			justify-content: center;
-			gap: var(--spacing-md);
 		}
 		
 		.skill-icon-item {

@@ -19,15 +19,40 @@ const techCategories = technologyExpertise.categories || [];
 
 <section id="about" class="about section">
 	<div class="container">
-		<h2 class="section-title scroll-reveal">What makes us tick</h2>
+		<h2 class="section-title scroll-reveal">From Strategy to Steady State</h2>
 		
 		<div class="about-intro scroll-reveal">
 			<div class="experience-highlight">
-				<h3>20+ Years Hands-On Experience. Strategic Vision. Operational Excellence.</h3>
+				<h3>N-ICT — Drop IT on us. Technology + Marketing + Cost Control = Measurable Business Outcomes.</h3>
 			</div>
-			<p class="intro-text">
-				As an IT expert with over two decades of hands-on experience, I bring a unique combination of strategic foresight and operational depth. My career path led me from system administrator to senior global IT Manager role and finally to an independent IT service provider – a journey that enabled me to penetrate and understand every level of the IT landscape.
-			</p>
+			
+			<div class="intro-content">
+				<div class="intro-text-section">
+					<div class="intro-visual-section">
+					<p class="intro-text">
+						IT can quickly become "hot" — urgent, complex, and stressful. Drop your IT on us: we take the pressure off, cool the situation and deliver straightforward, durable solutions with serious expertise and a light touch. With 20+ years of hands-on IT & transformation experience, I deliver end-to-end solutions: strategy, AI transformation, implementation, SEO & growth, cloud & licensing cost optimization, and stable operations.
+					</p>
+					<div class="image-container leadership">
+						<img src="/download.jpg" alt="Lead Consultant" class="consultant-image" />
+					</div>
+</div>
+					<div class="intro-visual-section">
+					
+						
+					<div class="image-container collaboration">
+						<img src="/group.avif" alt="Strategic Partnerships" class="group-image" />
+					</div>
+					<p class="intro-text secondary">
+						What sets this approach apart: we combine technology, marketing and cost control into measurable business outcomes — more reach, lower costs, better uptime. Proven results include 30% infrastructure cost reductions, 25-35% Microsoft licensing savings, and operational stability achieving 99.9% SLA within 3 weeks. ISO/ITIL/Scrum competence with agile delivery ensures your technology investments actually create value.
+					</p>
+						</div>
+				</div>
+				
+			
+					
+					
+			
+			</div>
 		</div>
 		
 		<div class="about-content fade-in-up">
@@ -145,12 +170,79 @@ const techCategories = technologyExpertise.categories || [];
 		margin-bottom: var(--spacing-xxl);
 	}
 	
+	.intro-content {
+		display:flex;
+		gap: var(--spacing-3xl);
+		align-items: start;
+		margin-top: var(--spacing-xl);
+	}
+	
+	.intro-text-section {
+		text-align: left;
+		max-width: 1400px;
+		margin:0 auto;
+	}
+	
+	.intro-visual-section {
+		display: flex;
+		gap: var(--spacing-lg);
+		align-items: center;
+	}
+	
+	.image-container {
+		aspect-ratio: 4/3;
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		position: relative;
+		transition: all var(--transition-normal);
+		box-shadow: var(--shadow-md);
+	}
+	
+	.image-container:hover {
+		transform: translateY(-5px);
+		box-shadow: var(--shadow-lg);
+	}
+	
+	.image-container.leadership {
+		aspect-ratio: 1/1;
+		border-radius: 50%;
+		width:35rem;
+	}
+	
+	.consultant-image,
+	.group-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		transition: transform var(--transition-normal);
+	}
+	
+	.image-container:hover .consultant-image,
+	.image-container:hover .group-image {
+		transform: scale(1.05);
+	}
+	
+	.image-label {
+		color: var(--primary-color);
+		font-weight: 600;
+		font-size: var(--font-size-sm);
+		text-align: center;
+		padding: var(--spacing-sm);
+	}
+	
 	.intro-text {
 		font-size: var(--font-size-lg);
 		color: var(--text-muted);
-		max-width: 800px;
-		margin: 0 auto;
+		max-width: none;
+		margin: 0 0 var(--spacing-lg) 0;
 		line-height: 1.7;
+	}
+	
+	.intro-text.secondary {
+		font-size: var(--font-size-base);
+		color: var(--text-light);
+		font-style: italic;
 	}
 	
 	.experience-highlight {
@@ -323,6 +415,7 @@ white-space: nowrap;
 		flex: 1;
 		text-align: center;
 		transform: translate(0px, -2rem);
+		max-width:100%
 	}
 	
 	.advantage-details h4 {
@@ -450,6 +543,21 @@ white-space: nowrap;
 			max-width: 800px;
 		}
 		
+		.intro-content {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-xl);
+		}
+		
+		.intro-text-section {
+			text-align: center;
+		}
+		
+		.intro-visual-section {
+			flex-direction: row;
+			justify-content: center;
+			gap: var(--spacing-xl);
+		}
+		
 		.competency-row,
 		.advantage-row {
 			flex-direction: column;
@@ -462,6 +570,24 @@ white-space: nowrap;
 	@media (max-width: 768px) {
 		.experience-highlight h3 {
 			font-size: var(--font-size-lg);
+		}
+		
+		.intro-content {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-xl);
+		}
+		
+		.intro-text-section {
+			text-align: center;
+		}
+		
+		.intro-visual-section {
+			flex-direction: row;
+			justify-content: center;
+		}
+		
+		.image-container {
+			max-width: 150px;
 		}
 		
 		.about-content {
@@ -503,5 +629,4 @@ white-space: nowrap;
 			font-size: 1.5rem;
 		}
 	}
-</style>
 </style>

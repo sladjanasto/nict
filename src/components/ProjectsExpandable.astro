@@ -98,9 +98,10 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 		
 		{projects.length > 3 && (
 			<div class="projects-controls">
-				<button class="btn btn-secondary" id="showMoreBtn">
+				<button class="btn-link" id="showMoreBtn">
 					<span class="btn-text-show">Show More Projects</span>
 					<span class="btn-text-hide" style="display: none;">Show Less</span>
+					<i class="icon icon-arrow-down"></i>
 				</button>
 			</div>
 		)}
@@ -422,9 +423,11 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 			if (isExpanded) {
 				btnTextShow.style.display = 'none';
 				btnTextHide.style.display = 'inline';
+				showMoreBtn.classList.add('expanded');
 			} else {
 				btnTextShow.style.display = 'inline';
 				btnTextHide.style.display = 'none';
+				showMoreBtn.classList.remove('expanded');
 			}
 			
 			// Smooth scroll to maintain position

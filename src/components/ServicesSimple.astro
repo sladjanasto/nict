@@ -209,9 +209,10 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 				
 				<div class="service-cta">
-					<button class="btn btn-secondary packages-toggle-btn" id="seoPackagesToggle">
+					<button class="btn-link" id="seoPackagesToggle">
 						<span class="toggle-text-show">{ui.services.explorePackages}</span>
 						<span class="toggle-text-hide" style="display: none;">{ui.services.hideExplorePackages}</span>
+						<i class="icon icon-arrow-down"></i>
 					</button>
 				</div>
 			</div>
@@ -310,7 +311,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		/* padding-top: 20px; */
 	}
 	
-	.service-cta .btn {
+	.service-cta .btn:not(.btn-link) {
 		font-size: var(--font-size-sm);
 		padding: 12px 24px;
 		width: 100%;
@@ -467,7 +468,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			color: #22c55e;
 		}
 		
-		.service-cta .btn {
+		.service-cta .btn:not(.btn-link) {
 			font-size: 13px;
 			padding: 10px 20px;
 		}
@@ -480,8 +481,8 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		border-top: 1px solid var(--border-light);
 	}
 	
-	.packages-toggle .btn,
-	.packages-toggle-btn {
+	.packages-toggle .btn:not(.btn-link),
+	.packages-toggle-btn:not(.btn-link) {
 		background: var(--bg-gradient);
 		color: white;
 		border: none;
@@ -490,8 +491,8 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		width: 100%;
 	}
 	
-	.packages-toggle .btn:hover,
-	.packages-toggle-btn:hover {
+	.packages-toggle .btn:not(.btn-link):hover,
+	.packages-toggle-btn:not(.btn-link):hover {
 		transform: translateY(-2px);
 		box-shadow: var(--shadow-lg);
 	}
@@ -516,6 +517,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				packagesSection.classList.add('packages-visible');
 				toggleTextShow.style.display = 'none';
 				toggleTextHide.style.display = 'inline';
+				seoPackagesToggle.classList.add('expanded');
 				
 				// Smooth scroll to packages section
 				setTimeout(() => {
@@ -529,6 +531,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				packagesSection.classList.add('packages-hidden');
 				toggleTextShow.style.display = 'inline';
 				toggleTextHide.style.display = 'none';
+				seoPackagesToggle.classList.remove('expanded');
 				
 				// Scroll back to services section
 				const servicesSection = document.getElementById('services');

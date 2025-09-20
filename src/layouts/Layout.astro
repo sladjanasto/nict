@@ -509,6 +509,90 @@ const siteName = "IT Expert Portfolio";
 		box-shadow: var(--shadow-lg);
 	}
 	
+	/* Underlined Link Buttons - Global Style */
+	:global(.btn-link) {
+		display: inline-flex !important;
+		align-items: center;
+		gap: var(--spacing-xs, 0.5rem);
+		color: var(--primary-color, #1aeae2) !important;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: var(--font-size-base, 1rem) !important;
+		position: relative;
+		padding: var(--spacing-xs, 0.5rem) 0 !important;
+		border: none !important;
+		background: transparent !important;
+		cursor: pointer;
+		transition: all var(--transition-normal, 0.3s ease);
+		width: auto !important;
+	}
+	
+	:global(.btn-link::after) {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: linear-gradient(135deg, var(--primary-color, #1aeae2) 0%, var(--secondary-color, #2566cf) 100%);
+		transform: scaleX(1);
+		transform-origin: left;
+		transition: all var(--transition-normal, 0.3s ease);
+	}
+	
+	:global(.btn-link:hover) {
+		color: var(--secondary-color, #2566cf) !important;
+		transform: translateY(-1px);
+	}
+	:global(.btn-link:focus-visible){
+		outline:none;
+	}
+	
+	:global(.btn-link:hover::after) {
+		transform: scaleX(1.05);
+		background: linear-gradient(135deg, var(--secondary-color, #2566cf) 0%, var(--gradient-mid-blue, #1d96d5) 100%);
+		height: 3px;
+	}
+	
+	:global(.btn-link .icon) {
+		font-size: var(--font-size-sm);
+		transition: transform var(--transition-normal);
+	}
+	
+	:global(.btn-link:hover .icon) {
+		transform: translateX(3px);
+	}
+	
+	/* Variant with gradient text */
+	:global(.btn-link-gradient) {
+		background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent !important;
+	}
+	
+	:global(.btn-link-gradient:hover) {
+		background: linear-gradient(135deg, var(--secondary-color) 0%, var(--gradient-mid-blue) 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	
+	:global(.btn-link-gradient::after) {
+		background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+	}
+	
+	/* Toggle Button Icon Animation */
+	:global(.btn-link.expanded .icon) {
+		transform: rotate(180deg);
+	}
+	
+	:global(.btn-link .icon.icon-arrow-down),
+	:global(.btn-link .icon.icon-arrow-up) {
+		transition: transform var(--transition-normal);
+	}
+	
 	.grid {
 		display: grid;
 		gap: var(--spacing-xl);

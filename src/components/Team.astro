@@ -319,15 +319,25 @@
 	.testimonial-slider {
 		position: relative;
 		overflow: hidden;
+		min-height: 400px;
 	}
 	
 	.testimonial-slide {
-		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
 		text-align: center;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(20px);
+		transition: all 0.5s ease-in-out;
 	}
 	
 	.testimonial-slide.active {
-		display: block;
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
 	}
 	
 	.testimonial-author {
@@ -358,7 +368,7 @@
 	}
 	
 	.testimonial-text {
-		font-size: 1.1rem;
+		font-size: 1.4rem;
 		line-height: 1.8;
 		color: #2c3e50;
 		font-style: italic;
@@ -424,6 +434,10 @@
 			padding: 40px 20px;
 		}
 		
+		.testimonial-slider {
+			min-height: 350px;
+		}
+		
 		.testimonial-navigation {
 			left: -10px;
 			right: -10px;
@@ -448,54 +462,83 @@
 </style>
 
 <script>
-	// Testimonial slider functionality
-	let currentTestimonial = 0;
-	const testimonials = document.querySelectorAll('.testimonial-slide');
-	const totalTestimonials = testimonials.length;
-	
-	function showTestimonial(index: number) {
-		testimonials.forEach(slide => slide.classList.remove('active'));
-		testimonials[index].classList.add('active');
-	}
-	
-	function nextTestimonial() {
-		currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
-		showTestimonial(currentTestimonial);
-	}
-	
-	function prevTestimonial() {
-		currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
-		showTestimonial(currentTestimonial);
-	}
-	
-	// Event listeners
-	document.getElementById('next-testimonial')?.addEventListener('click', nextTestimonial);
-	document.getElementById('prev-testimonial')?.addEventListener('click', prevTestimonial);
-	
-	// Auto-advance testimonials
-	setInterval(nextTestimonial, 8000);
-	
-	// Animation on scroll
-	const observerOptions = {
-		threshold: 0.1,
-		rootMargin: '0px 0px -50px 0px'
-	};
-	
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				(entry.target as HTMLElement).style.opacity = '1';
-				(entry.target as HTMLElement).style.transform = 'translateY(0)';
+	function initTestimonialSlider() {
+		// Testimonial slider functionality
+		let currentTestimonial = 0;
+		const testimonials = document.querySelectorAll('.testimonial-slide');
+		const totalTestimonials = testimonials.length;
+		
+		console.log('Found testimonials:', totalTestimonials); // Debug
+		console.log('Testimonials array:', testimonials); // Debug
+		
+		if (totalTestimonials === 0) {
+			console.log('No testimonials found!');
+			return;
+		}
+		
+		function showTestimonial(index: number) {
+			console.log('Showing testimonial:', index, 'of', totalTestimonials); // Debug
+			testimonials.forEach((slide, i) => {
+				slide.classList.remove('active');
+				console.log(`Slide ${i} active:`, slide.classList.contains('active'));
+			});
+			if (testimonials[index]) {
+				testimonials[index].classList.add('active');
+				console.log(`Slide ${index} is now active:`, testimonials[index].classList.contains('active'));
 			}
+		}
+		
+		function nextTestimonial() {
+			currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+			showTestimonial(currentTestimonial);
+		}
+		
+		function prevTestimonial() {
+			currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
+			showTestimonial(currentTestimonial);
+		}
+		
+		// Event listeners
+		const nextBtn = document.getElementById('next-testimonial');
+		const prevBtn = document.getElementById('prev-testimonial');
+		
+		console.log('Next button:', nextBtn);
+		console.log('Prev button:', prevBtn);
+		
+		if (nextBtn) nextBtn.addEventListener('click', nextTestimonial);
+		if (prevBtn) prevBtn.addEventListener('click', prevTestimonial);
+		
+		// Auto-advance testimonials
+		setInterval(nextTestimonial, 8000);
+		
+		// Animation on scroll
+		const observerOptions = {
+			threshold: 0.1,
+			rootMargin: '0px 0px -50px 0px'
+		};
+		
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					(entry.target as HTMLElement).style.opacity = '1';
+					(entry.target as HTMLElement).style.transform = 'translateY(0)';
+				}
+			});
+		}, observerOptions);
+		
+		// Observe member cards and value cards
+		const animatedElements = document.querySelectorAll('.member-card, .value-card');
+		animatedElements.forEach((element, index) => {
+			(element as HTMLElement).style.opacity = '0';
+			(element as HTMLElement).style.transform = 'translateY(30px)';
+			(element as HTMLElement).style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+			observer.observe(element);
 		});
-	}, observerOptions);
+	}
 	
-	// Observe member cards and value cards
-	const animatedElements = document.querySelectorAll('.member-card, .value-card');
-	animatedElements.forEach((element, index) => {
-		(element as HTMLElement).style.opacity = '0';
-		(element as HTMLElement).style.transform = 'translateY(30px)';
-		(element as HTMLElement).style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-		observer.observe(element);
-	});
+	// Initialize on DOM ready
+	document.addEventListener('DOMContentLoaded', initTestimonialSlider);
+	
+	// Initialize on Astro page transitions
+	document.addEventListener('astro:page-load', initTestimonialSlider);
 </script>

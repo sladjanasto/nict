@@ -33,9 +33,9 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 			{projects.map((project: any, index: number) => (
 				<div class={`project-card ${index > 2 ? 'hidden' : ''}`} data-project-index={index}>
 					<div class="project-header">
-						<div class="project-icon">{project.icon}</div>
 						<div class="project-meta">
-							<h3>{project.title}</h3>
+							<h3 class="project-main-title">{project.title}</h3>
+							{project.subtitle && <h4 class="project-subtitle">{project.subtitle}</h4>}
 							<div class="project-details">
 								<span class="industry">{project.industry}</span>
 								{project.position && <span class="position">{project.position}</span>}
@@ -50,13 +50,13 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 					</div>
 					<div class="project-content">
 						<div class="challenge">
-							<h4>{portfolioData.challenge || 'Challenge'}:</h4>
+							<h4>{portfolioData.challenge || 'Challenge'}</h4>
 							<p>{project.challenge}</p>
 						</div>
 						
 						{project.leadershipTasks && (
 							<div class="leadership-tasks">
-								<h4>Leadership Tasks:</h4>
+								<h4>Leadership Tasks</h4>
 								<ul class="tasks-list">
 									{project.leadershipTasks.map((task: string) => (
 										<li>{task}</li>
@@ -67,7 +67,7 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 						
 						{project.solution && (
 							<div class="solution">
-								<h4>Solution:</h4>
+								<h4>Solution</h4>
 								<ul class="solution-list">
 									{project.solution.map((item: string) => (
 										<li>{item}</li>
@@ -77,7 +77,7 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 						)}
 						
 						<div class="results">
-							<h4>{portfolioData.results || 'Results'}:</h4>
+							<h4>{portfolioData.results || 'Results'}</h4>
 							<ul class="results-list">
 								{(project.results || []).map((result: string) => (
 									<li>{result}</li>
@@ -87,7 +87,7 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 						
 						{project.leadershipImpact && (
 							<div class="leadership-impact">
-								<h4>Leadership Impact:</h4>
+								<h4>Leadership Impact</h4>
 								<p class="impact-text">{project.leadershipImpact}</p>
 							</div>
 						)}
@@ -149,6 +149,8 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 		justify-content: center;
 		gap: 0.5rem;
 		margin-bottom: var(--spacing-3xl);
+		max-width:1400px;
+		margin:0% auto;
 	}
 	
 	.project-card {
@@ -175,8 +177,7 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 		display: flex;
 		align-items: flex-start;
 		gap: var(--spacing-lg);
-		margin-bottom: var(--spacing-lg);
-		padding-bottom: var(--spacing-lg);
+		margin-bottom: 1rem;
 		border-bottom: 1px solid var(--border-light);
 	}
 	
@@ -190,24 +191,34 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 		font-family: var(--font-headings);
 		font-size: var(--font-size-xl);
 		font-weight: 600;
-		color: #1d96d5;
-		margin: 0 0 var(--spacing-sm) 0;
+		color: var(--primary-color);
+		margin: 0 0 var(--spacing-xs) 0;
 		line-height: 1.3;
+	}
+	
+	.project-meta .project-subtitle {
+		font-family: var(--font-headings);
+		font-size: var(--font-size-lg);
+		font-weight: 400;
+		color: var(--text-dark);
+		margin: 0 0 var(--spacing-sm) 0;
+		line-height: 1.2;
 	}
 	
 	.project-details {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--spacing-sm);
+	}
+	.project-details span:first-child{
+		padding-left: 0;
 	}
 	
 	.project-details span {
 		background: var(--bg-primary);
-		color: #1d96d5;
 		font-size: var(--font-size-sm);
 		padding: var(--spacing-xs) var(--spacing-sm);
 		border-radius: var(--radius-sm);
-		font-weight: 500;
+		font-weight: 400;
 	}
 	
 	.project-details .cost-savings {
@@ -224,33 +235,21 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 		background: #8b5cf6;
 		color: white;
 	}
-	
-	.project-content .challenge,
-	.project-content .leadership-tasks,
-	.project-content .solution,
-	.project-content .results,
-	.project-content .leadership-impact {
-		margin-bottom: var(--spacing-lg);
-	}
-	
-	.project-content .challenge:last-child,
-	.project-content .leadership-tasks:last-child,
-	.project-content .solution:last-child,
-	.project-content .results:last-child,
-	.project-content .leadership-impact:last-child {
-		margin-bottom: 0;
+	.project-content .challenge{
+		min-height: 7rem;
 	}
 	
 	.project-content h4 {
 		font-family: var(--font-headings);
 		font-size: var(--font-size-md);
-		font-weight: 600;
-		color: #2566cf;
+		font-weight: 400;
 		margin: 0 0 var(--spacing-sm) 0;
-	}
+		text-align:center;
+		background: var(--bg-secondary)
+		}
 	
 	.project-content p {
-		font-size: var(--font-size-md);
+		font-size: 0.9rem;
 		line-height: 1.6;
 		color: var(--text-muted);
 		margin: 0;
@@ -265,7 +264,7 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 	.results-list li,
 	.tasks-list li,
 	.solution-list li {
-		font-size: var(--font-size-md);
+		font-size: 0.9rem;
 		line-height: 1.6;
 		color: var(--text-muted);
 		margin-bottom: var(--spacing-sm);
@@ -291,7 +290,7 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 	}
 	
 	.tasks-list li::before {
-		content: '▸';
+		content: '■';
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -301,7 +300,7 @@ const techExpertiseData = portfolioData.technologyExpertise || {};
 	}
 	
 	.solution-list li::before {
-		content: '⚡';
+		content: '■';
 		position: absolute;
 		left: 0;
 		top: 0;

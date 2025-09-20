@@ -271,14 +271,15 @@
     }
   },
   "portfolio": {
-    "title": "Referenz-Projekte",
-    "subtitle": "Reale Lösungen und messbare Ergebnisse erfolgreicher IT-Transformationen",
+    "title": "Von der Strategie zum stabilen Betrieb",
+    "subtitle": "Echte Transformationen mit messbaren Ergebnissen",
     "challenge": "Herausforderung",
     "results": "Ergebnisse",
     "viewProject": "Projekt ansehen",
     "projects": [
       {
-        "title": "INTERIM MANAGEMENT: Transformations-Führung",
+        "title": "INTERIM MANAGEMENT",
+        "subtitle": "Transformations-Führung",
         "industry": "HR Services",
         "icon": "🎖️",
         "position": "Interim CTO",
@@ -301,7 +302,8 @@
         "leadershipImpact": "Team-Stabilisierung, Prozessoptimierung, strategische Neuausrichtung"
       },
       {
-        "title": "DIGITALE TRANSFORMATION: Cloud-First Migration",
+        "title": "DIGITALE TRANSFORMATION",
+        "subtitle": "Cloud-First Migration",
         "industry": "HR Services",
         "icon": "🚀",
         "size": "2.000 Mitarbeiter",
@@ -321,7 +323,8 @@
         ]
       },
       {
-        "title": "INFRASTRUKTUR-KONSOLIDIERUNG: 5-zu-2 Rechenzentrum-Migration",
+        "title": "INFRASTRUKTUR-KONSOLIDIERUNG",
+        "subtitle": "5-zu-2 Rechenzentrum-Migration",
         "industry": "HR Services",
         "icon": "💰",
         "size": "2.000 Mitarbeiter",
@@ -339,7 +342,8 @@
         ]
       },
       {
-        "title": "KOMMUNIKATIONS-MODERNISIERUNG: VoIP Transformation",
+        "title": "KOMMUNIKATIONS-MODERNISIERUNG",
+        "subtitle": "VoIP Transformation",
         "industry": "HR Services",
         "icon": "📞",
         "locations": "50 Standorte",
@@ -357,7 +361,8 @@
         ]
       },
       {
-        "title": "SICHERHEITS-ENHANCEMENT: SOC Implementierung",
+        "title": "SICHERHEITS-ENHANCEMENT",
+        "subtitle": "SOC Implementierung",
         "industry": "HR Services",
         "icon": "🛡️",
         "monitoring": "24/7 Überwachung",
@@ -376,7 +381,8 @@
         ]
       },
       {
-        "title": "IT SERVICE MANAGEMENT: ITSM Transformation",
+        "title": "IT SERVICE MANAGEMENT",
+        "subtitle": "ITSM Transformation",
         "industry": "HR Services",
         "icon": "🔧",
         "framework": "ITIL V4",

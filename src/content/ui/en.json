@@ -1,6 +1,6 @@
 {
   "header": {
-    "brand": "IT Expert",
+    "brand": "N-ICT",
     "toggleMenu": "Toggle menu"
   },
   "nav": {
@@ -435,8 +435,9 @@
   },
   "footer": {
     "cta": {
+      "question": "Complete IT expertise for your organization",
       "title": "Ready for your digital transformation?",
-      "description": "Whether strategic consulting, interim management, or complete IT transformation – we bring the expertise and network to implement your IT vision cost-effectively and sustainably.",
+      "description": "Strategic consulting. Interim management. Digital transformation. Let's talk.",
       "promise": {
         "title": "Our Promise",
         "items": [
@@ -446,7 +447,7 @@
           "Hands-on mentality with strategic vision"
         ]
       },
-      "button": "Free Consultation"
+      "button": "Schedule Free Consultation"
     },
     "certifications": [
       { "year": "2025", "name": "AI Manager" },
@@ -459,18 +460,7 @@
       "title": "Contact Information",
       "items": [
         {
-          "icon": "📍",
-          "type": "location",
-          "value": "Central & Southeastern Europe",
-          "description": "Available for remote & on-site projects"
-        },
-        {
-          "icon": "✉️",
-          "type": "email",
-          "value": "contact@itexpert.eu"
-        },
-        {
-          "icon": "💼",
+          "icon": "icon-briefcase",
           "type": "service",
           "value": "Interim Management & Strategic Consulting"
         }
@@ -478,12 +468,12 @@
     },
     "social": [
       {
-        "icon": "💼",
+        "icon": "icon-linkedin",
         "label": "LinkedIn",
         "url": "#"
       },
       {
-        "icon": "🐙",
+        "icon": "icon-github",
         "label": "GitHub",
         "url": "#"
       }
@@ -491,11 +481,11 @@
     "services": {
       "title": "Service Areas",
       "items": [
-        { "icon": "👨‍💼", "title": "Interim Management" },
-        { "icon": "☁️", "title": "Cloud Transformation" },
-        { "icon": "🔧", "title": "IT Operations" },
-        { "icon": "🤖", "title": "AI Consulting" },
-        { "icon": "📈", "title": "Digital Marketing" }
+        { "icon": "icon-user-tie", "title": "Interim Management" },
+        { "icon": "icon-cloud", "title": "Cloud Transformation" },
+        { "icon": "icon-cogs", "title": "IT Operations" },
+        { "icon": "icon-brain", "title": "AI Consulting" },
+        { "icon": "icon-bar-chart", "title": "Digital Marketing" }
       ],
       "industryTitle": "Industry Experience",
       "industryText": "HR Services, Facility Management, Real Estate, IT Development, SME & Mid-Market"

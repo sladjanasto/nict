@@ -1,6 +1,6 @@
 {
   "header": {
-    "brand": "IT Expert",
+    "brand": "N-ICT",
     "toggleMenu": "Menü umschalten"
   },
   "nav": {
@@ -17,6 +17,13 @@
     "contactUs": "Kontaktieren Sie uns",
     "freeConsultation": "Kostenlose Beratung",
     "seeHowItWorks": "So funktioniert es",
+    "items": [
+      { "icon": "icon-user-tie", "title": "Interim Management" },
+      { "icon": "icon-cloud", "title": "Cloud-Transformation" },
+      { "icon": "icon-cogs", "title": "IT-Betrieb" },
+      { "icon": "icon-brain", "title": "AI Beratung" },
+      { "icon": "icon-bar-chart", "title": "Digitales Marketing" }
+    ],
     "readMore": "Weiterlesen",
     "viewProject": "Projekt ansehen",
     "downloadCV": "Lebenslauf herunterladen"
@@ -435,8 +442,9 @@
   },
   "footer": {
     "cta": {
+      "question": "Komplette IT-Expertise für Ihr Unternehmen",
       "title": "Bereit für Ihre digitale Transformation?",
-      "description": "Ob strategische Beratung, Interim Management oder komplette IT-Transformation – wir bringen die Expertise und das Netzwerk mit, um Ihre IT-Vision kosteneffizient und nachhaltig umzusetzen.",
+      "description": "Strategische Beratung. Interim Management. Digitale Transformation. Lassen Sie uns sprechen.",
       "promise": {
         "title": "Unser Versprechen",
         "items": [
@@ -446,7 +454,7 @@
           "Hands-on Mentalität mit strategischer Vision"
         ]
       },
-      "button": "Kostenlose Beratung"
+      "button": "Kostenloses Beratungsgespräch vereinbaren"
     },
     "certifications": [
       { "year": "2025", "name": "AI Manager" },
@@ -459,18 +467,7 @@
       "title": "Kontaktinformationen",
       "items": [
         {
-          "icon": "📍",
-          "type": "location",
-          "value": "Mittel- und Südosteuropa",
-          "description": "Verfügbar für Remote- und Vor-Ort-Projekte"
-        },
-        {
-          "icon": "✉️",
-          "type": "email",
-          "value": "contact@itexpert.eu"
-        },
-        {
-          "icon": "💼",
+          "icon": "icon-briefcase",
           "type": "service",
           "value": "Interim Management & Strategische Beratung"
         }
@@ -478,12 +475,12 @@
     },
     "social": [
       {
-        "icon": "💼",
+        "icon": "icon-linkedin",
         "label": "LinkedIn",
         "url": "#"
       },
       {
-        "icon": "🐙",
+        "icon": "icon-github",
         "label": "GitHub",
         "url": "#"
       }

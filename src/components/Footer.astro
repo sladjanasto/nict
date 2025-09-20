@@ -19,75 +19,59 @@ const navItems = ui.nav || {};
 ---
 
 <footer id="contact" class="footer">
-	<div class="footer-content">
-		<a href={`/${lang}/#contact`} class="btn btn-cta">{ctaData.button || 'Contact'}</a>
-	</div>
-		
 	<div class="footer-main">
-			<div class="footer-grid">
-				<div class="footer-brand">
-					<div class="brand-logo">
-						<span class="logo-text">{ui.header?.brand || 'IT Expert'}</span>
-						<span class="logo-tagline">{ui.header?.tagline || ''}</span>
-					</div>
-					<div class="footer-links">
-						{Object.entries(navItems).map(([key, label]) => (
-							<a href={`/${lang}/#${key}`} class="footer-link">{label}</a>
-						))}
-					</div>
+		<!-- CTA Section -->
+		<div class="footer-cta">
+			<div class="cta-content">
+				<div class="cta-logo">
+					<img src="/NICT_logo_white.png" alt="N-ICT - drop IT on us" class="cta-logo-img" />
 				</div>
-				
-					   <div class="footer-contact">
-						   <h3 class="footer-heading">{contactData.title || 'Contact'}</h3>
-						   <div class="contact-info">
-							   {contactItems.map((item: any) => (
-								   <div class="contact-item">
-									   <span class="contact-icon">{item.icon}</span>
-									   <div class="contact-details">
-										   {item.type === 'email' ? (
-											   <a href={`mailto:${item.value}`} class="contact-link">{item.value}</a>
-										   ) : (
-											   <p>{item.value}</p>
-										   )}
-										   {item.description && <p>{item.description}</p>}
-									   </div>
-								   </div>
-							   ))}
-						   </div>
-						   <div class="social-links">
-							   {socialLinks.map((social: any) => (
-								   <a href={social.url} class="social-link" aria-label={social.label}>
-									   <span>{social.icon}</span>
-								   </a>
-							   ))}
-						   </div>
-					   </div>
-				
-				<div class="footer-services">
-					<h3 class="footer-heading">{servicesData.title || 'Services'}</h3>
-					<div class="service-areas">
-						{serviceItems.map((service: any) => (
-							<div class="service-item">
-								<span class="service-icon">{service.icon}</span>
-								<span>{service.title}</span>
-							</div>
-						))}
-					</div>
-					
-					<div class="industry-experience">
-						<h4>{servicesData.industryTitle || 'Industry Experience'}:</h4>
-						<p>{servicesData.industryText || 'Various industries'}</p>
-					</div>
-				</div>
+				<h3 class="cta-question">{ctaData.question || 'Ready to Transform Your Business?'}</h3>
+				<p class="cta-description">{ctaData.description || 'Let\'s discuss how we can help you achieve your digital goals. Schedule a free consultation today.'}</p>
+				<a href={`/${lang}/#contact`} class="btn btn-consultation">
+					<i class="icon-calendar"></i>
+					{ctaData.button || 'Schedule Free Consultation'}
+				</a>
 			</div>
 		</div>
 		
-		<div class="footer-bottom">
-			<div class="footer-divider"></div>
-			<p class="copyright">
-				{footerData.copyright || '© 2024 IT Expert. All rights reserved.'}
-			</p>
 		</div>
+		
+		<!-- Company Info Bar -->
+		<div class="footer-info-bar">
+			<div class="info-items">
+				<div class="info-item">
+					<a href="https://github.com/nict" class="icon-link" aria-label="GitHub">
+						<i class="icon-github"></i>
+					</a>
+				</div>
+				<div class="info-item">
+					<a href="https://linkedin.com/company/nict" class="icon-link" aria-label="LinkedIn">
+						<i class="icon-linkedin2"></i>
+					</a>
+				</div>
+				<div class="info-item">
+					<i class="icon-mail"></i>
+					<span>info@nict.rs</span>
+				</div>
+				<div class="info-item">
+					<i class="icon-phone"></i>
+					<span>+387 61 792 636</span>
+				</div>
+				<div class="info-item">
+					<i class="icon-briefcase"></i>
+					<span>ID: 422799363003</span>
+				</div>
+				<div class="info-item">
+					<i class="icon-calculator"></i>
+					<span>VAT: 227993630003</span>
+				</div>
+				<div class="info-item copyright-text">
+					<span>N-ICT. All rights reserved. 2025.</span>
+				</div>
+			</div>
+		</div>
+
 	</div>
 </footer>
 
@@ -98,8 +82,80 @@ const navItems = ui.nav || {};
 		position: relative;
 	}
 	
+	/* CTA Section Styles */
+	.footer-cta {
+		border-radius: var(--radius-lg);
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.cta-content {
+		position: relative;
+		z-index: 2;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	.cta-logo {
+		margin-bottom: var(--spacing-lg);
+	}
+	
+	.cta-logo-img {
+		height: 200px;
+		width: auto;
+		max-width: 200px;
+		object-fit: contain;
+		filter: brightness(1.1) saturate(1.2);
+		transition: transform 0.3s ease;
+	}
+	
+	.cta-logo-img:hover {
+		transform: scale(1.05);
+	}
+	
+	.cta-question {
+		font-family: var(--font-headings);
+		font-size: var(--font-size-2xl);
+		font-weight: 700;
+		margin-bottom: var(--spacing-md);
+		color: var(--text-white);
+		line-height: 1.3;
+	}
+	
+	.cta-description {
+		font-size: var(--font-size-lg);
+		margin-bottom: var(--spacing-lg);
+		color: rgba(255, 255, 255, 0.9);
+		line-height: 1.6;
+	}
+	
+	.btn-consultation {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-xs);
+		background: var(--bg-gradient);
+		color: var(--text-white);
+		padding: var(--spacing-md) var(--spacing-xl);
+		border-radius: var(--radius-md);
+		text-decoration: none;
+		font-weight: 600;
+		font-size: var(--font-size-base);
+		transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+		box-shadow: var(--shadow-md);
+	}
+	
+	.btn-consultation:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
+	}
+	
+	.btn-consultation i {
+		font-size: var(--font-size-lg);
+	}
+	
 	.footer-content {
-		padding: var(--spacing-xxl) 0 var(--spacing-xxl);
+		padding: var(--spacing-xl) 0 var(--spacing-xl);
 		text-align: center;
 	}
 	
@@ -125,15 +181,26 @@ const navItems = ui.nav || {};
 	
 	.btn-cta {
 		background: var(--bg-gradient);
-		font-size: 1.1rem;
-		padding: 15px 35px;
+		padding: var(--spacing-md) var(--spacing-xl);
+		border-radius: var(--radius-md);
+		text-decoration: none;
+		color: var(--text-white);
+		font-weight: 600;
+		font-size: var(--font-size-base);
+		transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+		display: inline-flex;
+		align-items: center;
+		gap: var(--spacing-xs);
 	}
 	
 	.btn-cta:hover {
-		background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
 	}
 	
 	.footer-main {
+		max-width: 1400px;
+		margin: 0 auto;
 		padding: 60px 0;
 		border-top: 1px solid rgba(255, 255, 255, 0.1);
 	}
@@ -153,13 +220,18 @@ const navItems = ui.nav || {};
 		margin-bottom: 30px;
 	}
 	
-	.logo-text {
-		font-family: var(--font-headings);
-		font-size: var(--font-size-2xl);
-		font-weight: 700;
-		color: white;
-		display: block;
-		margin-bottom: 5px;
+	.footer-logo {
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+	
+	.footer-logo-img {
+		height: 80px;
+		width: auto;
+		object-fit: contain;
+		border: none;
+		outline: none;
+		filter: brightness(1.1);
 	}
 	
 	.logo-tagline {
@@ -168,23 +240,7 @@ const navItems = ui.nav || {};
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		font-weight: 500;
-	}
-	
-	.footer-links {
-		display: flex;
-		flex-direction: column;
-		gap: 15px;
-	}
-	
-	.footer-link {
-		color: rgba(255, 255, 255, 0.8);
-		text-decoration: none;
-		transition: color 0.3s ease;
-		font-weight: 500;
-	}
-	
-	.footer-link:hover {
-		color: white;
+		display: block;
 	}
 	
 	.footer-heading {
@@ -207,8 +263,10 @@ const navItems = ui.nav || {};
 	}
 	
 	.contact-icon {
-		font-size: 1.2rem;
+		color: var(--primary-color);
+		font-size: var(--font-size-lg);
 		margin-top: 2px;
+		margin-right: var(--spacing-sm);
 		flex-shrink: 0;
 	}
 	
@@ -252,41 +310,7 @@ const navItems = ui.nav || {};
 		transform: translateY(-3px);
 	}
 	
-	.footer-services {
-		text-align: left;
-	}
-	
-	.service-areas {
-		margin-bottom: var(--spacing-xl);
-	}
-	
-	.service-item {
-		display: flex;
-		align-items: center;
-		gap: var(--spacing-sm);
-		margin-bottom: var(--spacing-sm);
-		color: rgba(255, 255, 255, 0.8);
-		font-weight: 500;
-	}
-	
-	.service-icon {
-		font-size: var(--font-size-lg);
-	}
-	
-	.industry-experience h4 {
-		font-family: var(--font-headings);
-		color: var(--primary-color);
-		margin-bottom: var(--spacing-sm);
-		font-size: var(--font-size-base);
-		font-weight: 600;
-	}
-	
-	.industry-experience p {
-		color: rgba(255, 255, 255, 0.7);
-		font-size: var(--font-size-sm);
-		line-height: 1.5;
-		margin: 0;
-	}
+
 	
 	.company-details {
 		display: flex;
@@ -308,6 +332,79 @@ const navItems = ui.nav || {};
 	.value {
 		color: white;
 		font-weight: 600;
+	}
+	
+	/* Footer Info Bar Styles */
+	.footer-info-bar {
+		background: rgba(0, 0, 0, 0.3);
+		padding: var(--spacing-md) 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	
+	.info-items {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: var(--spacing-lg);
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 var(--spacing-lg);
+	}
+	
+	.info-item {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-xs);
+		color: rgba(255, 255, 255, 0.8);
+		font-size: var(--font-size-sm);
+		font-weight: 500;
+	}
+	
+	.info-item i {
+		color: var(--primary-color);
+		font-size: var(--font-size-base);
+		width: 16px;
+		text-align: center;
+	}
+	
+	.icon-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.1);
+		transition: all 0.3s ease;
+		text-decoration: none;
+	}
+	
+	.icon-link:hover {
+		background: var(--primary-color);
+		transform: translateY(-2px);
+	}
+	
+	.icon-link i {
+		color: var(--primary-color);
+		font-size: var(--font-size-lg);
+		width: auto;
+	}
+	
+	.icon-link:hover i {
+		color: var(--text-white);
+	}
+	
+	.info-item.copyright-text {
+		margin-left: auto;
+		color: rgba(255, 255, 255, 0.6);
+		font-style: italic;
+	}
+	
+	.info-item:hover {
+		color: var(--text-white);
+		transition: color 0.3s ease;
 	}
 	
 	.footer-bottom {
@@ -345,6 +442,17 @@ const navItems = ui.nav || {};
 		.footer-contact,
 		.footer-company {
 			text-align: center;
+		}
+		
+		.info-items {
+			flex-direction: column;
+			gap: var(--spacing-sm);
+			text-align: center;
+		}
+		
+		.info-item.copyright-text {
+			margin-left: 0;
+			margin-top: var(--spacing-sm);
 		}
 		
 		.contact-item {

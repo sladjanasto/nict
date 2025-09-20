@@ -30,13 +30,18 @@ const heroQuestions = ui.hero?.questions || [
 					<span class="highlight" id="questionHighlight">digital transformation</span>
 					<span id="questionEnd">?</span>
 				</h1>
-				<p class="hero-answer typewriter-answer" id="heroAnswer" transition:name="hero-description">
-					<span id="answerStart">We deliver innovative</span> 
-					<span class="highlight" id="service1">web development</span>, 
-					<span class="highlight" id="service2">custom applications</span>, 
-					<span id="answerMiddle">and</span> 
-					<span class="highlight" id="service3">digital solutions</span> 
-					<span id="answerEnd">that drive your business forward.</span>
+				<p class="hero-answer" id="heroAnswer" transition:name="hero-description">
+					<span class="answer-line typewriter-line-1" id="answerLine1">
+						<span id="answerStart">We deliver innovative</span> 
+						<span class="highlight" id="service1">web development</span>, 
+						<span class="highlight" id="service2">custom applications</span>,
+					</span>
+					<br>
+					<span class="answer-line typewriter-line-2" id="answerLine2">
+						<span id="answerMiddle">and</span> 
+						<span class="highlight" id="service3">digital solutions</span> 
+						<span id="answerEnd">that drive your business forward.</span>
+					</span>
 				</p>
 				
 				<div class="hero-promise">
@@ -126,17 +131,32 @@ const heroQuestions = ui.hero?.questions || [
 		margin: 0 auto;
 		animation: 
 			typewriter 2s steps(40, end),
-			blink-caret 0.75s step-end infinite;
+			blink-caret 0.75s step-end infinite,
+			remove-caret 0.1s ease-in 2s forwards;
 	}
 	
-	.typewriter-answer {
+	.typewriter-line-1 {
+		display: inline-block;
 		overflow: hidden;
 		border-right: 2px solid var(--primary-color);
 		white-space: nowrap;
-		margin: 0 auto;
 		animation: 
-			typewriter 3s steps(60, end) 0.5s both,
-			blink-caret 0.75s step-end infinite 0.5s;
+			typewriter-line1 2.5s steps(50, end) 0.5s both,
+			blink-caret 0.75s step-end infinite 0.5s,
+			remove-caret 0.1s ease-in 3s forwards;
+	}
+	
+	.typewriter-line-2 {
+		display: inline-block;
+		overflow: hidden;
+		border-right: 2px solid var(--primary-color);
+		white-space: nowrap;
+		opacity: 0;
+		animation: 
+			show-line 0.1s ease-in 3s forwards,
+			typewriter-line2 2s steps(40, end) 3.1s both,
+			blink-caret 0.75s step-end infinite 3.1s,
+			remove-caret 0.1s ease-in 5.1s forwards;
 	}
 	
 	@keyframes typewriter {
@@ -144,9 +164,27 @@ const heroQuestions = ui.hero?.questions || [
 		to { width: 100% }
 	}
 	
+	@keyframes typewriter-line1 {
+		from { width: 0 }
+		to { width: 100% }
+	}
+	
+	@keyframes typewriter-line2 {
+		from { width: 0 }
+		to { width: 100% }
+	}
+	
+	@keyframes show-line {
+		to { opacity: 1 }
+	}
+	
 	@keyframes blink-caret {
 		from, to { border-color: transparent }
 		50% { border-color: var(--primary-color) }
+	}
+	
+	@keyframes remove-caret {
+		to { border-color: transparent }
 	}
 	
 	.hero-question {
@@ -185,10 +223,15 @@ const heroQuestions = ui.hero?.questions || [
 		font-size: 1.5rem;
 		color: var(--text-light);
 		margin-bottom: var(--spacing-xl);
-		line-height: 1.6;
+		line-height: 1.8;
 		font-weight: 300;
 		text-align: left;
 		transition: opacity 0.5s ease-in-out, transform 0.4s ease-in-out;
+	}
+	
+	.answer-line {
+		display: inline-block;
+		width: 100%;
 	}
 	
 	.hero-promise {

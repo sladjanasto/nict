@@ -73,25 +73,19 @@ const techCategories = technologyExpertise.categories || [];
 												skillName = 'CI/CD';
 												break;
 											case 'team leadership':
-												iconClass = 'icon-atlassian';
+												iconClass = 'icon-groups';
 												break;
 											case 'project management':
-												iconClass = 'icon-atlassian';
-												break;
-											case 'itil':
-												iconClass = 'icon-microsoft';
-												break;
-											case 'agile':
-												iconClass = 'icon-atlassian';
+												iconClass = 'icon-user-tie';
 												break;
 											case 'scrum master':
-												iconClass = 'icon-atlassian';
+												iconClass = 'icon-scrum';
 												break;
 											case 'itil v4':
-												iconClass = 'icon-microsoft';
+												iconClass = 'icon-itil';
 												break;
 											case 'ai manager':
-												iconClass = 'icon-microsoft';
+												iconClass = 'icon-ai';
 												break;
 											default:
 												iconClass = 'icon-cogs';
@@ -100,6 +94,7 @@ const techCategories = technologyExpertise.categories || [];
 										return (
 											<div class="skill-icon-item">
 												<span class={iconClass}></span>
+												<span class="skill-name">{skillName}</span>
 											</div>
 										);
 									})}
@@ -230,6 +225,13 @@ const techCategories = technologyExpertise.categories || [];
 		box-shadow: var(--shadow-lg);
 		background: var(--bg-white);
 	}
+	.competency-row:hover span[class^="icon-"]{
+		visibility: hidden;
+	}
+	.competency-row:hover .skill-name{
+		visibility: visible;
+		opacity: 1
+	}
 	
 	
 	.competency-details {
@@ -253,6 +255,7 @@ const techCategories = technologyExpertise.categories || [];
 		justify-content: center;
 		align-items: center;
 		transform: translate(0px, -2rem);
+		gap:1.3rem
 	}
 	
 	.skill-icon-item {
@@ -263,16 +266,30 @@ const techCategories = technologyExpertise.categories || [];
 		transition: all var(--transition-normal);
 		width: 60px;
 		height: 60px;
+		flex-direction: column;
 	}
 	
 	
 	.skill-icon-item span[class^="icon-"] {
 		font-size: 2rem;
 		line-height: 1;
-		transition: all var(--transition-normal);
 		color: var(--primary-color);
+		visibility: visible;
+		transform: translate(0, 0.5rem);
 	}
-	
+	.skill-icon-item .skill-name{
+		visibility: hidden;
+		font-size: small;
+		text-align: center;
+		font-weight: 500;
+		opacity: 0;
+		transition: opacity 2s ease;
+transform: translate(0, -1rem);
+white-space: nowrap;
+	}
+	.competency-row:last-child .skill-name{
+		white-space: break-spaces;
+	}
 	
 	/* Key Advantages Linear Layout */
 	.advantages-list {
@@ -323,7 +340,6 @@ const techCategories = technologyExpertise.categories || [];
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: var(--spacing-md);
 	}
 	
 	.advantage-icon-item {
@@ -481,7 +497,6 @@ const techCategories = technologyExpertise.categories || [];
 		.skill-icon-item {
 			width: 50px;
 			height: 50px;
-			padding: var(--spacing-sm);
 		}
 		
 		.skill-icon-item span[class^="icon-"] {

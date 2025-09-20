@@ -76,6 +76,9 @@ Thumbs.db
 *.swo
 *~
 
+# Development configuration
+.copilot-config.json
+
 # TypeScript
 *.tsbuildinfo
 

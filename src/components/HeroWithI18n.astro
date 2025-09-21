@@ -57,6 +57,31 @@ const heroQuestions = ui.hero?.questions || [
 					</a>
 				</div>
 			</div>
+			
+			{/* Optimized hero image with responsive loading */}
+			<div class="hero-image">
+				<picture>
+					<source 
+						media="(min-width: 768px)" 
+						srcset="/group.avif"
+						type="image/avif"
+					/>
+					<source 
+						media="(min-width: 768px)" 
+						srcset="/hero-person.jpg"
+						type="image/jpeg"
+					/>
+					<img 
+						src="/hero-person.jpg"
+						alt="Professional IT Expert - Your Digital Transformation Partner"
+						width="400"
+						height="400"
+						loading="eager"
+						decoding="async"
+						class="hero-img"
+					/>
+				</picture>
+			</div>
 		</div>
 	</div>
 </section>
@@ -92,20 +117,33 @@ const heroQuestions = ui.hero?.questions || [
 	
 	.hero-content {
 		display: flex;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 		position: relative;
 		z-index: 2;
-		width:1400px
-		/* max-width: 900px;
+		max-width: 1200px;
 		margin: 0 auto;
-		padding: 0 500px 0 0; */
+		gap: var(--spacing-xxl);
 	}
 	
 	.hero-text {
-		text-align: center;
-		width: 90%;
+		flex: 1;
+		text-align: left;
 		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	
+	.hero-image {
+		flex: 0 0 auto;
+		max-width: 400px;
+	}
+	
+	.hero-img {
+		width: 100%;
+		height: auto;
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-xl);
+		transform: translateZ(0);
+		will-change: transform;
 	}
 
 	/* Typewriter Animation */
@@ -330,10 +368,17 @@ const heroQuestions = ui.hero?.questions || [
 		}
 		
 		.hero-content {
+			flex-direction: column;
+			gap: var(--spacing-xl);
 			padding: 0;
-			width: 300px;
+			width: 100%;
+			max-width: 400px;
 		}
-
+		
+		.hero-image {
+			max-width: 280px;
+			order: -1;
+		}
 		
 		.hero-text {
 			text-align: center;

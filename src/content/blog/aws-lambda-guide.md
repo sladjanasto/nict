@@ -2,7 +2,7 @@
 title: "Getting Started with AWS Lambda and API Gateway"
 description: "A comprehensive guide to building serverless applications using AWS Lambda and API Gateway for scalable cloud solutions."
 pubDate: 2024-03-15
-heroImage: "/blog/aws-lambda-guide.jpg"
+heroImage: "/blog/github-actions-cicd.jpg"
 author: "Miloš Paunović"
 tags: ["aws", "lambda", "api-gateway", "serverless"]
 category: "aws"
@@ -10,6 +10,8 @@ featured: true
 ---
 
 # Getting Started with AWS Lambda and API Gateway
+
+![Test slika](/blog/kubernetes-production.jpg)
 
 AWS Lambda revolutionizes how we think about server infrastructure. Instead of managing servers, you simply upload your code and Lambda takes care of everything required to run and scale your code with high availability.
 

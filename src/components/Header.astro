@@ -5,6 +5,16 @@ const { url } = Astro;
 const lang = getLangFromUrl(url);
 const ui = await getUITranslations(lang);
 const languageSwitchUrls = getLanguageSwitchUrls(url.pathname) || [];
+
+// Check if we're on the blog page or a blog post
+const isBlogPage = url.pathname.startsWith('/blog');
+const isHomePage = url.pathname === '/' || url.pathname === `/${lang}` || url.pathname === `/${lang}/`;
+
+// Generate appropriate links based on current page
+const homeLink = isHomePage ? '#home' : '/';
+const servicesLink = isHomePage ? '#services' : '/#services';
+const aboutLink = isHomePage ? '#about' : '/#about';
+const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#contact');
 ---
 
 <header class="header" transition:persist>
@@ -19,21 +29,27 @@ const languageSwitchUrls = getLanguageSwitchUrls(url.pathname) || [];
 			<div class="nav-menu" id="nav-menu">
 				<ul class="nav-list">
 					<li class="nav-item">
-						<a href="#home" class="nav-link">
+						<a href={homeLink} class="nav-link">
 							<i class="icon icon-home"></i>
 							<span class="nav-text">{ui.nav.home}</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="#services" class="nav-link">
+						<a href={servicesLink} class="nav-link">
 							<i class="icon icon-cogs"></i>
 							<span class="nav-text">{ui.nav.services}</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="#about" class="nav-link">
+						<a href={aboutLink} class="nav-link">
 							<i class="icon icon-user-tie"></i>
 							<span class="nav-text">{ui.nav.about}</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="/blog" class="nav-link">
+							<i class="icon icon-pen"></i>
+							<span class="nav-text">{ui.nav.blog}</span>
 						</a>
 					</li>
 				</ul>
@@ -103,7 +119,7 @@ const languageSwitchUrls = getLanguageSwitchUrls(url.pathname) || [];
 						</div>
 					</div>
 					
-					<a href="#contact" class="btn nav-cta">
+					<a href={contactLink} class="btn nav-cta">
 						<i class="icon icon-bubbles4"></i>
 						<span class="nav-text">{ui.buttons.freeConsultation}</span>
 					</a>

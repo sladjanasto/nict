@@ -62,6 +62,29 @@ const languageSwitchUrls = getLanguageSwitchUrls(url.pathname) || [];
 								</button>
 							</div>
 							<div class="options-item" role="menuitem">
+								<span class="option-label">Colors</span>
+								<div class="color-scheme-selector">
+									<button class="color-scheme-btn active" data-scheme="scheme-1" aria-label="Teal & Blue theme">
+										<div class="color-preview">
+											<span class="color-dot" style="background: #1aeae2;"></span>
+											<span class="color-dot" style="background: #2566cf;"></span>
+										</div>
+									</button>
+									<button class="color-scheme-btn" data-scheme="scheme-2" aria-label="Purple & Pink theme">
+										<div class="color-preview">
+											<span class="color-dot" style="background: #a855f7;"></span>
+											<span class="color-dot" style="background: #ec4899;"></span>
+										</div>
+									</button>
+									<button class="color-scheme-btn" data-scheme="scheme-3" aria-label="Orange & Red theme">
+										<div class="color-preview">
+											<span class="color-dot" style="background: #f97316;"></span>
+											<span class="color-dot" style="background: #dc2626;"></span>
+										</div>
+									</button>
+								</div>
+							</div>
+							<div class="options-item" role="menuitem">
 								<span class="option-label">Language</span>
 								<div class="language-switcher">
 									<select 
@@ -322,6 +345,45 @@ const languageSwitchUrls = getLanguageSwitchUrls(url.pathname) || [];
 	.options-item .theme-toggle:focus {
 		outline: 2px solid var(--primary-color);
 		outline-offset: 2px;
+	}
+	
+	/* Color Scheme Selector Styles */
+	.color-scheme-selector {
+		display: flex;
+		gap: var(--spacing-xs);
+		align-items: center;
+	}
+	
+	.color-scheme-btn {
+		background: var(--bg-primary);
+		border: 2px solid transparent;
+		border-radius: 8px;
+		padding: 4px;
+		cursor: pointer;
+		transition: all var(--transition-normal);
+		position: relative;
+	}
+	
+	.color-scheme-btn:hover {
+		border-color: var(--primary-color);
+		transform: scale(1.05);
+	}
+	
+	.color-scheme-btn.active {
+		border-color: var(--primary-color);
+		box-shadow: 0 0 0 2px rgba(26, 234, 226, 0.2);
+	}
+	
+	.color-preview {
+		display: flex;
+		gap: 2px;
+	}
+	
+	.color-dot {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		border: 1px solid rgba(255, 255, 255, 0.2);
 	}
 	
 	.nav-list {
@@ -776,6 +838,51 @@ const languageSwitchUrls = getLanguageSwitchUrls(url.pathname) || [];
 		});
 		
 		// Close options menu when pressing Escape
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && optionsMenu.classList.contains('active')) {
+				closeOptionsMenu();
+				optionsToggle.focus();
+			}
+		});
+	}
+	
+	// Color Scheme Functionality
+	const colorSchemeButtons = document.querySelectorAll('.color-scheme-btn') as NodeListOf<HTMLButtonElement>;
+	
+	// Load saved color scheme or default to scheme-1
+	const savedColorScheme = localStorage.getItem('color-scheme') || 'scheme-1';
+	document.documentElement.setAttribute('data-color-scheme', savedColorScheme);
+	
+	// Update active button on load
+	colorSchemeButtons.forEach(btn => {
+		btn.classList.toggle('active', btn.getAttribute('data-scheme') === savedColorScheme);
+	});
+	
+	// Color scheme switching
+	colorSchemeButtons.forEach(button => {
+		button.addEventListener('click', () => {
+			const scheme = button.getAttribute('data-scheme');
+			if (scheme) {
+				// Update active state
+				colorSchemeButtons.forEach(btn => btn.classList.remove('active'));
+				button.classList.add('active');
+				
+				// Apply color scheme with smooth transition
+				document.documentElement.style.transition = 'all 0.3s ease';
+				document.documentElement.setAttribute('data-color-scheme', scheme);
+				
+				// Save to localStorage
+				localStorage.setItem('color-scheme', scheme);
+				
+				// Remove transition after animation
+				setTimeout(() => {
+					document.documentElement.style.transition = '';
+				}, 300);
+			}
+		});
+	});
+	
+	function closeOptionsMenu() {
 		document.addEventListener('keydown', (e) => {
 			if (e.key === 'Escape' && optionsMenu.classList.contains('active')) {
 				closeOptionsMenu();

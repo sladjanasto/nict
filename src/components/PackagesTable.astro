@@ -118,7 +118,7 @@ const features = t.packages?.features || defaultFeatures;
 
 	.packages-connector {
 		height: 4px;
-		background: linear-gradient(90deg, transparent 0%, #1d96d5 50%, transparent 100%);
+		background: linear-gradient(90deg, transparent 0%, var(--gradient-mid-blue) 50%, transparent 100%);
 		width: 100%;
 		position: relative;
 		top: 0;
@@ -174,7 +174,7 @@ const features = t.packages?.features || defaultFeatures;
 	}
 
 	.package-card.standard.featured {
-		border-color: #1d96d5;
+		border-color: var(--gradient-mid-blue);
 		transform: scale(1.05);
 		z-index: 2;
 	}
@@ -207,7 +207,7 @@ const features = t.packages?.features || defaultFeatures;
 		top: -12px;
 		left: 50%;
 		transform: translateX(-50%);
-		background: linear-gradient(135deg, #1d96d5, #2566cf);
+		background: linear-gradient(135deg, var(--gradient-mid-blue), var(--secondary-color));
 		color: white;
 		padding: var(--spacing-xs) var(--spacing-md);
 		border-radius: var(--radius-full);
@@ -229,7 +229,7 @@ const features = t.packages?.features || defaultFeatures;
 	.package-price {
 		font-size: var(--font-size-3xl);
 		font-weight: 700;
-		color: #1d96d5;
+		color: var(--gradient-mid-blue);
 		margin-bottom: var(--spacing-sm);
 	}
 

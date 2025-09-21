@@ -152,7 +152,7 @@ const siteName = "IT Expert Portfolio";
 	}
 	
 	:root {
-		/* Brand Colors */
+		/* Default Color Scheme - Teal & Blue */
 		--primary-color: #1aeae2;
 		--secondary-color: #2566cf;
 		--gradient-mid-blue: #1d96d5;
@@ -164,9 +164,36 @@ const siteName = "IT Expert Portfolio";
 		/* Background Colors - Light Theme */
 		--bg-primary: #ffffff;
 		--bg-secondary: #f8f9fa;
-		--bg-gradient: linear-gradient(135deg, #1aeae2 0%, #2566cf 100%);
+		--bg-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
 		--bg-card: rgba(255, 255, 255, 0.95);
-		
+	}
+	
+	/* Color Scheme 1: Teal & Blue (Default) */
+	[data-color-scheme="scheme-1"],
+	:root {
+		--primary-color: #1aeae2;
+		--secondary-color: #2566cf;
+		--gradient-mid-blue: #1d96d5;
+		--bg-gradient: linear-gradient(135deg, #1aeae2 0%, #2566cf 100%);
+	}
+	
+	/* Color Scheme 2: Purple & Pink */
+	[data-color-scheme="scheme-2"] {
+		--primary-color: #a855f7;
+		--secondary-color: #ec4899;
+		--gradient-mid-blue: #c084fc;
+		--bg-gradient: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+	}
+	
+	/* Color Scheme 3: Orange & Red */
+	[data-color-scheme="scheme-3"] {
+		--primary-color: #f97316;
+		--secondary-color: #dc2626;
+		--gradient-mid-blue: #ea580c;
+		--bg-gradient: linear-gradient(135deg, #f97316 0%, #dc2626 100%);
+	}
+	
+	:root {
 		/* Spacing */
 		--spacing-xs: 0.5rem;
 		--spacing-sm: 1rem;
@@ -468,7 +495,7 @@ const siteName = "IT Expert Portfolio";
 		text-align: center;
 		margin-top: 0;
 		/* margin-bottom: var(--spacing-xxl); */
-		color: #2598cffc;
+		color: var(--secondary-color);
 		position: relative;
 		padding-bottom: var(--spacing-lg);
 	}
@@ -481,7 +508,7 @@ const siteName = "IT Expert Portfolio";
 		transform: translateX(-50%);
 		width: 60px;
 		height: 2px;
-		background: linear-gradient(135deg, #2598cffc, #4f8fff);
+		background: linear-gradient(135deg, var(--secondary-color), var(--gradient-mid-blue));
 		border-radius: 1px;
 		opacity: 0.8;
 	}

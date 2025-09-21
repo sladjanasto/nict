@@ -66,20 +66,20 @@ const languageSwitchUrls = getLanguageSwitchUrls(url.pathname) || [];
 								<div class="color-scheme-selector">
 									<button class="color-scheme-btn active" data-scheme="scheme-1" aria-label="Teal & Blue theme">
 										<div class="color-preview">
-											<span class="color-dot" style="background: #1aeae2;"></span>
-											<span class="color-dot" style="background: #2566cf;"></span>
+											<span class="color-dot scheme-1-primary"></span>
+											<span class="color-dot scheme-1-secondary"></span>
 										</div>
 									</button>
 									<button class="color-scheme-btn" data-scheme="scheme-2" aria-label="Purple & Pink theme">
 										<div class="color-preview">
-											<span class="color-dot" style="background: #a855f7;"></span>
-											<span class="color-dot" style="background: #ec4899;"></span>
+											<span class="color-dot scheme-2-primary"></span>
+											<span class="color-dot scheme-2-secondary"></span>
 										</div>
 									</button>
 									<button class="color-scheme-btn" data-scheme="scheme-3" aria-label="Orange & Red theme">
 										<div class="color-preview">
-											<span class="color-dot" style="background: #f97316;"></span>
-											<span class="color-dot" style="background: #dc2626;"></span>
+											<span class="color-dot scheme-3-primary"></span>
+											<span class="color-dot scheme-3-secondary"></span>
 										</div>
 									</button>
 								</div>
@@ -184,7 +184,7 @@ const languageSwitchUrls = getLanguageSwitchUrls(url.pathname) || [];
 	
 	.nav-link:hover {
 		background: var(--bg-primary);
-		color: #1d96d5;
+		color: var(--gradient-mid-blue);
 	}
 	
 	.nav-link .icon {
@@ -567,11 +567,11 @@ const languageSwitchUrls = getLanguageSwitchUrls(url.pathname) || [];
 		
 		.nav-link .icon {
 			font-size: 1.2rem;
-			color: #2566cf;
+			color: var(--secondary-color);
 		}
 		
 		.nav-link:hover .icon {
-			color: #1d96d5;
+			color: var(--gradient-mid-blue);
 		}
 		
 		.nav-text {
@@ -707,6 +707,31 @@ const languageSwitchUrls = getLanguageSwitchUrls(url.pathname) || [];
 			min-width: 35px;
 			height: 28px;
 		}
+	}
+	
+	/* Color Scheme Dots */
+	.scheme-1-primary {
+		background: #1aeae2 !important;
+	}
+	
+	.scheme-1-secondary {
+		background: #2566cf !important;
+	}
+	
+	.scheme-2-primary {
+		background: #a855f7 !important;
+	}
+	
+	.scheme-2-secondary {
+		background: #ec4899 !important;
+	}
+	
+	.scheme-3-primary {
+		background: #f97316 !important;
+	}
+	
+	.scheme-3-secondary {
+		background: #dc2626 !important;
 	}
 </style>
 

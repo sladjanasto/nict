@@ -326,12 +326,12 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 	}
 
 	.service-card {
-		background: white;
+		background: var(--bg-primary);
 		border-radius: 12px;
 		padding: 30px;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+		box-shadow: var(--shadow-md);
 		transition: all 0.3s ease;
-		border: 1px solid rgba(0, 0, 0, 0.06);
+		border: 1px solid var(--card-border);
 		display: flex;
 		flex-direction: column;
 		height: 100%;
@@ -339,7 +339,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 
 	.service-card:hover {
 		transform: translateY(-5px);
-		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+		box-shadow: var(--shadow-lg);
 	}
 
 	.service-header {

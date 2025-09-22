@@ -12,7 +12,7 @@ export interface Props {
 
 const { 
 	title, 
-	description = "Professional IT Expert - DevOps, Cloud Migration, AI Consulting, and Digital Solutions",
+	description = "NICT - Drop IT on us. Technology + Marketing + Cost Control = Measurable Business Outcomes",
 	canonical = Astro.url.href,
 	ogImage = "/og-image.jpg",
 	lang = "en",
@@ -21,7 +21,7 @@ const {
 
 // Get domain from environment or fallback
 const domain = import.meta.env.SITE || "https://yourdomainhere.com";
-const siteName = "IT Expert Portfolio";
+const siteName = "NICT";
 ---
 
 <!doctype html>
@@ -71,7 +71,7 @@ const siteName = "IT Expert Portfolio";
 		
 		{/* Preload critical resources */}
 		<link rel="preload" href="/hero-bg-pattern.svg" as="image" type="image/svg+xml" />
-		<link rel="preload" href="/group.avif" as="image" type="image/avif" />
+		<link rel="preload" href="/hero-bg-pattern-dark.svg" as="image" type="image/svg+xml" />
 		
 		{/* Google Fonts - optimized with display=swap */}
 		<link
@@ -177,6 +177,8 @@ const siteName = "IT Expert Portfolio";
 		--bg-card: rgba(42, 42, 42, 0.95);
 		--bg-white: #2a2a2a;
 		--muted-background: #2a2a2a;
+		--hero-bg: #1a1a1a;
+		--hero-bg-image: url('/hero-bg-pattern-dark.svg');
 		
 		--border-color: #404040;
 		--border-light: #333333;
@@ -216,6 +218,8 @@ const siteName = "IT Expert Portfolio";
 		--bg-secondary: #f8f9fa;
 		--bg-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
 		--bg-card: rgba(255, 255, 255, 0.95);
+		--hero-bg: #ffffff;
+		--hero-bg-image: url('/hero-bg-pattern.svg');
 	}
 	
 	/* Color Scheme 1: Teal & Blue (Default) */

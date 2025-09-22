@@ -15,9 +15,9 @@ export default defineConfig({
   },
   build: {
     // Inline stylesheets that are smaller than this limit
-    inlineStylesheets: 'auto',
+    inlineStylesheets: "auto",
     // Enable asset optimization
-    assets: '_astro',
+    assets: "_astro",
   },
   vite: {
     build: {
@@ -28,17 +28,17 @@ export default defineConfig({
         output: {
           // Optimize chunk splitting
           manualChunks: (id) => {
-            if (id.includes('node_modules')) {
-              return 'vendor';
+            if (id.includes("node_modules")) {
+              return "vendor";
             }
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   },
   image: {
     // Enable image optimization
-    domains: ["nict-sladjanasto.vercel.app"]
+    domains: ["nict-sladjanasto.vercel.app"],
   },
-  compressHTML: true
+  compressHTML: true,
 });

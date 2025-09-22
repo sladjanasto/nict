@@ -57,39 +57,14 @@ const heroQuestions = ui.hero?.questions || [
 					</a>
 				</div>
 			</div>
-			
-			{/* Optimized hero image with responsive loading */}
-			<div class="hero-image">
-				<picture>
-					<source 
-						media="(min-width: 768px)" 
-						srcset="/group.avif"
-						type="image/avif"
-					/>
-					<source 
-						media="(min-width: 768px)" 
-						srcset="/hero-person.jpg"
-						type="image/jpeg"
-					/>
-					<img 
-						src="/hero-person.jpg"
-						alt="Professional IT Expert - Your Digital Transformation Partner"
-						width="400"
-						height="400"
-						loading="eager"
-						decoding="async"
-						class="hero-img"
-					/>
-				</picture>
-			</div>
 		</div>
 	</div>
 </section>
 
 <style>
 	.hero {
-		background: var(--bg-white);
-		background-image: url('/hero-bg-pattern.svg');
+		background: var(--hero-bg, var(--bg-white));
+		background-image: var(--hero-bg-image, url('/hero-bg-pattern.svg'));
 		background-repeat: no-repeat;
 		background-position: center center;
 		background-size: cover;
@@ -102,6 +77,7 @@ const heroQuestions = ui.hero?.questions || [
 		flex-direction: column;
 		will-change: transform;
 		transform: translateZ(0);
+		transition: background-color var(--transition-normal), background-image var(--transition-normal);
 	}
 	
 	.hero::before {
@@ -117,33 +93,20 @@ const heroQuestions = ui.hero?.questions || [
 	
 	.hero-content {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 		position: relative;
 		z-index: 2;
-		max-width: 1200px;
+		width: 1400px;
+		/* max-width: 900px;
 		margin: 0 auto;
-		gap: var(--spacing-xxl);
+		padding: 0 500px 0 0; */
 	}
 	
 	.hero-text {
-		flex: 1;
-		text-align: left;
+		text-align: center;
+		width: 90%;
 		transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-	}
-	
-	.hero-image {
-		flex: 0 0 auto;
-		max-width: 400px;
-	}
-	
-	.hero-img {
-		width: 100%;
-		height: auto;
-		border-radius: var(--radius-lg);
-		box-shadow: var(--shadow-xl);
-		transform: translateZ(0);
-		will-change: transform;
 	}
 
 	/* Typewriter Animation */
@@ -368,17 +331,10 @@ const heroQuestions = ui.hero?.questions || [
 		}
 		
 		.hero-content {
-			flex-direction: column;
-			gap: var(--spacing-xl);
 			padding: 0;
-			width: 100%;
-			max-width: 400px;
+			width: 300px;
 		}
-		
-		.hero-image {
-			max-width: 280px;
-			order: -1;
-		}
+
 		
 		.hero-text {
 			text-align: center;

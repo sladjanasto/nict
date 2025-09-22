@@ -126,83 +126,83 @@
     "keyFeatures": "Hauptmerkmale",
     "benefits": "Vorteile",
     "interimManagement": {
-      "title": "Interim Management",
-      "description": "Temporäre IT-Abteilungsleitung",
+      "title": "IT-Strategie & Beratung",
+      "description": "Geschäftsorientierte IT-Roadmaps",
       "features": [
-        "Strategische IT-Infrastrukturplanung",
-        "IT-Team-Management",
-        "IT-Prozessoptimierung",
-        "IT-Sicherheitsimplementierung"
+        "Assessment & Business Case Entwicklung",
+        "Architekturplanung & Design",
+        "Priorisierung von Technologie-Investitionen",
+        "Strategische IT-Infrastrukturplanung"
       ],
       "benefits": [
-        "Sofort verfügbares Expertenwissen",
-        "Flexibles Engagement",
-        "Schnelle Lösungsimplementierung",
-        "Kostenreduzierung"
+        "Technologie-Investitionen schaffen echten Wert",
+        "Geschäftsausgerichtete IT-Entscheidungen",
+        "Klare Umsetzungsroadmap",
+        "Messbarer ROI aus IT-Initiativen"
       ]
     },
     "cloudMigration": {
-      "title": "Cloud Migration",
-      "description": "Sichere Cloud-Migration",
+      "title": "Digitale Transformation & KI-Strategie",
+      "description": "KI und digitale Initiativen in konkreten ROI",
       "features": [
-        "Analyse bestehender Infrastruktur",
-        "Migrationsplanung",
-        "Cloud-Lösungsimplementierung",
-        "Post-Migrations-Support"
+        "Identifikation praktischer KI-Anwendungsfälle",
+        "Design von Umsetzungsroadmaps",
+        "Integration von KI in Geschäftsprozesse",
+        "Digitale Transformationsplanung"
       ],
       "benefits": [
-        "Ressourcen-Skalierbarkeit",
-        "Reduzierte Betriebskosten",
-        "Erhöhte Sicherheit",
-        "Globale Verfügbarkeit"
+        "Konkreter ROI aus KI-Initiativen",
+        "Praktische KI-Implementierung",
+        "Verbesserte Geschäftsprozesse",
+        "Digitaler Wettbewerbsvorteil"
       ]
     },
     "itOperations": {
-      "title": "IT Operations",
-      "description": "IT-Betrieb Optimierung",
+      "title": "Projektabwicklung & Implementierung",
+      "description": "Agile Lieferung mit Disziplin",
       "features": [
-        "Infrastruktur-Überwachung",
-        "Prozessautomatisierung",
-        "Incident Management",
-        "Performance-Optimierung"
+        "Sprint-Planung & Management",
+        "Phasenweise Rollouts & Deployment",
+        "Go-Live-Support & Begleitung",
+        "Saubere Übergabe an Betrieb"
       ],
       "benefits": [
-        "Erhöhte Effizienz",
-        "Reduzierte Ausfallzeiten",
-        "Proaktive Wartung",
-        "Bessere Systemnutzung"
-      ]
-    },
-    "aiConsulting": {
-      "title": "KI-Beratung",
-      "description": "KI-Lösungsimplementierung",
-      "features": [
-        "KI-Strategie & Roadmap",
-        "Machine Learning Implementierung",
-        "Datenanalytik",
-        "KI-Modell-Optimierung"
-      ],
-      "benefits": [
-        "Prozessautomatisierung",
-        "Verbesserte Entscheidungsfindung",
-        "Wettbewerbsvorteil",
-        "ROI-Optimierung"
+        "Pünktliche Lieferung nach Spezifikation",
+        "Agiler und disziplinierter Ansatz",
+        "Reibungsloser Betriebsstart",
+        "Reduzierte Implementierungsrisiken"
       ]
     },
     "seoServices": {
-      "title": "SEO Services",
-      "description": "Digitales Marketing und Optimierung",
+      "title": "Digitales Marketing & SEO",
+      "description": "Technische Stärke in kommerziellen Erfolg",
       "features": [
-        "Keyword-Recherche",
-        "On-Page-Optimierung",
-        "Technisches SEO",
-        "Content-Strategie"
+        "Technische SEO-Optimierung",
+        "Content-Strategie-Entwicklung",
+        "Conversion-Optimierung",
+        "Marktpositionierungsstrategie"
       ],
       "benefits": [
         "Erhöhte Online-Sichtbarkeit",
-        "Mehr organischer Traffic",
-        "Bessere Suchmaschinen-Rankings",
-        "Erhöhte Konversionen"
+        "Technische Fähigkeiten werden zu Leads",
+        "Umsatzwachstum durch digitale Präsenz",
+        "Stärkere Marktpositionierung"
+      ]
+    },
+    "aiConsulting": {
+      "title": "Betrieb & Kostenoptimierung",
+      "description": "Zuverlässiger Betrieb mit Kostenreduzierung",
+      "features": [
+        "ITIL-basierter Support & Monitoring",
+        "Microsoft-Lizenzoptimierung",
+        "Azure/AWS-Kostenoptimierung",
+        "Storage-Tiering & Reserved Instances"
+      ],
+      "benefits": [
+        "Garantiert zuverlässiger Betrieb",
+        "Zweistellige Kosteneinsparungen",
+        "Optimierte Cloud-Ausgaben",
+        "Bessere Ressourcennutzung"
       ]
     }
   },

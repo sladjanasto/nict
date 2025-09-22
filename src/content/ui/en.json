@@ -119,83 +119,83 @@
     "keyFeatures": "Key Features",
     "benefits": "Benefits",
     "interimManagement": {
-      "title": "Interim Management",
-      "description": "Temporary IT department leadership",
+      "title": "IT Strategy & Consulting",
+      "description": "Business-driven IT roadmaps",
       "features": [
-        "Strategic IT infrastructure planning",
-        "IT team management",
-        "IT process optimization",
-        "IT security implementation"
+        "Assessment & business case development",
+        "Architecture planning & design",
+        "Technology investment prioritization",
+        "Strategic IT infrastructure planning"
       ],
       "benefits": [
-        "Immediately available expert knowledge",
-        "Flexible engagement",
-        "Fast solution implementation",
-        "Cost reduction"
+        "Technology investments create actual value",
+        "Business-aligned IT decisions",
+        "Clear implementation roadmap",
+        "Measurable ROI from IT initiatives"
       ]
     },
     "cloudMigration": {
-      "title": "Cloud Migration",
-      "description": "Secure cloud migration",
+      "title": "Digital Transformation & AI Strategy",
+      "description": "AI and digital initiatives into concrete ROI",
       "features": [
-        "Existing infrastructure analysis",
-        "Migration planning",
-        "Cloud solution implementation",
-        "Post-migration support"
+        "Identify practical AI use-cases",
+        "Design implementation roadmaps",
+        "Integrate AI into business processes",
+        "Digital transformation planning"
       ],
       "benefits": [
-        "Resource scalability",
-        "Reduced operational costs",
-        "Enhanced security",
-        "Global availability"
+        "Concrete ROI from AI initiatives",
+        "Practical AI implementation",
+        "Enhanced business processes",
+        "Competitive digital advantage"
       ]
     },
     "itOperations": {
-      "title": "IT Operations",
-      "description": "IT operations optimization",
+      "title": "Project Delivery & Implementation",
+      "description": "Agile delivery with discipline",
       "features": [
-        "Infrastructure monitoring",
-        "Process automation",
-        "Incident management",
-        "Performance optimization"
+        "Sprint planning & management",
+        "Phased rollouts & deployment",
+        "Go-Live support & guidance",
+        "Clean handover to operations"
       ],
       "benefits": [
-        "Increased efficiency",
-        "Reduced downtime",
-        "Proactive maintenance",
-        "Better system utilization"
-      ]
-    },
-    "aiConsulting": {
-      "title": "AI Consulting",
-      "description": "AI solution implementation",
-      "features": [
-        "AI strategy & roadmap",
-        "Machine Learning implementation",
-        "Data analytics",
-        "AI model optimization"
-      ],
-      "benefits": [
-        "Process automation",
-        "Improved decision making",
-        "Competitive advantage",
-        "ROI optimization"
+        "On-time delivery to specification",
+        "Agile and disciplined approach",
+        "Smooth operational transition",
+        "Reduced implementation risks"
       ]
     },
     "seoServices": {
-      "title": "SEO Services",
-      "description": "Digital marketing and optimization",
+      "title": "Digital Marketing & SEO",
+      "description": "Technical strength into commercial success",
       "features": [
-        "Keyword research",
-        "On-page optimization",
-        "Technical SEO",
-        "Content strategy"
+        "Technical SEO optimization",
+        "Content strategy development",
+        "Conversion optimization",
+        "Market positioning strategy"
       ],
       "benefits": [
         "Increased online visibility",
-        "More organic traffic",
-        "Better search rankings",
-        "Increased conversions"
+        "Technical capability converts to leads",
+        "Revenue growth from digital presence",
+        "Stronger market positioning"
+      ]
+    },
+    "aiConsulting": {
+      "title": "Operations & Cost Optimization",
+      "description": "Reliable operations with cost reduction",
+      "features": [
+        "ITIL-based support & monitoring",
+        "Microsoft licensing optimization",
+        "Azure/AWS cost engineering",
+        "Storage tiering & reserved instances"
+      ],
+      "benefits": [
+        "Guaranteed reliable operations",
+        "Double-digit cost savings",
+        "Optimized cloud spend",
+        "Better resource utilization"
       ]
     }
   },

@@ -183,6 +183,7 @@ To change the entire theme, simply modify `:root` in `Layout.astro`:
   --bg-primary: #121212;
   --bg-secondary: #1e1e1e;
   --bg-gradient: linear-gradient(135deg, #bb86fc 0%, #3700b3 100%);
+  --gap: 0.5rem;
 }
 ```
 

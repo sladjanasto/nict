@@ -24,7 +24,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 ---
 
 <section id="services" class="services section">
-	<div class="container">
+	<div class="services-container">
 		<h2 class="section-title">{ui.services.title}</h2>
 		
 		<div class="services-intro">
@@ -38,12 +38,9 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		)}
 		
 		<div class="services-grid">
-			<!-- Interim Management Card -->
+			<!-- Service Card 1: Interim Management -->
 			<div class="service-card">
 				<div class="service-header">
-					<div class="service-icon">
-						<img src="/icons/interim-management.svg" alt={ui.services.interimManagement.title} />
-					</div>
 					<h3>{ui.services.interimManagement.title}</h3>
 					<p class="service-description">{ui.services.interimManagement.description}</p>
 				</div>
@@ -73,12 +70,9 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 			</div>
 			
-			<!-- Cloud Migration Card -->
+			<!-- Service Card 2: Cloud Migration -->
 			<div class="service-card">
 				<div class="service-header">
-					<div class="service-icon">
-						<img src="/icons/cloud-migration.svg" alt={ui.services.cloudMigration.title} />
-					</div>
 					<h3>{ui.services.cloudMigration.title}</h3>
 					<p class="service-description">{ui.services.cloudMigration.description}</p>
 				</div>
@@ -108,12 +102,9 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 			</div>
 			
-			<!-- IT Operations Card -->
+			<!-- Service Card 3: IT Operations -->
 			<div class="service-card">
 				<div class="service-header">
-					<div class="service-icon">
-						<img src="/icons/it-operations.svg" alt={ui.services.itOperations.title} />
-					</div>
 					<h3>{ui.services.itOperations.title}</h3>
 					<p class="service-description">{ui.services.itOperations.description}</p>
 				</div>
@@ -143,12 +134,9 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 			</div>
 			
-			<!-- AI Consulting Card -->
+			<!-- Service Card 4: AI Consulting -->
 			<div class="service-card">
 				<div class="service-header">
-					<div class="service-icon">
-						<img src="/icons/ai-consulting.svg" alt={ui.services.aiConsulting.title} />
-					</div>
 					<h3>{ui.services.aiConsulting.title}</h3>
 					<p class="service-description">{ui.services.aiConsulting.description}</p>
 				</div>
@@ -178,12 +166,9 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 			</div>
 			
-			<!-- SEO Services Card -->
+			<!-- Service Card 5: SEO Services -->
 			<div class="service-card">
 				<div class="service-header">
-					<div class="service-icon">
-						<img src="/icons/seo-services.svg" alt={ui.services.seoServices.title} />
-					</div>
 					<h3>{ui.services.seoServices.title}</h3>
 					<p class="service-description">{ui.services.seoServices.description}</p>
 				</div>
@@ -217,7 +202,6 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 			</div>
 		</div>
-		
 
 	</div>
 </section>
@@ -225,6 +209,11 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 <style>
 	.services {
 		background: var(--bg-secondary);
+	}
+	
+	.services-container {
+		width: 100%;
+		padding: 0;
 	}
 	
 	.services-intro {
@@ -260,6 +249,8 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 	.service-details {
 		/* margin-bottom: 25px; */
 		flex-grow: 1;
+		display: flex;
+		gap: var(--gap);
 	}
 	
 	.service-features,
@@ -273,7 +264,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		font-size: var(--font-size-md);
 		margin-bottom: 12px;
 		font-weight: 600;
-		border-bottom: 2px solid var(--primary);
+
 		padding-bottom: 8px;
 		text-align: center;
 	}
@@ -320,48 +311,79 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 	.services-grid {
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
-		gap: 30px;
-		max-width: 1400px;
-		margin: 0 auto;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 0 2rem 0.1rem;
+		
 	}
 
+	/* Service Cards */
 	.service-card {
 		background: var(--bg-primary);
-		border-radius: 12px;
-		padding: 30px;
-		box-shadow: var(--shadow-md);
-		transition: all 0.3s ease;
-		border: 1px solid var(--card-border);
+		padding: 25px;
 		display: flex;
 		flex-direction: column;
 		height: 100%;
+		min-height: 400px;
+		box-sizing: border-box;
+		transition: all 0.3s ease;
 	}
 
-	.service-card:hover {
-		transform: translateY(-5px);
-		box-shadow: var(--shadow-lg);
+	/* Alternating background colors for cards */
+	.service-card:nth-child(even) {
+		background: var(--bg-secondary);
 	}
+
+	.service-card:nth-child(odd) {
+		background: var(--bg-primary);
+	}
+
+	/* .service-card:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-lg);
+	} */
 
 	.service-header {
 		text-align: center;
 		margin-bottom: 25px;
 	}
-	.service-icon {
-		width: 60px;
-		height: 60px;
-		margin: 0 auto 20px auto;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--primary);
-		border-radius: 50%;
-		padding: 15px;
+	/* Responsive Design */
+	@media (max-width: 1400px) {
+		.services-grid {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 18px;
+		}
 	}
 
-	.service-icon img {
-		width: 30px;
-		height: 30px;
-		filter: brightness(0) invert(1);
+	@media (max-width: 1200px) {
+		.services-grid {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+		}
+	}
+
+	@media (max-width: 900px) {
+		.services-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 20px;
+		}
+		
+		.service-card {
+			padding: 20px;
+			min-height: 350px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.services-grid {
+			grid-template-columns: 1fr;
+			gap: 20px;
+		}
+		
+		.service-card {
+			padding: 20px;
+			min-height: 300px;
+		}
 	}
 
 	.service-card h3 {
@@ -379,56 +401,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		line-height: 1.5;
 		margin-bottom: 0;
 	}
-	
-	/* Responsive Design for Cards */
-	@media (max-width: 1400px) {
-		.services-grid {
-			grid-template-columns: repeat(4, 1fr);
-			gap: 25px;
-		}
-	}
 
-	@media (max-width: 1200px) {
-		.services-grid {
-			grid-template-columns: repeat(3, 1fr);
-			gap: 25px;
-		}
-	}
-
-	@media (max-width: 900px) {
-		.services-grid {
-			grid-template-columns: repeat(2, 1fr);
-			gap: 20px;
-		}
-		
-		.service-card {
-			padding: 25px;
-		}
-		
-		.service-icon {
-			width: 50px;
-			height: 50px;
-			margin-bottom: 15px;
-			padding: 12px;
-		}
-		
-		.service-icon img {
-			width: 26px;
-			height: 26px;
-		}
-	}
-
-	@media (max-width: 768px) {
-		.services {
-			padding: 60px 0;
-		}
-		
-		.services-grid {
-			grid-template-columns: 1fr;
-			gap: 20px;
-			padding: 0 20px;
-			max-width: 500px;
-		}
 		
 		.service-card {
 			padding: 25px 20px;
@@ -440,37 +413,6 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		
 		.service-description {
 			font-size: var(--font-size-sm);
-		}
-	}
-	
-	/* Mobile optimizations */
-	@media (max-width: 768px) {
-		.service-details {
-			margin-bottom: 20px;
-		}
-		
-		.service-features h4,
-		.service-benefits h4 {
-			font-size: var(--font-size-sm);
-			margin-bottom: 10px;
-		}
-		
-		.service-features li,
-		.service-benefits li {
-			font-size: 13px;
-			padding: 4px 0;
-			padding-left: 18px;
-		}
-		
-		.service-features li::before,
-		.service-benefits li::before {
-			font-size: 12px;
-			color: var(--success-color);
-		}
-		
-		.service-cta .btn:not(.btn-link) {
-			font-size: 13px;
-			padding: 10px 20px;
 		}
 	}
 	

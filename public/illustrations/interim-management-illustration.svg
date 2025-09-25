@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Interim Management - Leadership & Team Management -->
+  <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main leader figure -->
+    <circle cx="200" cy="80" r="20" stroke-width="2.5"/>
+    <path d="M200 100 L200 180" stroke-width="2.5"/>
+    <path d="M180 130 L220 130" stroke-width="2.5"/>
+    
+    <!-- Team members around -->
+    <circle cx="130" cy="120" r="15" stroke-width="2"/>
+    <path d="M130 135 L130 180" stroke-width="2"/>
+    <path d="M115 155 L145 155" stroke-width="2"/>
+    
+    <circle cx="270" cy="120" r="15" stroke-width="2"/>
+    <path d="M270 135 L270 180" stroke-width="2"/>
+    <path d="M255 155 L285 155" stroke-width="2"/>
+    
+    <circle cx="165" cy="160" r="12" stroke-width="2"/>
+    <path d="M165 172 L165 200" stroke-width="2"/>
+    <path d="M155 185 L175 185" stroke-width="2"/>
+    
+    <circle cx="235" cy="160" r="12" stroke-width="2"/>
+    <path d="M235 172 L235 200" stroke-width="2"/>
+    <path d="M225 185 L245 185" stroke-width="2"/>
+    
+    <!-- Connection lines showing leadership -->
+    <path d="M200 100 L130 135" stroke-width="1" stroke-dasharray="5,3" opacity="0.6"/>
+    <path d="M200 100 L270 135" stroke-width="1" stroke-dasharray="5,3" opacity="0.6"/>
+    <path d="M200 100 L165 172" stroke-width="1" stroke-dasharray="5,3" opacity="0.6"/>
+    <path d="M200 100 L235 172" stroke-width="1" stroke-dasharray="5,3" opacity="0.6"/>
+    
+    <!-- Strategy board -->
+    <rect x="320" y="50" width="60" height="40" rx="4" stroke-width="2"/>
+    <line x1="330" y1="60" x2="370" y2="60" stroke-width="1"/>
+    <line x1="330" y1="70" x2="360" y2="70" stroke-width="1"/>
+    <line x1="330" y1="80" x2="365" y2="80" stroke-width="1"/>
+    
+    <!-- Arrow showing direction -->
+    <path d="M350 100 L350 120 M345 115 L350 120 L355 115" stroke-width="2" fill="currentColor"/>
+  </g>
+</svg>

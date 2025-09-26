@@ -561,30 +561,114 @@ const siteName = "NICT";
 		padding: var(--spacing-xxl) 0;
 	}
 	
-	:global(.section-title) {
-		font-family: 'Poppins', var(--font-primary);
-		font-size: var(--font-size-4xl);
-		font-weight: 300;
-		text-align: center;
-		margin-top: 0;
-		/* margin-bottom: var(--spacing-xxl); */
-		color: var(--secondary-color);
-		position: relative;
-		padding-bottom: var(--spacing-lg);
+	@layer base, layout, components, typography, utilities;
+
+	@layer typography {
+		/* Section Titles - Glavni naslovi sekcija */
+		:global(.section-title) {
+			font-family: 'Poppins', var(--font-primary);
+			font-size: var(--font-size-4xl);
+			font-weight: 300;
+			text-align: center;
+			margin-top: 0;
+			color: var(--secondary-color);
+			position: relative;
+			padding-bottom: var(--spacing-lg);
+		}
+		
+		:global(.section-title::after) {
+			content: '';
+			position: absolute;
+			bottom: -8px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 80px;
+			height: 1px;
+			background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+			border-radius: 2px;
+			transition: width var(--transition-normal);
+		}
+		
+		/* Section Subtitles - Podnaslovi sekcija */
+		:global(.section-subtitle) {
+			font-family: 'Poppins', var(--font-primary);
+			font-size: var(--font-size-xl);
+			font-weight: 400;
+			text-align: center;
+			margin-top: 0;
+			margin-bottom: var(--spacing-lg);
+			color: var(--text-dark);
+			position: relative;
+		}
+		
+		:global(.section-subtitle::after) {
+			content: '';
+			position: absolute;
+			bottom: -6px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 50px;
+			height: 1px;
+			background: var(--primary-color);
+			border-radius: 1px;
+		}
+		
+		/* Packages Title - Specijalni naslov za packages */
+		:global(.packages-title) {
+			font-family: 'Poppins', var(--font-primary);
+			font-size: var(--font-size-2xl);
+			font-weight: 700;
+			text-align: center;
+			margin-bottom: var(--spacing-xl);
+			color: var(--text-dark);
+			position: relative;
+		}
+		
+		:global(.packages-title::after) {
+			content: '';
+			position: absolute;
+			bottom: -4px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 40px;
+			height: 1px;
+			background: var(--secondary-color);
+			border-radius: 1px;
+		}
+		
+		/* Section Description - Opisi ispod naslova */
+		:global(.section-description) {
+			font-size: var(--font-size-lg);
+			color: var(--text-light);
+			text-align: center;
+			max-width: 800px;
+			margin: 0 auto var(--spacing-xl);
+			line-height: 1.6;
+			font-weight: 100;
+		}
+		
+		/* Responsive Typography */
+		@media (max-width: 768px) {
+			:global(.section-title) {
+				font-size: var(--font-size-2xl);
+			}
+			
+			:global(.section-subtitle) {
+				font-size: var(--font-size-lg);
+			}
+			
+			:global(.packages-title) {
+				font-size: var(--font-size-xl);
+			}
+			
+			:global(.section-description) {
+				font-size: var(--font-size-md);
+				max-width: 90%;
+			}
+		}
 	}
-	
-	:global(.section-title::after) {
-		content: '';
-		position: absolute;
-		bottom: -8px;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 80px;
-		height: 1px;
-		background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-		border-radius: 2px;
-		transition: width var(--transition-normal);
-	}
+
+	@layer base {
 	
 	.btn {
 		display: inline-flex;

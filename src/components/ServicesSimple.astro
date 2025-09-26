@@ -28,7 +28,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		<h2 class="section-title">{ui.services.title}</h2>
 		
 		<div class="services-intro">
-			<p class="intro-text">{ui.services.subtitle}</p>
+			<p class="section-description">{ui.services.subtitle}</p>
 		</div>
 		
 		{servicesContent && (
@@ -236,161 +236,203 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 </section>
 
 <style>
-	.services {
-		background: var(--bg-secondary);
-	}
-	
-	.services-container {
-		width: 100%;
-		padding: 0;
-	}
-	
-	.services-intro {
-		margin-bottom: 60px;
-		text-align: center;
-	}
-	
-	.intro-text {
-		font-size: var(--font-size-lg);
-		color: var(--text-light);
-		max-width: 800px;
-		margin: 0 auto;
-		line-height: 1.6;
-		font-weight:100;
-	}
-	
-	.services-markdown {
-		margin-bottom: 40px;
-		text-align: center;
-	}
-	
-	.services-markdown :global(h2),
-	.services-markdown :global(h3) {
-		color: var(--text-primary);
-		margin-bottom: 16px;
-	}
-	
-	.services-markdown :global(p) {
-		color: var(--text-light);
-		line-height: 1.6;
-		margin-bottom: 16px;
-	}
-	
-	.service-details {
-		/* margin-bottom: 25px; */
-		flex-grow: 1;
-		display: flex;
-		gap: var(--gap);
-	}
-	
-	.service-features,
-	.service-benefits {
-		margin-bottom: 20px;
-		flex-grow: 1;
-	}
+	@layer base, layout, components, utilities;
 
-	.service-features h4,
-	.service-benefits h4 {
-		color: var(--text-light);
-		font-size: var(--font-size-md);
-		margin-bottom: 12px;
-		text-transform: uppercase;
-		padding-bottom: 8px;
-		text-align: center;
-		font-weight: 300;
-	}
-	
-	.service-features ul,
-	.service-benefits ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	
-	.service-features li,
-	.service-benefits li {
-		padding: 6px 0;
-		padding-left: 20px;
-		position: relative;
-		color: var(--text-light);
-		line-height: 1.4;
-		font-size: var(--font-size-sm);
-		display:flex;
-		align-items: center;
-	}
-	
-	.service-features li::before,
-	.service-benefits li::before {
-		content: "✓";
-		position: absolute;
-		left: 0;
-		color: var(--primary-color);
-		font-weight: bold;
-		font-size: 14px;
-	}
-	
-	.service-cta {
-		text-align: center;
-		margin-top: auto;
-		/* padding-top: 20px; */
-	}
-	
-	.service-cta .btn:not(.btn-link) {
-		font-size: var(--font-size-sm);
-		padding: 12px 24px;
-		width: 100%;
-	}
-	
-	.services-grid {
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-		width: 100%;
-		box-sizing: border-box;
-		padding: 0 2rem 0.1rem;
+	@layer base {
+		.services {
+			background: var(--bg-secondary);
+		}
 		
+		@keyframes slideInFromTop {
+			from {
+				transform: translateY(-20px);
+				opacity: 0;
+			}
+			to {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
 	}
 
-	/* Service Cards */
-	.service-card {
-		background: var(--bg-secondary);
-		padding: 25px;
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		min-height: 400px;
-		box-sizing: border-box;
-		transition: all 0.3s ease;
-		position: relative;
-		/* min-height:122px; */
+	@layer layout {
+		.services-container {
+			width: 100%;
+			padding: 0;
+		}
+		
+		.services-intro {
+			margin-bottom: 60px;
+			text-align: center;
+		}
+		
+		.services-markdown {
+			margin-bottom: 40px;
+			text-align: center;
+		}
+		
+		.services-grid {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			width: 100%;
+			box-sizing: border-box;
+			padding: 0 2rem 0.1rem;
+		}
+		
+		.packages-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 2rem;
+		}
+		
+		.packages-content {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: var(--spacing-lg);
+			margin-bottom: var(--spacing-xl);
+			max-width: 1200px;
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
-	.service-card::after{
-		position: absolute;
-		content:'';
-		width:2px;
-		height:60%;
-		background-color: var(--bg-primary);
-		transform: translate(-1.5rem, 2.5rem);
+	
+	@layer components {
+		/* Service Cards */
+		.service-card {
+			background: var(--bg-secondary);
+			padding: 25px;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			min-height: 400px;
+			box-sizing: border-box;
+			transition: all 0.3s ease;
+			position: relative;
+		}
+		
+		.service-card::after {
+			position: absolute;
+			content: '';
+			width: 2px;
+			height: 60%;
+			background-color: var(--bg-primary);
+			transform: translate(-1.5rem, 2.5rem);
+		}
+
+		.service-card:hover {
+			transform: translateY(-2px);
+			box-shadow: var(--shadow-lg);
+		}
+
+		.service-header {
+			text-align: center;
+			margin-bottom: 25px;
+			min-height: 122px;
+		}
+		
+		.service-card h3 {
+			color: var(--text-dark);
+			font-size: var(--font-size-xl);
+			margin-bottom: 15px;
+			font-weight: 300;
+			line-height: 1.3;
+			text-transform: uppercase;
+		}
+
+		.service-description {
+			color: var(--text-dark);
+			font-size: var(--font-size-md);
+			line-height: 1.5;
+			margin-bottom: 0;
+			font-weight: 600;
+		}
+		
+		.service-details {
+			flex-grow: 1;
+			display: flex;
+			gap: var(--gap);
+		}
+		
+		.service-features,
+		.service-benefits {
+			margin-bottom: 20px;
+			flex-grow: 1;
+		}
+
+		.service-features h4,
+		.service-benefits h4 {
+			color: var(--text-light);
+			font-size: var(--font-size-md);
+			margin-bottom: 12px;
+			text-transform: uppercase;
+			padding-bottom: 8px;
+			text-align: center;
+			font-weight: 300;
+		}
+		
+		.service-features ul,
+		.service-benefits ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		
+		.service-features li,
+		.service-benefits li {
+			padding: 6px 0;
+			padding-left: 20px;
+			position: relative;
+			color: var(--text-light);
+			line-height: 1.4;
+			font-size: var(--font-size-sm);
+			display: flex;
+			align-items: center;
+		}
+		
+		.service-features li::before,
+		.service-benefits li::before {
+			content: "✓";
+			position: absolute;
+			left: 0;
+			color: var(--primary-color);
+			font-weight: bold;
+			font-size: 14px;
+		}
+		
+		.service-cta {
+			text-align: center;
+			margin-top: auto;
+		}
+		
+		.service-cta .btn:not(.btn-link) {
+			font-size: var(--font-size-sm);
+			padding: 12px 24px;
+			width: 100%;
+		}
 	}
 
-	/* Alternating background colors for cards */
-	/* .service-card:nth-child(even) {
-		background: var(--bg-secondary);
+	@layer utilities {
+		.services-markdown :global(h2),
+		.services-markdown :global(h3) {
+			color: var(--text-primary);
+			margin-bottom: 16px;
+		}
+		
+		.services-markdown :global(p) {
+			color: var(--text-light);
+			line-height: 1.6;
+			margin-bottom: 16px;
+		}
+		
+		.packages-placeholder {
+			grid-column: 1 / -1;
+			text-align: center;
+			padding: var(--spacing-xl);
+			color: var(--text-light);
+			font-style: italic;
+		}
 	}
 
-	.service-card:nth-child(odd) {
-		background: var(--bg-primary);
-	} */
-
-	.service-card:hover {
-		transform: translateY(-2px);
-		box-shadow: var(--shadow-lg);
-	}
-
-	.service-header {
-		text-align: center;
-		margin-bottom: 25px;
-		min-height:122px;
-	}
 	/* Responsive Design */
 	@media (max-width: 1400px) {
 		.services-grid {
@@ -431,24 +473,6 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		}
 	}
 
-	.service-card h3 {
-		color: var(--text-dark);
-		font-size: var(--font-size-xl);
-		margin-bottom: 15px;
-		font-weight: 300;
-		line-height: 1.3;
-		text-transform: uppercase;
-	}
-
-	.service-description {
-		color: var(--text-dark);
-		font-size: var(--font-size-md);
-		line-height: 1.5;
-		margin-bottom: 0;
-		font-weight:600;
-	}
-
-		
 		.service-card {
 			padding: 25px 20px;
 		}
@@ -523,14 +547,6 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 0 2rem;
-	}
-	
-	.packages-title {
-		color: var(--text-dark);
-		font-size: var(--font-size-2xl);
-		text-align: center;
-		margin-bottom: var(--spacing-xl);
-		font-weight: 700;
 	}
 	
 	.packages-content {

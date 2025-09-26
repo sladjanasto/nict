@@ -388,24 +388,7 @@
           "Improved service quality and speed"
         ]
       }
-    ],
-    "technologyExpertise": {
-      "title": "Technology Expertise",
-      "categories": [
-        {
-          "title": "Cloud Platforms",
-          "technologies": ["AWS", "Azure", "Google Cloud", "Kubernetes"]
-        },
-        {
-          "title": "DevOps Tools",
-          "technologies": ["Docker", "Terraform", "Jenkins", "GitLab CI/CD"]
-        },
-        {
-          "title": "Monitoring",
-          "technologies": ["Prometheus", "Grafana", "ELK Stack", "New Relic"]
-        }
-      ]
-    }
+    ]
   },
   "contact": {
     "title": "Contact",

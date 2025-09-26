@@ -576,14 +576,14 @@ const siteName = "NICT";
 	:global(.section-title::after) {
 		content: '';
 		position: absolute;
-		bottom: 0;
+		bottom: -8px;
 		left: 50%;
 		transform: translateX(-50%);
-		width: 60px;
-		height: 2px;
-		background: linear-gradient(135deg, var(--secondary-color), var(--gradient-mid-blue));
-		border-radius: 1px;
-		opacity: 0.8;
+		width: 80px;
+		height: 4px;
+		background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+		border-radius: 2px;
+		transition: width var(--transition-normal);
 	}
 	
 	.btn {
@@ -646,6 +646,144 @@ const siteName = "NICT";
 	}
 	:global(.btn-link:focus-visible){
 		outline:none;
+	}
+
+	/* Section Dividers - CSS Custom Properties for Easy Fine-Tuning */
+	:root {
+		--divider-height-mobile: 60px;
+		--divider-height-desktop: 90px;
+		--divider-opacity: 1;
+		
+		/* Mobile clip-path coordinates */
+		--clip-top-left: 0%;
+		--clip-top-right-mobile: 48.2%;
+		--clip-bottom-mobile: 47.3%;
+		
+		/* Tablet coordinates */
+		--clip-top-right-tablet: 47.9%;
+		--clip-bottom-tablet: 46.4%;
+		
+		/* Desktop coordinates */
+		--clip-top-right-desktop: 46.7%;
+		--clip-bottom-desktop: 44.5%;
+		
+		/* Large desktop coordinates */
+		--clip-top-right-large: 47.5%;
+		--clip-bottom-large: 45.7%;
+		
+		/* Ultra-wide coordinates */
+		--clip-top-right-ultra: 47.3%;
+		--clip-bottom-ultra: 45.5%;
+	}
+
+	/* Section Dividers */
+	:global(.section-divider) {
+		height: var(--divider-height-mobile);
+		position: relative;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		/* Smooth transition between breakpoints */
+		transition: height 0.3s ease-in-out;
+	}
+	:global(.section-divider:nth-of-type(even)) {
+		background: var(--bg-primary);
+	}
+	:global(.section-divider:nth-of-type(odd)) {
+		background: var(--bg-secondary);
+	}
+
+	/* Triangle divider - Mobile First (320px-767px) */
+	:global(.section-divider::before) {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		background: white;
+		/* Simple rectangle clip-path for all sizes */
+		clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+		opacity: 1;
+		z-index: 1;
+	}
+	:global(.section-divider:nth-of-type(even):before) {
+		background: var(--bg-secondary);
+
+	}
+	:global(.section-divider:nth-of-type(odd):before) {
+		background: var(--bg-primary);
+
+	}
+
+	/* Small Mobile (320px-480px) */
+	@media (max-width: 480px) {
+		:global(.section-divider) {
+			height: 50px;
+		}
+	}
+
+	/* Large Mobile (481px-767px) */
+	@media (min-width: 481px) and (max-width: 767px) {
+		:global(.section-divider) {
+			height: 70px;
+		}
+	}
+
+	/* Tablet Portrait (768px-1023px) */
+	@media (min-width: 768px) and (max-width: 1023px) {
+		:global(.section-divider) {
+			height: 80px;
+		}
+	}
+
+	/* Desktop (1024px-1439px) */  
+	@media (min-width: 1024px) {
+		:global(.section-divider) {
+			height: 90px;
+		}
+	}
+
+	/* Large Desktop (1440px-1919px) */
+	@media (min-width: 1440px) and (max-width: 1919px) {
+		/* Height remains same as desktop */
+	}
+
+	/* Ultra-wide Screens (1920px+) */
+	@media (min-width: 1920px) {
+		:global(.section-divider) {
+			height: 100px;
+		}
+	}
+
+	/* 4K and above (2560px+) */
+	@media (min-width: 2560px) {
+		:global(.section-divider) {
+			height: 120px;
+		}
+	}
+
+	/* Alternative triangle pointing down - uncomment if needed */
+	/*
+	:global(.section-divider.down::before) {
+		clip-path: polygon(0 100%, 50% 0, 100% 100%);
+	}
+	*/
+
+	/* Alternative asymmetric triangle - uncomment if needed */
+	/*
+	:global(.section-divider.asymmetric::before) {
+		clip-path: polygon(0 0, 100% 0, 70% 100%);
+	}
+	*/
+
+	@media (max-width: 768px) {
+		:global(.section-divider) {
+			height: 60px;
+		}
 	}
 	
 	:global(.btn-link:hover::after) {

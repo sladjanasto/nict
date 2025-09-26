@@ -183,7 +183,7 @@ const heroQuestions = ui.hero?.questions || [
 		margin-bottom: var(--spacing-lg);
 		text-align: left;
 		transition: opacity 0.5s ease-in-out, transform 0.4s ease-in-out;
-		white-space: normal;
+		/* white-space: normal; */
 	}
 	
 	.highlight {
@@ -220,7 +220,7 @@ const heroQuestions = ui.hero?.questions || [
 	.answer-line {
 		display: inline-block;
 		width: 100%;
-		white-space: normal;
+		/* white-space: normal; */
 	}
 	
 	
@@ -355,16 +355,65 @@ const heroQuestions = ui.hero?.questions || [
 			margin-bottom: var(--spacing-lg);
 		}
 		
-		/* Disable typewriter animation ONLY on mobile */
-		.hero-question.typewriter,
-		.typewriter-line-1,
-		.typewriter-line-2 {
-			animation: none !important;
-			white-space: normal !important;
+		/* Mobile responsive typewriter - using reveal animations instead of width */
+		.hero-question.typewriter {
+			white-space: normal;
+			overflow: visible;
 			border-right: none !important;
-			overflow: visible !important;
-			opacity: 1 !important;
-			width: auto !important;
+			animation: 
+				mobile-reveal 1.5s ease-out;
+		}
+		
+		.typewriter-line-1 {
+			white-space: normal;
+			overflow: visible;
+			border-right: none !important;
+			opacity: 0;
+			animation: 
+				mobile-line-reveal 1.8s ease-out 0.5s both;
+		}
+		
+		.typewriter-line-2 {
+			white-space: normal;
+			overflow: visible;
+			border-right: none !important;
+			opacity: 0;
+			animation: 
+				mobile-line-reveal 1.5s ease-out 2.5s both;
+		}
+		
+		/* Mobile-specific reveal animations */
+		@keyframes mobile-reveal {
+			0% { 
+				opacity: 0;
+				transform: translateY(20px) scale(0.95);
+			}
+			60% {
+				opacity: 0.8;
+				transform: translateY(5px) scale(0.98);
+			}
+			100% { 
+				opacity: 1;
+				transform: translateY(0) scale(1);
+			}
+		}
+		
+		@keyframes mobile-line-reveal {
+			0% { 
+				opacity: 0;
+				transform: translateX(-30px);
+				filter: blur(3px);
+			}
+			40% {
+				opacity: 0.6;
+				transform: translateX(-5px);
+				filter: blur(1px);
+			}
+			100% { 
+				opacity: 1;
+				transform: translateX(0);
+				filter: blur(0);
+			}
 		}
 		
 		.hero-answer {

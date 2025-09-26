@@ -577,42 +577,41 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		margin: 0 auto;
 		border-radius: 12px;
 		overflow: hidden;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-		background: #ffffff;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+		background: white;
 		border: 1px solid #e5e5e5;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		font-family: system-ui, -apple-system, sans-serif;
 	}
 	
 	.table-header {
 		display: grid;
-		grid-template-columns: 1.8fr repeat(auto-fit, minmax(180px, 1fr));
+		grid-template-columns: 2fr 1fr 1fr 1fr;
 		background: #f8f9fa;
 		border-bottom: 1px solid #e5e5e5;
 	}
 	
 	.feature-header {
 		background: #f8f9fa;
-		padding: 24px 20px;
+		padding: 20px;
 		font-weight: 600;
 		color: #424242;
 		display: flex;
 		align-items: flex-end;
 		font-size: 14px;
 		text-transform: uppercase;
-		letter-spacing: 0.5px;
 		border-right: 1px solid #e5e5e5;
 	}
 	
 	.package-header-cell {
-		background: #ffffff;
-		padding: 24px 16px;
+		background: white;
+		padding: 20px 15px;
 		text-align: center;
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: 10px;
 		border-right: 1px solid #e5e5e5;
-		min-height: 200px;
+		min-height: 180px;
 		justify-content: space-between;
 	}
 	
@@ -623,25 +622,19 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 	.package-header-cell.popular {
 		background: #f0f7ff;
 		border: 2px solid #0078d4;
-		border-bottom: 2px solid #0078d4;
-		transform: scale(1.02);
+		transform: scale(1.01);
 		z-index: 2;
-		margin: -8px 0;
 		border-radius: 12px 12px 0 0;
 	}
 	
 	.table-body {
-		background: #ffffff;
+		background: white;
 	}
 	
 	.table-row {
 		display: grid;
-		grid-template-columns: 1.8fr repeat(auto-fit, minmax(180px, 1fr));
+		grid-template-columns: 2fr 1fr 1fr 1fr;
 		border-bottom: 1px solid #f0f0f0;
-	}
-	
-	.table-row:hover {
-		background: #fafafa;
 	}
 	
 	.table-row:last-child {
@@ -649,24 +642,16 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 	}
 	
 	.feature-cell {
-		background: #ffffff;
-		padding: 16px 20px;
+		padding: 15px 20px;
 		color: #424242;
 		display: flex;
 		align-items: center;
 		font-size: 14px;
-		font-weight: 400;
 		border-right: 1px solid #f0f0f0;
-		line-height: 1.4;
-	}
-	
-	.table-row:hover .feature-cell {
-		background: #fafafa;
 	}
 	
 	.check-cell {
-		background: #ffffff;
-		padding: 16px;
+		padding: 15px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -677,61 +662,38 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		border-right: none;
 	}
 	
-	.table-row:hover .check-cell {
-		background: #fafafa;
-	}
-	
-	.package-header-cell.popular .check-cell,
-	.table-row:hover .package-header-cell.popular .check-cell {
-		background: #f0f7ff;
-	}
-	
 	.check-mark {
-		color: #0078d4;
+		color: var(--primary-color);
 		font-size: 18px;
-		font-weight: 700;
-		width: 20px;
-		height: 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		font-weight: bold;
 	}
 	
 	.x-mark {
 		color: #d1d1d1;
 		font-size: 16px;
-		font-weight: 400;
 		opacity: 0.6;
-		width: 20px;
-		height: 20px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
 	}
 	
 	.popular-badge {
 		position: absolute;
-		top: -10px;
+		top: -8px;
 		left: 50%;
 		transform: translateX(-50%);
 		background: linear-gradient(135deg, #0078d4, #106ebe);
 		color: white;
-		padding: 6px 16px;
-		border-radius: 16px;
-		font-size: 11px;
+		padding: 4px 12px;
+		border-radius: 12px;
+		font-size: 10px;
 		font-weight: 600;
 		text-transform: uppercase;
-		letter-spacing: 0.8px;
-		box-shadow: 0 2px 8px rgba(0, 120, 212, 0.3);
 		z-index: 3;
 	}
 	
 	.package-name {
 		color: #323130;
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: 600;
 		margin: 0;
-		line-height: 1.2;
 	}
 	
 	.package-header-cell.popular .package-name {
@@ -742,21 +704,12 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		color: #605e5c;
 		font-size: 12px;
 		margin: 0;
-		font-weight: 400;
-	}
-	
-	.package-pricing {
-		margin: 8px 0;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 	}
 	
 	.package-price {
 		color: #323130;
-		font-size: 28px;
+		font-size: 24px;
 		font-weight: 700;
-		line-height: 1;
 		margin-bottom: 4px;
 	}
 	
@@ -766,70 +719,53 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 	
 	.package-period {
 		color: #605e5c;
-		font-size: 12px;
-		font-weight: 400;
+		font-size: 11px;
 	}
 	
 	.package-header-cell .btn {
-		margin-top: auto;
-		padding: 8px 16px;
+		padding: 8px 15px;
 		border-radius: 4px;
-		font-size: 14px;
+		font-size: 13px;
 		font-weight: 600;
 		text-decoration: none;
 		border: 1px solid #0078d4;
 		transition: all 0.2s ease;
-		min-height: 32px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		margin-top: auto;
 	}
 	
 	.package-header-cell .btn-primary {
 		background: #0078d4;
 		color: white;
-		border-color: #0078d4;
 	}
 	
 	.package-header-cell .btn-primary:hover {
 		background: #106ebe;
-		border-color: #106ebe;
 		transform: translateY(-1px);
-		box-shadow: 0 2px 8px rgba(0, 120, 212, 0.3);
 	}
 	
-	/* Microsoft-style responsive design */
+	/* Responsive Design for Comparison Table */
 	@media (max-width: 768px) {
 		.comparison-table {
-			font-size: 13px;
-			border-radius: 8px;
-		}
-		
-		.table-header {
-			grid-template-columns: 1.2fr repeat(auto-fit, minmax(100px, 1fr));
-		}
-		
-		.table-row {
-			grid-template-columns: 1.2fr repeat(auto-fit, minmax(100px, 1fr));
-		}
-		
-		.feature-header {
-			padding: 16px 12px;
 			font-size: 12px;
 		}
 		
+		.table-header,
+		.table-row {
+			grid-template-columns: 1.5fr repeat(3, 1fr);
+		}
+		
 		.package-header-cell {
-			padding: 16px 8px;
-			min-height: 160px;
+			padding: 15px 8px;
+			min-height: 140px;
 		}
 		
 		.feature-cell {
-			padding: 12px;
-			font-size: 13px;
+			padding: 10px 15px;
+			font-size: 12px;
 		}
 		
 		.check-cell {
-			padding: 12px 4px;
+			padding: 10px 5px;
 		}
 		
 		.package-name {
@@ -837,40 +773,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		}
 		
 		.package-price {
-			font-size: 20px;
-		}
-		
-		.package-header-cell .btn {
-			padding: 6px 12px;
-			font-size: 12px;
-			min-height: 28px;
-		}
-		
-		.popular-badge {
-			font-size: 10px;
-			padding: 4px 12px;
-		}
-	}
-	
-	@media (max-width: 480px) {
-		.table-header {
-			grid-template-columns: 1fr repeat(auto-fit, minmax(80px, 1fr));
-		}
-		
-		.table-row {
-			grid-template-columns: 1fr repeat(auto-fit, minmax(80px, 1fr));
-		}
-		
-		.feature-cell {
-			font-size: 12px;
-		}
-		
-		.package-name {
-			font-size: 12px;
-		}
-		
-		.package-price {
-			font-size: 16px;
+			font-size: 18px;
 		}
 	}
 </style>
@@ -1039,10 +942,10 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 								<h4 class="package-name">${pkg.name}</h4>
 								${pkg.subtitle ? `<p class="package-subtitle">${pkg.subtitle}</p>` : ''}
 								<div class="package-pricing">
-									<span class="package-price">${pkg.price}</span>
-									${pkg.period ? `<span class="package-period">${pkg.period}</span>` : ''}
+									<div class="package-price">${pkg.price}</div>
+									${pkg.period ? `<div class="package-period">${pkg.period}</div>` : ''}
 								</div>
-								<a href="#contact" class="btn ${pkg.popular ? 'btn-primary' : 'btn-primary'}">Get Started</a>
+								<a href="#contact" class="btn btn-primary">Get Started</a>
 							</div>
 						`).join('')}
 					</div>
@@ -1052,7 +955,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 								<div class="feature-cell">${feature}</div>
 								${packages.map((pkg: any) => `
 									<div class="check-cell">
-										${pkg.features.includes(feature) ? '<span class="check-mark">✓</span>' : '<span class="x-mark">✗</span>'}
+										${pkg.features.includes(feature) ? '<span class="check-mark">✓</span>' : '<span class="x-mark">—</span>'}
 									</div>
 								`).join('')}
 							</div>

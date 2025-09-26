@@ -538,6 +538,28 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 		gap: var(--spacing-lg);
 		margin-bottom: var(--spacing-xl);
+		max-width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	@media (max-width: 768px) {
+		.packages-content {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-md);
+		}
+	}
+	
+	@media (min-width: 769px) and (max-width: 1024px) {
+		.packages-content {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	
+	@media (min-width: 1025px) {
+		.packages-content {
+			grid-template-columns: repeat(3, 1fr);
+		}
 	}
 	
 	.packages-placeholder {
@@ -700,14 +722,16 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				title: 'Interim Management Packages',
 				packages: [
 					{
-						name: 'Basic Package',
-						price: 'From $5,000/month',
-						features: ['Strategic assessment', 'Team leadership', 'Monthly reporting']
+						name: 'Strategic Package',
+						price: '€5,000',
+						period: '/month',
+						features: ['Strategic assessment', 'Team leadership', 'Monthly reporting', 'Risk management']
 					},
 					{
-						name: 'Premium Package',
-						price: 'From $8,000/month',
-						features: ['Full operational management', '24/7 support', 'Weekly reporting', 'Process optimization']
+						name: 'Operational Package',
+						price: '€8,000',
+						period: '/month',
+						features: ['Full operational management', '24/7 support', 'Weekly reporting', 'Process optimization', 'Team restructuring']
 					}
 				]
 			},
@@ -715,14 +739,16 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				title: 'Cloud Migration Packages',
 				packages: [
 					{
-						name: 'Starter Package',
-						price: 'From $3,000',
-						features: ['Basic migration plan', 'Data backup', 'Initial setup']
+						name: 'Migration Starter',
+						price: '€3,000',
+						period: '/project',
+						features: ['Basic migration plan', 'Data backup', 'Initial setup', 'Documentation']
 					},
 					{
-						name: 'Enterprise Package',
-						price: 'From $15,000',
-						features: ['Complete migration', 'Security setup', 'Training & support', '24/7 monitoring']
+						name: 'Enterprise Migration',
+						price: '€15,000',
+						period: '/project',
+						features: ['Complete migration', 'Security setup', 'Training & support', '24/7 monitoring', 'Compliance audit']
 					}
 				]
 			},
@@ -730,14 +756,16 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				title: 'IT Operations Packages',
 				packages: [
 					{
-						name: 'Essential Package',
-						price: 'From $2,000/month',
-						features: ['System monitoring', 'Basic maintenance', 'Email support']
+						name: 'Essential Support',
+						price: '€2,000',
+						period: '/month',
+						features: ['System monitoring', 'Basic maintenance', 'Email support', 'Monthly reports']
 					},
 					{
-						name: 'Professional Package',
-						price: 'From $4,000/month',
-						features: ['Advanced monitoring', 'Preventive maintenance', 'Phone & email support', 'Monthly reports']
+						name: 'Professional Support',
+						price: '€4,000',
+						period: '/month',
+						features: ['Advanced monitoring', 'Preventive maintenance', 'Phone & email support', 'Weekly reports', 'Priority response']
 					}
 				]
 			},
@@ -745,14 +773,16 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				title: 'AI Consulting Packages',
 				packages: [
 					{
-						name: 'Discovery Package',
-						price: 'From $2,500',
-						features: ['AI readiness assessment', 'Strategy consultation', 'Implementation roadmap']
+						name: 'AI Discovery',
+						price: '€2,500',
+						period: '/project',
+						features: ['AI readiness assessment', 'Strategy consultation', 'Implementation roadmap', 'ROI analysis']
 					},
 					{
-						name: 'Implementation Package',
-						price: 'From $10,000',
-						features: ['Full AI solution', 'Custom development', 'Training & support', 'Performance optimization']
+						name: 'AI Implementation',
+						price: '€10,000',
+						period: '/project',
+						features: ['Full AI solution', 'Custom development', 'Training & support', 'Performance optimization', 'Ongoing maintenance']
 					}
 				]
 			},
@@ -833,7 +863,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 						${pkg.features.map((feature: string) => `<li>${feature}</li>`).join('')}
 					</ul>
 					<div class="package-cta">
-						<a href="#contact" class="btn ${pkg.popular ? 'btn-primary' : 'btn-secondary'}">Get Started</a>
+						<a href="#contact" class="btn ${pkg.popular ? 'btn-primary' : 'btn-primary'}">Get Started</a>
 					</div>
 				</div>
 			`).join('');

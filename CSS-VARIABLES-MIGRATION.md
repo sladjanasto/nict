@@ -107,7 +107,7 @@
 --font-size-xs: 0.75rem     (12px)
 --font-size-sm: 0.875rem    (14px)
 --font-size-base: 1rem      (16px)
---font-size-lg: 1.125rem    (18px)
+--font-size-lg: 1.5rem    (18px)
 --font-size-xl: 1.25rem     (20px)
 --font-size-2xl: 1.5rem     (24px)
 --font-size-3xl: 2rem       (32px)
@@ -176,7 +176,7 @@ To change the entire theme, simply modify `:root` in `Layout.astro`:
 :root {
   /* Dark Theme Example */
   --primary-color: #bb86fc;
-  --secondary-color: #3700b3;
+  --secondary-color: #2d8bf4ff;
   --accent-color: #03dac6;
   --text-dark: #ffffff;
   --text-light: #cccccc;

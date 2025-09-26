@@ -176,7 +176,7 @@ To change the entire theme, simply modify `:root` in `Layout.astro`:
 :root {
   /* Dark Theme Example */
   --primary-color: #bb86fc;
-  --secondary-color: #2d8bf4ff;
+  --secondary-color: #23577a;
   --accent-color: #03dac6;
   --text-dark: #ffffff;
   --text-light: #cccccc;

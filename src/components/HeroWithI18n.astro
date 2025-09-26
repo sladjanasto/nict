@@ -186,12 +186,15 @@ const heroQuestions = ui.hero?.questions || [
 		/* white-space: normal; */
 	}
 	
-	.highlight {
-		background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+	.hero .highlight,
+	.hero-question .highlight,
+	.hero-answer .highlight {
+		background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)) !important;
+		-webkit-background-clip: text !important;
+		-webkit-text-fill-color: transparent !important;
+		background-clip: text !important;
 		position: relative;
+		color: transparent !important;
 	}
 	
 	#questionStart,

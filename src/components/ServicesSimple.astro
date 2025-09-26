@@ -409,6 +409,213 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			padding: 12px 24px;
 			width: 100%;
 		}
+		
+		/* Microsoft Copilot-style Comparison Table */
+		.comparison-table {
+			width: 100%;
+			max-width: 1000px;
+			margin: 0 auto;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+			background: white;
+			border: 1px solid #e5e5e5;
+			font-family: system-ui, -apple-system, sans-serif;
+		}
+		
+		.table-header {
+			display: grid;
+			grid-template-columns: 2fr 1fr 1fr 1fr;
+			background: #f8f9fa;
+			border-bottom: 1px solid #e5e5e5;
+		}
+		
+		.feature-header {
+			background: #f8f9fa;
+			padding: 20px;
+			font-weight: 600;
+			color: #424242;
+			display: flex;
+			align-items: flex-end;
+			font-size: 14px;
+			text-transform: uppercase;
+			border-right: 1px solid #e5e5e5;
+		}
+		
+		.package-header-cell {
+			background: white;
+			padding: 20px 15px;
+			text-align: center;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			border-right: 1px solid #e5e5e5;
+			min-height: 180px;
+			justify-content: space-between;
+		}
+		
+		.package-header-cell:last-child {
+			border-right: none;
+		}
+		
+		.package-header-cell.popular {
+			background: #f0f7ff;
+			border: 2px solid #0078d4;
+			transform: scale(1.01);
+			z-index: 2;
+			border-radius: 12px 12px 0 0;
+		}
+		
+		.table-body {
+			background: white;
+		}
+		
+		.table-row {
+			display: grid;
+			grid-template-columns: 2fr 1fr 1fr 1fr;
+			border-bottom: 1px solid #f0f0f0;
+		}
+		
+		.table-row:last-child {
+			border-bottom: none;
+		}
+		
+		.feature-cell {
+			padding: 15px 20px;
+			color: #424242;
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			border-right: 1px solid #f0f0f0;
+		}
+		
+		.check-cell {
+			padding: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-right: 1px solid #f0f0f0;
+		}
+		
+		.check-cell:last-child {
+			border-right: none;
+		}
+		
+		.check-mark {
+			color: var(--primary-color);
+			font-size: 18px;
+			font-weight: bold;
+		}
+		
+		.x-mark {
+			color: #d1d1d1;
+			font-size: 16px;
+			opacity: 0.6;
+		}
+		
+		.popular-badge {
+			position: absolute;
+			top: -8px;
+			left: 50%;
+			transform: translateX(-50%);
+			background: linear-gradient(135deg, #0078d4, #106ebe);
+			color: white;
+			padding: 4px 12px;
+			border-radius: 12px;
+			font-size: 10px;
+			font-weight: 600;
+			text-transform: uppercase;
+			z-index: 3;
+		}
+		
+		.package-name {
+			color: #323130;
+			font-size: 16px;
+			font-weight: 600;
+			margin: 0;
+		}
+		
+		.package-header-cell.popular .package-name {
+			color: #0078d4;
+		}
+		
+		.package-subtitle {
+			color: #605e5c;
+			font-size: 12px;
+			margin: 0;
+		}
+		
+		.package-price {
+			color: #323130;
+			font-size: 24px;
+			font-weight: 700;
+			margin-bottom: 4px;
+		}
+		
+		.package-header-cell.popular .package-price {
+			color: #0078d4;
+		}
+		
+		.package-period {
+			color: #605e5c;
+			font-size: 11px;
+		}
+		
+		.package-header-cell .btn {
+			padding: 8px 15px;
+			border-radius: 4px;
+			font-size: 13px;
+			font-weight: 600;
+			text-decoration: none;
+			border: 1px solid #0078d4;
+			transition: all 0.2s ease;
+			margin-top: auto;
+		}
+		
+		.package-header-cell .btn-primary {
+			background: #0078d4;
+			color: white;
+		}
+		
+		.package-header-cell .btn-primary:hover {
+			background: #106ebe;
+			transform: translateY(-1px);
+		}
+		
+		/* Responsive styles for comparison table */
+		@media (max-width: 768px) {
+			.comparison-table {
+				font-size: 12px;
+			}
+			
+			.table-header,
+			.table-row {
+				grid-template-columns: 1.5fr repeat(3, 1fr);
+			}
+			
+			.package-header-cell {
+				padding: 15px 8px;
+				min-height: 140px;
+			}
+			
+			.feature-cell {
+				padding: 10px 15px;
+				font-size: 12px;
+			}
+			
+			.check-cell {
+				padding: 10px 5px;
+			}
+			
+			.package-name {
+				font-size: 14px;
+			}
+			
+			.package-price {
+				font-size: 18px;
+			}
+		}
 	}
 
 	@layer utilities {

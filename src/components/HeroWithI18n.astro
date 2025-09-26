@@ -356,72 +356,30 @@ const heroQuestions = ui.hero?.questions || [
 			margin-bottom: var(--spacing-lg);
 		}
 		
-		/* Mobile typewriter adjustments */
+		/* Disable typewriter animation on mobile */
 		.typewriter {
+			animation: none !important;
 			white-space: normal !important;
-			animation: 
-				mobile-fade-in 1s ease-in,
-				mobile-blink-caret 0.75s step-end infinite 1s,
-				remove-caret 0.1s ease-in 2s forwards;
+			border-right: none !important;
+			overflow: visible !important;
 		}
 		
 		.typewriter-line-1 {
+			animation: none !important;
 			white-space: normal !important;
-			animation: 
-				mobile-typewriter-line1 2s ease-in-out 0.5s both,
-				mobile-blink-caret 0.75s step-end infinite 0.5s,
-				remove-caret 0.1s ease-in 2.5s forwards;
+			border-right: none !important;
+			overflow: visible !important;
+			opacity: 1 !important;
+			display: block !important;
 		}
 		
 		.typewriter-line-2 {
+			animation: none !important;
 			white-space: normal !important;
-			opacity: 0;
-			animation: 
-				show-line 0.1s ease-in 2.5s forwards,
-				mobile-typewriter-line2 1.5s ease-in-out 2.6s both,
-				mobile-blink-caret 0.75s step-end infinite 2.6s,
-				remove-caret 0.1s ease-in 4.1s forwards;
-		}
-		
-		/* Mobile-specific keyframes */
-		@keyframes mobile-fade-in {
-			from { opacity: 0; transform: translateY(10px); }
-			to { opacity: 1; transform: translateY(0); }
-		}
-		
-		@keyframes mobile-typewriter-line1 {
-			0% { 
-				opacity: 0;
-				transform: translateX(-20px);
-			}
-			20% { 
-				opacity: 1;
-				transform: translateX(0);
-			}
-			100% { 
-				opacity: 1;
-				transform: translateX(0);
-			}
-		}
-		
-		@keyframes mobile-typewriter-line2 {
-			0% { 
-				opacity: 0;
-				transform: translateX(-20px);
-			}
-			30% { 
-				opacity: 1;
-				transform: translateX(0);
-			}
-			100% { 
-				opacity: 1;
-				transform: translateX(0);
-			}
-		}
-		
-		@keyframes mobile-blink-caret {
-			from, to { border-color: transparent }
-			50% { border-color: var(--primary-color) }
+			border-right: none !important;
+			overflow: visible !important;
+			opacity: 1 !important;
+			display: block !important;
 		}
 		
 		.hero-answer {

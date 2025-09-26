@@ -138,6 +138,7 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 <!-- Fixed Free Consultation Button -->
 <div class="fixed-consultation-btn">
 	<a href={contactLink} class="btn-consultation-fixed" aria-label="Free Consultation">
+		<i class="icon icon-bubbles4"></i>
 		<span class="consultation-text">{ui.buttons?.freeConsultation || 'Free Consultation'}</span>
 	</a>
 </div>
@@ -164,6 +165,7 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		gap: var(--spacing-xs);
 		background: var(--bg-gradient);
 		color: white;
 		padding: var(--spacing-md);
@@ -186,6 +188,11 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		color: white;
 	}
 	
+	.btn-consultation-fixed .icon {
+		font-size: 1.2rem;
+		flex-shrink: 0;
+	}
+	
 	.consultation-text {
 		display: block;
 		font-size: var(--font-size-sm);
@@ -205,6 +212,10 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 			height: 44px;
 			padding: var(--spacing-sm);
 		}
+		
+		.btn-consultation-fixed .icon {
+			font-size: 1.1rem;
+		}
 		}
 	}
 	
@@ -218,6 +229,10 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 			max-width: 130px;
 			height: 40px;
 			padding: var(--spacing-xs);
+		}
+		
+		.btn-consultation-fixed .icon {
+			font-size: 1rem;
 		}
 	}
 

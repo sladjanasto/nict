@@ -183,6 +183,7 @@ const heroQuestions = ui.hero?.questions || [
 		margin-bottom: var(--spacing-lg);
 		text-align: left;
 		transition: opacity 0.5s ease-in-out, transform 0.4s ease-in-out;
+		white-space: normal;
 	}
 	
 	.highlight {
@@ -219,6 +220,7 @@ const heroQuestions = ui.hero?.questions || [
 	.answer-line {
 		display: inline-block;
 		width: 100%;
+		white-space: normal;
 	}
 	
 	
@@ -291,6 +293,7 @@ const heroQuestions = ui.hero?.questions || [
 		color: var(--text-white);
 		font-weight: 600;
 		transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+		box-sizing: border-box;
 	}
 	
 	.btn-primary:hover {
@@ -353,10 +356,89 @@ const heroQuestions = ui.hero?.questions || [
 			margin-bottom: var(--spacing-lg);
 		}
 		
+		/* Mobile typewriter adjustments */
+		.typewriter {
+			white-space: normal !important;
+			animation: 
+				mobile-fade-in 1s ease-in,
+				mobile-blink-caret 0.75s step-end infinite 1s,
+				remove-caret 0.1s ease-in 2s forwards;
+		}
+		
+		.typewriter-line-1 {
+			white-space: normal !important;
+			animation: 
+				mobile-typewriter-line1 2s ease-in-out 0.5s both,
+				mobile-blink-caret 0.75s step-end infinite 0.5s,
+				remove-caret 0.1s ease-in 2.5s forwards;
+		}
+		
+		.typewriter-line-2 {
+			white-space: normal !important;
+			opacity: 0;
+			animation: 
+				show-line 0.1s ease-in 2.5s forwards,
+				mobile-typewriter-line2 1.5s ease-in-out 2.6s both,
+				mobile-blink-caret 0.75s step-end infinite 2.6s,
+				remove-caret 0.1s ease-in 4.1s forwards;
+		}
+		
+		/* Mobile-specific keyframes */
+		@keyframes mobile-fade-in {
+			from { opacity: 0; transform: translateY(10px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+		
+		@keyframes mobile-typewriter-line1 {
+			0% { 
+				opacity: 0;
+				transform: translateX(-20px);
+			}
+			20% { 
+				opacity: 1;
+				transform: translateX(0);
+			}
+			100% { 
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+		
+		@keyframes mobile-typewriter-line2 {
+			0% { 
+				opacity: 0;
+				transform: translateX(-20px);
+			}
+			30% { 
+				opacity: 1;
+				transform: translateX(0);
+			}
+			100% { 
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+		
+		@keyframes mobile-blink-caret {
+			from, to { border-color: transparent }
+			50% { border-color: var(--primary-color) }
+		}
+		
 		.hero-answer {
 			font-size: 1.1rem;
 			line-height: 1.5;
 			margin-bottom: var(--spacing-lg);
+		}
+		
+		/* Mobile answer lines styling */
+		.answer-line {
+			display: block;
+			width: 100%;
+			margin-bottom: var(--spacing-xs);
+		}
+		
+		.answer-line br {
+			display: none;
 		}
 		
 		.promise-title {

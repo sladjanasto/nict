@@ -235,7 +235,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 	</div>
 </section>
 
-<style>
+<style is:global>
 	@layer base, layout, components, utilities;
 
 	@layer base {
@@ -282,7 +282,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		.packages-container {
 			max-width: 1200px;
 			margin: 0 auto;
-			padding: 0 2rem;
+			padding: 0;
 		}
 		
 		.packages-content {
@@ -293,6 +293,12 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			max-width: 1200px;
 			margin-left: auto;
 			margin-right: auto;
+		}
+		
+		/* Override grid for comparison table */
+		.packages-content:has(.comparison-table) {
+			display: block;
+			grid-template-columns: none;
 		}
 	}
 	
@@ -413,25 +419,24 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		/* Microsoft Copilot-style Comparison Table */
 		.comparison-table {
 			width: 100%;
-			max-width: 1000px;
+			max-width: 1400px;
 			margin: 0 auto;
 			border-radius: 12px;
 			overflow: hidden;
-			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-			background: white;
-			border: 1px solid #e5e5e5;
+			/* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+			/* background: white; */
+			/* border: 1px solid #e5e5e5; */
 			font-family: system-ui, -apple-system, sans-serif;
 		}
 		
 		.table-header {
 			display: grid;
 			grid-template-columns: 2fr 1fr 1fr 1fr;
-			background: #f8f9fa;
 			border-bottom: 1px solid #e5e5e5;
 		}
 		
 		.feature-header {
-			background: #f8f9fa;
+			/* background: #f8f9fa; */
 			padding: 20px;
 			font-weight: 600;
 			color: #424242;
@@ -443,7 +448,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		}
 		
 		.package-header-cell {
-			background: white;
+			/* background: white; */
 			padding: 20px 15px;
 			text-align: center;
 			position: relative;
@@ -459,16 +464,8 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			border-right: none;
 		}
 		
-		.package-header-cell.popular {
-			background: #f0f7ff;
-			border: 2px solid #0078d4;
-			transform: scale(1.01);
-			z-index: 2;
-			border-radius: 12px 12px 0 0;
-		}
-		
 		.table-body {
-			background: white;
+			/* background: white; */
 		}
 		
 		.table-row {
@@ -512,21 +509,6 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			color: #d1d1d1;
 			font-size: 16px;
 			opacity: 0.6;
-		}
-		
-		.popular-badge {
-			position: absolute;
-			top: -8px;
-			left: 50%;
-			transform: translateX(-50%);
-			background: linear-gradient(135deg, #0078d4, #106ebe);
-			color: white;
-			padding: 4px 12px;
-			border-radius: 12px;
-			font-size: 10px;
-			font-weight: 600;
-			text-transform: uppercase;
-			z-index: 3;
 		}
 		
 		.package-name {
@@ -638,6 +620,12 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			color: var(--text-light);
 			font-style: italic;
 		}
+		
+		/* Force comparison table to take full width */
+		.comparison-table {
+			width: 100% !important;
+			grid-column: 1 / -1 !important;
+		}
 	}
 
 	/* Responsive Design */
@@ -748,7 +736,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 	.packages-container {
 		max-width: 1200px;
 		margin: 0 auto;
-		padding: 0 2rem;
+		padding: 0;
 	}
 	
 	.packages-content {
@@ -788,202 +776,226 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		font-style: italic;
 	}
 	
-	/* Microsoft Copilot-style Comparison Table */
+	/* Microsoft Copilot-style Grid Layout */
 	.comparison-table {
 		width: 100%;
-		max-width: 1000px;
+		max-width: 1400px;
 		margin: 0 auto;
 		border-radius: 12px;
 		overflow: hidden;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-		background: white;
-		border: 1px solid #e5e5e5;
-		font-family: system-ui, -apple-system, sans-serif;
+		/* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
+		/* background: white; */
+		/* border: 1px solid #e1e1e1; */
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		display: block;
 	}
 	
 	.table-header {
-		display: grid;
-		grid-template-columns: 2fr 1fr 1fr 1fr;
-		background: #f8f9fa;
-		border-bottom: 1px solid #e5e5e5;
+		display: grid !important;
+		grid-template-columns: 2fr repeat(3, 1fr) !important;
+		gap: 0 !important;
+		/* background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%); */
+		border-bottom: 2px solid #e1e1e1;
+		width: 100%;
 	}
 	
-	.feature-header {
-		background: #f8f9fa;
-		padding: 20px;
-		font-weight: 600;
-		color: #424242;
-		display: flex;
-		align-items: flex-end;
-		font-size: 14px;
-		text-transform: uppercase;
-		border-right: 1px solid #e5e5e5;
-	}
-	
-	.package-header-cell {
-		background: white;
-		padding: 20px 15px;
+		.feature-header {
+			padding: 24px 20px;
+			font-weight: 600;
+			color: #323130;
+			font-size: 14px;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			border-right: 1px solid #e1e1e1;
+			display: flex;
+			align-items: center;
+			/* background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%); */
+			grid-column: 1;
+		}	.package-header-cell {
+		/* background: white; */
+		padding: 24px 16px;
 		text-align: center;
 		position: relative;
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
-		border-right: 1px solid #e5e5e5;
-		min-height: 180px;
 		justify-content: space-between;
+		border-right: 1px solid #e1e1e1;
+		min-height: 200px;
+		transition: all 0.3s ease;
 	}
 	
-	.package-header-cell:last-child {
-		border-right: none;
+	.package-header-cell:nth-child(2) { grid-column: 2; }
+			.package-header-cell:nth-child(3) { 
+			grid-column: 3;
+			background: color-mix(in srgb, var(--primary-color) 5%, transparent);
+		}
+	.package-header-cell:nth-child(4) { grid-column: 4; }
+	
+		.package-header-cell:last-child {
+			border-right: none;
+		}		.package-info {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 1;
+			justify-content: center;
+			gap: 8px;
+		}		.package-name {
+			color: #323130;
+			font-size: 18px;
+			font-weight: 600;
+			margin: 0 0 8px 0;
+			line-height: 1.2;
+		}	.package-subtitle {
+		color: #605e5c;
+		font-size: 13px;
+		margin: 0 0 16px 0;
+		font-weight: 400;
 	}
 	
-	.package-header-cell.popular {
-		background: #f0f7ff;
+	.package-pricing {
+		margin: 16px 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+		.package-price {
+			color: #323130;
+			font-size: 32px;
+			font-weight: 700;
+			line-height: 1;
+			margin-bottom: 4px;
+		}	.package-period {
+		color: #605e5c;
+		font-size: 12px;
+		font-weight: 400;
+	}
+	
+	.package-header-cell .btn {
+		margin-top: auto;
+		padding: 12px 20px;
+		border-radius: 6px;
+		font-size: 14px;
+		font-weight: 600;
+		text-decoration: none;
 		border: 2px solid #0078d4;
-		transform: scale(1.01);
-		z-index: 2;
-		border-radius: 12px 12px 0 0;
+		transition: all 0.3s ease;
+		cursor: pointer;
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.package-header-cell .btn-primary {
+		background: #0078d4;
+		color: white;
+		border-color: #0078d4;
+	}
+	
+	.package-header-cell .btn-primary:hover {
+		background: #005a9e;
+		border-color: #005a9e;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(0, 120, 212, 0.25);
 	}
 	
 	.table-body {
-		background: white;
+		/* background: white; */
+		width: 100%;
 	}
 	
 	.table-row {
-		display: grid;
-		grid-template-columns: 2fr 1fr 1fr 1fr;
-		border-bottom: 1px solid #f0f0f0;
+		display: grid !important;
+		grid-template-columns: 2fr repeat(3, 1fr) !important;
+		gap: 0 !important;
+		border-bottom: 1px solid #f3f2f1;
+		transition: all 0.2s ease;
+		width: 100%;
+	}
+	
+	.table-row:hover {
+		background: #fafafa;
 	}
 	
 	.table-row:last-child {
 		border-bottom: none;
 	}
 	
-	.feature-cell {
-		padding: 15px 20px;
-		color: #424242;
-		display: flex;
-		align-items: center;
-		font-size: 14px;
-		border-right: 1px solid #f0f0f0;
+		.feature-cell {
+			padding: 16px 20px;
+			color: #323130;
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			font-weight: 400;
+			border-right: 1px solid #f3f2f1;
+			line-height: 1.4;
+			/* background: white; */
+			grid-column: 1;
+		}	.table-row:hover .feature-cell {
+		/* background: #fafafa; */
 	}
 	
 	.check-cell {
-		padding: 15px;
+		padding: 16px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-right: 1px solid #f0f0f0;
+		border-right: 1px solid #f3f2f1;
+		/* background: white; */
+		transition: all 0.2s ease;
 	}
+	
+	.check-cell:nth-child(2) { grid-column: 2; }
+			.check-cell:nth-child(3) { 
+			grid-column: 3;
+			background: color-mix(in srgb, var(--primary-color) 3%, transparent);
+		}
+	.check-cell:nth-child(4) { grid-column: 4; }
 	
 	.check-cell:last-child {
 		border-right: none;
 	}
 	
-	.check-mark {
-		color: var(--primary-color);
-		font-size: 18px;
-		font-weight: bold;
+	.table-row:hover .check-cell {
+		/* background: #fafafa; */
 	}
 	
-	.x-mark {
-		color: #d1d1d1;
-		font-size: 16px;
-		opacity: 0.6;
-	}
-	
-	.popular-badge {
-		position: absolute;
-		top: -8px;
-		left: 50%;
-		transform: translateX(-50%);
-		background: linear-gradient(135deg, #0078d4, #106ebe);
-		color: white;
-		padding: 4px 12px;
-		border-radius: 12px;
-		font-size: 10px;
-		font-weight: 600;
-		text-transform: uppercase;
-		z-index: 3;
-	}
-	
-	.package-name {
-		color: #323130;
-		font-size: 16px;
-		font-weight: 600;
-		margin: 0;
-	}
-	
-	.package-header-cell.popular .package-name {
-		color: #0078d4;
-	}
-	
-	.package-subtitle {
-		color: #605e5c;
-		font-size: 12px;
-		margin: 0;
-	}
-	
-	.package-price {
-		color: #323130;
-		font-size: 24px;
-		font-weight: 700;
-		margin-bottom: 4px;
-	}
-	
-	.package-header-cell.popular .package-price {
-		color: #0078d4;
-	}
-	
-	.package-period {
-		color: #605e5c;
-		font-size: 11px;
-	}
-	
-	.package-header-cell .btn {
-		padding: 8px 15px;
-		border-radius: 4px;
-		font-size: 13px;
-		font-weight: 600;
-		text-decoration: none;
-		border: 1px solid #0078d4;
-		transition: all 0.2s ease;
-		margin-top: auto;
-	}
-	
-	.package-header-cell .btn-primary {
-		background: #0078d4;
-		color: white;
-	}
-	
-	.package-header-cell .btn-primary:hover {
-		background: #106ebe;
-		transform: translateY(-1px);
-	}
-	
-	/* Responsive Design for Comparison Table */
+		.check-mark {
+			color: var(--primary-color);
+			font-size: 20px;
+			font-weight: 700;
+			width: 24px;
+			height: 24px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}		.x-mark {
+			color: var(--text-light);
+			font-size: 18px;
+			font-weight: 400;
+			opacity: 0.7;
+			width: 24px;
+			height: 24px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}	/* Responsive Grid Design */
 	@media (max-width: 768px) {
-		.comparison-table {
-			font-size: 12px;
-		}
-		
 		.table-header,
 		.table-row {
-			grid-template-columns: 1.5fr repeat(3, 1fr);
+			grid-template-columns: 1.5fr repeat(3, 1fr) !important;
+		}
+		
+		.feature-header {
+			padding: 16px 12px;
+			font-size: 12px;
 		}
 		
 		.package-header-cell {
-			padding: 15px 8px;
-			min-height: 140px;
-		}
-		
-		.feature-cell {
-			padding: 10px 15px;
-			font-size: 12px;
-		}
-		
-		.check-cell {
-			padding: 10px 5px;
+			padding: 16px 8px;
+			min-height: 160px;
 		}
 		
 		.package-name {
@@ -991,10 +1003,39 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		}
 		
 		.package-price {
+			font-size: 24px;
+		}
+		
+		.feature-cell {
+			padding: 12px;
+			font-size: 13px;
+		}
+		
+		.check-cell {
+			padding: 12px 4px;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.table-header,
+		.table-row {
+			grid-template-columns: 1fr repeat(3, 80px) !important;
+		}
+		
+		.package-name {
+			font-size: 12px;
+		}
+		
+		.package-price {
 			font-size: 18px;
 		}
 	}
 </style>
+
+<!-- Pass i18n data to client script -->
+<script define:vars={{ ui }}>
+	window.uiTranslations = ui;
+</script>
 
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
@@ -1007,131 +1048,9 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		
 		let currentActiveButton: HTMLButtonElement | null = null;
 		
-		// Service package data (placeholder for now)
-		const servicePackages: Record<string, any> = {
-			interim: {
-				title: 'Interim Management Packages',
-				packages: [
-					{
-						name: 'Strategic Package',
-						price: '€5,000',
-						period: '/month',
-						features: ['Strategic assessment', 'Team leadership', 'Monthly reporting', 'Risk management']
-					},
-					{
-						name: 'Operational Package',
-						price: '€8,000',
-						period: '/month',
-						features: ['Full operational management', '24/7 support', 'Weekly reporting', 'Process optimization', 'Team restructuring']
-					}
-				]
-			},
-			cloud: {
-				title: 'Cloud Migration Packages',
-				packages: [
-					{
-						name: 'Migration Starter',
-						price: '€3,000',
-						period: '/project',
-						features: ['Basic migration plan', 'Data backup', 'Initial setup', 'Documentation']
-					},
-					{
-						name: 'Enterprise Migration',
-						price: '€15,000',
-						period: '/project',
-						features: ['Complete migration', 'Security setup', 'Training & support', '24/7 monitoring', 'Compliance audit']
-					}
-				]
-			},
-			it: {
-				title: 'IT Operations Packages',
-				packages: [
-					{
-						name: 'Essential Support',
-						price: '€2,000',
-						period: '/month',
-						features: ['System monitoring', 'Basic maintenance', 'Email support', 'Monthly reports']
-					},
-					{
-						name: 'Professional Support',
-						price: '€4,000',
-						period: '/month',
-						features: ['Advanced monitoring', 'Preventive maintenance', 'Phone & email support', 'Weekly reports', 'Priority response']
-					}
-				]
-			},
-			ai: {
-				title: 'AI Consulting Packages',
-				packages: [
-					{
-						name: 'AI Discovery',
-						price: '€2,500',
-						period: '/project',
-						features: ['AI readiness assessment', 'Strategy consultation', 'Implementation roadmap', 'ROI analysis']
-					},
-					{
-						name: 'AI Implementation',
-						price: '€10,000',
-						period: '/project',
-						features: ['Full AI solution', 'Custom development', 'Training & support', 'Performance optimization', 'Ongoing maintenance']
-					}
-				]
-			},
-			seo: {
-				title: 'SEO Services Packages',
-				packages: [
-					{
-						name: 'SEO Starter',
-						subtitle: 'Essential SEO',
-						price: '€299',
-						period: '/month',
-						popular: false,
-						features: [
-							'Keyword research & strategy',
-							'On-page optimization',
-							'Technical SEO audit',
-							'Monthly progress reports',
-							'Google Analytics setup',
-							'Local SEO (if applicable)'
-						]
-					},
-					{
-						name: 'SEO Professional',
-						subtitle: 'Advanced SEO',
-						price: '€599',
-						period: '/month',
-						popular: true,
-						features: [
-							'Everything in SEO Starter',
-							'Content strategy & creation',
-							'Link building campaigns',
-							'Competitor analysis',
-							'Weekly progress reports',
-							'Social media integration',
-							'Schema markup implementation',
-							'Priority support'
-						]
-					},
-					{
-						name: 'SEO Enterprise',
-						subtitle: 'Complete SEO',
-						price: '€999',
-						period: '/month',
-						popular: false,
-						features: [
-							'Everything in SEO Professional',
-							'E-commerce SEO optimization',
-							'Multi-language SEO',
-							'Advanced technical audits',
-							'Custom reporting dashboard',
-							'Dedicated SEO specialist',
-							'Conversion rate optimization',
-							'24/7 monitoring & alerts'
-						]
-					}
-				]
-			}
-		};
+		// Get i18n data from global scope
+		const uiTranslations = (window as any).uiTranslations || {};
+		const servicePackages = uiTranslations.servicePackages || {};
 		
 		function renderPackages(serviceKey: string) {
 			const service = servicePackages[serviceKey];
@@ -1153,17 +1072,17 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			const headerHTML = `
 				<div class="comparison-table">
 					<div class="table-header">
-						<div class="feature-header">Features</div>
+						<div class="feature-header"></div>
 						${packages.map((pkg: any) => `
-							<div class="package-header-cell ${pkg.popular ? 'popular' : ''}">
-								${pkg.popular ? '<div class="popular-badge">Most Popular</div>' : ''}
-								<h4 class="package-name">${pkg.name}</h4>
-								${pkg.subtitle ? `<p class="package-subtitle">${pkg.subtitle}</p>` : ''}
-								<div class="package-pricing">
-									<div class="package-price">${pkg.price}</div>
-									${pkg.period ? `<div class="package-period">${pkg.period}</div>` : ''}
+							<div class="package-header-cell">
+								<div class="package-info">
+									<h4 class="package-name">${pkg.name}</h4>
+									${pkg.subtitle ? `<p class="package-subtitle">${pkg.subtitle}</p>` : ''}
+									<div class="package-pricing">
+										<div class="package-price">${pkg.price}</div>
+										${pkg.period ? `<div class="package-period">${pkg.period}</div>` : ''}
+									</div>
 								</div>
-								<a href="#contact" class="btn btn-primary">Get Started</a>
 							</div>
 						`).join('')}
 					</div>
@@ -1173,7 +1092,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 								<div class="feature-cell">${feature}</div>
 								${packages.map((pkg: any) => `
 									<div class="check-cell">
-										${pkg.features.includes(feature) ? '<span class="check-mark">✓</span>' : '<span class="x-mark">—</span>'}
+										${pkg.features.includes(feature) ? '<span class="check-mark">✓</span>' : ''}
 									</div>
 								`).join('')}
 							</div>
@@ -1183,6 +1102,10 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			`;
 			
 			packagesContent.innerHTML = headerHTML;
+			
+			// Override packages-content grid for comparison table
+			packagesContent.style.display = 'block';
+			packagesContent.style.gridTemplateColumns = 'none';
 		}
 		
 		exploreButtons.forEach(button => {

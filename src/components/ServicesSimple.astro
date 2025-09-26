@@ -548,66 +548,138 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		font-style: italic;
 	}
 	
-	/* Package Card Styles (for future implementation) */
+	/* Package Card Styles (Microsoft Copilot style) */
 	.package-card {
 		background: var(--bg-primary);
 		border-radius: var(--radius-lg);
 		padding: var(--spacing-xl);
 		box-shadow: var(--shadow-md);
 		transition: all var(--transition-normal);
-		border: 1px solid var(--border-light);
+		border: 2px solid transparent;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		min-height: 500px;
 	}
 	
 	.package-card:hover {
 		transform: translateY(-4px);
 		box-shadow: var(--shadow-lg);
+		border-color: var(--primary-color);
+	}
+	
+	.package-card.popular {
+		border-color: var(--primary-color);
+		background: linear-gradient(135deg, var(--bg-primary) 0%, rgba(26, 234, 226, 0.05) 100%);
+	}
+	
+	.popular-badge {
+		position: absolute;
+		top: -12px;
+		left: 50%;
+		transform: translateX(-50%);
+		background: var(--bg-gradient);
+		color: white;
+		padding: 6px 20px;
+		border-radius: 20px;
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
 	}
 	
 	.package-header {
 		text-align: center;
 		margin-bottom: var(--spacing-lg);
+		flex-shrink: 0;
 	}
 	
 	.package-name {
 		color: var(--text-dark);
 		font-size: var(--font-size-xl);
-		font-weight: 600;
-		margin-bottom: var(--spacing-sm);
+		font-weight: 700;
+		margin-bottom: var(--spacing-xs);
+		line-height: 1.2;
+	}
+	
+	.package-subtitle {
+		color: var(--text-light);
+		font-size: var(--font-size-sm);
+		margin-bottom: var(--spacing-md);
+		font-weight: 400;
+	}
+	
+	.package-pricing {
+		margin-bottom: var(--spacing-lg);
 	}
 	
 	.package-price {
 		color: var(--primary-color);
-		font-size: var(--font-size-2xl);
-		font-weight: 700;
+		font-size: 3rem;
+		font-weight: 800;
+		line-height: 1;
+		display: inline-block;
+	}
+	
+	.package-period {
+		color: var(--text-light);
+		font-size: var(--font-size-lg);
+		font-weight: 400;
+		margin-left: 4px;
 	}
 	
 	.package-features {
 		list-style: none;
 		padding: 0;
+		margin: 0;
 		margin-bottom: var(--spacing-lg);
+		flex-grow: 1;
 	}
 	
 	.package-features li {
-		padding: var(--spacing-xs) 0;
-		color: var(--text-light);
+		padding: var(--spacing-sm) 0;
+		color: var(--text-dark);
 		position: relative;
 		padding-left: var(--spacing-lg);
+		font-size: var(--font-size-sm);
+		line-height: 1.5;
+		display: flex;
+		align-items: flex-start;
 	}
 	
 	.package-features li::before {
 		content: "✓";
 		position: absolute;
 		left: 0;
+		top: var(--spacing-sm);
 		color: var(--primary-color);
 		font-weight: bold;
+		font-size: 1rem;
 	}
 	
 	.package-cta {
 		text-align: center;
+		margin-top: auto;
 	}
 	
 	.package-cta .btn {
 		width: 100%;
+		padding: var(--spacing-md) var(--spacing-lg);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		font-size: var(--font-size-sm);
+	}
+	
+	.package-cta .btn-secondary {
+		background: transparent;
+		border: 2px solid var(--primary-color);
+		color: var(--primary-color);
+	}
+	
+	.package-cta .btn-secondary:hover {
+		background: var(--primary-color);
+		color: white;
 	}
 </style>
 
@@ -688,14 +760,53 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				title: 'SEO Services Packages',
 				packages: [
 					{
-						name: 'Basic SEO',
-						price: 'From $500/month',
-						features: ['Keyword research', 'On-page optimization', 'Monthly reports']
+						name: 'SEO Starter',
+						subtitle: 'Essential SEO',
+						price: '€299',
+						period: '/month',
+						popular: false,
+						features: [
+							'Keyword research & strategy',
+							'On-page optimization',
+							'Technical SEO audit',
+							'Monthly progress reports',
+							'Google Analytics setup',
+							'Local SEO (if applicable)'
+						]
 					},
 					{
-						name: 'Advanced SEO',
-						price: 'From $1,200/month',
-						features: ['Comprehensive SEO', 'Content strategy', 'Link building', 'Weekly reports', 'Competitor analysis']
+						name: 'SEO Professional',
+						subtitle: 'Advanced SEO',
+						price: '€599',
+						period: '/month',
+						popular: true,
+						features: [
+							'Everything in SEO Starter',
+							'Content strategy & creation',
+							'Link building campaigns',
+							'Competitor analysis',
+							'Weekly progress reports',
+							'Social media integration',
+							'Schema markup implementation',
+							'Priority support'
+						]
+					},
+					{
+						name: 'SEO Enterprise',
+						subtitle: 'Complete SEO',
+						price: '€999',
+						period: '/month',
+						popular: false,
+						features: [
+							'Everything in SEO Professional',
+							'E-commerce SEO optimization',
+							'Multi-language SEO',
+							'Advanced technical audits',
+							'Custom reporting dashboard',
+							'Dedicated SEO specialist',
+							'Conversion rate optimization',
+							'24/7 monitoring & alerts'
+						]
 					}
 				]
 			}
@@ -708,16 +819,21 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			packagesTitle.textContent = service.title;
 			
 			const packagesHTML = service.packages.map((pkg: any) => `
-				<div class="package-card">
+				<div class="package-card ${pkg.popular ? 'popular' : ''}">
+					${pkg.popular ? '<div class="popular-badge">Most Popular</div>' : ''}
 					<div class="package-header">
 						<h4 class="package-name">${pkg.name}</h4>
-						<div class="package-price">${pkg.price}</div>
+						${pkg.subtitle ? `<p class="package-subtitle">${pkg.subtitle}</p>` : ''}
+						<div class="package-pricing">
+							<span class="package-price">${pkg.price}</span>
+							${pkg.period ? `<span class="package-period">${pkg.period}</span>` : ''}
+						</div>
 					</div>
 					<ul class="package-features">
 						${pkg.features.map((feature: string) => `<li>${feature}</li>`).join('')}
 					</ul>
 					<div class="package-cta">
-						<a href="#contact" class="btn btn-primary">Get Started</a>
+						<a href="#contact" class="btn ${pkg.popular ? 'btn-primary' : 'btn-secondary'}">Get Started</a>
 					</div>
 				</div>
 			`).join('');

@@ -117,7 +117,7 @@
     "languages": "Sprachen"
   },
   "services": {
-    "title": "Wie können wir helfen",
+    "title": "wie wir helfen können",
     "subtitle": "Umfassende IT-Expertise für Ihr Unternehmen",
     "viewPackages": "Service-Pakete anzeigen",
     "hidePackages": "Service-Pakete verbergen",
@@ -207,7 +207,7 @@
     }
   },
   "about": {
-    "title": "Über uns",
+    "title": "über uns",
     "subtitle": "IT-Experte mit 20+ Jahren Erfahrung",
     "mission": "Unsere Mission",
     "skills": "Kernkompetenzen",
@@ -278,7 +278,7 @@
     }
   },
   "portfolio": {
-    "title": "Von der Strategie zum stabilen Betrieb",
+    "title": "von der strategie zum stabilen betrieb",
     "subtitle": "Echte Transformationen mit messbaren Ergebnissen",
     "challenge": "Herausforderung",
     "results": "Ergebnisse",
@@ -409,7 +409,7 @@
     ]
   },
   "contact": {
-    "title": "Kontakt",
+    "title": "kontakt",
     "subtitle": "Bereit für die digitale Transformation?",
     "form": {
       "name": "Name",

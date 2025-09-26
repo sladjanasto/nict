@@ -99,7 +99,7 @@
     "languages": "Languages"
   },
   "services": {
-    "title": "How can we help",
+    "title": "how we can help",
     "subtitle": "Complete IT expertise for your organization",
     "viewPackages": "View Service Packages",
     "hidePackages": "Hide Service Packages",
@@ -189,7 +189,7 @@
     }
   },
   "about": {
-    "title": "About Us",
+    "title": "about us",
     "subtitle": "IT expert with 20+ years of experience",
     "mission": "Our Mission",
     "skills": "Key Skills",
@@ -260,7 +260,7 @@
     }
   },
   "portfolio": {
-    "title": "From Strategy to Steady State",
+    "title": "from strategy to steady state",
     "subtitle": "Real transformations with measurable outcomes",
     "challenge": "Challenge",
     "results": "Results",
@@ -391,7 +391,7 @@
     ]
   },
   "contact": {
-    "title": "Contact",
+    "title": "contact",
     "subtitle": "Ready for digital transformation?",
     "form": {
       "name": "Name",

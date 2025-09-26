@@ -344,7 +344,6 @@ const heroQuestions = ui.hero?.questions || [
 			padding: 0;
 			width: 300px;
 		}
-
 		
 		.hero-text {
 			text-align: center;
@@ -356,30 +355,16 @@ const heroQuestions = ui.hero?.questions || [
 			margin-bottom: var(--spacing-lg);
 		}
 		
-		/* Disable typewriter animation on mobile */
-		.typewriter {
-			animation: none !important;
-			white-space: normal !important;
-			border-right: none !important;
-			overflow: visible !important;
-		}
-		
-		.typewriter-line-1 {
-			animation: none !important;
-			white-space: normal !important;
-			border-right: none !important;
-			overflow: visible !important;
-			opacity: 1 !important;
-			display: block !important;
-		}
-		
+		/* Disable typewriter animation ONLY on mobile */
+		.hero-question.typewriter,
+		.typewriter-line-1,
 		.typewriter-line-2 {
 			animation: none !important;
 			white-space: normal !important;
 			border-right: none !important;
 			overflow: visible !important;
 			opacity: 1 !important;
-			display: block !important;
+			width: auto !important;
 		}
 		
 		.hero-answer {

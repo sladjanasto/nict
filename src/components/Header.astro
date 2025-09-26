@@ -30,25 +30,21 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 				<ul class="nav-list">
 					<li class="nav-item">
 						<a href={homeLink} class="nav-link">
-							<i class="icon icon-home"></i>
 							<span class="nav-text">{ui.nav.home}</span>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a href={servicesLink} class="nav-link">
-							<i class="icon icon-cogs"></i>
 							<span class="nav-text">{ui.nav.services}</span>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a href={aboutLink} class="nav-link">
-							<i class="icon icon-user-tie"></i>
 							<span class="nav-text">{ui.nav.about}</span>
 						</a>
 					</li>
 					<!-- <li class="nav-item">
 						<a href="/blog" class="nav-link">
-							<i class="icon icon-pen"></i>
 							<span class="nav-text">{ui.nav.blog}</span>
 						</a>
 					</li> -->
@@ -74,7 +70,6 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 					</div>
 					
 					<a href={contactLink} class="btn nav-cta">
-						<i class="icon icon-bubbles4"></i>
 						<span class="nav-text">{ui.buttons.freeConsultation}</span>
 					</a>
 					
@@ -143,7 +138,6 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 <!-- Fixed Free Consultation Button -->
 <div class="fixed-consultation-btn">
 	<a href={contactLink} class="btn-consultation-fixed" aria-label="Free Consultation">
-		<i class="icon icon-bubbles4"></i>
 		<span class="consultation-text">{ui.buttons?.freeConsultation || 'Free Consultation'}</span>
 	</a>
 </div>
@@ -180,8 +174,10 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		transition: all var(--transition-normal);
 		border: none;
 		cursor: pointer;
-		width: 48px;
+		width: auto;
 		height: 48px;
+		min-width: 120px;
+		max-width: 200px;
 	}
 	
 	.btn-consultation-fixed:hover {
@@ -190,13 +186,11 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		color: white;
 	}
 	
-	.btn-consultation-fixed .icon {
-		font-size: 1.2rem;
-		flex-shrink: 0;
-	}
-	
 	.consultation-text {
-		display: none;
+		display: block;
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		white-space: nowrap;
 	}
 	
 	/* Mobile styles for fixed button */
@@ -206,13 +200,11 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		}
 		
 		.btn-consultation-fixed {
-			width: 44px;
+			min-width: 100px;
+			max-width: 150px;
 			height: 44px;
 			padding: var(--spacing-sm);
 		}
-		
-		.btn-consultation-fixed .icon {
-			font-size: 1.1rem;
 		}
 	}
 	
@@ -222,13 +214,10 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		}
 		
 		.btn-consultation-fixed {
-			width: 40px;
+			min-width: 90px;
+			max-width: 130px;
 			height: 40px;
 			padding: var(--spacing-xs);
-		}
-		
-		.btn-consultation-fixed .icon {
-			font-size: 1rem;
 		}
 	}
 
@@ -256,6 +245,7 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		justify-content: space-between;
 		align-items: center;
 		padding: 0.25rem 1rem;
+		box-sizing: border-box;
 	}
 	
 	.nav-brand .logo {
@@ -303,11 +293,6 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 	.nav-link:hover {
 		background: var(--bg-primary);
 		color: var(--gradient-mid-blue);
-	}
-	
-	.nav-link .icon {
-		font-size: var(--font-size-md);
-		line-height: 1;
 	}
 	
 	.nav-actions {
@@ -646,6 +631,7 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		border-radius: 1px;
 		transition: all 0.3s ease;
 		transform-origin: center;
+		display:none;
 	}
 	
 	/* Hamburger animation when active */
@@ -667,7 +653,7 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 	}
 	
 	.bar {
-		display: none;
+		display: block;
 	}
 	
 	/* Tablet Styles */
@@ -769,15 +755,6 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 			border-bottom: 1px solid var(--border-light);
 		}
 		
-		.nav-link .icon {
-			font-size: 1.2rem;
-			color: var(--primary-color);
-		}
-		
-		.nav-link:hover .icon {
-			color: var(--secondary-color);
-		}
-		
 		.nav-text {
 			display: block;
 			font-size: var(--font-size-base);
@@ -821,10 +798,6 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 			display: block;
 		}
 		
-		.nav-cta .icon {
-			font-size: 1.1rem;
-		}
-		
 		.options-menu {
 			order: 3;
 			display: none; /* Hide on mobile for now */
@@ -856,16 +829,8 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 			padding: var(--spacing-xs);
 		}
 		
-		.nav-link .icon {
-			font-size: 1.1rem;
-		}
-		
 		.nav-cta {
 			padding: var(--spacing-xs);
-		}
-		
-		.nav-cta .icon {
-			font-size: 1rem;
 		}
 		
 		.options-menu {
@@ -880,10 +845,6 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		.nav-cta .nav-text {
 			display: none;
 		}
-		
-		.nav-cta .icon {
-			font-size: var(--font-size-lg);
-		}
 		}
 		
 		.language-switcher {
@@ -897,6 +858,7 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 			padding: 0 var(--spacing-sm);
 			scrollbar-width: none; /* Firefox */
 			-ms-overflow-style: none; /* IE/Edge */
+			width:100%;
 		}
 		
 		.nav-list::-webkit-scrollbar {

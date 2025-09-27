@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cloud Migration - Data Transfer & Cloud Infrastructure -->
+  <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- On-premise servers -->
+    <rect x="50" y="120" width="80" height="60" rx="8" stroke-width="2.5"/>
+    <rect x="55" y="130" width="70" height="8" rx="2" stroke-width="1.5"/>
+    <rect x="55" y="145" width="70" height="8" rx="2" stroke-width="1.5"/>
+    <rect x="55" y="160" width="70" height="8" rx="2" stroke-width="1.5"/>
+    <circle cx="115" cy="135" r="2" fill="currentColor"/>
+    <circle cx="115" cy="150" r="2" fill="currentColor"/>
+    <circle cx="115" cy="165" r="2" fill="currentColor"/>
+    
+    <!-- Migration arrows -->
+    <path d="M140 150 Q200 120 260 150" stroke-width="3" stroke="currentColor"/>
+    <path d="M250 145 L260 150 L250 155" stroke-width="2" fill="currentColor"/>
+    
+    <!-- Data packets -->
+    <rect x="170" y="135" width="12" height="8" rx="2" stroke-width="1.5"/>
+    <rect x="190" y="125" width="12" height="8" rx="2" stroke-width="1.5"/>
+    <rect x="210" y="140" width="12" height="8" rx="2" stroke-width="1.5"/>
+    
+    <!-- Cloud infrastructure -->
+    <ellipse cx="320" cy="100" rx="50" ry="25" stroke-width="2.5"/>
+    <ellipse cx="300" cy="115" rx="35" ry="18" stroke-width="2"/>
+    <ellipse cx="340" cy="125" rx="30" ry="15" stroke-width="2"/>
+    
+    <!-- Cloud servers -->
+    <rect x="295" y="140" width="20" height="30" rx="3" stroke-width="2"/>
+    <rect x="320" y="140" width="20" height="30" rx="3" stroke-width="2"/>
+    <rect x="345" y="140" width="20" height="30" rx="3" stroke-width="2"/>
+    
+    <!-- Server indicators -->
+    <circle cx="305" cy="150" r="1.5" fill="currentColor"/>
+    <circle cx="330" cy="150" r="1.5" fill="currentColor"/>
+    <circle cx="355" cy="150" r="1.5" fill="currentColor"/>
+    
+    <!-- Benefits indicators -->
+    <path d="M320 180 L320 200" stroke-width="2"/>
+    <path d="M315 195 L320 200 L325 195" stroke-width="2" fill="currentColor"/>
+    <text x="320" y="220" text-anchor="middle" font-size="12" fill="currentColor" font-family="Arial">Scalable</text>
+  </g>
+</svg>

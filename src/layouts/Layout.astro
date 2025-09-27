@@ -12,7 +12,7 @@ export interface Props {
 
 const { 
 	title, 
-	description = "NICT - Drop IT on us. Technology + Marketing + Cost Control = Measurable Business Outcomes",
+	description = "NICT - drop IT on us. Technology + Marketing + Cost Control = Measurable Business Outcomes",
 	canonical = Astro.url.href,
 	ogImage = "/og-image.jpg",
 	lang = "en",
@@ -65,13 +65,8 @@ const siteName = "NICT";
 		<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		
-		{/* Preload critical fonts */}
-		<link rel="preload" href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2" as="font" type="font/woff2" crossorigin />
-		<link rel="preload" href="https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2" as="font" type="font/woff2" crossorigin />
-		
 		{/* Preload critical resources */}
 		<link rel="preload" href="/hero-bg-pattern.svg" as="image" type="image/svg+xml" />
-		<link rel="preload" href="/hero-bg-pattern-dark.svg" as="image" type="image/svg+xml" />
 		
 		{/* Google Fonts - optimized with display=swap */}
 		<link
@@ -206,7 +201,7 @@ const siteName = "NICT";
 	:root {
 		/* Default Color Scheme - Teal & Blue */
 		--primary-color: #1aeae2;
-		--secondary-color: #2566cf;
+		--secondary-color: #23577a;
 		--gradient-mid-blue: #1d96d5;
 		--accent-color: #ffd700;
 		--text-dark: #333;
@@ -220,13 +215,14 @@ const siteName = "NICT";
 		--bg-card: rgba(255, 255, 255, 0.95);
 		--hero-bg: #ffffff;
 		--hero-bg-image: url('/hero-bg-pattern.svg');
+		--gap: 0.5rem;
 	}
 	
 	/* Color Scheme 1: Teal & Blue (Default) */
 	[data-color-scheme="scheme-1"],
 	:root {
 		--primary-color: #1aeae2;
-		--secondary-color: #2566cf;
+		--secondary-color: #23577a;
 		--gradient-mid-blue: #1d96d5;
 		--bg-gradient: linear-gradient(135deg, #1aeae2 0%, #2566cf 100%);
 	}
@@ -263,11 +259,11 @@ const siteName = "NICT";
 		--font-size-xs: 0.75rem;
 		--font-size-sm: 0.875rem;
 		--font-size-base: 1rem;
-		--font-size-lg: 1.125rem;
+		--font-size-lg: 1.5rem;
 		--font-size-xl: 1.25rem;
 		--font-size-2xl: 1.5rem;
 		--font-size-3xl: 2rem;
-		--font-size-4xl: 2.5rem;
+		--font-size-4xl: 3.5rem;
 		
 		/* Shadows */
 		--shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
@@ -560,30 +556,114 @@ const siteName = "NICT";
 		padding: var(--spacing-xxl) 0;
 	}
 	
-	:global(.section-title) {
-		font-family: 'Poppins', var(--font-primary);
-		font-size: var(--font-size-4xl);
-		font-weight: 300;
-		text-align: center;
-		margin-top: 0;
-		/* margin-bottom: var(--spacing-xxl); */
-		color: var(--secondary-color);
-		position: relative;
-		padding-bottom: var(--spacing-lg);
+	@layer base, layout, components, typography, utilities;
+
+	@layer typography {
+		/* Section Titles - Glavni naslovi sekcija */
+		:global(.section-title) {
+			font-family: 'Poppins', var(--font-primary);
+			font-size: var(--font-size-4xl);
+			font-weight: 300;
+			text-align: center;
+			margin-top: 0;
+			color: var(--secondary-color);
+			position: relative;
+			padding-bottom: var(--spacing-lg);
+		}
+		
+		:global(.section-title::after) {
+			content: '';
+			position: absolute;
+			bottom: -8px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 80px;
+			height: 1px;
+			background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+			border-radius: 2px;
+			transition: width var(--transition-normal);
+		}
+		
+		/* Section Subtitles - Podnaslovi sekcija */
+		:global(.section-subtitle) {
+			font-family: 'Poppins', var(--font-primary);
+			font-size: var(--font-size-xl);
+			font-weight: 400;
+			text-align: center;
+			margin-top: 0;
+			margin-bottom: var(--spacing-lg);
+			color: var(--text-dark);
+			position: relative;
+		}
+		
+		:global(.section-subtitle::after) {
+			content: '';
+			position: absolute;
+			bottom: -6px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 50px;
+			height: 1px;
+			background: var(--primary-color);
+			border-radius: 1px;
+		}
+		
+		/* Packages Title - Specijalni naslov za packages */
+		:global(.packages-title) {
+			font-family: 'Poppins', var(--font-primary);
+			font-size: var(--font-size-2xl);
+			font-weight: 700;
+			text-align: center;
+			margin-bottom: var(--spacing-xl);
+			color: var(--text-dark);
+			position: relative;
+		}
+		
+		:global(.packages-title::after) {
+			content: '';
+			position: absolute;
+			bottom: -4px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 40px;
+			height: 1px;
+			background: var(--secondary-color);
+			border-radius: 1px;
+		}
+		
+		/* Section Description - Opisi ispod naslova */
+		:global(.section-description) {
+			font-size: var(--font-size-lg);
+			color: var(--text-light);
+			text-align: center;
+			max-width: 800px;
+			margin: 0 auto var(--spacing-xl);
+			line-height: 1.6;
+			font-weight: 100;
+		}
+		
+		/* Responsive Typography */
+		@media (max-width: 768px) {
+			:global(.section-title) {
+				font-size: var(--font-size-2xl);
+			}
+			
+			:global(.section-subtitle) {
+				font-size: var(--font-size-lg);
+			}
+			
+			:global(.packages-title) {
+				font-size: var(--font-size-xl);
+			}
+			
+			:global(.section-description) {
+				font-size: var(--font-size-md);
+				max-width: 90%;
+			}
+		}
 	}
-	
-	:global(.section-title::after) {
-		content: '';
-		position: absolute;
-		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 60px;
-		height: 2px;
-		background: linear-gradient(135deg, var(--secondary-color), var(--gradient-mid-blue));
-		border-radius: 1px;
-		opacity: 0.8;
-	}
+
+	@layer base {
 	
 	.btn {
 		display: inline-flex;
@@ -645,6 +725,144 @@ const siteName = "NICT";
 	}
 	:global(.btn-link:focus-visible){
 		outline:none;
+	}
+
+	/* Section Dividers - CSS Custom Properties for Easy Fine-Tuning */
+	:root {
+		--divider-height-mobile: 60px;
+		--divider-height-desktop: 90px;
+		--divider-opacity: 1;
+		
+		/* Mobile clip-path coordinates */
+		--clip-top-left: 0%;
+		--clip-top-right-mobile: 48.2%;
+		--clip-bottom-mobile: 47.3%;
+		
+		/* Tablet coordinates */
+		--clip-top-right-tablet: 47.9%;
+		--clip-bottom-tablet: 46.4%;
+		
+		/* Desktop coordinates */
+		--clip-top-right-desktop: 46.7%;
+		--clip-bottom-desktop: 44.5%;
+		
+		/* Large desktop coordinates */
+		--clip-top-right-large: 47.5%;
+		--clip-bottom-large: 45.7%;
+		
+		/* Ultra-wide coordinates */
+		--clip-top-right-ultra: 47.3%;
+		--clip-bottom-ultra: 45.5%;
+	}
+
+	/* Section Dividers */
+	:global(.section-divider) {
+		height: var(--divider-height-mobile);
+		position: relative;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		/* Smooth transition between breakpoints */
+		transition: height 0.3s ease-in-out;
+	}
+	:global(.section-divider:nth-of-type(even)) {
+		background: var(--bg-primary);
+	}
+	:global(.section-divider:nth-of-type(odd)) {
+		background: var(--bg-secondary);
+	}
+
+	/* Triangle divider - Mobile First (320px-767px) */
+	:global(.section-divider::before) {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		background: white;
+		/* Simple rectangle clip-path for all sizes */
+		clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+		opacity: 1;
+		z-index: 1;
+	}
+	:global(.section-divider:nth-of-type(even):before) {
+		background: var(--bg-secondary);
+
+	}
+	:global(.section-divider:nth-of-type(odd):before) {
+		background: var(--bg-primary);
+
+	}
+
+	/* Small Mobile (320px-480px) */
+	@media (max-width: 480px) {
+		:global(.section-divider) {
+			height: 50px;
+		}
+	}
+
+	/* Large Mobile (481px-767px) */
+	@media (min-width: 481px) and (max-width: 767px) {
+		:global(.section-divider) {
+			height: 70px;
+		}
+	}
+
+	/* Tablet Portrait (768px-1023px) */
+	@media (min-width: 768px) and (max-width: 1023px) {
+		:global(.section-divider) {
+			height: 80px;
+		}
+	}
+
+	/* Desktop (1024px-1439px) */  
+	@media (min-width: 1024px) {
+		:global(.section-divider) {
+			height: 90px;
+		}
+	}
+
+	/* Large Desktop (1440px-1919px) */
+	@media (min-width: 1440px) and (max-width: 1919px) {
+		/* Height remains same as desktop */
+	}
+
+	/* Ultra-wide Screens (1920px+) */
+	@media (min-width: 1920px) {
+		:global(.section-divider) {
+			height: 100px;
+		}
+	}
+
+	/* 4K and above (2560px+) */
+	@media (min-width: 2560px) {
+		:global(.section-divider) {
+			height: 120px;
+		}
+	}
+
+	/* Alternative triangle pointing down - uncomment if needed */
+	/*
+	:global(.section-divider.down::before) {
+		clip-path: polygon(0 100%, 50% 0, 100% 100%);
+	}
+	*/
+
+	/* Alternative asymmetric triangle - uncomment if needed */
+	/*
+	:global(.section-divider.asymmetric::before) {
+		clip-path: polygon(0 0, 100% 0, 70% 100%);
+	}
+	*/
+
+	@media (max-width: 768px) {
+		:global(.section-divider) {
+			height: 60px;
+		}
 	}
 	
 	:global(.btn-link:hover::after) {

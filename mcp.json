@@ -29,6 +29,14 @@
       "args": ["lighthouse-mcp"],
       "disabled": false,
       "autoApprove": []
+    },
+    "inkscape-mcp": {
+      "command": "inkscape-mcp",
+      "env": {
+        "INKS_WORKSPACE": "C:\\Freelance\\!!!Portfolio Thema",
+        "INKS_MAX_FILE": "52428800"
+      }
     }
+  }    
   }
 }

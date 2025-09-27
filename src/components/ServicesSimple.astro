@@ -24,11 +24,11 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 ---
 
 <section id="services" class="services section">
-	<div class="container">
+	<div class="services-container">
 		<h2 class="section-title">{ui.services.title}</h2>
 		
 		<div class="services-intro">
-			<p class="intro-text">{ui.services.subtitle}</p>
+			<p class="section-description">{ui.services.subtitle}</p>
 		</div>
 		
 		{servicesContent && (
@@ -38,12 +38,9 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		)}
 		
 		<div class="services-grid">
-			<!-- Interim Management Card -->
+			<!-- Service Card 1: Interim Management -->
 			<div class="service-card">
 				<div class="service-header">
-					<div class="service-icon">
-						<img src="/icons/interim-management.svg" alt={ui.services.interimManagement.title} />
-					</div>
 					<h3>{ui.services.interimManagement.title}</h3>
 					<p class="service-description">{ui.services.interimManagement.description}</p>
 				</div>
@@ -69,16 +66,17 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 				
 				<div class="service-cta">
-					<a href={`/${lang}/#contact`} class="btn btn-primary">{ui.services.ctaButton}</a>
+					<button class="btn-link service-explore-btn" data-service="interim" data-title="{ui.services.interimManagement.title}">
+						<span class="toggle-text-show">{ui.services.explorePackages}</span>
+						<span class="toggle-text-hide" style="display: none;">{ui.services.hideExplorePackages}</span>
+						<i class="icon icon-arrow-down"></i>
+					</button>
 				</div>
 			</div>
 			
-			<!-- Cloud Migration Card -->
+			<!-- Service Card 2: Cloud Migration -->
 			<div class="service-card">
 				<div class="service-header">
-					<div class="service-icon">
-						<img src="/icons/cloud-migration.svg" alt={ui.services.cloudMigration.title} />
-					</div>
 					<h3>{ui.services.cloudMigration.title}</h3>
 					<p class="service-description">{ui.services.cloudMigration.description}</p>
 				</div>
@@ -104,16 +102,17 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 				
 				<div class="service-cta">
-					<a href={`/${lang}/#contact`} class="btn btn-primary">{ui.services.ctaButton}</a>
+					<button class="btn-link service-explore-btn" data-service="cloud" data-title="{ui.services.cloudMigration.title}">
+						<span class="toggle-text-show">{ui.services.explorePackages}</span>
+						<span class="toggle-text-hide" style="display: none;">{ui.services.hideExplorePackages}</span>
+						<i class="icon icon-arrow-down"></i>
+					</button>
 				</div>
 			</div>
 			
-			<!-- IT Operations Card -->
+			<!-- Service Card 3: IT Operations -->
 			<div class="service-card">
 				<div class="service-header">
-					<div class="service-icon">
-						<img src="/icons/it-operations.svg" alt={ui.services.itOperations.title} />
-					</div>
 					<h3>{ui.services.itOperations.title}</h3>
 					<p class="service-description">{ui.services.itOperations.description}</p>
 				</div>
@@ -139,16 +138,17 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 				
 				<div class="service-cta">
-					<a href={`/${lang}/#contact`} class="btn btn-primary">{ui.services.ctaButton}</a>
+					<button class="btn-link service-explore-btn" data-service="it" data-title="{ui.services.itOperations.title}">
+						<span class="toggle-text-show">{ui.services.explorePackages}</span>
+						<span class="toggle-text-hide" style="display: none;">{ui.services.hideExplorePackages}</span>
+						<i class="icon icon-arrow-down"></i>
+					</button>
 				</div>
 			</div>
 			
-			<!-- AI Consulting Card -->
+			<!-- Service Card 4: AI Consulting -->
 			<div class="service-card">
 				<div class="service-header">
-					<div class="service-icon">
-						<img src="/icons/ai-consulting.svg" alt={ui.services.aiConsulting.title} />
-					</div>
 					<h3>{ui.services.aiConsulting.title}</h3>
 					<p class="service-description">{ui.services.aiConsulting.description}</p>
 				</div>
@@ -174,16 +174,17 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 				
 				<div class="service-cta">
-					<a href={`/${lang}/#contact`} class="btn btn-primary">{ui.services.ctaButton}</a>
+					<button class="btn-link service-explore-btn" data-service="ai" data-title="{ui.services.aiConsulting.title}">
+						<span class="toggle-text-show">{ui.services.explorePackages}</span>
+						<span class="toggle-text-hide" style="display: none;">{ui.services.hideExplorePackages}</span>
+						<i class="icon icon-arrow-down"></i>
+					</button>
 				</div>
 			</div>
 			
-			<!-- SEO Services Card -->
+			<!-- Service Card 5: SEO Services -->
 			<div class="service-card">
 				<div class="service-header">
-					<div class="service-icon">
-						<img src="/icons/seo-services.svg" alt={ui.services.seoServices.title} />
-					</div>
 					<h3>{ui.services.seoServices.title}</h3>
 					<p class="service-description">{ui.services.seoServices.description}</p>
 				</div>
@@ -209,7 +210,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				</div>
 				
 				<div class="service-cta">
-					<button class="btn-link" id="seoPackagesToggle">
+					<button class="btn-link service-explore-btn" data-service="seo" data-title="{ui.services.seoServices.title}">
 						<span class="toggle-text-show">{ui.services.explorePackages}</span>
 						<span class="toggle-text-hide" style="display: none;">{ui.services.hideExplorePackages}</span>
 						<i class="icon icon-arrow-down"></i>
@@ -218,180 +219,427 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			</div>
 		</div>
 		
+		<!-- Service Packages Section -->
+		<div id="packagesSection" class="packages-section packages-hidden">
+			<div class="packages-container">
+				<h3 id="packagesTitle" class="packages-title">Service Packages</h3>
+				<div id="packagesContent" class="packages-content">
+					<!-- Packages will be dynamically loaded here -->
+					<div class="packages-placeholder">
+						<p>Loading packages...</p>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
 </section>
 
-<style>
-	.services {
-		background: var(--bg-secondary);
-	}
-	
-	.services-intro {
-		margin-bottom: 60px;
-		text-align: center;
-	}
-	
-	.intro-text {
-		font-size: var(--font-size-lg);
-		color: var(--text-light);
-		max-width: 800px;
-		margin: 0 auto;
-		line-height: 1.6;
-	}
-	
-	.services-markdown {
-		margin-bottom: 40px;
-		text-align: center;
-	}
-	
-	.services-markdown :global(h2),
-	.services-markdown :global(h3) {
-		color: var(--text-primary);
-		margin-bottom: 16px;
-	}
-	
-	.services-markdown :global(p) {
-		color: var(--text-light);
-		line-height: 1.6;
-		margin-bottom: 16px;
-	}
-	
-	.service-details {
-		/* margin-bottom: 25px; */
-		flex-grow: 1;
-	}
-	
-	.service-features,
-	.service-benefits {
-		margin-bottom: 20px;
+<style is:global>
+	@layer base, layout, components, utilities;
+
+	@layer base {
+		.services {
+			background: var(--bg-secondary);
+		}
+		
+		@keyframes slideInFromTop {
+			from {
+				transform: translateY(-20px);
+				opacity: 0;
+			}
+			to {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
 	}
 
-	.service-features h4,
-	.service-benefits h4 {
-		color: var(--text-primary);
-		font-size: var(--font-size-md);
-		margin-bottom: 12px;
-		font-weight: 600;
-		border-bottom: 2px solid var(--primary);
-		padding-bottom: 8px;
-		text-align: center;
+	@layer layout {
+		.services-container {
+			width: 100%;
+			padding: 0;
+		}
+		
+		.services-intro {
+			margin-bottom: 60px;
+			text-align: center;
+		}
+		
+		.services-markdown {
+			margin-bottom: 40px;
+			text-align: center;
+		}
+		
+		.services-grid {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			width: 100%;
+			box-sizing: border-box;
+			padding: 0 2rem 0.1rem;
+		}
+		
+		.packages-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0;
+		}
+		
+		.packages-content {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: var(--spacing-lg);
+			margin-bottom: var(--spacing-xl);
+			max-width: 1200px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+		/* Override grid for comparison table */
+		.packages-content:has(.comparison-table) {
+			display: block;
+			grid-template-columns: none;
+		}
 	}
 	
-	.service-features ul,
-	.service-benefits ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	
-	.service-features li,
-	.service-benefits li {
-		padding: 6px 0;
-		padding-left: 20px;
-		position: relative;
-		color: var(--text-light);
-		line-height: 1.4;
-		font-size: var(--font-size-sm);
-	}
-	
-	.service-features li::before,
-	.service-benefits li::before {
-		content: "✓";
-		position: absolute;
-		left: 0;
-		color: var(--success-color);
-		font-weight: bold;
-		font-size: 14px;
-	}
-	
-	.service-cta {
-		text-align: center;
-		margin-top: auto;
-		/* padding-top: 20px; */
-	}
-	
-	.service-cta .btn:not(.btn-link) {
-		font-size: var(--font-size-sm);
-		padding: 12px 24px;
-		width: 100%;
-	}
-	
-	.services-grid {
-		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-		gap: 30px;
-		max-width: 1400px;
-		margin: 0 auto;
+	@layer components {
+		/* Service Cards */
+		.service-card {
+			background: var(--bg-secondary);
+			padding: 25px;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			min-height: 400px;
+			box-sizing: border-box;
+			transition: all 0.3s ease;
+			position: relative;
+		}
+		
+		.service-card::after {
+			position: absolute;
+			content: '';
+			width: 2px;
+			height: 60%;
+			background-color: var(--bg-primary);
+			transform: translate(-1.5rem, 2.5rem);
+		}
+
+		.service-card:hover {
+			transform: translateY(-2px);
+			box-shadow: var(--shadow-lg);
+		}
+
+		.service-header {
+			text-align: center;
+			margin-bottom: 25px;
+			min-height: 122px;
+		}
+		
+		.service-card h3 {
+			color: var(--text-dark);
+			font-size: var(--font-size-xl);
+			margin-bottom: 15px;
+			font-weight: 300;
+			line-height: 1.3;
+			text-transform: uppercase;
+		}
+
+		.service-description {
+			color: var(--text-dark);
+			font-size: var(--font-size-md);
+			line-height: 1.5;
+			margin-bottom: 0;
+			font-weight: 600;
+		}
+		
+		.service-details {
+			flex-grow: 1;
+			display: flex;
+			gap: var(--gap);
+		}
+		
+		.service-features,
+		.service-benefits {
+			margin-bottom: 20px;
+			flex-grow: 1;
+		}
+
+		.service-features h4,
+		.service-benefits h4 {
+			color: var(--text-light);
+			font-size: var(--font-size-md);
+			margin-bottom: 12px;
+			text-transform: uppercase;
+			padding-bottom: 8px;
+			text-align: center;
+			font-weight: 300;
+		}
+		
+		.service-features ul,
+		.service-benefits ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		
+		.service-features li,
+		.service-benefits li {
+			padding: 6px 0;
+			padding-left: 20px;
+			position: relative;
+			color: var(--text-light);
+			line-height: 1.4;
+			font-size: var(--font-size-sm);
+			display: flex;
+			align-items: center;
+		}
+		
+		.service-features li::before,
+		.service-benefits li::before {
+			content: "✓";
+			position: absolute;
+			left: 0;
+			color: var(--primary-color);
+			font-weight: bold;
+			font-size: 14px;
+		}
+		
+		.service-cta {
+			text-align: center;
+			margin-top: auto;
+		}
+		
+		.service-cta .btn:not(.btn-link) {
+			font-size: var(--font-size-sm);
+			padding: 12px 24px;
+			width: 100%;
+		}
+		
+		/* Microsoft Copilot-style Comparison Table */
+		.comparison-table {
+			width: 100%;
+			max-width: 1400px;
+			margin: 0 auto;
+			border-radius: 12px;
+			overflow: hidden;
+			/* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+			/* background: white; */
+			/* border: 1px solid #e5e5e5; */
+			font-family: system-ui, -apple-system, sans-serif;
+		}
+		
+		.table-header {
+			display: grid;
+			grid-template-columns: 2fr 1fr 1fr 1fr;
+			border-bottom: 1px solid #e5e5e5;
+		}
+		
+		.feature-header {
+			/* background: #f8f9fa; */
+			padding: 20px;
+			font-weight: 600;
+			color: #424242;
+			display: flex;
+			align-items: flex-end;
+			font-size: 14px;
+			text-transform: uppercase;
+			border-right: 1px solid #e5e5e5;
+		}
+		
+		.package-header-cell {
+			/* background: white; */
+			padding: 20px 15px;
+			text-align: center;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			border-right: 1px solid #e5e5e5;
+			min-height: 180px;
+			justify-content: space-between;
+		}
+		
+		.package-header-cell:last-child {
+			border-right: none;
+		}
+		
+		.table-body {
+			/* background: white; */
+		}
+		
+		.table-row {
+			display: grid;
+			grid-template-columns: 2fr 1fr 1fr 1fr;
+			border-bottom: 1px solid #f0f0f0;
+		}
+		
+		.table-row:last-child {
+			border-bottom: none;
+		}
+		
+		.feature-cell {
+			padding: 15px 20px;
+			color: #424242;
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			border-right: 1px solid #f0f0f0;
+		}
+		
+		.check-cell {
+			padding: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-right: 1px solid #f0f0f0;
+		}
+		
+		.check-cell:last-child {
+			border-right: none;
+		}
+		
+		.check-mark {
+			color: var(--primary-color);
+			font-size: 18px;
+			font-weight: bold;
+		}
+		
+		.x-mark {
+			color: #d1d1d1;
+			font-size: 16px;
+			opacity: 0.6;
+		}
+		
+		.package-name {
+			color: #323130;
+			font-size: 16px;
+			font-weight: 600;
+			margin: 0;
+		}
+		
+		.package-header-cell.popular .package-name {
+			color: #0078d4;
+		}
+		
+		.package-subtitle {
+			color: #605e5c;
+			font-size: 12px;
+			margin: 0;
+		}
+		
+		.package-price {
+			color: #323130;
+			font-size: 24px;
+			font-weight: 700;
+			margin-bottom: 4px;
+		}
+		
+		.package-header-cell.popular .package-price {
+			color: #0078d4;
+		}
+		
+		.package-period {
+			color: #605e5c;
+			font-size: 11px;
+		}
+		
+		.package-header-cell .btn {
+			padding: 8px 15px;
+			border-radius: 4px;
+			font-size: 13px;
+			font-weight: 600;
+			text-decoration: none;
+			border: 1px solid #0078d4;
+			transition: all 0.2s ease;
+			margin-top: auto;
+		}
+		
+		.package-header-cell .btn-primary {
+			background: #0078d4;
+			color: white;
+		}
+		
+		.package-header-cell .btn-primary:hover {
+			background: #106ebe;
+			transform: translateY(-1px);
+		}
+		
+		/* Responsive styles for comparison table */
+		@media (max-width: 768px) {
+			.comparison-table {
+				font-size: 12px;
+			}
+			
+			.table-header,
+			.table-row {
+				grid-template-columns: 1.5fr repeat(3, 1fr);
+			}
+			
+			.package-header-cell {
+				padding: 15px 8px;
+				min-height: 140px;
+			}
+			
+			.feature-cell {
+				padding: 10px 15px;
+				font-size: 12px;
+			}
+			
+			.check-cell {
+				padding: 10px 5px;
+			}
+			
+			.package-name {
+				font-size: 14px;
+			}
+			
+			.package-price {
+				font-size: 18px;
+			}
+		}
 	}
 
-	.service-card {
-		background: var(--bg-primary);
-		border-radius: 12px;
-		padding: 30px;
-		box-shadow: var(--shadow-md);
-		transition: all 0.3s ease;
-		border: 1px solid var(--card-border);
-		display: flex;
-		flex-direction: column;
-		height: 100%;
+	@layer utilities {
+		.services-markdown :global(h2),
+		.services-markdown :global(h3) {
+			color: var(--text-primary);
+			margin-bottom: 16px;
+		}
+		
+		.services-markdown :global(p) {
+			color: var(--text-light);
+			line-height: 1.6;
+			margin-bottom: 16px;
+		}
+		
+		.packages-placeholder {
+			grid-column: 1 / -1;
+			text-align: center;
+			padding: var(--spacing-xl);
+			color: var(--text-light);
+			font-style: italic;
+		}
+		
+		/* Force comparison table to take full width */
+		.comparison-table {
+			width: 100% !important;
+			grid-column: 1 / -1 !important;
+		}
 	}
 
-	.service-card:hover {
-		transform: translateY(-5px);
-		box-shadow: var(--shadow-lg);
-	}
-
-	.service-header {
-		text-align: center;
-		margin-bottom: 25px;
-	}
-	.service-icon {
-		width: 60px;
-		height: 60px;
-		margin: 0 auto 20px auto;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--primary);
-		border-radius: 50%;
-		padding: 15px;
-	}
-
-	.service-icon img {
-		width: 30px;
-		height: 30px;
-		filter: brightness(0) invert(1);
-	}
-
-	.service-card h3 {
-		color: var(--primary-color);
-		font-size: var(--font-size-xl);
-		margin-bottom: 15px;
-		font-weight: 600;
-		line-height: 1.3;
-		text-transform: uppercase;
-	}
-
-	.service-description {
-		color: var(--text-light);
-		font-size: var(--font-size-md);
-		line-height: 1.5;
-		margin-bottom: 0;
-	}
-	
-	/* Responsive Design for Cards */
+	/* Responsive Design */
 	@media (max-width: 1400px) {
 		.services-grid {
 			grid-template-columns: repeat(4, 1fr);
-			gap: 25px;
+			gap: 18px;
 		}
 	}
 
 	@media (max-width: 1200px) {
 		.services-grid {
 			grid-template-columns: repeat(3, 1fr);
-			gap: 25px;
+			gap: 20px;
 		}
 	}
 
@@ -402,36 +650,21 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		}
 		
 		.service-card {
-			padding: 25px;
-		}
-		
-		.service-icon {
-			width: 50px;
-			height: 50px;
-			margin-bottom: 15px;
-			padding: 12px;
-		}
-		
-		.service-icon img {
-			width: 26px;
-			height: 26px;
+			padding: 20px;
+			min-height: 350px;
 		}
 	}
 
 	@media (max-width: 768px) {
-		.services {
-			padding: 60px 0;
-		}
-		
 		.services-grid {
 			grid-template-columns: 1fr;
-			gap: 20px;
-			padding: 0 20px;
-			max-width: 500px;
+			gap: 0px;
+			padding:0;
 		}
 		
 		.service-card {
-			padding: 25px 20px;
+			padding: 20px;
+			min-height: 300px;
 		}
 		
 		.service-card h3 {
@@ -440,37 +673,6 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		
 		.service-description {
 			font-size: var(--font-size-sm);
-		}
-	}
-	
-	/* Mobile optimizations */
-	@media (max-width: 768px) {
-		.service-details {
-			margin-bottom: 20px;
-		}
-		
-		.service-features h4,
-		.service-benefits h4 {
-			font-size: var(--font-size-sm);
-			margin-bottom: 10px;
-		}
-		
-		.service-features li,
-		.service-benefits li {
-			font-size: 13px;
-			padding: 4px 0;
-			padding-left: 18px;
-		}
-		
-		.service-features li::before,
-		.service-benefits li::before {
-			font-size: 12px;
-			color: var(--success-color);
-		}
-		
-		.service-cta .btn:not(.btn-link) {
-			font-size: 13px;
-			padding: 10px 20px;
 		}
 	}
 	
@@ -496,53 +698,522 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		transform: translateY(-2px);
 		box-shadow: var(--shadow-lg);
 	}
+	
+	/* Service Packages Section */
+	.packages-section {
+		margin-top: var(--spacing-xl);
+		padding-top: var(--spacing-xl);
+		border-top: 2px solid var(--border-light);
+		transition: all 0.4s ease-in-out;
+		overflow: hidden;
+	}
+	
+	.packages-section.packages-hidden {
+		max-height: 0;
+		opacity: 0;
+		margin-top: 0;
+		padding-top: 0;
+		border-top: none;
+	}
+	
+	.packages-section.packages-visible {
+		max-height: 2000px;
+		opacity: 1;
+		animation: slideInFromTop 0.4s ease-out;
+	}
+	
+	@keyframes slideInFromTop {
+		from {
+			transform: translateY(-20px);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+	
+	.packages-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0;
+	}
+	
+	.packages-content {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: var(--spacing-lg);
+		margin-bottom: var(--spacing-xl);
+		max-width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	@media (max-width: 768px) {
+		.packages-content {
+			grid-template-columns: 1fr;
+			gap: var(--spacing-md);
+		}
+	}
+	
+	@media (min-width: 769px) and (max-width: 1024px) {
+		.packages-content {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	
+	@media (min-width: 1025px) {
+		.packages-content {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	
+	.packages-placeholder {
+		grid-column: 1 / -1;
+		text-align: center;
+		padding: var(--spacing-xl);
+		color: var(--text-light);
+		font-style: italic;
+	}
+	
+	/* Microsoft Copilot-style Grid Layout */
+	.comparison-table {
+		width: 100%;
+		max-width: 1400px;
+		margin: 0 auto;
+		border-radius: 12px;
+		overflow: hidden;
+		/* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
+		/* background: white; */
+		/* border: 1px solid #e1e1e1; */
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		display: block;
+	}
+	
+	.table-header {
+		display: grid !important;
+		grid-template-columns: 2fr repeat(3, 1fr) !important;
+		gap: 0 !important;
+		/* background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%); */
+		border-bottom: 2px solid #e1e1e1;
+		width: 100%;
+	}
+	
+		.feature-header {
+			padding: 24px 20px;
+			font-weight: 600;
+			color: #323130;
+			font-size: 14px;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			border-right: 1px solid #e1e1e1;
+			display: flex;
+			align-items: center;
+			/* background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f4 100%); */
+			grid-column: 1;
+		}	.package-header-cell {
+		/* background: white; */
+		padding: 24px 16px;
+		text-align: center;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		border-right: 1px solid #e1e1e1;
+		min-height: 200px;
+		transition: all 0.3s ease;
+	}
+	
+	.package-header-cell:nth-child(2) { grid-column: 2; }
+			.package-header-cell:nth-child(3) { 
+			grid-column: 3;
+			background: color-mix(in srgb, var(--primary-color) 5%, transparent);
+		}
+	.package-header-cell:nth-child(4) { grid-column: 4; }
+	
+		.package-header-cell:last-child {
+			border-right: none;
+		}		.package-info {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 1;
+			justify-content: center;
+			gap: 8px;
+		}		.package-name {
+			color: #323130;
+			font-size: 18px;
+			font-weight: 600;
+			margin: 0 0 8px 0;
+			line-height: 1.2;
+		}	.package-subtitle {
+		color: #605e5c;
+		font-size: 13px;
+		margin: 0 0 16px 0;
+		font-weight: 400;
+	}
+	
+	.package-pricing {
+		margin: 16px 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+		.package-price {
+			color: #323130;
+			font-size: 32px;
+			font-weight: 700;
+			line-height: 1;
+			margin-bottom: 4px;
+		}	.package-period {
+		color: #605e5c;
+		font-size: 12px;
+		font-weight: 400;
+	}
+	
+	.package-header-cell .btn {
+		margin-top: auto;
+		padding: 12px 20px;
+		border-radius: 6px;
+		font-size: 14px;
+		font-weight: 600;
+		text-decoration: none;
+		border: 2px solid #0078d4;
+		transition: all 0.3s ease;
+		cursor: pointer;
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.package-header-cell .btn-primary {
+		background: #0078d4;
+		color: white;
+		border-color: #0078d4;
+	}
+	
+	.package-header-cell .btn-primary:hover {
+		background: #005a9e;
+		border-color: #005a9e;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 16px rgba(0, 120, 212, 0.25);
+	}
+	
+	.table-body {
+		/* background: white; */
+		width: 100%;
+	}
+	
+	.table-row {
+		display: grid !important;
+		grid-template-columns: 2fr repeat(3, 1fr) !important;
+		gap: 0 !important;
+		border-bottom: 1px solid #f3f2f1;
+		transition: all 0.2s ease;
+		width: 100%;
+	}
+	
+	.table-row:hover {
+		background: #fafafa;
+	}
+	
+	.table-row:last-child {
+		border-bottom: none;
+	}
+	
+		.feature-cell {
+			padding: 16px 20px;
+			color: #323130;
+			display: flex;
+			align-items: center;
+			font-size: 14px;
+			font-weight: 400;
+			border-right: 1px solid #f3f2f1;
+			line-height: 1.4;
+			/* background: white; */
+			grid-column: 1;
+		}	.table-row:hover .feature-cell {
+		/* background: #fafafa; */
+	}
+	
+	.check-cell {
+		padding: 16px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-right: 1px solid #f3f2f1;
+		/* background: white; */
+		transition: all 0.2s ease;
+	}
+	
+	.check-cell:nth-child(2) { grid-column: 2; }
+			.check-cell:nth-child(3) { 
+			grid-column: 3;
+			background: color-mix(in srgb, var(--primary-color) 3%, transparent);
+		}
+	.check-cell:nth-child(4) { grid-column: 4; }
+	
+	.check-cell:last-child {
+		border-right: none;
+	}
+	
+	.table-row:hover .check-cell {
+		/* background: #fafafa; */
+	}
+	
+		.check-mark {
+			color: var(--primary-color);
+			font-size: 20px;
+			font-weight: 700;
+			width: 24px;
+			height: 24px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}		.x-mark {
+			color: var(--text-light);
+			font-size: 18px;
+			font-weight: 400;
+			opacity: 0.7;
+			width: 24px;
+			height: 24px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}	/* Responsive Grid Design */
+	@media (max-width: 768px) {
+		.table-header,
+		.table-row {
+			grid-template-columns: 1.5fr repeat(3, 1fr) !important;
+		}
+		
+		.feature-header {
+			padding: 16px 12px;
+			font-size: 12px;
+		}
+		
+		.package-header-cell {
+			padding: 16px 8px;
+			min-height: 160px;
+		}
+		
+		.package-name {
+			font-size: 14px;
+		}
+		
+		.package-price {
+			font-size: 24px;
+		}
+		
+		.feature-cell {
+			padding: 12px;
+			font-size: 13px;
+		}
+		
+		.check-cell {
+			padding: 12px 4px;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.table-header,
+		.table-row {
+			grid-template-columns: 1fr repeat(3, 80px) !important;
+		}
+		
+		.package-name {
+			font-size: 12px;
+		}
+		
+		.package-price {
+			font-size: 18px;
+		}
+	}
 </style>
+
+<!-- Pass i18n data to client script -->
+<script define:vars={{ ui }}>
+	window.uiTranslations = ui;
+</script>
 
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
-		const seoPackagesToggle = document.getElementById('seoPackagesToggle');
-		const packagesSection = document.getElementById('packagesSection');
-		const toggleTextShow = seoPackagesToggle?.querySelector('.toggle-text-show') as HTMLElement;
-		const toggleTextHide = seoPackagesToggle?.querySelector('.toggle-text-hide') as HTMLElement;
-		
-		if (!seoPackagesToggle || !packagesSection || !toggleTextShow || !toggleTextHide) return;
-		
-		let isVisible = false;
-		
-		seoPackagesToggle.addEventListener('click', function() {
-			isVisible = !isVisible;
-			
-			if (isVisible) {
-				packagesSection.classList.remove('packages-hidden');
-				packagesSection.classList.add('packages-visible');
-				toggleTextShow.style.display = 'none';
-				toggleTextHide.style.display = 'inline';
-				seoPackagesToggle.classList.add('expanded');
-				
-				// Smooth scroll to packages section
-				setTimeout(() => {
-					packagesSection.scrollIntoView({ 
-						behavior: 'smooth', 
-						block: 'start' 
-					});
-				}, 300);
-			} else {
-				packagesSection.classList.remove('packages-visible');
-				packagesSection.classList.add('packages-hidden');
-				toggleTextShow.style.display = 'inline';
-				toggleTextHide.style.display = 'none';
-				seoPackagesToggle.classList.remove('expanded');
-				
-				// Scroll back to services section
-				const servicesSection = document.getElementById('services');
-				if (servicesSection) {
-					servicesSection.scrollIntoView({ 
-						behavior: 'smooth', 
-						block: 'center' 
-					});
-				}
-			}
-		});
+		// Wait a bit for data to be available
+		setTimeout(() => {
+			initializeServiceExplorer();
+		}, 100);
 	});
+	
+	function initializeServiceExplorer() {
+		const exploreButtons = document.querySelectorAll('.service-explore-btn') as NodeListOf<HTMLButtonElement>;
+		const packagesSection = document.getElementById('packagesSection') as HTMLElement;
+		const packagesTitle = document.getElementById('packagesTitle') as HTMLElement;
+		const packagesContent = document.getElementById('packagesContent') as HTMLElement;
+		
+		if (!packagesSection || !packagesTitle || !packagesContent) {
+			return;
+		}
+		
+		let currentActiveButton: HTMLButtonElement | null = null;
+		
+		// Get i18n data from global scope
+		const uiTranslations = (window as any).uiTranslations || {};
+		let servicePackages = uiTranslations.servicePackages || {};
+		
+		// Fallback if servicePackages is empty - use basic structure
+		if (Object.keys(servicePackages).length === 0) {
+			servicePackages = {
+				interim: {
+					title: 'Interim Management Packages',
+					packages: [
+						{ name: 'Package 1', price: 'Contact us', period: '', features: ['Service not available'] }
+					]
+				},
+				cloud: {
+					title: 'Cloud Migration Packages', 
+					packages: [
+						{ name: 'Package 1', price: 'Contact us', period: '', features: ['Service not available'] }
+					]
+				},
+				it: {
+					title: 'IT Operations Packages',
+					packages: [
+						{ name: 'Package 1', price: 'Contact us', period: '', features: ['Service not available'] }
+					]
+				},
+				ai: {
+					title: 'AI Consulting Packages',
+					packages: [
+						{ name: 'Package 1', price: 'Contact us', period: '', features: ['Service not available'] }
+					]
+				},
+				seo: {
+					title: 'SEO Packages',
+					packages: [
+						{ name: 'Package 1', price: 'Contact us', period: '', features: ['Service not available'] }
+					]
+				}
+			};
+		}
+		
+		function renderPackages(serviceKey: string) {
+			const service = servicePackages[serviceKey];
+			if (!service) {
+				packagesTitle.textContent = 'Service not available';
+				packagesContent.innerHTML = '<p>Service packages are not available at the moment.</p>';
+				return;
+			}
+			
+			packagesTitle.textContent = service.title;
+			
+			// Create grid-based comparison table
+			const packages = service.packages;
+			
+			// Get all unique features across all packages
+			const allFeatures = new Set<string>();
+			packages.forEach((pkg: any) => {
+				pkg.features.forEach((feature: string) => allFeatures.add(feature));
+			});
+			const featureList = Array.from(allFeatures);
+			
+			// Create table header
+			const headerHTML = `
+				<div class="comparison-table">
+					<div class="table-header">
+						<div class="feature-header"></div>
+						${packages.map((pkg: any) => `
+							<div class="package-header-cell">
+								<div class="package-info">
+									<h4 class="package-name">${pkg.name}</h4>
+									${pkg.subtitle ? `<p class="package-subtitle">${pkg.subtitle}</p>` : ''}
+									<div class="package-pricing">
+										<div class="package-price">${pkg.price}</div>
+										${pkg.period ? `<div class="package-period">${pkg.period}</div>` : ''}
+									</div>
+								</div>
+							</div>
+						`).join('')}
+					</div>
+					<div class="table-body">
+						${featureList.map(feature => `
+							<div class="table-row">
+								<div class="feature-cell">${feature}</div>
+								${packages.map((pkg: any) => `
+									<div class="check-cell">
+										${pkg.features.includes(feature) ? '<span class="check-mark">✓</span>' : ''}
+									</div>
+								`).join('')}
+							</div>
+						`).join('')}
+					</div>
+				</div>
+			`;
+			
+			packagesContent.innerHTML = headerHTML;
+			
+			// Override packages-content grid for comparison table
+			packagesContent.style.display = 'block';
+			packagesContent.style.gridTemplateColumns = 'none';
+		}
+		
+		exploreButtons.forEach(button => {
+			const toggleTextShow = button.querySelector('.toggle-text-show') as HTMLElement;
+			const toggleTextHide = button.querySelector('.toggle-text-hide') as HTMLElement;
+			const serviceKey = button.dataset.service;
+			
+			if (!toggleTextShow || !toggleTextHide || !serviceKey) return;
+			
+			button.addEventListener('click', function() {
+				const isCurrentlyActive = button === currentActiveButton;
+				
+				// Reset all buttons first
+				exploreButtons.forEach(btn => {
+					const showText = btn.querySelector('.toggle-text-show') as HTMLElement;
+					const hideText = btn.querySelector('.toggle-text-hide') as HTMLElement;
+					if (showText && hideText) {
+						showText.style.display = 'inline';
+						hideText.style.display = 'none';
+					}
+					btn.classList.remove('expanded');
+				});
+				
+				if (isCurrentlyActive) {
+					// Hide packages section
+					packagesSection.classList.remove('packages-visible');
+					packagesSection.classList.add('packages-hidden');
+					currentActiveButton = null;
+					
+					// Scroll back to services section
+					const servicesSection = document.getElementById('services');
+					if (servicesSection) {
+						servicesSection.scrollIntoView({ 
+							behavior: 'smooth', 
+							block: 'center' 
+						});
+					}
+				} else {
+					// Show packages for this service
+					renderPackages(serviceKey);
+					packagesSection.classList.remove('packages-hidden');
+					packagesSection.classList.add('packages-visible');
+					
+					// Update button state
+					toggleTextShow.style.display = 'none';
+					toggleTextHide.style.display = 'inline';
+					button.classList.add('expanded');
+					currentActiveButton = button;
+					
+					// Smooth scroll to packages section
+					setTimeout(() => {
+						packagesSection.scrollIntoView({ 
+							behavior: 'smooth', 
+							block: 'start' 
+						});
+					}, 300);
+				}
+			});
+		});
+	}
 </script>
 

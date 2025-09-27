@@ -117,7 +117,7 @@
     "languages": "Sprachen"
   },
   "services": {
-    "title": "Wie können wir helfen",
+    "title": "wie wir helfen können",
     "subtitle": "Umfassende IT-Expertise für Ihr Unternehmen",
     "viewPackages": "Service-Pakete anzeigen",
     "hidePackages": "Service-Pakete verbergen",
@@ -207,7 +207,7 @@
     }
   },
   "about": {
-    "title": "Über uns",
+    "title": "über uns",
     "subtitle": "IT-Experte mit 20+ Jahren Erfahrung",
     "mission": "Unsere Mission",
     "skills": "Kernkompetenzen",
@@ -278,7 +278,7 @@
     }
   },
   "portfolio": {
-    "title": "Von der Strategie zum stabilen Betrieb",
+    "title": "von der strategie zum stabilen betrieb",
     "subtitle": "Echte Transformationen mit messbaren Ergebnissen",
     "challenge": "Herausforderung",
     "results": "Ergebnisse",
@@ -406,27 +406,175 @@
           "Verbesserte Service-Qualität und -Geschwindigkeit"
         ]
       }
-    ],
-    "technologyExpertise": {
-      "title": "Technologie-Expertise",
-      "categories": [
+    ]
+  },
+  "servicePackages": {
+    "interim": {
+      "title": "Interim Management Pakete",
+      "packages": [
         {
-          "title": "Cloud-Plattformen",
-          "technologies": ["AWS", "Azure", "Google Cloud", "Kubernetes"]
+          "name": "Strategisches Paket",
+          "price": "€5.000",
+          "period": "/Monat",
+          "features": [
+            "Strategische Bewertung",
+            "Teamführung",
+            "Monatliche Berichterstattung",
+            "Risikomanagement"
+          ]
         },
         {
-          "title": "DevOps Tools",
-          "technologies": ["Docker", "Terraform", "Jenkins", "GitLab CI/CD"]
+          "name": "Operatives Paket",
+          "price": "€8.000",
+          "period": "/Monat",
+          "features": [
+            "Vollständige operative Führung",
+            "24/7 Support",
+            "Wöchentliche Berichterstattung",
+            "Prozessoptimierung",
+            "Team-Restrukturierung"
+          ]
+        }
+      ]
+    },
+    "cloud": {
+      "title": "Cloud-Migration Pakete",
+      "packages": [
+        {
+          "name": "Migrations-Starter",
+          "price": "€3.000",
+          "period": "/Projekt",
+          "features": [
+            "Grundlegender Migrationsplan",
+            "Datensicherung",
+            "Ersteinrichtung",
+            "Dokumentation"
+          ]
         },
         {
-          "title": "Monitoring",
-          "technologies": ["Prometheus", "Grafana", "ELK Stack", "New Relic"]
+          "name": "Enterprise Migration",
+          "price": "€15.000",
+          "period": "/Projekt",
+          "features": [
+            "Vollständige Migration",
+            "Sicherheitseinrichtung",
+            "Schulung & Support",
+            "24/7 Überwachung",
+            "Compliance-Audit"
+          ]
+        }
+      ]
+    },
+    "it": {
+      "title": "IT-Operations Pakete",
+      "packages": [
+        {
+          "name": "Essential Support",
+          "price": "€2.000",
+          "period": "/Monat",
+          "features": [
+            "Systemüberwachung",
+            "Grundwartung",
+            "E-Mail-Support",
+            "Monatliche Berichte"
+          ]
+        },
+        {
+          "name": "Professional Support",
+          "price": "€4.000",
+          "period": "/Monat",
+          "features": [
+            "Erweiterte Überwachung",
+            "Vorbeugende Wartung",
+            "Telefon- & E-Mail-Support",
+            "Wöchentliche Berichte",
+            "Prioritäts-Response"
+          ]
+        }
+      ]
+    },
+    "ai": {
+      "title": "KI-Beratung Pakete",
+      "packages": [
+        {
+          "name": "KI-Erkundung",
+          "price": "€2.500",
+          "period": "/Projekt",
+          "features": [
+            "KI-Bereitschaftsbewertung",
+            "Strategieberatung",
+            "Implementierungsroadmap",
+            "ROI-Analyse"
+          ]
+        },
+        {
+          "name": "KI-Implementierung",
+          "price": "€10.000",
+          "period": "/Projekt",
+          "features": [
+            "Vollständige KI-Lösung",
+            "Maßgeschneiderte Entwicklung",
+            "Schulung & Support",
+            "Performance-Optimierung",
+            "Laufende Wartung"
+          ]
+        }
+      ]
+    },
+    "seo": {
+      "title": "Digital Marketing & SEO Pakete",
+      "packages": [
+        {
+          "name": "Kickstart paket",
+          "subtitle": "Grundlegende SEO",
+          "price": "ab €000",
+          "period": "",
+          "popular": false,
+          "features": [
+            "Strategische Beratung",
+            "Cloud-Infrastruktur",
+            "Schulung & Dokumentation"
+          ]
+        },
+        {
+          "name": "Ultra",
+          "subtitle": "Erweiterte SEO",
+          "price": "ab €000",
+          "period": "",
+          "popular": true,
+          "features": [
+            "Strategische Beratung",
+            "24/7 Support",
+            "Cloud-Infrastruktur",
+            "Erweiterte Sicherheit",
+            "Prioritäts-Response",
+            "Schulung & Dokumentation"
+          ]
+        },
+        {
+          "name": "Ultra plus",
+          "subtitle": "Vollständige SEO",
+          "price": "ab €000",
+          "period": "",
+          "popular": false,
+          "features": [
+            "Strategische Beratung",
+            "24/7 Support",
+            "Cloud-Infrastruktur",
+            "Erweiterte Sicherheit",
+            "Performance-Überwachung",
+            "Maßgeschneiderte Integrationen",
+            "Persönlicher Account Manager",
+            "Prioritäts-Response",
+            "Schulung & Dokumentation",
+            "Compliance-Unterstützung"
+          ]
         }
       ]
     }
   },
   "contact": {
-    "title": "Kontakt",
+    "title": "kontakt",
     "subtitle": "Bereit für die digitale Transformation?",
     "form": {
       "name": "Name",

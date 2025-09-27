@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- IT Operations - System Monitoring & Infrastructure -->
+  <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main server rack -->
+    <rect x="150" y="80" width="100" height="140" rx="8" stroke-width="2.5"/>
+    
+    <!-- Server units -->
+    <rect x="160" y="95" width="80" height="20" rx="3" stroke-width="2"/>
+    <rect x="160" y="125" width="80" height="20" rx="3" stroke-width="2"/>
+    <rect x="160" y="155" width="80" height="20" rx="3" stroke-width="2"/>
+    <rect x="160" y="185" width="80" height="20" rx="3" stroke-width="2"/>
+    
+    <!-- Status indicators -->
+    <circle cx="170" cy="105" r="3" fill="currentColor"/>
+    <circle cx="180" cy="105" r="3" fill="currentColor"/>
+    <circle cx="170" cy="135" r="3" fill="currentColor"/>
+    <circle cx="180" cy="135" r="3" fill="currentColor"/>
+    <circle cx="170" cy="165" r="3" fill="currentColor"/>
+    <circle cx="180" cy="165" r="3" fill="currentColor"/>
+    <circle cx="170" cy="195" r="3" fill="currentColor"/>
+    <circle cx="180" cy="195" r="3" fill="currentColor"/>
+    
+    <!-- Monitoring dashboard -->
+    <rect x="280" y="100" width="70" height="50" rx="5" stroke-width="2"/>
+    <line x1="290" y1="115" x2="340" y2="115" stroke-width="1"/>
+    <line x1="290" y1="125" x2="320" y2="125" stroke-width="1"/>
+    <line x1="290" y1="135" x2="330" y2="135" stroke-width="1"/>
+    
+    <!-- Performance graphs -->
+    <polyline points="290,110 300,105 310,108 320,103 330,107 340,102" stroke-width="1.5" fill="none"/>
+    
+    <!-- Network connections -->
+    <path d="M100 150 Q125 130 150 150" stroke-width="2" stroke-dasharray="5,3"/>
+    <path d="M250 150 Q275 130 280 140" stroke-width="2" stroke-dasharray="5,3"/>
+    
+    <!-- External devices -->
+    <rect x="60" y="140" width="30" height="20" rx="3" stroke-width="2"/>
+    <circle cx="75" cy="150" r="2" fill="currentColor"/>
+    
+    <!-- Maintenance tools -->
+    <path d="M320 180 L330 190 L325 195 L315 185 Z" stroke-width="2"/>
+    <circle cx="310" cy="200" r="8" stroke-width="2"/>
+    <path d="M305 200 L315 200 M310 195 L310 205" stroke-width="2"/>
+    
+    <!-- Uptime indicator -->
+    <circle cx="200" cy="50" r="20" stroke-width="2.5"/>
+    <path d="M190 50 L195 55 L210 40" stroke-width="2" fill="none"/>
+    <text x="200" y="35" text-anchor="middle" font-size="10" fill="currentColor" font-family="Arial">99.9%</text>
+  </g>
+</svg>

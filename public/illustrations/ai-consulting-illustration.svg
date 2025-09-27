@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- AI Consulting - Neural Networks & Machine Learning -->
+  <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Neural network structure -->
+    <!-- Input layer -->
+    <circle cx="80" cy="100" r="12" stroke-width="2"/>
+    <circle cx="80" cy="140" r="12" stroke-width="2"/>
+    <circle cx="80" cy="180" r="12" stroke-width="2"/>
+    
+    <!-- Hidden layer 1 -->
+    <circle cx="160" cy="80" r="10" stroke-width="2"/>
+    <circle cx="160" cy="120" r="10" stroke-width="2"/>
+    <circle cx="160" cy="160" r="10" stroke-width="2"/>
+    <circle cx="160" cy="200" r="10" stroke-width="2"/>
+    
+    <!-- Hidden layer 2 -->
+    <circle cx="240" cy="100" r="10" stroke-width="2"/>
+    <circle cx="240" cy="140" r="10" stroke-width="2"/>
+    <circle cx="240" cy="180" r="10" stroke-width="2"/>
+    
+    <!-- Output layer -->
+    <circle cx="320" cy="140" r="12" stroke-width="2.5"/>
+    
+    <!-- Neural connections -->
+    <path d="M92 100 L148 80" stroke-width="1" opacity="0.6"/>
+    <path d="M92 100 L148 120" stroke-width="1.5" opacity="0.8"/>
+    <path d="M92 100 L148 160" stroke-width="1" opacity="0.6"/>
+    
+    <path d="M92 140 L148 80" stroke-width="1" opacity="0.6"/>
+    <path d="M92 140 L148 120" stroke-width="2" opacity="0.9"/>
+    <path d="M92 140 L148 160" stroke-width="1.5" opacity="0.8"/>
+    <path d="M92 140 L148 200" stroke-width="1" opacity="0.6"/>
+    
+    <path d="M92 180 L148 160" stroke-width="1.5" opacity="0.8"/>
+    <path d="M92 180 L148 200" stroke-width="2" opacity="0.9"/>
+    
+    <path d="M170 80 L228 100" stroke-width="1.5" opacity="0.8"/>
+    <path d="M170 120 L228 100" stroke-width="2" opacity="0.9"/>
+    <path d="M170 120 L228 140" stroke-width="2.5" opacity="1"/>
+    <path d="M170 160 L228 140" stroke-width="2" opacity="0.9"/>
+    <path d="M170 160 L228 180" stroke-width="1.5" opacity="0.8"/>
+    <path d="M170 200 L228 180" stroke-width="1" opacity="0.6"/>
+    
+    <path d="M252 100 L308 140" stroke-width="2" opacity="0.9"/>
+    <path d="M252 140 L308 140" stroke-width="2.5" opacity="1"/>
+    <path d="M252 180 L308 140" stroke-width="2" opacity="0.9"/>
+    
+    <!-- AI brain representation -->
+    <path d="M200 40 Q220 20 240 40 Q250 50 240 60 Q220 70 200 60 Q190 50 200 40 Z" stroke-width="2.5"/>
+    <path d="M205 45 Q215 35 225 45" stroke-width="1.5"/>
+    <path d="M210 55 Q220 50 230 55" stroke-width="1.5"/>
+    
+    <!-- Data streams -->
+    <path d="M30 140 Q50 130 80 140" stroke-width="2" stroke-dasharray="8,4"/>
+    <path d="M320 140 Q340 130 360 140" stroke-width="2" stroke-dasharray="8,4"/>
+    
+    <!-- Binary code representation -->
+    <text x="40" y="120" font-size="8" fill="currentColor" font-family="monospace">1010</text>
+    <text x="40" y="160" font-size="8" fill="currentColor" font-family="monospace">0110</text>
+    
+    <!-- Output prediction -->
+    <text x="340" y="135" font-size="10" fill="currentColor" font-family="Arial">AI</text>
+    <text x="340" y="150" font-size="8" fill="currentColor" font-family="Arial">97.3%</text>
+  </g>
+</svg>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Enhanced Hero Background with NICT brand colors -->
+<svg
+   version="1.1"
+   id="enhanced-hero-bg"
+   width="1920"
+   height="1080"
+   viewBox="0 0 1920 1080"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg">
+  
+  <defs>
+    <!-- Brand gradient -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1aeae2;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#2566cf;stop-opacity:0.2" />
+    </linearGradient>
+    
+    <!-- Subtle accent gradient -->
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1aeae2;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#1d96d5;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#2566cf;stop-opacity:0.8" />
+    </linearGradient>
+    
+    <!-- Radial gradient for depth */
+    <radialGradient id="depthGradient" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#1aeae2;stop-opacity:0.05" />
+    </radialGradient>
+    
+    <!-- Tech pattern -->
+    <pattern id="techPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <circle cx="50" cy="50" r="1" fill="#1aeae2" opacity="0.3"/>
+      <circle cx="25" cy="25" r="0.5" fill="#2566cf" opacity="0.2"/>
+      <circle cx="75" cy="75" r="0.5" fill="#2566cf" opacity="0.2"/>
+    </pattern>
+  </defs>
+  
+  <!-- Base background -->
+  <rect width="100%" height="100%" fill="#fdfdfd"/>
+  
+  <!-- Main brand gradient overlay -->
+  <rect width="100%" height="100%" fill="url(#primaryGradient)"/>
+  
+  <!-- Geometric shapes for modern tech look -->
+  <!-- Large accent circle -->
+  <circle cx="1600" cy="200" r="150" fill="none" stroke="#1aeae2" stroke-width="2" opacity="0.4"/>
+  <circle cx="1600" cy="200" r="100" fill="none" stroke="#1aeae2" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Left side accent -->
+  <circle cx="200" cy="800" r="120" fill="none" stroke="#2566cf" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Modern tech lines -->
+  <path d="M 0,300 Q 480,280 960,300 T 1920,300" stroke="#1aeae2" stroke-width="3" fill="none" opacity="0.5"/>
+  <path d="M 0,600 Q 480,620 960,600 T 1920,600" stroke="#2566cf" stroke-width="2" fill="none" opacity="0.4"/>
+  
+  <!-- Diagonal tech accent -->
+  <path d="M 1200,0 L 1920,200 L 1700,400 L 1000,200 Z" fill="url(#accentGradient)" opacity="0.15"/>
+  
+  <!-- Tech dots pattern overlay -->
+  <rect width="100%" height="100%" fill="url(#techPattern)" opacity="0.3"/>
+  
+  <!-- Depth gradient overlay -->
+  <rect width="100%" height="100%" fill="url(#depthGradient)"/>
+  
+  <!-- Brand highlight elements -->
+  <g opacity="0.4">
+    <!-- Top right corner accent -->
+    <polygon points="1600,0 1920,0 1920,200" fill="#1aeae2" opacity="0.1"/>
+    
+    <!-- Bottom left corner accent -->
+    <polygon points="0,800 320,800 0,1080" fill="#2566cf" opacity="0.1"/>
+  </g>
+  
+  <!-- Subtle hexagon pattern for tech feel -->
+  <g opacity="0.2">
+    <polygon points="100,100 130,85 160,100 160,130 130,145 100,130" 
+             fill="none" stroke="#1aeae2" stroke-width="1"/>
+    <polygon points="1800,900 1830,885 1860,900 1860,930 1830,945 1800,930" 
+             fill="none" stroke="#2566cf" stroke-width="1"/>
+  </g>
+  
+</svg>

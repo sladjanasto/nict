@@ -22,7 +22,7 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		<nav class="navbar">
 			<div class="nav-brand">
 				<a href="/" class="logo">
-					<img src="/NICT_logo_color2.png" alt="N-ICT - drop IT on us" class="logo-img" />
+					<img src="/NICT_logo_color2.svg" alt="N-ICT - drop IT on us" class="logo-img" />
 				</a>
 			</div>
 			
@@ -30,31 +30,49 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 				<ul class="nav-list">
 					<li class="nav-item">
 						<a href={homeLink} class="nav-link">
-							<i class="icon icon-home"></i>
 							<span class="nav-text">{ui.nav.home}</span>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a href={servicesLink} class="nav-link">
-							<i class="icon icon-cogs"></i>
 							<span class="nav-text">{ui.nav.services}</span>
 						</a>
 					</li>
 					<li class="nav-item">
 						<a href={aboutLink} class="nav-link">
-							<i class="icon icon-user-tie"></i>
 							<span class="nav-text">{ui.nav.about}</span>
 						</a>
 					</li>
-					{/*<li class="nav-item">
+					<!-- <li class="nav-item">
 						<a href="/blog" class="nav-link">
-							<i class="icon icon-pen"></i>
 							<span class="nav-text">{ui.nav.blog}</span>
 						</a>
-					</li>*/}
+					</li> -->
 				</ul>
 				
 				<div class="nav-actions">
+					<!-- Language Flags -->
+					<div class="language-flags">
+						{languageSwitchUrls.map(({ lang: switchLang, label, url }) => (
+							<a 
+								href={url} 
+								class={`flag-link ${switchLang === lang ? 'active' : ''}`}
+								aria-label={`Switch to ${label}`}
+								title={label}
+							>
+								<img 
+									src={switchLang === 'en' ? '/united-kingdom.png' : '/germany.png'} 
+									alt={`${label} flag`}
+									class="flag-image"
+								/>
+							</a>
+						))}
+					</div>
+					
+					<a href={contactLink} class="btn nav-cta">
+						<span class="nav-text">{ui.buttons.freeConsultation}</span>
+					</a>
+					
 					<!-- Options Menu -->
 					<div class="options-menu">
 						<button 
@@ -100,36 +118,124 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 									</button>
 								</div>
 							</div>
-							<div class="options-item" role="menuitem">
-								<span class="option-label">Language</span>
-								<div class="language-switcher">
-									<select 
-										id="language-select" 
-										class="lang-select"
-										aria-label="Select language"
-									>
-										{languageSwitchUrls.map(({ lang: switchLang, label, url }) => (
-											<option value={url} selected={switchLang === lang}>
-												{label}
-											</option>
-										))}
-									</select>
-								</div>
-							</div>
 						</div>
 					</div>
-					
-					<a href={contactLink} class="btn nav-cta">
-						<i class="icon icon-bubbles4"></i>
-						<span class="nav-text">{ui.buttons.freeConsultation}</span>
-					</a>
 				</div>
 			</div>
+			
+			<!-- Mobile hamburger button -->
+			<button class="nav-toggle" aria-label="Toggle navigation menu" type="button">
+				<span class="hamburger">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</span>
+			</button>
 		</nav>
 	</div>
 </header>
 
+<!-- Fixed Free Consultation Button -->
+<div class="fixed-consultation-btn">
+	<a href={contactLink} class="btn-consultation-fixed" aria-label="Free Consultation">
+		<i class="icon icon-bubbles4"></i>
+		<span class="consultation-text">{ui.buttons?.freeConsultation || 'Free Consultation'}</span>
+	</a>
+</div>
+
 <style>
+	/* Fixed Free Consultation Button */
+	.fixed-consultation-btn {
+		position: fixed;
+		right: 20px;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 9998;
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.3s ease-in-out;
+	}
+	
+	.fixed-consultation-btn.visible {
+		opacity: 1;
+		visibility: visible;
+	}
+	
+	.btn-consultation-fixed {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--spacing-xs);
+		background: var(--bg-gradient);
+		color: white;
+		padding: var(--spacing-md);
+		border-radius: var(--radius-md);
+		text-decoration: none;
+		font-weight: 600;
+		box-shadow: 0 4px 20px rgba(26, 234, 226, 0.3);
+		transition: all var(--transition-normal);
+		border: none;
+		cursor: pointer;
+		width: auto;
+		height: 48px;
+		min-width: 120px;
+		max-width: 200px;
+	}
+	
+	.btn-consultation-fixed:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 30px rgba(26, 234, 226, 0.4);
+		color: white;
+	}
+	
+	.btn-consultation-fixed .icon {
+		font-size: 1.2rem;
+		flex-shrink: 0;
+	}
+	
+	.consultation-text {
+		display: block;
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		white-space: nowrap;
+	}
+	
+	/* Mobile styles for fixed button */
+	@media (max-width: 768px) {
+		.fixed-consultation-btn {
+			right: 15px;
+		}
+		
+		.btn-consultation-fixed {
+			min-width: 100px;
+			max-width: 150px;
+			height: 44px;
+			padding: var(--spacing-sm);
+		}
+		
+		.btn-consultation-fixed .icon {
+			font-size: 1.1rem;
+		}
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.fixed-consultation-btn {
+			right: 10px;
+		}
+		
+		.btn-consultation-fixed {
+			min-width: 90px;
+			max-width: 130px;
+			height: 40px;
+			padding: var(--spacing-xs);
+		}
+		
+		.btn-consultation-fixed .icon {
+			font-size: 1rem;
+		}
+	}
+
 	.header {
 		background: var(--bg-primary);
 		box-shadow: var(--shadow-md);
@@ -153,7 +259,8 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0.25rem 0;
+		padding: 0.25rem 1rem;
+		box-sizing: border-box;
 	}
 	
 	.nav-brand .logo {
@@ -173,7 +280,7 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 	}
 	
 	.logo-img {
-		height: 90px;
+		height: 70px;
 		width: auto;
 		object-fit: contain;
 		border: none;
@@ -203,15 +310,54 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		color: var(--gradient-mid-blue);
 	}
 	
-	.nav-link .icon {
-		font-size: var(--font-size-md);
-		line-height: 1;
-	}
-	
 	.nav-actions {
 		display: flex;
 		align-items: center;
 		gap: var(--spacing-sm);
+	}
+	
+	/* Language Flags Styles */
+	.language-flags {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-xs);
+	}
+	
+	.flag-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		border-radius: 6px;
+		text-decoration: none;
+		font-size: 18px;
+		transition: all var(--transition-normal);
+		border: 2px solid transparent;
+		background: var(--bg-secondary);
+		overflow: hidden;
+	}
+	
+	.flag-image {
+		width: 24px;
+		height: 18px;
+		object-fit: cover;
+		border-radius: 2px;
+		transition: transform var(--transition-normal);
+	}
+	
+	.flag-link:hover {
+		transform: scale(1.1);
+		border-color: var(--primary-color);
+		box-shadow: 0 2px 8px rgba(26, 234, 226, 0.2);
+	}
+	
+	.flag-link:hover .flag-image {
+		transform: scale(1.05);
+	}
+	
+	.flag-link.active {
+		background: var(--bg-primary);
 	}
 	
 	/* Options Menu Styles */
@@ -299,33 +445,6 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		color: var(--text-dark);
 	}
 	
-	.language-switcher {
-		position: relative;
-	}
-	
-	.options-item .lang-select {
-		background: var(--bg-primary);
-		border: 1px solid var(--border-color);
-		border-radius: 6px;
-		padding: 0.25rem 0.5rem;
-		font-family: 'Poppins', sans-serif;
-		font-size: var(--font-size-xs);
-		color: var(--text-dark);
-		cursor: pointer;
-		transition: all var(--transition-normal);
-		outline: none;
-		min-width: 80px;
-	}
-	
-	.options-item .lang-select:hover {
-		border-color: var(--primary-color);
-	}
-	
-	.options-item .lang-select:focus {
-		border-color: var(--primary-color);
-		box-shadow: 0 0 0 2px rgba(26, 234, 226, 0.1);
-	}
-	
 	.options-item .theme-toggle {
 		background: var(--bg-primary);
 		border: 1px solid var(--border-color);
@@ -407,6 +526,7 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		list-style: none;
 		gap: var(--spacing-md);
 		margin: 0;
+		align-items: center;
 	}
 	
 	.nav-link {
@@ -496,13 +616,60 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		color: white;
 	}
 	
+	/* Hamburger Menu */
+	.nav-toggle {
+		display: none;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: var(--spacing-xs);
+		border-radius: var(--radius-sm);
+		transition: background-color var(--transition-normal);
+	}
+	
+	.nav-toggle:hover {
+		background: var(--bg-secondary);
+	}
+	
+	.hamburger {
+		width: 24px;
+		height: 18px;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	
+	.bar {
+		width: 100%;
+		height: 2px;
+		background: var(--text-dark);
+		border-radius: 1px;
+		transition: all 0.3s ease;
+		transform-origin: center;
+		display:none;
+	}
+	
+	/* Hamburger animation when active */
+	.nav-toggle.active .bar:nth-child(1) {
+		transform: rotate(45deg) translate(6px, 6px);
+	}
+	
+	.nav-toggle.active .bar:nth-child(2) {
+		opacity: 0;
+	}
+	
+	.nav-toggle.active .bar:nth-child(3) {
+		transform: rotate(-45deg) translate(6px, -6px);
+	}
+	
 	
 	.nav-toggle {
 		display: none;
 	}
 	
 	.bar {
-		display: none;
+		display: block;
 	}
 	
 	/* Tablet Styles */
@@ -543,7 +710,7 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 			justify-content: space-between;
 			gap: var(--spacing-xs);
 			width: 100%;
-			padding: 0 var(--spacing-xs);
+			padding: 0 var(--spacing-md);
 		}
 		
 		.nav-brand {
@@ -554,70 +721,102 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 			height: 40px;
 		}
 		
+		/* Show hamburger, hide menu by default */
+		.nav-toggle {
+			display: block;
+			order: 3;
+		}
+		
 		.nav-menu {
-			flex: 1;
-			flex-direction: row;
-			align-items: center;
-			justify-content: center;
-			gap: 0;
+			position: fixed;
+			top: 100%;
+			left: 0;
+			right: 0;
+			background: var(--bg-primary);
+			border-top: 1px solid var(--border-light);
+			box-shadow: var(--shadow-lg);
+			transform: translateY(-100%);
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease-in-out;
+			z-index: 9997;
+			max-height: calc(100vh - 80px);
+			overflow-y: auto;
+			flex-direction: column;
+			padding: var(--spacing-lg) 0;
+		}
+		
+		.nav-menu.active {
+			transform: translateY(0);
+			opacity: 1;
+			visibility: visible;
 		}
 		
 		.nav-list {
 			display: flex;
-			flex-direction: row;
-			gap: 0.5rem;
+			flex-direction: column;
+			gap: 0;
 			justify-content: center;
-			flex-wrap: nowrap;
-			margin: 0;
+			margin: 0 0 var(--spacing-lg) 0;
 			padding: 0;
 		}
 		
 		.nav-link {
-			flex-direction: column;
-			gap: var(--spacing-xs);
-			padding: var(--spacing-xs);
-			min-width: 40px;
-			text-align: center;
-			max-width: 50px;
-		}
-		
-		.nav-link .icon {
-			font-size: 1.2rem;
-			color: var(--secondary-color);
-		}
-		
-		.nav-link:hover .icon {
-			color: var(--gradient-mid-blue);
+			flex-direction: row;
+			gap: var(--spacing-md);
+			padding: var(--spacing-md) var(--spacing-lg);
+			text-align: left;
+			min-width: auto;
+			max-width: none;
+			border-bottom: 1px solid var(--border-light);
 		}
 		
 		.nav-text {
-			display: none;
+			display: block;
+			font-size: var(--font-size-base);
 		}
 		
 		.nav-actions {
-			flex: 0 0 auto;
-			display: flex;
-			flex-direction: row;
-			gap: var(--spacing-xs);
+			flex-direction: column;
+			gap: var(--spacing-md);
 			align-items: center;
+			width: 100%;
+			padding: 0 var(--spacing-lg);
+		}
+		
+		.language-flags {
+			order: 1;
+			justify-content: center;
+		}
+		
+		.flag-link {
+			width: 28px;
+			height: 28px;
+			font-size: 16px;
+		}
+		
+		.flag-image {
+			width: 20px;
+			height: 15px;
 		}
 		
 		.nav-cta {
-			padding: var(--spacing-xs) var(--spacing-sm);
-			font-size: var(--font-size-xs);
-			border-radius: var(--radius-lg);
+			order: 2;
+			padding: var(--spacing-md) var(--spacing-lg);
+			font-size: var(--font-size-base);
+			border-radius: var(--radius-md);
+			width: 100%;
+			max-width: 280px;
+			justify-content: center;
 		}
 		
 		.nav-cta .nav-text {
-			display: none;
-		}
-		
-		.nav-cta .icon {
-			font-size: 1.1rem;
+			display: block;
 		}
 		
 		.options-menu {
-			order: 1;
+			order: 3;
+			display: none; /* Hide on mobile for now */
 		}
 		
 		.options-dropdown {
@@ -646,16 +845,12 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 			padding: var(--spacing-xs);
 		}
 		
-		.nav-link .icon {
-			font-size: 1.1rem;
-		}
-		
 		.nav-cta {
 			padding: var(--spacing-xs);
 		}
 		
-		.nav-cta .icon {
-			font-size: 1rem;
+		.options-menu {
+			display: none; /* Hide on small mobile for now */
 		}
 	}
 			min-width: 200px;
@@ -666,10 +861,6 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		.nav-cta .nav-text {
 			display: none;
 		}
-		
-		.nav-cta .icon {
-			font-size: var(--font-size-lg);
-		}
 		}
 		
 		.language-switcher {
@@ -679,10 +870,11 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		.nav-list {
 			overflow-x: auto;
 			flex-wrap: nowrap;
-			gap: var(--spacing-md);
+			gap: 0;
 			padding: 0 var(--spacing-sm);
 			scrollbar-width: none; /* Firefox */
 			-ms-overflow-style: none; /* IE/Edge */
+			width:100%;
 		}
 		
 		.nav-list::-webkit-scrollbar {
@@ -752,6 +944,21 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 </style>
 
 <script>
+	// Fixed consultation button show/hide on scroll
+	const fixedConsultationBtn = document.querySelector('.fixed-consultation-btn');
+	const showButtonThreshold = 200; // Show button after 200px scroll
+	
+	function handleFixedButtonScroll() {
+		const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		
+		// Show button when scrolled down, hide when at the top
+		if (scrollTop > showButtonThreshold) {
+			fixedConsultationBtn?.classList.add('visible');
+		} else {
+			fixedConsultationBtn?.classList.remove('visible');
+		}
+	}
+	
 	// Header hide/show on scroll
 	let lastScrollTop = 0;
 	const header = document.querySelector('.header');
@@ -784,6 +991,7 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 		if (!ticking) {
 			requestAnimationFrame(() => {
 				handleScroll();
+				handleFixedButtonScroll();
 				ticking = false;
 			});
 			ticking = true;
@@ -791,35 +999,6 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 	}
 	
 	window.addEventListener('scroll', throttledScroll);
-	
-	// Language switcher functionality
-	const languageSelect = document.getElementById('language-select') as HTMLSelectElement;
-	if (languageSelect) {
-		languageSelect.addEventListener('change', (e) => {
-			const target = e.target as HTMLSelectElement;
-			const newUrl = target.value;
-			if (newUrl) {
-				// Use View Transitions API if available for smoother language switch
-				if ('startViewTransition' in document) {
-					(document as any).startViewTransition(() => {
-						// Preload the new page before navigating
-						const link = document.createElement('link');
-						link.rel = 'prefetch';
-						link.href = newUrl;
-						document.head.appendChild(link);
-						
-						// Navigate after a short delay to allow prefetch
-						setTimeout(() => {
-							window.location.href = newUrl;
-						}, 50);
-					});
-				} else {
-					// Fallback to normal navigation
-					window.location.href = newUrl;
-				}
-			}
-		});
-	}
 	
 	// Options menu functionality
 	const optionsToggle = document.querySelector('.options-toggle') as HTMLButtonElement;
@@ -985,4 +1164,51 @@ const contactLink = isBlogPage ? '#contact' : (isHomePage ? '#contact' : '/#cont
 			}
 		});
 	});
+	
+	// Mobile hamburger menu functionality
+	const navToggle = document.querySelector('.nav-toggle') as HTMLButtonElement;
+	const navMenu = document.querySelector('.nav-menu') as HTMLElement;
+	
+	if (navToggle && navMenu) {
+		navToggle.addEventListener('click', () => {
+			const isActive = navMenu.classList.toggle('active');
+			navToggle.classList.toggle('active');
+			navToggle.setAttribute('aria-expanded', isActive.toString());
+			
+			// Prevent body scroll when menu is open
+			document.body.style.overflow = isActive ? 'hidden' : '';
+		});
+		
+		// Close mobile menu when clicking on nav links
+		const navLinks = navMenu.querySelectorAll('.nav-link');
+		navLinks.forEach(link => {
+			link.addEventListener('click', () => {
+				navMenu.classList.remove('active');
+				navToggle.classList.remove('active');
+				navToggle.setAttribute('aria-expanded', 'false');
+				document.body.style.overflow = '';
+			});
+		});
+		
+		// Close mobile menu when clicking outside
+		document.addEventListener('click', (e) => {
+			if (!navMenu.contains(e.target as Node) && !navToggle.contains(e.target as Node)) {
+				navMenu.classList.remove('active');
+				navToggle.classList.remove('active');
+				navToggle.setAttribute('aria-expanded', 'false');
+				document.body.style.overflow = '';
+			}
+		});
+		
+		// Close mobile menu on escape key
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+				navMenu.classList.remove('active');
+				navToggle.classList.remove('active');
+				navToggle.setAttribute('aria-expanded', 'false');
+				document.body.style.overflow = '';
+				navToggle.focus();
+			}
+		});
+	}
 </script>

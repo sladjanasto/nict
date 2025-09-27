@@ -90,14 +90,20 @@ const heroQuestions = ui.hero?.questions || [
 		background: rgba(255, 255, 255, 0.2);
 		z-index: 1;
 	}
-	
+	.container{
+		width:90%;
+		max-width: 1400px;
+		display: flex;
+    	align-items: center;
+		justify-content: flex-start;
+	}
 	.hero-content {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		position: relative;
 		z-index: 2;
-		transform: translate(-20rem, 2rem);
+		/* transform: translate(-20rem, 2rem); */
 		/* width: 1400px; */
 		/* max-width: 900px;
 		margin: 0 auto;
@@ -360,6 +366,7 @@ const heroQuestions = ui.hero?.questions || [
 		
 		.container {
 			padding: 0 var(--spacing-md);
+			justify-content: center;
 		}
 		
 		.hero-content {

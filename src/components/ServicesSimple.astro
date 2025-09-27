@@ -1035,26 +1035,83 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 <!-- Pass i18n data to client script -->
 <script define:vars={{ ui }}>
 	window.uiTranslations = ui;
+	console.log('Passed UI translations to client:', ui);
+	console.log('ServicePackages in UI:', ui?.servicePackages);
 </script>
 
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
+		// Wait a bit for data to be available
+		setTimeout(() => {
+			initializeServiceExplorer();
+		}, 100);
+	});
+	
+	function initializeServiceExplorer() {
 		const exploreButtons = document.querySelectorAll('.service-explore-btn') as NodeListOf<HTMLButtonElement>;
 		const packagesSection = document.getElementById('packagesSection') as HTMLElement;
 		const packagesTitle = document.getElementById('packagesTitle') as HTMLElement;
 		const packagesContent = document.getElementById('packagesContent') as HTMLElement;
 		
-		if (!packagesSection || !packagesTitle || !packagesContent) return;
+		if (!packagesSection || !packagesTitle || !packagesContent) {
+			console.error('Package elements not found');
+			return;
+		}
 		
 		let currentActiveButton: HTMLButtonElement | null = null;
 		
 		// Get i18n data from global scope
 		const uiTranslations = (window as any).uiTranslations || {};
-		const servicePackages = uiTranslations.servicePackages || {};
+		let servicePackages = uiTranslations.servicePackages || {};
+		
+		console.log('Initializing service explorer with data:', uiTranslations);
+		console.log('ServicePackages found:', Object.keys(servicePackages));
+		
+		// Fallback if servicePackages is empty - use basic structure
+		if (Object.keys(servicePackages).length === 0) {
+			console.warn('ServicePackages not found in i18n data, using fallback');
+			servicePackages = {
+				interim: {
+					title: 'Interim Management Packages',
+					packages: [
+						{ name: 'Package 1', price: 'Contact us', period: '', features: ['Service not available'] }
+					]
+				},
+				cloud: {
+					title: 'Cloud Migration Packages', 
+					packages: [
+						{ name: 'Package 1', price: 'Contact us', period: '', features: ['Service not available'] }
+					]
+				},
+				it: {
+					title: 'IT Operations Packages',
+					packages: [
+						{ name: 'Package 1', price: 'Contact us', period: '', features: ['Service not available'] }
+					]
+				},
+				ai: {
+					title: 'AI Consulting Packages',
+					packages: [
+						{ name: 'Package 1', price: 'Contact us', period: '', features: ['Service not available'] }
+					]
+				},
+				seo: {
+					title: 'SEO Packages',
+					packages: [
+						{ name: 'Package 1', price: 'Contact us', period: '', features: ['Service not available'] }
+					]
+				}
+			};
+		}
 		
 		function renderPackages(serviceKey: string) {
 			const service = servicePackages[serviceKey];
-			if (!service) return;
+			if (!service) {
+				console.error(`No service found for key: ${serviceKey}`);
+				packagesTitle.textContent = 'Service not available';
+				packagesContent.innerHTML = '<p>Service packages are not available at the moment.</p>';
+				return;
+			}
 			
 			packagesTitle.textContent = service.title;
 			
@@ -1165,6 +1222,6 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				}
 			});
 		});
-	});
+	}
 </script>
 

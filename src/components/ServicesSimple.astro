@@ -1038,16 +1038,30 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 </script>
 
 <script>
-	// Initialize on both page load and Astro transitions
-	document.addEventListener('DOMContentLoaded', initializeServiceExplorer);
-	document.addEventListener('astro:page-load', initializeServiceExplorer);
+	// Initialize service explorer with proper Astro View Transitions support
+	let isInitialized = false;
 	
 	function initializeServiceExplorer() {
+		// Prevent multiple initialization
+		if (isInitialized) {
+			return;
+		}
+		
 		// Wait a bit for data to be available
 		setTimeout(() => {
 			setupServiceExplorer();
-		}, 100);
+			isInitialized = true;
+		}, 150);
 	}
+	
+	// Reset on page change
+	document.addEventListener('astro:before-preparation', () => {
+		isInitialized = false;
+	});
+	
+	// Initialize on both events
+	document.addEventListener('DOMContentLoaded', initializeServiceExplorer);
+	document.addEventListener('astro:page-load', initializeServiceExplorer);
 	
 	function setupServiceExplorer() {
 		const exploreButtons = document.querySelectorAll('.service-explore-btn') as NodeListOf<HTMLButtonElement>;
@@ -1055,9 +1069,13 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		const packagesTitle = document.getElementById('packagesTitle') as HTMLElement;
 		const packagesContent = document.getElementById('packagesContent') as HTMLElement;
 		
-		if (!packagesSection || !packagesTitle || !packagesContent) {
+		if (!packagesSection || !packagesTitle || !packagesContent || exploreButtons.length === 0) {
+			console.log('ServicesSimple: Elements not found, retrying in 200ms');
+			setTimeout(setupServiceExplorer, 200);
 			return;
 		}
+		
+		console.log('ServicesSimple: Initializing with', exploreButtons.length, 'buttons');
 		
 		let currentActiveButton: HTMLButtonElement | null = null;
 		
@@ -1100,15 +1118,6 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				}
 			};
 		}
-		
-		// Remove existing event listeners to prevent duplicates
-		exploreButtons.forEach(button => {
-			const newButton = button.cloneNode(true) as HTMLButtonElement;
-			button.parentNode?.replaceChild(newButton, button);
-		});
-		
-		// Re-query buttons after replacing them
-		const newExploreButtons = document.querySelectorAll('.service-explore-btn') as NodeListOf<HTMLButtonElement>;
 		
 		function renderPackages(serviceKey: string) {
 			const service = servicePackages[serviceKey];
@@ -1170,18 +1179,25 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			packagesContent.style.gridTemplateColumns = 'none';
 		}
 		
-		newExploreButtons.forEach(button => {
+		exploreButtons.forEach((button, index) => {
 			const toggleTextShow = button.querySelector('.toggle-text-show') as HTMLElement;
 			const toggleTextHide = button.querySelector('.toggle-text-hide') as HTMLElement;
 			const serviceKey = button.dataset.service;
 			
 			if (!toggleTextShow || !toggleTextHide || !serviceKey) return;
 			
-			button.addEventListener('click', function() {
+			// Remove existing listeners to prevent duplicates
+			button.removeEventListener('click', button.clickHandler as any);
+			
+			// Create new click handler
+			const clickHandler = function(e: Event) {
+				e.preventDefault();
+				console.log('Button clicked:', serviceKey);
+				
 				const isCurrentlyActive = button === currentActiveButton;
 				
 				// Reset all buttons first
-				newExploreButtons.forEach(btn => {
+				exploreButtons.forEach(btn => {
 					const showText = btn.querySelector('.toggle-text-show') as HTMLElement;
 					const hideText = btn.querySelector('.toggle-text-hide') as HTMLElement;
 					if (showText && hideText) {
@@ -1225,7 +1241,13 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 						});
 					}, 300);
 				}
-			});
+			};
+			
+			// Store handler reference for cleanup
+			(button as any).clickHandler = clickHandler;
+			
+			// Add event listener
+			button.addEventListener('click', clickHandler);
 		});
 	}
 </script>

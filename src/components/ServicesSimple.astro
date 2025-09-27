@@ -1035,8 +1035,6 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 <!-- Pass i18n data to client script -->
 <script define:vars={{ ui }}>
 	window.uiTranslations = ui;
-	console.log('Passed UI translations to client:', ui);
-	console.log('ServicePackages in UI:', ui?.servicePackages);
 </script>
 
 <script>
@@ -1054,7 +1052,6 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		const packagesContent = document.getElementById('packagesContent') as HTMLElement;
 		
 		if (!packagesSection || !packagesTitle || !packagesContent) {
-			console.error('Package elements not found');
 			return;
 		}
 		
@@ -1064,12 +1061,8 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		const uiTranslations = (window as any).uiTranslations || {};
 		let servicePackages = uiTranslations.servicePackages || {};
 		
-		console.log('Initializing service explorer with data:', uiTranslations);
-		console.log('ServicePackages found:', Object.keys(servicePackages));
-		
 		// Fallback if servicePackages is empty - use basic structure
 		if (Object.keys(servicePackages).length === 0) {
-			console.warn('ServicePackages not found in i18n data, using fallback');
 			servicePackages = {
 				interim: {
 					title: 'Interim Management Packages',
@@ -1107,7 +1100,6 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 		function renderPackages(serviceKey: string) {
 			const service = servicePackages[serviceKey];
 			if (!service) {
-				console.error(`No service found for key: ${serviceKey}`);
 				packagesTitle.textContent = 'Service not available';
 				packagesContent.innerHTML = '<p>Service packages are not available at the moment.</p>';
 				return;

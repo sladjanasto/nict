@@ -5,10 +5,6 @@ const lang = Astro.url.searchParams.get('lang') || 'en';
 const t = await getUITranslations(lang);
 const testimonialsData = t.footer?.testimonials;
 
-if (!testimonialsData) {
-  console.warn('Testimonials data not found');
-}
-
 // Dummy testimonials for testing
 const dummyTestimonials = [
   {
@@ -427,16 +423,11 @@ const testimonials = testimonialsData?.items || dummyTestimonials;
 		}
 
 		init() {
-			console.log('TestimonialsSlider init called');
 			this.slider = document.getElementById('testimonialsSlider');
 			this.slides = document.querySelectorAll('.testimonial-slide');
 			this.dots = document.querySelectorAll('.slider-dot');
 			this.prevBtn = document.getElementById('prevBtn');
 			this.nextBtn = document.getElementById('nextBtn');
-
-			console.log('Slider found:', !!this.slider);
-			console.log('Slides found:', this.slides.length);
-			console.log('Dots found:', this.dots.length);
 
 			if (!this.slider || !this.slides.length) return;
 
@@ -493,20 +484,16 @@ const testimonials = testimonialsData?.items || dummyTestimonials;
 		}
 
 		updateSlider() {
-			console.log(`Showing slide ${this.currentSlide} of ${this.totalSlides}`);
-			
 			// Update slides visibility
 			this.slides?.forEach((slide, index) => {
 				const isActive = index === this.currentSlide;
 				slide.classList.toggle('active', isActive);
-				console.log(`Slide ${index} active:`, isActive);
 			});
 
 			// Update dots
 			this.dots?.forEach((dot, index) => {
 				const isActive = index === this.currentSlide;
 				dot.classList.toggle('active', isActive);
-				console.log(`Dot ${index} active:`, isActive);
 			});
 
 			// Update button states for better UX

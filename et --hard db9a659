@@ -1,0 +1,10 @@
+[33mdb9a659[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m Fix gradient button text visibility issues
+[33mcfb7e1c[m Debug: Poboljšanje explore button funkcionalnosti za nemačku verziju
+[33m4897d69[m Sinhronizacija nemačkih prevoda - dodavanje servicePackages i popravka HTML strukture
+[33m78196b5[m Fix CSS syntax error in media queries - resolve comparison table styling issues
+[33m6fb1536[m Organize comparison table into @layer components with responsive design
+[33md914e9a[m Implement consistent @layer typography system for section titles
+[33ma6abcff[m Simplify comparison table CSS and fix loading issues
+[33mc03fe7e[m feat: Apply Microsoft Copilot-style design to comparison table
+[33m7392f30[m feat: Create grid-based comparison table for service packages
+[33m1016487[m fix: Improve package card styling and fix grid layout

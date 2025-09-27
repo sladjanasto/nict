@@ -122,6 +122,14 @@ const heroQuestions = ui.hero?.questions || [
 			remove-caret 0.1s ease-in 2s forwards;
 	}
 	
+	/* Disable typewriter animation on view transitions */
+	.typewriter.no-animation {
+		animation: none !important;
+		border-right: none !important;
+		overflow: visible;
+		white-space: normal;
+	}
+	
 	.typewriter-line-1 {
 		display: inline-block;
 		overflow: hidden;
@@ -131,6 +139,17 @@ const heroQuestions = ui.hero?.questions || [
 			typewriter-line1 2.5s steps(50, end) 0.5s both,
 			blink-caret 0.75s step-end infinite 0.5s,
 			remove-caret 0.1s ease-in 3s forwards;
+	}
+	
+	/* Disable animation for typewriter lines */
+	.typewriter-line-1.no-animation,
+	.typewriter-line-2.no-animation {
+		animation: none !important;
+		border-right: none !important;
+		overflow: visible;
+		white-space: normal;
+		opacity: 1 !important;
+		width: auto !important;
 	}
 	
 	.typewriter-line-2 {
@@ -473,23 +492,40 @@ const heroQuestions = ui.hero?.questions || [
 </style>
 
 <script define:vars={{ heroQuestions }}>
-	document.addEventListener('DOMContentLoaded', () => {
+	let isInitialized = false;
+	
+	function initializeHero() {
+		// Prevent multiple initialization
+		if (isInitialized) {
+			return;
+		}
+		
 		const questions = heroQuestions;
 		let currentIndex = Math.floor(Math.random() * questions.length);
 		
 		function updateContent() {
 			const question = questions[currentIndex];
 			
-			document.getElementById('questionStart').textContent = question.questionStart;
-			document.getElementById('questionHighlight').textContent = question.questionHighlight;
-			document.getElementById('questionEnd').textContent = question.questionEnd;
+			// Update content without triggering animations
+			const questionStart = document.getElementById('questionStart');
+			const questionHighlight = document.getElementById('questionHighlight');
+			const questionEnd = document.getElementById('questionEnd');
+			const answerStart = document.getElementById('answerStart');
+			const service1 = document.getElementById('service1');
+			const service2 = document.getElementById('service2');
+			const answerMiddle = document.getElementById('answerMiddle');
+			const service3 = document.getElementById('service3');
+			const answerEnd = document.getElementById('answerEnd');
 			
-			document.getElementById('answerStart').textContent = question.answerStart;
-			document.getElementById('service1').textContent = question.service1;
-			document.getElementById('service2').textContent = question.service2;
-			document.getElementById('answerMiddle').textContent = question.answerMiddle;
-			document.getElementById('service3').textContent = question.service3;
-			document.getElementById('answerEnd').textContent = question.answerEnd;
+			if (questionStart) questionStart.textContent = question.questionStart;
+			if (questionHighlight) questionHighlight.textContent = question.questionHighlight;
+			if (questionEnd) questionEnd.textContent = question.questionEnd;
+			if (answerStart) answerStart.textContent = question.answerStart;
+			if (service1) service1.textContent = question.service1;
+			if (service2) service2.textContent = question.service2;
+			if (answerMiddle) answerMiddle.textContent = question.answerMiddle;
+			if (service3) service3.textContent = question.service3;
+			if (answerEnd) answerEnd.textContent = question.answerEnd;
 		}
 		
 		function nextQuestion() {
@@ -509,5 +545,42 @@ const heroQuestions = ui.hero?.questions || [
 				nextQuestion();
 			}
 		});
+		
+		isInitialized = true;
+	}
+	
+	// Disable typewriter animations on view transitions
+	function disableTypewriterAnimations() {
+		const typewriterElements = document.querySelectorAll('.typewriter, .typewriter-line-1, .typewriter-line-2');
+		typewriterElements.forEach(element => {
+			element.classList.add('no-animation');
+		});
+	}
+	
+	// Re-enable typewriter animations for initial page load only
+	function enableTypewriterAnimations() {
+		const typewriterElements = document.querySelectorAll('.typewriter, .typewriter-line-1, .typewriter-line-2');
+		typewriterElements.forEach(element => {
+			element.classList.remove('no-animation');
+		});
+	}
+	
+	// Reset on page change to allow re-initialization
+	document.addEventListener('astro:before-preparation', () => {
+		isInitialized = false;
+	});
+	
+	// Disable animations before view transitions
+	document.addEventListener('astro:before-preparation', disableTypewriterAnimations);
+	
+	// Initialize on both standard page load and Astro page transitions
+	document.addEventListener('DOMContentLoaded', () => {
+		enableTypewriterAnimations(); // Only enable animations on fresh page load
+		initializeHero();
+	});
+	
+	document.addEventListener('astro:page-load', () => {
+		disableTypewriterAnimations(); // Keep animations disabled for view transitions
+		initializeHero();
 	});
 </script>

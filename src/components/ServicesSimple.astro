@@ -1038,14 +1038,18 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 </script>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-		// Wait a bit for data to be available
-		setTimeout(() => {
-			initializeServiceExplorer();
-		}, 100);
-	});
+	// Initialize on both page load and Astro transitions
+	document.addEventListener('DOMContentLoaded', initializeServiceExplorer);
+	document.addEventListener('astro:page-load', initializeServiceExplorer);
 	
 	function initializeServiceExplorer() {
+		// Wait a bit for data to be available
+		setTimeout(() => {
+			setupServiceExplorer();
+		}, 100);
+	}
+	
+	function setupServiceExplorer() {
 		const exploreButtons = document.querySelectorAll('.service-explore-btn') as NodeListOf<HTMLButtonElement>;
 		const packagesSection = document.getElementById('packagesSection') as HTMLElement;
 		const packagesTitle = document.getElementById('packagesTitle') as HTMLElement;
@@ -1096,6 +1100,15 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				}
 			};
 		}
+		
+		// Remove existing event listeners to prevent duplicates
+		exploreButtons.forEach(button => {
+			const newButton = button.cloneNode(true) as HTMLButtonElement;
+			button.parentNode?.replaceChild(newButton, button);
+		});
+		
+		// Re-query buttons after replacing them
+		const newExploreButtons = document.querySelectorAll('.service-explore-btn') as NodeListOf<HTMLButtonElement>;
 		
 		function renderPackages(serviceKey: string) {
 			const service = servicePackages[serviceKey];
@@ -1157,7 +1170,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 			packagesContent.style.gridTemplateColumns = 'none';
 		}
 		
-		exploreButtons.forEach(button => {
+		newExploreButtons.forEach(button => {
 			const toggleTextShow = button.querySelector('.toggle-text-show') as HTMLElement;
 			const toggleTextHide = button.querySelector('.toggle-text-hide') as HTMLElement;
 			const serviceKey = button.dataset.service;
@@ -1168,7 +1181,7 @@ const seoBenefits = servicesData.seoServices?.benefits || [];
 				const isCurrentlyActive = button === currentActiveButton;
 				
 				// Reset all buttons first
-				exploreButtons.forEach(btn => {
+				newExploreButtons.forEach(btn => {
 					const showText = btn.querySelector('.toggle-text-show') as HTMLElement;
 					const hideText = btn.querySelector('.toggle-text-hide') as HTMLElement;
 					if (showText && hideText) {

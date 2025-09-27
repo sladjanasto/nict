@@ -1,5 +1,5 @@
 // Service Worker for Portfolio Site Performance Optimization
-const CACHE_NAME = 'portfolio-v1.2.0';
+const CACHE_NAME = 'portfolio-v1.3.0';
 const RUNTIME_CACHE = 'runtime-cache-v1';
 
 // Assets to cache immediately
@@ -49,6 +49,25 @@ self.addEventListener('fetch', (event) => {
 
   // Skip chrome-extension and other non-http requests
   if (!event.request.url.startsWith('http')) return;
+
+  // Network-first for CSS files to ensure fresh styles
+  if (event.request.url.includes('.css')) {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          if (response && response.status === 200) {
+            const responseClone = response.clone();
+            caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, responseClone);
+            });
+            return response;
+          }
+          return caches.match(event.request) || response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(event.request)
